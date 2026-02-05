@@ -1,0 +1,303 @@
+<!-- index.html - CORRECTED -->
+<!DOCTYPE html>
+<html>
+{% extends 'base.html' %}
+
+{% block title %}HANZ WEBPAGE{% endblock %}
+
+<!-- Inherit Header -->
+{% block header %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+
+<!-- Hero Section -->
+<div class="hero-align">
+    <div class="hero-content">
+        <span class="hero-pill">Hi, I'm Hanz de la Cruz</span>
+
+        <h2 class="hero-title">
+            Data Analyst & <br> Data Scientist
+        </h2>
+
+        <p class="hero-subtext">
+            Specializing in transforming and analyzing data to deliver actionable
+            insights that drive business decisions.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#" class="btn-primary">View Projects</a>
+            <a href="#" class="btn-secondary">Contact Me</a>
+        </div>
+
+        <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/hanzdlc" target="_blank" class="social-icon facebook"
+                aria-label="Facebook">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/hanz-uriel-de-la-cruz-46495a2b6" target="_blank"
+                class="social-icon linkedin" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/HanzDLC" target="_blank" class="social-icon github" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <img src="{{ url_for('static', filename='images/myimage.jpg') }}" alt="Hanz de la Cruz" class="myimage">
+    </div>
+</div>
+
+<!-- Skills Section -->
+<div class="section-container">
+    <h3 class="section-title">Skills</h3>
+    <div class="skills-grid">
+        <div class="card">
+            <h4>Data Cleaning</h4>
+            <p>Ensuring data quality and reliability.</p>
+        </div>
+        <div class="card">
+            <h4>Data Analysis</h4>
+            <p>Extracting meaningful patterns from data.</p>
+        </div>
+        <div class="card">
+            <h4>Data Manipulation</h4>
+            <p>Transforming datasets for optimal usage.</p>
+        </div>
+        <div class="card" id="dv-card" onclick="openModal()" style="cursor: pointer;">
+            <h4>Data Visualization</h4>
+            <p>Communicating insights through visuals. (Click to View Gallery)</p>
+        </div>
+    </div>
+
+    <!-- Services / What I Do Section -->
+    <div class="section-container">
+        <h3 class="section-title">What I can do for you</h3>
+        <div class="skills-grid">
+            <div class="card">
+                <h4>Data Insights</h4>
+                <p>I mainly do collection, cleaning and interpretation of data to provide insightful information for
+                    businesses.</p>
+            </div>
+            <div class="card">
+                <h4>Machine Learning</h4>
+                <p>Currently doing a Machine Learning project that compares features of systems and creates a comparison
+                    matrix based on input.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certifications Sticky Scroll Section -->
+    <div class="scroll-section-outer">
+        <div class="sticky-wrapper">
+            <h3 class="section-title">Certifications</h3>
+            <div class="horizontal-track">
+                <!-- Cert 1 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/Google AI.png') }}"
+                        alt="Google AI Essentials">
+                    <div class="cert-info">
+                        <h4>Google AI Essentials</h4>
+                        <p>A hands-on program by Google experts focusing on generative AI applications, prompt
+                            engineering, and responsible AI use to enhance productivity across various industries.</p>
+                    </div>
+                </div>
+                <!-- Cert 2 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/Data_Science_Essentials_with_Python_certificate_hanzuriel-delacruz-students-isatu-edu-ph_83c2913b-ed-1.png') }}"
+                        alt="Data Science Essentials">
+                    <div class="cert-info">
+                        <h4>Data Science Essentials</h4>
+                        <p>An introductory course covering the full data science lifecycle using Python, including data
+                            cleaning, analysis, visualization, and storytelling with real-world datasets.</p>
+                    </div>
+                </div>
+                <!-- Cert 3 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/Python_Essentials_1_certificate_hdlcruz03-gmail-com_92673056-d0fd-4640-84a8-31dac583bf20-1.png') }}"
+                        alt="Python Essentials 1">
+                    <div class="cert-info">
+                        <h4>Python Essentials 1</h4>
+                        <p>A foundational course on Python programming, covering data types, control flow, lists, and
+                            functions, preparing learners for entry-level software development and data analysis.</p>
+                    </div>
+                </div>
+                <!-- Cert 4 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/ApplyAIAnalyzeCustomerReviewsv220251115-29-fesq-1.png') }}"
+                        alt="Apply AI: Analyze Customer Reviews">
+                    <div class="cert-info">
+                        <h4>Apply AI Customer Reviews</h4>
+                        <p>Focuses on transforming customer feedback into actionable insights through thematic analysis
+                            and sentiment scoring using AI tools and large language models.</p>
+                    </div>
+                </div>
+                <!-- Cert 5 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/I2CSUpdate20251116-30-5l7rjf-1.png') }}"
+                        alt="I2CS Intro to Cyber Security">
+                    <div class="cert-info">
+                        <h4>Intro to Cyber Security</h4>
+                        <p>Explores the cybersecurity landscape, covering trends, threats, and organizational
+                            protection, designed to provide a solid understanding of digital security principles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Dots -->
+            <div class="progress-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Visualization Modal -->
+    <div id="dv-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Thesis Data Visualization Project</h2>
+                <p class="project-desc">
+                    Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
+                    analysis and data visualization to interpret the results of a complex biological experiment.
+                    (Visualized using Python-- Matplotlib, Seaborn)
+            </div>
+            <div class="gallery-scroll-container">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
+                    alt="NH3 Media Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
+                    alt="NH3 Shrimp Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}"
+                    alt="NH3 WW Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
+                    alt="NH3 in Vitro Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
+                    alt="NO2 Media Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
+                    alt="NO2 Shrimp Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}"
+                    alt="NO2 WW Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
+                    alt="NO2 in Vitro Analysis">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('dv-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            setTimeout(() => {
+                document.getElementById('dv-modal').classList.add('show');
+            }, 10);
+        }
+
+        function closeModal() {
+            document.getElementById('dv-modal').classList.remove('show');
+            document.body.style.overflow = ''; // Restore background scrolling
+            setTimeout(() => {
+                document.getElementById('dv-modal').style.display = 'none';
+            }, 300);
+        }
+
+        // Close if clicked outside
+        window.onclick = function (event) {
+            var modal = document.getElementById('dv-modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Horizontal Scroll with Mouse Wheel (Modal)
+        document.querySelector('.gallery-scroll-container').addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+            document.querySelector('.gallery-scroll-container').scrollLeft += evt.deltaY;
+        });
+
+        // Sticky Horizontal Scroll Script (Certifications) with Dots
+        const stickySection = document.querySelector('.scroll-section-outer');
+        const horizontalTrack = document.querySelector('.horizontal-track');
+        const dots = document.querySelectorAll('.dot');
+        const certItems = document.querySelectorAll('.cert-item');
+
+        window.addEventListener('scroll', () => {
+            if (!stickySection) return;
+            const offsetTop = stickySection.offsetTop;
+            const scrollY = window.scrollY;
+            const sectionHeight = stickySection.offsetHeight;
+            const windowHeight = window.innerHeight;
+
+            // Check if we are within the scroll section
+            if (scrollY >= offsetTop && scrollY <= offsetTop + sectionHeight - windowHeight) {
+                const percentage = (scrollY - offsetTop) / (sectionHeight - windowHeight);
+
+                // Calculate scroll - Adjusted for the number of items
+                if (horizontalTrack) {
+                    const scrollWidth = horizontalTrack.scrollWidth;
+                    const viewWidth = window.innerWidth;
+                    const maxScroll = scrollWidth - viewWidth + (viewWidth * 0.5);
+
+                    const x = Math.max(0, Math.min(1, percentage)) * maxScroll;
+                    horizontalTrack.style.transform = `translateX(-${x}px)`;
+                }
+
+                // Update Active Dot and Card State
+                if (certItems.length > 0) {
+                    const itemCount = certItems.length;
+                    const activeIndex = Math.floor((percentage + 0.05) * itemCount);
+
+                    const safeIndex = Math.min(Math.max(activeIndex, 0), itemCount - 1);
+
+                    dots.forEach((dot, index) => {
+                        if (index === safeIndex) {
+                            dot.classList.add('active');
+                            certItems[index].classList.add('active-card');
+                        } else {
+                            dot.classList.remove('active');
+                            certItems[index].classList.remove('active-card');
+                        }
+                    });
+                }
+
+            } else if (scrollY < offsetTop) {
+                if (horizontalTrack) horizontalTrack.style.transform = `translateX(0px)`;
+
+                // Reset to first
+                dots.forEach(d => d.classList.remove('active'));
+                if (dots.length > 0) dots[0].classList.add('active');
+
+                certItems.forEach(c => c.classList.remove('active-card'));
+                if (certItems.length > 0) certItems[0].classList.add('active-card');
+            }
+        });
+    </script>
+
+    {% endblock %}
+
+
+    <!-- Inherit Footer -->
+    {% block footer %}
+    {{ super() }}
+    {% endblock %}
+
+</html>

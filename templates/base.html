@@ -1,0 +1,51 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>{% block title %}Page Title{% endblock %}</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+
+
+{% block header %}
+<header>
+    <div class="header-class">
+        <h1>HD</h1>
+        <nav>
+            <ul class="header-links">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Projects</a></li>
+                <li><a href="" class="btn-cta-small">Let's Talk</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+{% endblock %}
+
+
+
+<!-- MAIN CONTENT -->
+{% block body %}
+
+<body>
+
+
+</body>
+
+{% endblock %}
+
+
+
+{% block footer %}
+<footer>
+    All Rights Reserved
+</footer>
+{% endblock %}
+
+</html>

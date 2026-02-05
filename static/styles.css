@@ -1,0 +1,862 @@
+@font-face {
+  font-family: "Kameron";
+  src: url("../fonts/Kameron-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Kameron";
+  src: url("../fonts/Kameron-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --bg-color: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #a8a8a8;
+  --accent-color: #4361ee;
+  --card-bg: #131418;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --font-heading: "Kameron", serif;
+  --font-body: "Times New Roman", serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  margin: 0;
+  /* Removed global font-family to match original behavior */
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  position: sticky;
+  border-bottom: 1px solid var(--card-border);
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.header-class {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-class h1 {
+  margin: 0;
+  margin-left: 15px;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 5px;
+  /* Removed font-family: var(--font-heading) */
+}
+
+.header-class h1::after {
+  content: "LC";
+  color: var(--accent-color);
+  margin-left: 0;
+}
+
+nav ul.header-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.header-links li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  /* Removed font-family: var(--font-heading) */
+}
+
+.header-links li a:hover {
+  color: var(--text-primary);
+}
+
+.btn-cta-small {
+  background-color: var(--accent-color);
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 5px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+/* HERO SECTION */
+.hero-align {
+  display: flex;
+  flex-direction: row;
+  /* Side by side */
+  justify-content: center;
+  /* Center them to bring them closer */
+  align-items: center;
+  min-height: 100vh;
+  text-align: left;
+  /* Align text to left */
+  padding: 100px 5%;
+  /* Use % for responsiveness */
+  background: radial-gradient(circle at center, rgba(67, 97, 238, 0.08) 0%, transparent 70%);
+  gap: 80px;
+  /* Space between text and image */
+}
+
+.hero-content {
+  flex: 0 1 auto;
+  /* Don't force full width */
+  max-width: 600px;
+  /* Prevent text from getting too wide */
+}
+
+.hero-pill {
+  background: rgba(67, 97, 238, 0.15);
+  color: #8da4ff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 25px;
+  display: inline-block;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5vw, 64px);
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+}
+
+.hero-subtext {
+  color: var(--text-secondary);
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 0 40px 0;
+  /* Remove auto margins */
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  /* Align start */
+  margin-bottom: 0;
+  /* Remove bottom margin if not needed */
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  transition: transform 0.2s;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 14px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  transition: border-color 0.2s;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+}
+
+/* IMAGE DISPLAY */
+.hero-visual {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.myimage {
+  width: 100%;
+  max-width: 350px;
+  /* Slightly larger max width for side view */
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+  .hero-align {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding-top: 150px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .hero-subtext {
+    margin: 0 auto 40px;
+  }
+}
+
+/* SECTIONS (Skills, etc) */
+.section-container {
+  max-width: 1200px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 30px;
+  border-radius: 16px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.card h4 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 60px 0;
+  border-top: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 100px;
+}
+
+/* Utility */
+.text-highlight {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Social Icons */
+.social-links {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  fill: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.2);
+  /* Twist: Pop up and Scale */
+  fill: white;
+}
+
+/* Brand Colors on Hover with Glow */
+.facebook:hover {
+  fill: #1877F2;
+  filter: drop-shadow(0 0 8px rgba(24, 119, 242, 0.6));
+}
+
+.linkedin:hover {
+  fill: #0A66C2;
+  filter: drop-shadow(0 0 8px rgba(10, 102, 194, 0.6));
+}
+
+.github:hover {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+/* MODAL STYLES */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #131418;
+  margin: auto;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 20px;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  transition: color 0.2s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: white;
+  text-decoration: none;
+}
+
+.modal-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.modal-header h2 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin-bottom: 15px;
+}
+
+.project-desc {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* SCROLLABLE GALLERY */
+.gallery-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  /* Scrollbar styling for Webkit */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) #131418;
+}
+
+.gallery-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-track {
+  background: #131418;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 20px;
+}
+
+.gallery-scroll-container img {
+  height: 400px;
+  /* Fixed height for uniformity */
+  width: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  /* Prevent squishing */
+}
+
+.gallery-scroll-container img:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-color);
+}
+
+/* Sticky Horizontal Scroll Section */
+.scroll-section-outer {
+  height: 300vh;
+  /* Determines length of scroll */
+  position: relative;
+  background-color: var(--card-bg);
+  /* Dark background */
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.horizontal-track {
+  display: flex;
+  gap: 100px;
+  padding-left: 100px;
+  /* Start with some padding */
+  will-change: transform;
+}
+
+.cert-item {
+  min-width: 400px;
+  height: 300px;
+  background: var(--bg-color);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.cert-item:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+
+.cert-item img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.cert-item h4 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+/* --- CERTIFICATION UPDATES --- */
+
+/* Increase scroll canvas to ensure full traversal */
+.scroll-section-outer {
+  height: 600vh !important;
+  background-color: var(--bg-color) !important;
+}
+
+/* Tighter gap and full width track */
+.horizontal-track {
+  gap: 10px !important;
+  /* "Around 5px" - using 10px for visual breathing room */
+  padding-left: 2vw !important;
+}
+
+/* Remove card styling and maximize size */
+.cert-item {
+  min-width: auto !important;
+  width: auto !important;
+  height: 95vh !important;
+  /* Full screen height */
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  justify-content: center !important;
+}
+
+.cert-item:hover {
+  transform: scale(1.01) !important;
+  border-color: transparent !important;
+}
+
+/* Images at original/large size */
+.cert-item img {
+  max-height: 85vh !important;
+  max-width: auto !important;
+  width: auto !important;
+  object-fit: contain !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  /* deeply shadowed */
+  border: none !important;
+}
+
+/* Larger Text for Emphasis */
+.cert-item h4 {
+  font-size: 1.5rem !important;
+  margin-top: 10px !important;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+/* --- CERTIFICATION FINAL V3 --- */
+
+/* Restore Horizontal Scrolling Layout */
+.horizontal-track {
+  display: flex !important;
+  gap: 60px !important;
+  /* Space between cards */
+  padding-left: 20vw !important;
+  /* Center start */
+  align-items: center;
+}
+
+/* Card Container Styling */
+.cert-item {
+  flex: 0 0 auto !important;
+  /* Prevent shrinking */
+  width: 60vw !important;
+  /* Large container */
+  height: 70vh !important;
+
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
+  opacity: 0.5;
+  /* Fade out inactive cards */
+  transform: scale(0.9);
+  transition: all 0.5s ease-out;
+}
+
+/* Active Class for Card (handled by JS for visual pop) */
+.cert-item.active-card {
+  opacity: 1;
+  transform: scale(1);
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 30px rgba(67, 97, 238, 0.2) !important;
+}
+
+.cert-item:hover {
+  border-color: var(--accent-color) !important;
+}
+
+/* Image Styling */
+.cert-item img {
+  max-height: 80% !important;
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+
+.cert-item h4 {
+  margin-top: 20px !important;
+  font-size: 1.5rem !important;
+  text-align: center;
+  color: var(--text-primary) !important;
+}
+
+/* PROGRESS DOTS */
+.progress-dots {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.dot.active {
+  background-color: var(--accent-color);
+  transform: scale(1.4);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* --- CERTIFICATION FINAL V4 (LANDSCAPE LAYOUT) --- */
+
+/* Horizontal Track */
+.horizontal-track {
+  display: flex !important;
+  gap: 80px !important;
+  padding-left: 15vw !important;
+  align-items: center;
+}
+
+/* Landscape Card Container */
+.cert-item {
+  flex: 0 0 auto !important;
+  width: 70vw !important;
+  /* Width > Height */
+  height: 60vh !important;
+
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 20px !important;
+  padding: 0 !important;
+  /* Remove padding to let image flush if needed, or keep for spacing */
+  overflow: hidden;
+  /* clean edges */
+
+  display: flex !important;
+  flex-direction: row !important;
+  /* Image Left, Text Right */
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: all 0.5s ease-out;
+}
+
+/* Active State */
+.cert-item.active-card {
+  opacity: 1;
+  transform: scale(1);
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 30px rgba(67, 97, 238, 0.2) !important;
+}
+
+/* Image on Left */
+.cert-item img {
+  height: 100% !important;
+  /* Fill height */
+  width: 55% !important;
+  /* Takes up left side */
+  object-fit: contain !important;
+  /* show full cert */
+  background-color: #000;
+  /* Contrast for white certs */
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Info on Right */
+.cert-info {
+  padding: 40px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.cert-info h4 {
+  font-size: 2rem !important;
+  margin-bottom: 20px !important;
+  color: var(--text-primary) !important;
+  line-height: 1.2;
+}
+
+.cert-info p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  /* "Lesser opacity" as requested */
+  line-height: 1.6;
+}
+
+/* Progress Dots (Ensure visibility) */
+.progress-dots {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background-color: var(--accent-color);
+  transform: scale(1.4);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* --- FIX V5: Header & Colors --- */
+
+/* Fix Header Overlap by using Column Layout */
+.sticky-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  /* Stack Header above Track */
+  justify-content: center !important;
+  align-items: flex-start !important;
+  /* Align left */
+  padding-top: 20px;
+}
+
+/* Position the Header within the sticky context */
+.sticky-wrapper .section-title {
+  position: static !important;
+  /* Remove absolute */
+  margin-left: 5vw !important;
+  margin-bottom: 30px !important;
+  z-index: 10;
+}
+
+/* Fix Color Mismatch */
+.cert-item {
+  background-color: #131418 !important;
+  /* Exact match to other cards */
+  border: 1px solid var(--card-border) !important;
+}
+
+.cert-item img {
+  background-color: transparent !important;
+  /* No black background */
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* --- FIX V6: Opacity & Backgrounds --- */
+
+/* Make all cards fully visible and bright */
+.cert-item {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  background-color: var(--card-bg) !important;
+}
+
+/* Hover Effect: Scale Up Only */
+.cert-item:hover {
+  transform: scale(1.03) !important;
+  z-index: 10;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Ensure Certificates look like paper (White Background) */
+/* The user said "why is it still dark", implying the image content was dark/unreadable */
+.cert-item img {
+  background-color: #ffffff !important;
+  /* Force white background for the image frame */
+  padding: 10px !important;
+  /* Add white frame padding */
+  border-radius: 8px !important;
+}
+
+/* Fix Text Opacity */
+.cert-info h4 {
+  opacity: 1 !important;
+}
+
+.cert-info p {
+  opacity: 0.8 !important;
+  /* Slightly distinct but readable */
+}
+
+/* --- FIX V7: Scroll Length & Padding --- */
+
+/* Drastically increase scroll length to prevent early cutoff */
+.scroll-section-outer {
+  height: 1000vh !important;
+}
+
+/* Add end padding so the last item comes fully into view */
+.horizontal-track {
+  padding-right: 20vw !important;
+  /* Matches left padding logic */
+  box-sizing: border-box !important;
+}
