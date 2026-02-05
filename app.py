@@ -1,5 +1,5 @@
 
-# flask.py
+# app.py
 
 from flask import Flask, render_template
 from flask_scss import Scss
