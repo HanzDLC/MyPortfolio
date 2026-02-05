@@ -3,7 +3,7 @@
 
 from flask import Flask, render_template
 from flask_scss import Scss
-from flask_mysqldb import MySQLdb
+
 
 
 app = Flask(__name__)
