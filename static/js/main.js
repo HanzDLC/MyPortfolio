@@ -32,6 +32,29 @@ function closeModal() {
     }, 300);
 }
 
+// Machine Learning Dropdown logic
+function toggleMLDropdown(event) {
+    // Prevent bubbling to document click listener
+    event.stopPropagation();
+
+    const dropdown = document.getElementById('ml-dropdown');
+    const card = document.getElementById('ml-card');
+
+    if (!dropdown) return;
+
+    const isVisible = dropdown.classList.contains('show');
+
+    // Close any other open things if needed
+
+    if (isVisible) {
+        dropdown.classList.remove('show');
+        card.classList.remove('active');
+    } else {
+        dropdown.classList.add('show');
+        card.classList.add('active');
+    }
+}
+
 // ===== GALLERY HORIZONTAL SCROLL =====
 
 function initGalleryScroll() {
@@ -122,10 +145,28 @@ window.addEventListener('click', (event) => {
     }
 });
 
+// Close ML Dropdown when clicking outside
+document.addEventListener('click', (event) => {
+    const dropdown = document.getElementById('ml-dropdown');
+    const card = document.getElementById('ml-card');
+
+    if (dropdown && dropdown.classList.contains('show')) {
+        // If click is outside the card and dropdown
+        if (!card.contains(event.target)) {
+            dropdown.classList.remove('show');
+            card.classList.remove('active');
+        }
+    }
+});
+
 // Close modal on escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeModal();
+
+        // Also close dropdown
+        const dropdown = document.getElementById('ml-dropdown');
+        if (dropdown) dropdown.classList.remove('show');
     }
 });
 

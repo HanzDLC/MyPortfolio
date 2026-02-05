@@ -239,6 +239,10 @@ nav ul.header-links {
   max-width: 1200px;
   margin: 100px auto;
   padding: 0 40px;
+  position: relative;
+  /* Create stacking context */
+  z-index: 50;
+  /* Ensure it stays above sticky sections */
 }
 
 .section-title {
@@ -1441,5 +1445,74 @@ body.menu-open {
   .project-card:active {
     transform: scale(0.98);
     border-color: var(--accent-color);
+  }
+}
+
+/* ===== ML DROPDOWN STYLES ===== */
+
+.ml-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--accent-color);
+  border-radius: 0 0 12px 12px;
+  padding: 15px;
+  z-index: 9999;
+  /* Fix overlap with certifications */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  margin-top: 0;
+  /* Attach directly to card */
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.ml-dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  /* Smaller Hierarcy */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+}
+
+.dropdown-item:hover {
+  background: rgba(67, 97, 238, 0.1);
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .ml-dropdown-menu {
+    position: relative;
+    box-shadow: none;
+    border: 1px solid var(--card-border);
   }
 }

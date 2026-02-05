@@ -95,10 +95,30 @@
                 <p>I mainly do collection, cleaning and interpretation of data to provide insightful information for
                     businesses.</p>
             </div>
-            <div class="card">
-                <h4>Machine Learning</h4>
-                <p>Currently doing a Machine Learning project that compares features of systems and creates a comparison
-                    matrix based on input.</p>
+            <div class="card" id="ml-card" onclick="toggleMLDropdown(event)"
+                style="cursor: pointer; position: relative;">
+                <h4>Machine Learning <span>▼</span></h4>
+                <p>Experienced in training ML models, evaluating performance metrics, and identifying optimal algorithms
+                    for specific datasets.</p>
+
+                <!-- Dropdown Menu -->
+                <div id="ml-dropdown" class="ml-dropdown-menu">
+                    <a href="https://colab.research.google.com/drive/1yZxknpAbuI1djAGUyNtsXpZd2tLAHxbn?usp=sharing"
+                        target="_blank" class="dropdown-item">
+                        <span>1. Reddit Scraping (PRAW API)</span>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                    </a>
+                    <a href="https://colab.research.google.com/drive/1SAKjZ0P1YuQ7oliU7AXvKfwwF5pw1zmZ?usp=sharing"
+                        target="_blank" class="dropdown-item">
+                        <span>2. ML Model Evaluation & Analysis</span>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                    </a>
+                    <a href="https://colab.research.google.com/drive/1QwFY_uxqNcCzrk34NncbaI488VwBy9nt?usp=sharing"
+                        target="_blank" class="dropdown-item">
+                        <span>3. Customer Segmentation (K-Means)</span>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
