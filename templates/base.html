@@ -10,42 +10,50 @@
     <link rel='stylesheet' href="{{url_for('static', filename='styles.css')}}">
 </head>
 
-
-
-{% block header %}
-<header>
-    <div class="header-class">
-        <h1>HD</h1>
-        <nav>
-            <ul class="header-links">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="{{ url_for('projects') }}">Projects</a></li>
-                <li><a href="#contact" class="btn-cta-small">Let's Talk</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-{% endblock %}
-
-
-
-<!-- MAIN CONTENT -->
-{% block body %}
-
 <body>
 
+    {% block header %}
+    <header>
+        <div class="header-class">
+            <h1>HD</h1>
+            <!-- Mobile Hamburger Button -->
+            <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav class="nav-menu">
+                <ul class="header-links">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                    <li><a href="#contact" class="btn-cta-small">Let's Talk</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+        </div>
+    </header>
+    {% endblock %}
+
+
+
+    <!-- MAIN CONTENT -->
+    {% block body %}
+    {% endblock %}
+
+
+
+    {% block footer %}
+    <footer>
+        All Rights Reserved
+    </footer>
+    {% endblock %}
+
+    <!-- JavaScript Files -->
+    <script src="{{url_for('static', filename='js/navigation.js')}}"></script>
+    {% block scripts %}{% endblock %}
 
 </body>
-
-{% endblock %}
-
-
-
-{% block footer %}
-<footer>
-    All Rights Reserved
-</footer>
-{% endblock %}
 
 </html>

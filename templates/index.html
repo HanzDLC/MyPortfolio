@@ -203,97 +203,11 @@
         </div>
     </div>
 
-    <script>
-        function openModal() {
-            document.getElementById('dv-modal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            setTimeout(() => {
-                document.getElementById('dv-modal').classList.add('show');
-            }, 10);
-        }
-
-        function closeModal() {
-            document.getElementById('dv-modal').classList.remove('show');
-            document.body.style.overflow = ''; // Restore background scrolling
-            setTimeout(() => {
-                document.getElementById('dv-modal').style.display = 'none';
-            }, 300);
-        }
-
-        // Close if clicked outside
-        window.onclick = function (event) {
-            var modal = document.getElementById('dv-modal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        // Horizontal Scroll with Mouse Wheel (Modal)
-        document.querySelector('.gallery-scroll-container').addEventListener('wheel', (evt) => {
-            evt.preventDefault();
-            document.querySelector('.gallery-scroll-container').scrollLeft += evt.deltaY;
-        });
-
-        // Sticky Horizontal Scroll Script (Certifications) with Dots
-        const stickySection = document.querySelector('.scroll-section-outer');
-        const horizontalTrack = document.querySelector('.horizontal-track');
-        const dots = document.querySelectorAll('.dot');
-        const certItems = document.querySelectorAll('.cert-item');
-
-        window.addEventListener('scroll', () => {
-            if (!stickySection) return;
-            const offsetTop = stickySection.offsetTop;
-            const scrollY = window.scrollY;
-            const sectionHeight = stickySection.offsetHeight;
-            const windowHeight = window.innerHeight;
-
-            // Check if we are within the scroll section
-            if (scrollY >= offsetTop && scrollY <= offsetTop + sectionHeight - windowHeight) {
-                const percentage = (scrollY - offsetTop) / (sectionHeight - windowHeight);
-
-                // Calculate scroll - Adjusted for the number of items
-                if (horizontalTrack) {
-                    const scrollWidth = horizontalTrack.scrollWidth;
-                    const viewWidth = window.innerWidth;
-                    const maxScroll = scrollWidth - viewWidth + (viewWidth * 0.5);
-
-                    const x = Math.max(0, Math.min(1, percentage)) * maxScroll;
-                    horizontalTrack.style.transform = `translateX(-${x}px)`;
-                }
-
-                // Update Active Dot and Card State
-                if (certItems.length > 0) {
-                    const itemCount = certItems.length;
-                    const activeIndex = Math.floor((percentage + 0.05) * itemCount);
-
-                    const safeIndex = Math.min(Math.max(activeIndex, 0), itemCount - 1);
-
-                    dots.forEach((dot, index) => {
-                        if (index === safeIndex) {
-                            dot.classList.add('active');
-                            certItems[index].classList.add('active-card');
-                        } else {
-                            dot.classList.remove('active');
-                            certItems[index].classList.remove('active-card');
-                        }
-                    });
-                }
-
-            } else if (scrollY < offsetTop) {
-                if (horizontalTrack) horizontalTrack.style.transform = `translateX(0px)`;
-
-                // Reset to first
-                dots.forEach(d => d.classList.remove('active'));
-                if (dots.length > 0) dots[0].classList.add('active');
-
-                certItems.forEach(c => c.classList.remove('active-card'));
-                if (certItems.length > 0) certItems[0].classList.add('active-card');
-            }
-        });
-    </script>
-
     {% endblock %}
 
+    {% block scripts %}
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    {% endblock %}
 
     <!-- Inherit Footer -->
     {% block footer %}
