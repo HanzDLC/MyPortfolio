@@ -259,16 +259,22 @@ nav ul.header-links {
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: linear-gradient(145deg, #1a1b20 0%, #0d0e11 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 30px;
-  border-radius: 16px;
-  transition: transform 0.3s, border-color 0.3s;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: visible;
+  /* Allow interactions outside if needed, but usually hidden for internal effects */
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   border-color: var(--accent-color);
+  box-shadow: 0 20px 40px rgba(67, 97, 238, 0.15);
+  background: linear-gradient(145deg, #202126 0%, #101114 100%);
 }
 
 .card h4 {
@@ -1456,7 +1462,7 @@ body.menu-open {
   top: 100%;
   left: 0;
   width: 100%;
-  background: var(--card-bg);
+  background: linear-gradient(145deg, #1a1b20 0%, #0d0e11 100%);
   border: 1px solid var(--accent-color);
   border-radius: 0 0 12px 12px;
   padding: 15px;
