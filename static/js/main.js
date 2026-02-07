@@ -18,6 +18,9 @@ function openModal() {
     requestAnimationFrame(() => {
         modal.classList.add('show');
     });
+
+    // Persistence: Set hash
+    window.location.hash = 'data-viz';
 }
 
 function closeModal() {
@@ -29,6 +32,10 @@ function closeModal() {
 
     setTimeout(() => {
         modal.style.display = 'none';
+        // Persistence: Clear hash if it was data-viz
+        if (window.location.hash === '#data-viz') {
+            history.replaceState(null, null, ' ');
+        }
     }, 300);
 }
 
@@ -51,6 +58,11 @@ function openZoomModal(imageSrc, title) {
     requestAnimationFrame(() => {
         modal.classList.add('show');
     });
+
+    // Persistence: Store state
+    sessionStorage.setItem('zoomImg', imageSrc);
+    sessionStorage.setItem('zoomTitle', title || '');
+    window.location.hash = 'zoom';
 }
 
 function closeZoomModal() {
@@ -62,6 +74,12 @@ function closeZoomModal() {
 
     setTimeout(() => {
         modal.style.display = 'none';
+        // Persistence: Clear stored state and hash
+        sessionStorage.removeItem('zoomImg');
+        sessionStorage.removeItem('zoomTitle');
+        if (window.location.hash === '#zoom') {
+            history.replaceState(null, null, ' ');
+        }
     }, 400);
 }
 
@@ -271,4 +289,16 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     initGalleryScroll();
     initCertificationsScroll();
+
+    // Persist Modal State on Refresh
+    const hash = window.location.hash;
+    if (hash === '#data-viz') {
+        openModal();
+    } else if (hash === '#zoom') {
+        const storedImg = sessionStorage.getItem('zoomImg');
+        const storedTitle = sessionStorage.getItem('zoomTitle');
+        if (storedImg) {
+            openZoomModal(storedImg, storedTitle);
+        }
+    }
 });
