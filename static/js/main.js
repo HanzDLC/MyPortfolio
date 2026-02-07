@@ -32,18 +32,18 @@ function closeModal() {
     }, 300);
 }
 
-// ----- Certificate Modal Functions -----
+// ----- Generic Image Zoom Modal Functions -----
 
-function openCertModal(imageSrc, title) {
-    const modal = document.getElementById('cert-modal');
-    const modalImg = document.getElementById('cert-modal-img');
-    const modalTitle = document.getElementById('cert-modal-title');
+function openZoomModal(imageSrc, title) {
+    const modal = document.getElementById('zoom-modal');
+    const modalImg = document.getElementById('zoom-modal-img');
+    const modalTitle = document.getElementById('zoom-modal-title');
 
     if (!modal || !modalImg || !modalTitle) return;
 
     modalImg.src = imageSrc;
-    modalImg.alt = title;
-    modalTitle.textContent = title;
+    modalImg.alt = title || 'Image View';
+    modalTitle.textContent = title || 'Image View';
 
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -53,8 +53,8 @@ function openCertModal(imageSrc, title) {
     });
 }
 
-function closeCertModal() {
-    const modal = document.getElementById('cert-modal');
+function closeZoomModal() {
+    const modal = document.getElementById('zoom-modal');
     if (!modal) return;
 
     modal.classList.remove('show');
@@ -96,8 +96,17 @@ function initGalleryScroll() {
 
     galleryContainer.addEventListener('wheel', (evt) => {
         evt.preventDefault();
-        galleryContainer.scrollLeft += evt.deltaY;
+        // Increase scroll multiplier for better speed (e.g., 2.5 is a good balance)
+        galleryContainer.scrollLeft += evt.deltaY * 4.0;
     }, { passive: false });
+
+    // Add click event for zooming gallery images
+    const images = galleryContainer.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            openZoomModal(img.src, img.alt);
+        });
+    });
 }
 
 // ===== CERTIFICATIONS SCROLL =====
@@ -210,7 +219,7 @@ function initCertificationsScroll() {
             const img = item.querySelector('img');
             const h4 = item.querySelector('h4');
             if (img && h4) {
-                openCertModal(img.src, h4.textContent);
+                openZoomModal(img.src, h4.textContent);
             }
         });
     });
@@ -221,13 +230,13 @@ function initCertificationsScroll() {
 // Close modal if clicked outside
 window.addEventListener('click', (event) => {
     const dvModal = document.getElementById('dv-modal');
-    const certModal = document.getElementById('cert-modal');
+    const zoomModal = document.getElementById('zoom-modal');
 
     if (event.target === dvModal) {
         closeModal();
     }
-    if (event.target === certModal) {
-        closeCertModal();
+    if (event.target === zoomModal) {
+        closeZoomModal();
     }
 });
 
@@ -249,7 +258,7 @@ document.addEventListener('click', (event) => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeModal();
-        closeCertModal();
+        closeZoomModal();
 
         // Also close dropdown
         const dropdown = document.getElementById('ml-dropdown');
