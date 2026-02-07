@@ -102,177 +102,188 @@
             <p>Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.</p>
         </div>
     </div>
+</div>
 
-    <!-- Services / What I Do Section -->
-    <div class="section-container">
-        <h3 class="section-title">What I can do for you</h3>
-        <div class="skills-grid">
-            <div class="card">
-                <h4>Data Insights</h4>
-                <p>I mainly do collection, cleaning and interpretation of data to provide insightful information for
-                    businesses.</p>
-            </div>
+<!-- Services / What I Do Section -->
+<div class="section-container">
+    <h3 class="section-title">What I can do for you</h3>
+    <div class="skills-grid">
+        <div class="card">
+            <h4>Data Insights</h4>
+            <p>I mainly do collection, cleaning and interpretation of data to provide insightful information for
+                businesses.</p>
+        </div>
 
-            <div class="card">
-                <h4>Web Solutions</h4>
-                <p>Building responsive, user-friendly websites and web applications tailored to your specific business
-                    needs.</p>
-            </div>
+        <div class="card">
+            <h4>Web Solutions</h4>
+            <p>Building responsive, user-friendly websites and web applications tailored to your specific business
+                needs.</p>
+        </div>
 
-            <div class="card">
-                <h4>Quality Assurance</h4>
-                <p>Ensuring robust software performance through rigorous testing and efficient bug tracking workflows.
-                </p>
-            </div>
+        <div class="card">
+            <h4>Quality Assurance</h4>
+            <p>Ensuring robust software performance through rigorous testing and efficient bug tracking workflows.
+            </p>
+        </div>
 
-            <div class="card">
-                <h4>Process Automation</h4>
-                <p>Streamlining business operations using AI-driven automation and advanced spreadsheet solutions.</p>
-            </div>
+        <div class="card">
+            <h4>Process Automation</h4>
+            <p>Streamlining business operations using AI-driven automation and advanced spreadsheet solutions.</p>
+        </div>
 
-            <div class="card">
-                <h4>Data Storytelling</h4>
-                <p>Transforming complex data into clear, interactive dashboards that drive strategic decision-making.
-                </p>
-            </div>
+        <div class="card">
+            <h4>Data Storytelling</h4>
+            <p>Transforming complex data into clear, interactive dashboards that drive strategic decision-making.
+            </p>
+        </div>
 
-            <div class="card" id="ml-card" onclick="toggleMLDropdown(event)"
-                style="cursor: pointer; position: relative;">
-                <h4>Machine Learning <span>▼</span></h4>
-                <p>Experienced in training ML models, evaluating performance metrics, and identifying optimal algorithms
-                    for specific datasets.</p>
+        <div class="card" id="ml-card" onclick="toggleMLDropdown(event)" style="cursor: pointer; position: relative;">
+            <h4>Machine Learning <span>▼</span></h4>
+            <p>Experienced in training ML models, evaluating performance metrics, and identifying optimal algorithms
+                for specific datasets.</p>
 
-                <!-- Dropdown Menu -->
-                <div id="ml-dropdown" class="ml-dropdown-menu">
-                    <a href="https://colab.research.google.com/drive/1yZxknpAbuI1djAGUyNtsXpZd2tLAHxbn?usp=sharing"
-                        target="_blank" class="dropdown-item">
-                        <span>1. Reddit Scraping (PRAW API)</span>
-                        <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1SAKjZ0P1YuQ7oliU7AXvKfwwF5pw1zmZ?usp=sharing"
-                        target="_blank" class="dropdown-item">
-                        <span>2. ML Model Evaluation & Analysis</span>
-                        <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1QwFY_uxqNcCzrk34NncbaI488VwBy9nt?usp=sharing"
-                        target="_blank" class="dropdown-item">
-                        <span>3. Customer Segmentation (K-Means)</span>
-                        <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
-                    </a>
-                </div>
+            <!-- Dropdown Menu -->
+            <div id="ml-dropdown" class="ml-dropdown-menu">
+                <a href="https://colab.research.google.com/drive/1yZxknpAbuI1djAGUyNtsXpZd2tLAHxbn?usp=sharing"
+                    target="_blank" class="dropdown-item">
+                    <span>1. Reddit Scraping (PRAW API)</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                </a>
+                <a href="https://colab.research.google.com/drive/1SAKjZ0P1YuQ7oliU7AXvKfwwF5pw1zmZ?usp=sharing"
+                    target="_blank" class="dropdown-item">
+                    <span>2. ML Model Evaluation & Analysis</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                </a>
+                <a href="https://colab.research.google.com/drive/1QwFY_uxqNcCzrk34NncbaI488VwBy9nt?usp=sharing"
+                    target="_blank" class="dropdown-item">
+                    <span>3. Customer Segmentation (K-Means)</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                </a>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Certifications Sticky Scroll Section -->
-    <div class="scroll-section-outer">
-        <div class="sticky-wrapper">
-            <h3 class="section-title">Certifications</h3>
-            <div class="horizontal-track">
-                <!-- Cert 1 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/Google AI.png') }}"
-                        alt="Google AI Essentials">
-                    <div class="cert-info">
-                        <h4>Google AI Essentials</h4>
-                        <p>A hands-on program by Google experts focusing on generative AI applications, prompt
-                            engineering, and responsible AI use to enhance productivity across various industries.</p>
-                    </div>
-                </div>
-                <!-- Cert 2 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/Data_Science_Essentials_with_Python_certificate_hanzuriel-delacruz-students-isatu-edu-ph_83c2913b-ed-1.png') }}"
-                        alt="Data Science Essentials">
-                    <div class="cert-info">
-                        <h4>Data Science Essentials</h4>
-                        <p>An introductory course covering the full data science lifecycle using Python, including data
-                            cleaning, analysis, visualization, and storytelling with real-world datasets.</p>
-                    </div>
-                </div>
-                <!-- Cert 3 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/Python_Essentials_1_certificate_hdlcruz03-gmail-com_92673056-d0fd-4640-84a8-31dac583bf20-1.png') }}"
-                        alt="Python Essentials 1">
-                    <div class="cert-info">
-                        <h4>Python Essentials 1</h4>
-                        <p>A foundational course on Python programming, covering data types, control flow, lists, and
-                            functions, preparing learners for entry-level software development and data analysis.</p>
-                    </div>
-                </div>
-                <!-- Cert 4 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/ApplyAIAnalyzeCustomerReviewsv220251115-29-fesq-1.png') }}"
-                        alt="Apply AI: Analyze Customer Reviews">
-                    <div class="cert-info">
-                        <h4>Apply AI Customer Reviews</h4>
-                        <p>Focuses on transforming customer feedback into actionable insights through thematic analysis
-                            and sentiment scoring using AI tools and large language models.</p>
-                    </div>
-                </div>
-                <!-- Cert 5 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/I2CSUpdate20251116-30-5l7rjf-1.png') }}"
-                        alt="I2CS Intro to Cyber Security">
-                    <div class="cert-info">
-                        <h4>Intro to Cyber Security</h4>
-                        <p>Explores the cybersecurity landscape, covering trends, threats, and organizational
-                            protection, designed to provide a solid understanding of digital security principles.</p>
-                    </div>
+<!-- Certifications Sticky Scroll Section -->
+<div class="scroll-section-outer">
+    <div class="sticky-wrapper">
+        <h3 class="section-title">Certifications</h3>
+        <div class="horizontal-track">
+            <!-- Cert 1 -->
+            <div class="cert-item">
+                <img src="{{ url_for('static', filename='images/Certifications/Google_AI.png') }}"
+                    alt="Google AI Essentials">
+                <div class="cert-info">
+                    <h4>Google AI Essentials</h4>
+                    <p>A hands-on program by Google experts focusing on generative AI applications, prompt
+                        engineering, and responsible AI use to enhance productivity across various industries.</p>
                 </div>
             </div>
-
-            <!-- Progress Dots -->
-            <div class="progress-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+            <!-- Cert 2 -->
+            <div class="cert-item">
+                <img src="{{ url_for('static', filename='images/Certifications/Data_Science_Essentials_with_Python_certificate_hanzuriel-delacruz-students-isatu-edu-ph_83c2913b-ed-1.png') }}"
+                    alt="Data Science Essentials">
+                <div class="cert-info">
+                    <h4>Data Science Essentials</h4>
+                    <p>An introductory course covering the full data science lifecycle using Python, including data
+                        cleaning, analysis, visualization, and storytelling with real-world datasets.</p>
+                </div>
+            </div>
+            <!-- Cert 3 -->
+            <div class="cert-item">
+                <img src="{{ url_for('static', filename='images/Certifications/Python_Essentials_1_certificate_hdlcruz03-gmail-com_92673056-d0fd-4640-84a8-31dac583bf20-1.png') }}"
+                    alt="Python Essentials 1">
+                <div class="cert-info">
+                    <h4>Python Essentials 1</h4>
+                    <p>A foundational course on Python programming, covering data types, control flow, lists, and
+                        functions, preparing learners for entry-level software development and data analysis.</p>
+                </div>
+            </div>
+            <!-- Cert 4 -->
+            <div class="cert-item">
+                <img src="{{ url_for('static', filename='images/Certifications/ApplyAIAnalyzeCustomerReviewsv220251115-29-fesq-1.png') }}"
+                    alt="Apply AI: Analyze Customer Reviews">
+                <div class="cert-info">
+                    <h4>Apply AI Customer Reviews</h4>
+                    <p>Focuses on transforming customer feedback into actionable insights through thematic analysis
+                        and sentiment scoring using AI tools and large language models.</p>
+                </div>
+            </div>
+            <!-- Cert 5 -->
+            <div class="cert-item">
+                <img src="{{ url_for('static', filename='images/Certifications/I2CSUpdate20251116-30-5l7rjf-1.png') }}"
+                    alt="I2CS Intro to Cyber Security">
+                <div class="cert-info">
+                    <h4>Intro to Cyber Security</h4>
+                    <p>Explores the cybersecurity landscape, covering trends, threats, and organizational
+                        protection, designed to provide a solid understanding of digital security principles.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Data Visualization Modal -->
-    <div id="dv-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <h2>Thesis Data Visualization Project</h2>
-                <p class="project-desc">
-                    Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
-                    analysis and data visualization to interpret the results of a complex biological experiment.
-                    (Visualized using Python-- Matplotlib, Seaborn)
-            </div>
-            <div class="gallery-scroll-container">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
-                    alt="NH3 Media Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
-                    alt="NH3 Shrimp Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}"
-                    alt="NH3 WW Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
-                    alt="NH3 in Vitro Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
-                    alt="NO2 Media Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
-                    alt="NO2 Shrimp Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}"
-                    alt="NO2 WW Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
-                    alt="NO2 in Vitro Analysis">
-            </div>
+        <!-- Progress Dots -->
+        <div class="progress-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </div>
+</div>
 
-    {% endblock %}
+<!-- Data Visualization Modal -->
+<div id="dv-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-header">
+            <h2>Thesis Data Visualization Project</h2>
+            <p class="project-desc">
+                Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
+                analysis and data visualization to interpret the results of a complex biological experiment.
+                (Visualized using Python-- Matplotlib, Seaborn)
+        </div>
+        <div class="gallery-scroll-container">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
+                alt="NH3 Media Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
+                alt="NH3 Shrimp Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}" alt="NH3 WW Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
+                alt="NH3 in Vitro Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
+                alt="NO2 Media Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
+                alt="NO2 Shrimp Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}" alt="NO2 WW Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
+                alt="NO2 in Vitro Analysis">
+        </div>
+    </div>
+</div>
 
-    {% block scripts %}
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
-    {% endblock %}
+<!-- Certificate Zoom Modal -->
+<div id="cert-modal" class="modal">
+    <span class="close-modal" onclick="closeCertModal()">&times;</span>
+    <div class="modal-content cert-modal-content">
+        <div class="modal-header">
+            <h2 id="cert-modal-title">Certificate Name</h2>
+        </div>
+        <div class="cert-zoom-container">
+            <img id="cert-modal-img" src="" alt="Certificate View">
+        </div>
+    </div>
+</div>
 
-    <!-- Inherit Footer -->
-    {% block footer %}
-    {{ super() }}
-    {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+{% endblock %}
+
+<!-- Inherit Footer -->
+{% block footer %}
+{{ super() }}
+{% endblock %}
 
 </html>

@@ -566,13 +566,23 @@ footer {
 
 /* Images at original/large size */
 .cert-item img {
-  max-height: 85vh !important;
+  max-height: 65vh !important;
   max-width: auto !important;
   width: auto !important;
   object-fit: contain !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   /* deeply shadowed */
   border: none !important;
+}
+
+.dot {
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.dot:hover {
+  background-color: var(--accent-color) !important;
+  transform: scale(1.2);
 }
 
 /* Larger Text for Emphasis */
@@ -657,7 +667,6 @@ footer {
   display: flex;
   gap: 15px;
   z-index: 100;
-  pointer-events: none;
 }
 
 .dot {
@@ -1511,6 +1520,66 @@ body.menu-open {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* --- CERTIFICATE ZOOM MODAL --- */
+#cert-modal.show {
+  display: flex !important;
+}
+
+#cert-modal .modal-content {
+  max-width: 90vw;
+  width: auto;
+  padding: 40px;
+  background: var(--card-bg);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 50px rgba(67, 97, 238, 0.3);
+}
+
+.cert-zoom-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  /* White background for the certificate paper */
+  padding: 10px;
+}
+
+.cert-zoom-container img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cert-item {
+  cursor: pointer;
+}
+
+/* Ensure modal title is premium */
+#cert-modal-title {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  #cert-modal .modal-content {
+    padding: 20px;
+    width: 95vw;
+  }
+
+  .cert-zoom-container img {
+    max-height: 60vh;
+  }
+
+  #cert-modal-title {
+    font-size: 1.4rem;
   }
 }
 

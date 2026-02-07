@@ -32,6 +32,39 @@ function closeModal() {
     }, 300);
 }
 
+// ----- Certificate Modal Functions -----
+
+function openCertModal(imageSrc, title) {
+    const modal = document.getElementById('cert-modal');
+    const modalImg = document.getElementById('cert-modal-img');
+    const modalTitle = document.getElementById('cert-modal-title');
+
+    if (!modal || !modalImg || !modalTitle) return;
+
+    modalImg.src = imageSrc;
+    modalImg.alt = title;
+    modalTitle.textContent = title;
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+        modal.classList.add('show');
+    });
+}
+
+function closeCertModal() {
+    const modal = document.getElementById('cert-modal');
+    if (!modal) return;
+
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 400);
+}
+
 // Machine Learning Dropdown logic
 function toggleMLDropdown(event) {
     // Prevent bubbling to document click listener
@@ -77,7 +110,8 @@ function initCertificationsScroll() {
 
     if (!stickySection || !horizontalTrack) return;
 
-    // Throttle scroll handler for performance
+    // Buffer to let the section "settle" before scrolling images
+    const startBuffer = window.innerHeight * 0.2; // 20% of screen height
     let ticking = false;
 
     function updateScroll() {
@@ -85,22 +119,34 @@ function initCertificationsScroll() {
         const scrollY = window.scrollY;
         const sectionHeight = stickySection.offsetHeight;
         const windowHeight = window.innerHeight;
+        const scrollRange = sectionHeight - windowHeight;
 
-        if (scrollY >= offsetTop && scrollY <= offsetTop + sectionHeight - windowHeight) {
-            const percentage = (scrollY - offsetTop) / (sectionHeight - windowHeight);
+        // Current scroll within the section
+        const currentInView = scrollY - offsetTop;
 
-            // Calculate scroll
+        if (currentInView >= 0 && currentInView <= scrollRange) {
+            // Apply buffer: percentage is 0 until we pass startBuffer
+            let percentage = 0;
+            if (currentInView > startBuffer) {
+                percentage = (currentInView - startBuffer) / (scrollRange - startBuffer - 100);
+            }
+            percentage = Math.max(0, Math.min(1, percentage));
+
             const scrollWidth = horizontalTrack.scrollWidth;
             const viewWidth = window.innerWidth;
-            const maxScroll = scrollWidth - viewWidth + (viewWidth * 0.5);
 
-            const x = Math.max(0, Math.min(1, percentage)) * maxScroll;
+            // Adjust maxScroll to account for the last item centering
+            // Total track width - viewport + some padding for safety
+            const maxScroll = scrollWidth - viewWidth + (viewWidth * 0.2);
+
+            const x = percentage * maxScroll;
             horizontalTrack.style.transform = `translateX(-${x}px)`;
 
             // Update active dot and card
             if (certItems.length > 0) {
                 const itemCount = certItems.length;
-                const activeIndex = Math.floor((percentage + 0.05) * itemCount);
+                // Use a slightly shifted percentage for dot activation to catch transitions early
+                const activeIndex = Math.floor(percentage * itemCount);
                 const safeIndex = Math.min(Math.max(activeIndex, 0), itemCount - 1);
 
                 dots.forEach((dot, index) => {
@@ -113,13 +159,10 @@ function initCertificationsScroll() {
                     }
                 });
             }
-        } else if (scrollY < offsetTop) {
+        } else if (currentInView < 0) {
             horizontalTrack.style.transform = 'translateX(0px)';
-
-            // Reset to first
             dots.forEach(d => d.classList.remove('active'));
             if (dots.length > 0) dots[0].classList.add('active');
-
             certItems.forEach(c => c.classList.remove('active-card'));
             if (certItems.length > 0) certItems[0].classList.add('active-card');
         }
@@ -133,15 +176,58 @@ function initCertificationsScroll() {
             ticking = true;
         }
     });
+
+    // Add click listeners to dots for manual navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            const offsetTop = stickySection.offsetTop;
+            const sectionHeight = stickySection.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const scrollRange = sectionHeight - windowHeight;
+            const itemCount = certItems.length;
+
+            // Target scroll position:
+            // percentage = index / itemCount
+            // scrollY = offsetTop + startBuffer + (percentage * range)
+            let targetScrollWithin = 0;
+            if (index > 0) {
+                const targetPercentage = index / (itemCount - 1); // Spread across the scrollable area
+                targetScrollWithin = startBuffer + (targetPercentage * (scrollRange - startBuffer - 100));
+            } else {
+                targetScrollWithin = 5; // Scroll slightly into section to ensure it's active
+            }
+
+            window.scrollTo({
+                top: offsetTop + targetScrollWithin,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add click event for zooming certificates
+    certItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const h4 = item.querySelector('h4');
+            if (img && h4) {
+                openCertModal(img.src, h4.textContent);
+            }
+        });
+    });
 }
 
 // ===== EVENT LISTENERS =====
 
 // Close modal if clicked outside
 window.addEventListener('click', (event) => {
-    const modal = document.getElementById('dv-modal');
-    if (event.target === modal) {
+    const dvModal = document.getElementById('dv-modal');
+    const certModal = document.getElementById('cert-modal');
+
+    if (event.target === dvModal) {
         closeModal();
+    }
+    if (event.target === certModal) {
+        closeCertModal();
     }
 });
 
@@ -163,6 +249,7 @@ document.addEventListener('click', (event) => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeModal();
+        closeCertModal();
 
         // Also close dropdown
         const dropdown = document.getElementById('ml-dropdown');
