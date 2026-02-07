@@ -243,61 +243,61 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Data Visualization Modal -->
-    <div id="dv-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <h2>Thesis Data Visualization Project</h2>
-                <p class="project-desc">
-                    Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
-                    analysis and data visualization to interpret the results of a complex biological experiment.
-                    (Visualized using Python-- Matplotlib, Seaborn)
-            </div>
-            <div class="gallery-scroll-container">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
-                    alt="NH3 Media Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
-                    alt="NH3 Shrimp Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}"
-                    alt="NH3 WW Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
-                    alt="NH3 in Vitro Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
-                    alt="NO2 Media Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
-                    alt="NO2 Shrimp Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}"
-                    alt="NO2 WW Analysis">
-                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
-                    alt="NO2 in Vitro Analysis">
-            </div>
+<!-- Data Visualization Modal -->
+<div id="dv-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-header">
+            <h2>Thesis Data Visualization Project</h2>
+            <p class="project-desc">
+                Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
+                analysis and data visualization to interpret the results of a complex biological experiment.
+                (Visualized using Python-- Matplotlib, Seaborn)
+        </div>
+        <div class="gallery-scroll-container">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
+                alt="NH3 Media Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
+                alt="NH3 Shrimp Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}" alt="NH3 WW Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
+                alt="NH3 in Vitro Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
+                alt="NO2 Media Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
+                alt="NO2 Shrimp Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}" alt="NO2 WW Analysis">
+            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
+                alt="NO2 in Vitro Analysis">
+
         </div>
     </div>
+</div>
 
-    <!-- Image Zoom Modal -->
-    <div id="zoom-modal" class="modal">
-        <span class="close-modal" onclick="closeZoomModal()">&times;</span>
-        <div class="modal-content zoom-modal-content">
-            <div class="modal-header">
-                <h2 id="zoom-modal-title">Image View</h2>
-            </div>
-            <div class="zoom-container">
-                <img id="zoom-modal-img" src="" alt="Zoomed View">
-            </div>
+<!-- Image Zoom Modal -->
+<div id="zoom-modal" class="modal">
+    <span class="close-modal" onclick="closeZoomModal()">&times;</span>
+    <div class="modal-content zoom-modal-content">
+        <div class="modal-header">
+            <h2 id="zoom-modal-title">Image View</h2>
+        </div>
+        <div class="zoom-container">
+            <img id="zoom-modal-img" src="" alt="Zoomed View">
         </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
 
-    {% block scripts %}
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
-    {% endblock %}
+{% block scripts %}
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+{% endblock %}
 
-    <!-- Inherit Footer -->
-    {% block footer %}
-    {{ super() }}
-    {% endblock %}
+<!-- Inherit Footer -->
+{% block footer %}
+{{ super() }}
+{% endblock %}
 
 </html>

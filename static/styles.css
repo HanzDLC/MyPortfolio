@@ -1584,8 +1584,8 @@ body.menu-open {
   }
 }
 
-/* --- RICH FOOTER STYLING --- */
 .main-footer {
+  width: 100%;
   background: var(--card-bg);
   padding-top: 80px;
   margin-top: 100px;
@@ -1811,6 +1811,13 @@ body.menu-open {
 
   .footer-mid .policy-links {
     gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-footer {
+    padding-top: 40px;
+    margin-top: 60px;
   }
 }
 
