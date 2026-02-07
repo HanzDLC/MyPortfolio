@@ -65,7 +65,7 @@
 </div>
 
 <!-- Skills Section -->
-<div class="section-container">
+<div class="section-container" id="skills">
     <h3 class="section-title">Skills</h3>
     <div class="skills-grid">
         <div class="card">
@@ -73,7 +73,7 @@
             <p>Uncovering patterns and insights through comprehensive data cleaning, manipulation, and statistical
                 analysis.</p>
         </div>
-        <div class="card" id="dv-card" onclick="openModal()" style="cursor: pointer;">
+        <div class="card" id="visualization" onclick="openModal()" style="cursor: pointer;">
             <h4>Data Visualization</h4>
             <p>Communicating insights through visuals. (Click to View Gallery)</p>
         </div>
@@ -165,136 +165,139 @@
 </div>
 
 <!-- Certifications Sticky Scroll Section -->
-<div class="scroll-section-outer">
-    <div class="sticky-wrapper">
-        <h3 class="section-title">Certifications</h3>
-        <div class="horizontal-track">
-            <!-- Cert 1 -->
-            <div class="cert-item">
-                <img src="{{ url_for('static', filename='images/Certifications/Google_AI.png') }}"
-                    alt="Google AI Essentials">
-                <div class="cert-info">
-                    <h4>Google AI Essentials</h4>
-                    <p>A hands-on program by Google experts focusing on generative AI applications, prompt
-                        engineering, and responsible AI use to enhance productivity across various industries.</p>
+<div class="section-container" id="certifications">
+    <div class="scroll-section-outer">
+        <div class="sticky-wrapper">
+            <h3 class="section-title">Certifications</h3>
+            <div class="horizontal-track">
+                <!-- Cert 1 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/Google_AI.png') }}"
+                        alt="Google AI Essentials">
+                    <div class="cert-info">
+                        <h4>Google AI Essentials</h4>
+                        <p>A hands-on program by Google experts focusing on generative AI applications, prompt
+                            engineering, and responsible AI use to enhance productivity across various industries.</p>
+                    </div>
+                </div>
+                <!-- Cert 2 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/Data_Science_Essentials_with_Python_certificate_hanzuriel-delacruz-students-isatu-edu-ph_83c2913b-ed-1.png') }}"
+                        alt="Data Science Essentials">
+                    <div class="cert-info">
+                        <h4>Data Science Essentials</h4>
+                        <p>An introductory course covering the full data science lifecycle using Python, including data
+                            cleaning, analysis, visualization, and storytelling with real-world datasets.</p>
+                    </div>
+                </div>
+                <!-- Cert 3 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/Python_Essentials_1_certificate_hdlcruz03-gmail-com_92673056-d0fd-4640-84a8-31dac583bf20-1.png') }}"
+                        alt="Python Essentials 1">
+                    <div class="cert-info">
+                        <h4>Python Essentials 1</h4>
+                        <p>A foundational course on Python programming, covering data types, control flow, lists, and
+                            functions, preparing learners for entry-level software development and data analysis.</p>
+                    </div>
+                </div>
+                <!-- Cert 4 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/ApplyAIAnalyzeCustomerReviewsv220251115-29-fesq-1.png') }}"
+                        alt="Apply AI: Analyze Customer Reviews">
+                    <div class="cert-info">
+                        <h4>Apply AI Customer Reviews</h4>
+                        <p>Focuses on transforming customer feedback into actionable insights through thematic analysis
+                            and sentiment scoring using AI tools and large language models.</p>
+                    </div>
+                </div>
+                <!-- Cert 5 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/I2CSUpdate20251116-30-5l7rjf-1.png') }}"
+                        alt="I2CS Intro to Cyber Security">
+                    <div class="cert-info">
+                        <h4>Intro to Cyber Security</h4>
+                        <p>Explores the cybersecurity landscape, covering trends, threats, and organizational
+                            protection, designed to provide a solid understanding of digital security principles.</p>
+                    </div>
+                </div>
+                <!-- Cert 6 -->
+                <div class="cert-item">
+                    <img src="{{ url_for('static', filename='images/Certifications/DevOps_Basics.png') }}"
+                        alt="DevOps Basics">
+                    <div class="cert-info">
+                        <h4>DevOps Basics</h4>
+                        <p>Covers fundamental DevOps practices, including continuous integration/deployment (CI/CD),
+                            infrastructure as code, and cloud-native development principles.</p>
+                    </div>
                 </div>
             </div>
-            <!-- Cert 2 -->
-            <div class="cert-item">
-                <img src="{{ url_for('static', filename='images/Certifications/Data_Science_Essentials_with_Python_certificate_hanzuriel-delacruz-students-isatu-edu-ph_83c2913b-ed-1.png') }}"
-                    alt="Data Science Essentials">
-                <div class="cert-info">
-                    <h4>Data Science Essentials</h4>
-                    <p>An introductory course covering the full data science lifecycle using Python, including data
-                        cleaning, analysis, visualization, and storytelling with real-world datasets.</p>
-                </div>
-            </div>
-            <!-- Cert 3 -->
-            <div class="cert-item">
-                <img src="{{ url_for('static', filename='images/Certifications/Python_Essentials_1_certificate_hdlcruz03-gmail-com_92673056-d0fd-4640-84a8-31dac583bf20-1.png') }}"
-                    alt="Python Essentials 1">
-                <div class="cert-info">
-                    <h4>Python Essentials 1</h4>
-                    <p>A foundational course on Python programming, covering data types, control flow, lists, and
-                        functions, preparing learners for entry-level software development and data analysis.</p>
-                </div>
-            </div>
-            <!-- Cert 4 -->
-            <div class="cert-item">
-                <img src="{{ url_for('static', filename='images/Certifications/ApplyAIAnalyzeCustomerReviewsv220251115-29-fesq-1.png') }}"
-                    alt="Apply AI: Analyze Customer Reviews">
-                <div class="cert-info">
-                    <h4>Apply AI Customer Reviews</h4>
-                    <p>Focuses on transforming customer feedback into actionable insights through thematic analysis
-                        and sentiment scoring using AI tools and large language models.</p>
-                </div>
-            </div>
-            <!-- Cert 5 -->
-            <div class="cert-item">
-                <img src="{{ url_for('static', filename='images/Certifications/I2CSUpdate20251116-30-5l7rjf-1.png') }}"
-                    alt="I2CS Intro to Cyber Security">
-                <div class="cert-info">
-                    <h4>Intro to Cyber Security</h4>
-                    <p>Explores the cybersecurity landscape, covering trends, threats, and organizational
-                        protection, designed to provide a solid understanding of digital security principles.</p>
-                </div>
-            </div>
-            <!-- Cert 6 -->
-            <div class="cert-item">
-                <img src="{{ url_for('static', filename='images/Certifications/DevOps_Basics.png') }}"
-                    alt="DevOps Basics">
-                <div class="cert-info">
-                    <h4>DevOps Basics</h4>
-                    <p>Covers fundamental DevOps practices, including continuous integration/deployment (CI/CD),
-                        infrastructure as code, and cloud-native development principles.</p>
-                </div>
-            </div>
-        </div>
 
-        <!-- Progress Dots -->
-        <div class="progress-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-</div>
-
-<!-- Data Visualization Modal -->
-<div id="dv-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="modal-header">
-            <h2>Thesis Data Visualization Project</h2>
-            <p class="project-desc">
-                Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
-                analysis and data visualization to interpret the results of a complex biological experiment.
-                (Visualized using Python-- Matplotlib, Seaborn)
-        </div>
-        <div class="gallery-scroll-container">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
-                alt="NH3 Media Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
-                alt="NH3 Shrimp Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}" alt="NH3 WW Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
-                alt="NH3 in Vitro Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
-                alt="NO2 Media Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
-                alt="NO2 Shrimp Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}" alt="NO2 WW Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
-                alt="NO2 in Vitro Analysis">
+            <!-- Progress Dots -->
+            <div class="progress-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Image Zoom Modal -->
-<div id="zoom-modal" class="modal">
-    <span class="close-modal" onclick="closeZoomModal()">&times;</span>
-    <div class="modal-content zoom-modal-content">
-        <div class="modal-header">
-            <h2 id="zoom-modal-title">Image View</h2>
-        </div>
-        <div class="zoom-container">
-            <img id="zoom-modal-img" src="" alt="Zoomed View">
+    <!-- Data Visualization Modal -->
+    <div id="dv-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Thesis Data Visualization Project</h2>
+                <p class="project-desc">
+                    Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
+                    analysis and data visualization to interpret the results of a complex biological experiment.
+                    (Visualized using Python-- Matplotlib, Seaborn)
+            </div>
+            <div class="gallery-scroll-container">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
+                    alt="NH3 Media Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
+                    alt="NH3 Shrimp Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}"
+                    alt="NH3 WW Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
+                    alt="NH3 in Vitro Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
+                    alt="NO2 Media Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
+                    alt="NO2 Shrimp Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}"
+                    alt="NO2 WW Analysis">
+                <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
+                    alt="NO2 in Vitro Analysis">
+            </div>
         </div>
     </div>
-</div>
 
-{% endblock %}
+    <!-- Image Zoom Modal -->
+    <div id="zoom-modal" class="modal">
+        <span class="close-modal" onclick="closeZoomModal()">&times;</span>
+        <div class="modal-content zoom-modal-content">
+            <div class="modal-header">
+                <h2 id="zoom-modal-title">Image View</h2>
+            </div>
+            <div class="zoom-container">
+                <img id="zoom-modal-img" src="" alt="Zoomed View">
+            </div>
+        </div>
+    </div>
 
-{% block scripts %}
-<script src="{{url_for('static', filename='js/main.js')}}"></script>
-{% endblock %}
+    {% endblock %}
 
-<!-- Inherit Footer -->
-{% block footer %}
-{{ super() }}
-{% endblock %}
+    {% block scripts %}
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    {% endblock %}
+
+    <!-- Inherit Footer -->
+    {% block footer %}
+    {{ super() }}
+    {% endblock %}
 
 </html>
