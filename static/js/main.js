@@ -142,7 +142,10 @@ function initCertificationsScroll() {
     let ticking = false;
 
     function updateScroll() {
-        const offsetTop = stickySection.offsetTop;
+        // Calculate absolute offset relative to document
+        const rect = stickySection.getBoundingClientRect();
+        const offsetTop = rect.top + window.pageYOffset;
+
         const scrollY = window.scrollY;
         const sectionHeight = stickySection.offsetHeight;
         const windowHeight = window.innerHeight;
@@ -207,7 +210,9 @@ function initCertificationsScroll() {
     // Add click listeners to dots for manual navigation
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            const offsetTop = stickySection.offsetTop;
+            const rect = stickySection.getBoundingClientRect();
+            const offsetTop = rect.top + window.pageYOffset;
+
             const sectionHeight = stickySection.offsetHeight;
             const windowHeight = window.innerHeight;
             const scrollRange = sectionHeight - windowHeight;
@@ -221,7 +226,8 @@ function initCertificationsScroll() {
                 const targetPercentage = index / (itemCount - 1); // Spread across the scrollable area
                 targetScrollWithin = startBuffer + (targetPercentage * (scrollRange - startBuffer - 100));
             } else {
-                targetScrollWithin = 5; // Scroll slightly into section to ensure it's active
+                // First dot: scroll to just past the start of the section
+                targetScrollWithin = startBuffer + 50;
             }
 
             window.scrollTo({
