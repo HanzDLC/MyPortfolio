@@ -65,7 +65,7 @@
 </div>
 
 <!-- Skills Section -->
-<div class="section-container" id="skills">
+<div class="section-container" id="skills" style="position: relative; z-index: 60;">
     <h3 class="section-title">Skills</h3>
     <div class="skills-grid">
         <div class="card">
@@ -86,12 +86,25 @@
             <p>Conducting Manual QA testing for Management Information Systems and optimizing bug reporting workflows.
             </p>
         </div>
-        <div class="card"
-            onclick="window.open('https://docs.google.com/spreadsheets/d/1dzfcWt7wnZmojssD76lOyCIr3W2dlEuwhAfNmpGFTRk/edit?usp=sharing', '_blank')"
-            style="cursor: pointer;">
-            <h4>Spreadsheet Mastery</h4>
-            <p>Advanced proficiency in Excel and Google Sheets, leveraging AI for complex data automation. (Click to
-                view)</p>
+        <div class="card" id="ss-card" onclick="toggleDropdown(event, 'ss-dropdown', 'ss-card')"
+            style="cursor: pointer; position: relative;">
+            <h4>Spreadsheet Mastery <span>▼</span></h4>
+            <p>Advanced proficiency in Excel and Google Sheets, leveraging AI to improve workflows, specialized in
+                VLOOKUP and multi-dataset QUERY manipulation.</p>
+
+            <!-- Dropdown Menu -->
+            <div id="ss-dropdown" class="ml-dropdown-menu">
+                <a href="https://docs.google.com/spreadsheets/d/1nHLe3EgyBqxjKtO1FdYFaQbFSzSxvnpsF4z1tDfYr_w/edit?usp=sharing"
+                    target="_blank" class="dropdown-item">
+                    <span>1. VLOOKUP and QUERY</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                </a>
+                <a href="https://docs.google.com/spreadsheets/d/1dzfcWt7wnZmojssD76lOyCIr3W2dlEuwhAfNmpGFTRk/edit?usp=sharing"
+                    target="_blank" class="dropdown-item">
+                    <span>2. QA Bug Logs Structure</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+                </a>
+            </div>
         </div>
         <div class="card">
             <h4>Prompt Engineering</h4>
@@ -137,7 +150,8 @@
             </p>
         </div>
 
-        <div class="card" id="ml-card" onclick="toggleMLDropdown(event)" style="cursor: pointer; position: relative;">
+        <div class="card" id="ml-card" onclick="toggleDropdown(event, 'ml-dropdown', 'ml-card')"
+            style="cursor: pointer; position: relative;">
             <h4>Machine Learning <span>▼</span></h4>
             <p>Experienced in training ML models, evaluating performance metrics, and identifying optimal algorithms
                 for specific datasets.</p>

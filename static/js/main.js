@@ -83,19 +83,26 @@ function closeZoomModal() {
     }, 400);
 }
 
-// Machine Learning Dropdown logic
-function toggleMLDropdown(event) {
+// Generic Dropdown logic
+function toggleDropdown(event, dropdownId, cardId) {
     // Prevent bubbling to document click listener
     event.stopPropagation();
 
-    const dropdown = document.getElementById('ml-dropdown');
-    const card = document.getElementById('ml-card');
+    const dropdown = document.getElementById(dropdownId);
+    const card = document.getElementById(cardId);
 
     if (!dropdown) return;
 
     const isVisible = dropdown.classList.contains('show');
 
-    // Close any other open things if needed
+    // Close any other open dropdowns first
+    document.querySelectorAll('.ml-dropdown-menu').forEach(d => {
+        if (d.id !== dropdownId) {
+            d.classList.remove('show');
+            const parentCard = d.parentElement;
+            if (parentCard) parentCard.classList.remove('active');
+        }
+    });
 
     if (isVisible) {
         dropdown.classList.remove('show');
@@ -264,18 +271,19 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Close ML Dropdown when clicking outside
+// Close Dropdowns when clicking outside
 document.addEventListener('click', (event) => {
-    const dropdown = document.getElementById('ml-dropdown');
-    const card = document.getElementById('ml-card');
+    const dropdowns = document.querySelectorAll('.ml-dropdown-menu');
 
-    if (dropdown && dropdown.classList.contains('show')) {
-        // If click is outside the card and dropdown
-        if (!card.contains(event.target)) {
-            dropdown.classList.remove('show');
-            card.classList.remove('active');
+    dropdowns.forEach(dropdown => {
+        if (dropdown.classList.contains('show')) {
+            const card = dropdown.parentElement;
+            if (card && !card.contains(event.target)) {
+                dropdown.classList.remove('show');
+                card.classList.remove('active');
+            }
         }
-    }
+    });
 });
 
 // Close modal on escape key
@@ -284,9 +292,11 @@ document.addEventListener('keydown', (e) => {
         closeModal();
         closeZoomModal();
 
-        // Also close dropdown
-        const dropdown = document.getElementById('ml-dropdown');
-        if (dropdown) dropdown.classList.remove('show');
+        // Also close dropdowns
+        document.querySelectorAll('.ml-dropdown-menu').forEach(dropdown => {
+            dropdown.classList.remove('show');
+            if (dropdown.parentElement) dropdown.parentElement.classList.remove('active');
+        });
     }
 });
 
