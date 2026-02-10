@@ -7,8 +7,8 @@
 
 // ===== MODAL FUNCTIONS =====
 
-function openModal() {
-    const modal = document.getElementById('dv-modal');
+function openModal(modalId, hash) {
+    const modal = document.getElementById(modalId);
     if (!modal) return;
 
     modal.style.display = 'flex';
@@ -20,11 +20,13 @@ function openModal() {
     });
 
     // Persistence: Set hash
-    window.location.hash = 'data-viz';
+    if (hash) {
+        window.location.hash = hash;
+    }
 }
 
-function closeModal() {
-    const modal = document.getElementById('dv-modal');
+function closeModal(modalId, hash) {
+    const modal = document.getElementById(modalId);
     if (!modal) return;
 
     modal.classList.remove('show');
@@ -32,8 +34,8 @@ function closeModal() {
 
     setTimeout(() => {
         modal.style.display = 'none';
-        // Persistence: Clear hash if it was data-viz
-        if (window.location.hash === '#data-viz') {
+        // Persistence: Clear hash if it matches
+        if (hash && window.location.hash === '#' + hash) {
             history.replaceState(null, null, ' ');
         }
     }, 300);
@@ -156,25 +158,30 @@ function initCertificationsScroll() {
         const scrollY = window.scrollY;
         const sectionHeight = stickySection.offsetHeight;
         const windowHeight = window.innerHeight;
+
+        // The total vertical distance available for scrolling
         const scrollRange = sectionHeight - windowHeight;
 
-        // Current scroll within the section
+        // Current scroll within the section (0 when section top hits screen top)
         const currentInView = scrollY - offsetTop;
 
         if (currentInView >= 0 && currentInView <= scrollRange) {
             // Apply buffer: percentage is 0 until we pass startBuffer
+            // We want to reach 100% just before the section ends
+            const effectiveRange = scrollRange - startBuffer - 50;
             let percentage = 0;
+
             if (currentInView > startBuffer) {
-                percentage = (currentInView - startBuffer) / (scrollRange - startBuffer - 100);
+                percentage = (currentInView - startBuffer) / effectiveRange;
             }
             percentage = Math.max(0, Math.min(1, percentage));
 
             const scrollWidth = horizontalTrack.scrollWidth;
             const viewWidth = window.innerWidth;
 
-            // Adjust maxScroll to account for the last item centering
-            // Total track width - viewport + some padding for safety
-            const maxScroll = scrollWidth - viewWidth + (viewWidth * 0.2);
+            // maxScroll is the amount we need to shift to see everything
+            // Since we have 15vw padding on both sides, we scroll until the last item is in view
+            const maxScroll = scrollWidth - viewWidth;
 
             const x = percentage * maxScroll;
             horizontalTrack.style.transform = `translateX(-${x}px)`;
@@ -182,12 +189,11 @@ function initCertificationsScroll() {
             // Update active dot and card
             if (certItems.length > 0) {
                 const itemCount = certItems.length;
-                // Use a slightly shifted percentage for dot activation to catch transitions early
-                const activeIndex = Math.floor(percentage * itemCount);
-                const safeIndex = Math.min(Math.max(activeIndex, 0), itemCount - 1);
+                // Distribute dots evenly across the percentage
+                const activeIndex = Math.min(Math.floor(percentage * itemCount), itemCount - 1);
 
                 dots.forEach((dot, index) => {
-                    if (index === safeIndex) {
+                    if (index === activeIndex) {
                         dot.classList.add('active');
                         certItems[index]?.classList.add('active-card');
                     } else {
@@ -197,11 +203,16 @@ function initCertificationsScroll() {
                 });
             }
         } else if (currentInView < 0) {
+            // Above the section
             horizontalTrack.style.transform = 'translateX(0px)';
-            dots.forEach(d => d.classList.remove('active'));
-            if (dots.length > 0) dots[0].classList.add('active');
-            certItems.forEach(c => c.classList.remove('active-card'));
-            if (certItems.length > 0) certItems[0].classList.add('active-card');
+            dots.forEach((dot, index) => {
+                if (index === 0) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+            certItems.forEach((cert, index) => {
+                if (index === 0) cert.classList.add('active-card');
+                else cert.classList.remove('active-card');
+            });
         }
 
         ticking = false;
@@ -260,12 +271,18 @@ function initCertificationsScroll() {
 
 // Close modal if clicked outside
 window.addEventListener('click', (event) => {
-    const dvModal = document.getElementById('dv-modal');
+    const modals = document.querySelectorAll('.modal');
     const zoomModal = document.getElementById('zoom-modal');
 
-    if (event.target === dvModal) {
-        closeModal();
-    }
+    modals.forEach(modal => {
+        if (event.target === modal) {
+            // Check which modal it is and close with proper hash
+            if (modal.id === 'dv-modal') closeModal('dv-modal', 'data-viz');
+            else if (modal.id === 'automation-modal') closeModal('automation-modal', 'automation');
+            else closeModal(modal.id);
+        }
+    });
+
     if (event.target === zoomModal) {
         closeZoomModal();
     }
@@ -289,7 +306,12 @@ document.addEventListener('click', (event) => {
 // Close modal on escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        closeModal();
+        // Close all active modals
+        document.querySelectorAll('.modal.show').forEach(modal => {
+            if (modal.id === 'dv-modal') closeModal('dv-modal', 'data-viz');
+            else if (modal.id === 'automation-modal') closeModal('automation-modal', 'automation');
+            else closeModal(modal.id);
+        });
         closeZoomModal();
 
         // Also close dropdowns
@@ -309,7 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Persist Modal State on Refresh
     const hash = window.location.hash;
     if (hash === '#data-viz') {
-        openModal();
+        openModal('dv-modal', 'data-viz');
+    } else if (hash === '#automation') {
+        openModal('automation-modal', 'automation');
     } else if (hash === '#zoom') {
         const storedImg = sessionStorage.getItem('zoomImg');
         const storedTitle = sessionStorage.getItem('zoomTitle');

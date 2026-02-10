@@ -482,12 +482,12 @@ footer {
 }
 
 /* Sticky Horizontal Scroll Section */
+/* Consolidated Certifications Section */
 .scroll-section-outer {
   height: 300vh;
-  /* Determines length of scroll */
   position: relative;
-  background-color: var(--card-bg);
-  /* Dark background */
+  background-color: var(--bg-color);
+  overflow: visible;
 }
 
 .sticky-wrapper {
@@ -497,262 +497,63 @@ footer {
   width: 100%;
   overflow: hidden;
   display: flex;
-  align-items: center;
-}
-
-.horizontal-track {
-  display: flex;
-  gap: 100px;
-  padding-left: 100px;
-  /* Start with some padding */
-  will-change: transform;
-}
-
-.cert-item {
-  min-width: 400px;
-  height: 300px;
-  background: var(--bg-color);
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 20px;
-  transition: transform 0.3s;
+  align-items: flex-start;
+  background-color: var(--bg-color);
 }
 
-.cert-item:hover {
-  transform: scale(1.05);
-  border-color: var(--accent-color);
+.sticky-wrapper .section-title {
+  margin-left: 5vw !important;
+  margin-bottom: 30px !important;
+  z-index: 10;
 }
 
-.cert-item img {
-  max-width: 100%;
-  max-height: 80%;
-  object-fit: contain;
-  margin-bottom: 20px;
-}
-
-.cert-item h4 {
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  margin: 0;
-}
-
-/* --- CERTIFICATION UPDATES --- */
-
-/* Increase scroll canvas to ensure full traversal */
-.scroll-section-outer {
-  height: 600vh !important;
-  background-color: var(--bg-color) !important;
-}
-
-/* Tighter gap and full width track */
-.horizontal-track {
-  gap: 10px !important;
-  /* "Around 5px" - using 10px for visual breathing room */
-  padding-left: 2vw !important;
-}
-
-/* Remove card styling and maximize size */
-.cert-item {
-  min-width: auto !important;
-  width: auto !important;
-  height: 95vh !important;
-  /* Full screen height */
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  justify-content: center !important;
-}
-
-.cert-item:hover {
-  transform: scale(1.01) !important;
-  border-color: transparent !important;
-}
-
-/* Images at original/large size */
-.cert-item img {
-  max-height: 65vh !important;
-  max-width: auto !important;
-  width: auto !important;
-  object-fit: contain !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  /* deeply shadowed */
-  border: none !important;
-}
-
-.dot {
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.dot:hover {
-  background-color: var(--accent-color) !important;
-  transform: scale(1.2);
-}
-
-/* Larger Text for Emphasis */
-.cert-item h4 {
-  font-size: 1.5rem !important;
-  margin-top: 10px !important;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-}
-
-/* --- CERTIFICATION FINAL V3 --- */
-
-/* Restore Horizontal Scrolling Layout */
 .horizontal-track {
   display: flex !important;
-  gap: 60px !important;
-  /* Space between cards */
-  padding-left: 20vw !important;
-  /* Center start */
-  align-items: center;
-}
-
-/* Card Container Styling */
-.cert-item {
-  flex: 0 0 auto !important;
-  /* Prevent shrinking */
-  width: 60vw !important;
-  /* Large container */
-  height: 70vh !important;
-
-  background-color: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-radius: 20px !important;
-  padding: 40px !important;
-
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
-  opacity: 0.5;
-  /* Fade out inactive cards */
-  transform: scale(0.9);
-  transition: all 0.5s ease-out;
-}
-
-/* Active Class for Card (handled by JS for visual pop) */
-.cert-item.active-card {
-  opacity: 1;
-  transform: scale(1);
-  border-color: var(--accent-color) !important;
-  box-shadow: 0 0 30px rgba(67, 97, 238, 0.2) !important;
-}
-
-.cert-item:hover {
-  border-color: var(--accent-color) !important;
-}
-
-/* Image Styling */
-.cert-item img {
-  max-height: 80% !important;
-  width: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  box-shadow: none !important;
-  border-radius: 8px !important;
-}
-
-.cert-item h4 {
-  margin-top: 20px !important;
-  font-size: 1.5rem !important;
-  text-align: center;
-  color: var(--text-primary) !important;
-}
-
-/* PROGRESS DOTS */
-.progress-dots {
-  position: absolute;
-  bottom: 5vh;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  z-index: 100;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.dot.active {
-  background-color: var(--accent-color);
-  transform: scale(1.4);
-  box-shadow: 0 0 10px var(--accent-color);
-}
-
-/* --- CERTIFICATION FINAL V4 (LANDSCAPE LAYOUT) --- */
-
-/* Horizontal Track */
-.horizontal-track {
-  display: flex !important;
+  width: max-content !important;
   gap: 80px !important;
   padding-left: 15vw !important;
+  padding-right: 15vw !important;
+  will-change: transform;
   align-items: center;
 }
 
-/* Landscape Card Container */
 .cert-item {
   flex: 0 0 auto !important;
   width: 70vw !important;
-  /* Width > Height */
   height: 60vh !important;
-
   background-color: var(--card-bg) !important;
   border: 1px solid var(--card-border) !important;
   border-radius: 20px !important;
   padding: 0 !important;
-  /* Remove padding to let image flush if needed, or keep for spacing */
   overflow: hidden;
-  /* clean edges */
-
   display: flex !important;
   flex-direction: row !important;
-  /* Image Left, Text Right */
   align-items: center !important;
-  justify-content: flex-start !important;
-
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
-  opacity: 0.5;
-  transform: scale(0.9);
   transition: all 0.5s ease-out;
+  cursor: pointer;
 }
 
-/* Active State */
 .cert-item.active-card {
-  opacity: 1;
-  transform: scale(1);
   border-color: var(--accent-color) !important;
   box-shadow: 0 0 30px rgba(67, 97, 238, 0.2) !important;
 }
 
-/* Image on Left */
+.cert-item:hover {
+  border-color: var(--accent-color) !important;
+  transform: translateY(-5px);
+}
+
 .cert-item img {
   height: 100% !important;
-  /* Fill height */
   width: 55% !important;
-  /* Takes up left side */
   object-fit: contain !important;
-  /* show full cert */
   background-color: #000;
-  /* Contrast for white certs */
-  margin: 0 !important;
-  border-radius: 0 !important;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Info on Right */
 .cert-info {
   padding: 40px;
   width: 45%;
@@ -773,12 +574,10 @@ footer {
   font-family: var(--font-body);
   font-size: 1.1rem;
   color: var(--text-secondary);
-  opacity: 0.7;
-  /* "Lesser opacity" as requested */
+  opacity: 0.8;
   line-height: 1.6;
 }
 
-/* Progress Dots (Ensure visibility) */
 .progress-dots {
   position: absolute;
   bottom: 5vh;
@@ -795,6 +594,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .dot.active {
@@ -803,51 +603,6 @@ footer {
   box-shadow: 0 0 10px var(--accent-color);
 }
 
-/* --- FIX V5: Header & Colors --- */
-
-/* Fix Header Overlap by using Column Layout */
-.sticky-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  /* Stack Header above Track */
-  justify-content: center !important;
-  align-items: flex-start !important;
-  /* Align left */
-  padding-top: 20px;
-}
-
-/* Position the Header within the sticky context */
-.sticky-wrapper .section-title {
-  position: static !important;
-  /* Remove absolute */
-  margin-left: 5vw !important;
-  margin-bottom: 30px !important;
-  z-index: 10;
-}
-
-/* Fix Color Mismatch */
-.cert-item {
-  background-color: #131418 !important;
-  /* Exact match to other cards */
-  border: 1px solid var(--card-border) !important;
-}
-
-.cert-item img {
-  background-color: transparent !important;
-  /* No black background */
-  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
-}
-
-/* --- FIX V6: Opacity & Backgrounds --- */
-
-/* Make all cards fully visible and bright */
-.cert-item {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-  background-color: var(--card-bg) !important;
-}
-
-/* Hover Effect: Scale Up Only */
 .cert-item:hover {
   transform: scale(1.03) !important;
   z-index: 10;
@@ -1267,7 +1022,7 @@ body.menu-open {
 
   /* Certifications Scroll Section */
   .scroll-section-outer {
-    height: 400vh !important;
+    height: 250vh !important;
   }
 
   .sticky-wrapper {
