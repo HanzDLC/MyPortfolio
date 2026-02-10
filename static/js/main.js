@@ -118,20 +118,21 @@ function toggleDropdown(event, dropdownId, cardId) {
 // ===== GALLERY HORIZONTAL SCROLL =====
 
 function initGalleryScroll() {
-    const galleryContainer = document.querySelector('.gallery-scroll-container');
-    if (!galleryContainer) return;
+    const galleryContainers = document.querySelectorAll('.gallery-scroll-container');
+    if (galleryContainers.length === 0) return;
 
-    galleryContainer.addEventListener('wheel', (evt) => {
-        evt.preventDefault();
-        // Increase scroll multiplier for better speed (e.g., 2.5 is a good balance)
-        galleryContainer.scrollLeft += evt.deltaY * 4.0;
-    }, { passive: false });
+    galleryContainers.forEach(galleryContainer => {
+        galleryContainer.addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+            galleryContainer.scrollLeft += evt.deltaY * 4.0;
+        }, { passive: false });
 
-    // Add click event for zooming gallery images
-    const images = galleryContainer.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            openZoomModal(img.src, img.alt);
+        // Add click event for zooming gallery images
+        const images = galleryContainer.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                openZoomModal(img.src, img.alt);
+            });
         });
     });
 }
@@ -144,77 +145,49 @@ function initCertificationsScroll() {
     const dots = document.querySelectorAll('.dot');
     const certItems = document.querySelectorAll('.cert-item');
 
-    if (!stickySection || !horizontalTrack) return;
+    if (!stickySection || !horizontalTrack || certItems.length === 0) return;
 
-    // Buffer to let the section "settle" before scrolling images
-    const startBuffer = window.innerHeight * 0.2; // 20% of screen height
+    // Measure how much the track needs to move
+    const trackScrollWidth = horizontalTrack.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const horizontalDistance = Math.max(0, trackScrollWidth - viewportWidth);
+
     let ticking = false;
 
     function updateScroll() {
-        // Calculate absolute offset relative to document
         const rect = stickySection.getBoundingClientRect();
-        const offsetTop = rect.top + window.pageYOffset;
-
-        const scrollY = window.scrollY;
+        const sectionTop = rect.top + window.pageYOffset;
         const sectionHeight = stickySection.offsetHeight;
-        const windowHeight = window.innerHeight;
+        const viewportHeight = window.innerHeight;
+        const scrollRange = sectionHeight - viewportHeight;
 
-        // The total vertical distance available for scrolling
-        const scrollRange = sectionHeight - windowHeight;
+        // How far into the section we've scrolled
+        const scrolledInto = window.scrollY - sectionTop;
 
-        // Current scroll within the section (0 when section top hits screen top)
-        const currentInView = scrollY - offsetTop;
+        if (scrolledInto >= 0 && scrolledInto <= scrollRange) {
+            // Map vertical scroll to 0-1 percentage
+            const percentage = Math.max(0, Math.min(1, scrolledInto / scrollRange));
 
-        if (currentInView >= 0 && currentInView <= scrollRange) {
-            // Apply buffer: percentage is 0 until we pass startBuffer
-            // We want to reach 100% just before the section ends
-            const effectiveRange = scrollRange - startBuffer - 50;
-            let percentage = 0;
-
-            if (currentInView > startBuffer) {
-                percentage = (currentInView - startBuffer) / effectiveRange;
-            }
-            percentage = Math.max(0, Math.min(1, percentage));
-
-            const scrollWidth = horizontalTrack.scrollWidth;
-            const viewWidth = window.innerWidth;
-
-            // maxScroll is the amount we need to shift to see everything
-            // Since we have 15vw padding on both sides, we scroll until the last item is in view
-            const maxScroll = scrollWidth - viewWidth;
-
-            const x = percentage * maxScroll;
+            // Move the track
+            const x = percentage * horizontalDistance;
             horizontalTrack.style.transform = `translateX(-${x}px)`;
 
             // Update active dot and card
-            if (certItems.length > 0) {
-                const itemCount = certItems.length;
-                // Distribute dots evenly across the percentage
-                const activeIndex = Math.min(Math.floor(percentage * itemCount), itemCount - 1);
+            const itemCount = certItems.length;
+            const activeIndex = Math.min(Math.floor(percentage * itemCount), itemCount - 1);
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+            certItems.forEach((cert, i) => cert.classList.toggle('active-card', i === activeIndex));
 
-                dots.forEach((dot, index) => {
-                    if (index === activeIndex) {
-                        dot.classList.add('active');
-                        certItems[index]?.classList.add('active-card');
-                    } else {
-                        dot.classList.remove('active');
-                        certItems[index]?.classList.remove('active-card');
-                    }
-                });
-            }
-        } else if (currentInView < 0) {
-            // Above the section
+        } else if (scrolledInto < 0) {
             horizontalTrack.style.transform = 'translateX(0px)';
-            dots.forEach((dot, index) => {
-                if (index === 0) dot.classList.add('active');
-                else dot.classList.remove('active');
-            });
-            certItems.forEach((cert, index) => {
-                if (index === 0) cert.classList.add('active-card');
-                else cert.classList.remove('active-card');
-            });
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === 0));
+            certItems.forEach((cert, i) => cert.classList.toggle('active-card', i === 0));
+        } else {
+            horizontalTrack.style.transform = `translateX(-${horizontalDistance}px)`;
+            const last = certItems.length - 1;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === last));
+            certItems.forEach((cert, i) => cert.classList.toggle('active-card', i === last));
         }
-
         ticking = false;
     }
 
@@ -225,35 +198,21 @@ function initCertificationsScroll() {
         }
     });
 
-    // Add click listeners to dots for manual navigation
+    // Dot click: maps dot index to scroll position using identical math
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            const rect = stickySection.getBoundingClientRect();
-            const offsetTop = rect.top + window.pageYOffset;
-
-            const sectionHeight = stickySection.offsetHeight;
-            const windowHeight = window.innerHeight;
-            const scrollRange = sectionHeight - windowHeight;
-            const itemCount = certItems.length;
-
-            // Target scroll position:
-            // percentage = index / itemCount
-            // scrollY = offsetTop + startBuffer + (percentage * range)
-            let targetScrollWithin = 0;
-            if (index > 0) {
-                const targetPercentage = index / (itemCount - 1); // Spread across the scrollable area
-                targetScrollWithin = startBuffer + (targetPercentage * (scrollRange - startBuffer - 100));
-            } else {
-                // First dot: scroll to just past the start of the section
-                targetScrollWithin = startBuffer + 50;
-            }
-
+            const sectionTop = stickySection.getBoundingClientRect().top + window.pageYOffset;
+            const scrollRange = stickySection.offsetHeight - window.innerHeight;
+            const targetPercentage = index / Math.max(certItems.length - 1, 1);
             window.scrollTo({
-                top: offsetTop + targetScrollWithin,
+                top: sectionTop + (targetPercentage * scrollRange),
                 behavior: 'smooth'
             });
         });
     });
+
+    // Trigger initial state
+    updateScroll();
 
     // Add click event for zooming certificates
     certItems.forEach(item => {

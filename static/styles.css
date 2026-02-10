@@ -23,12 +23,19 @@
   --font-body: "Times New Roman", serif;
 }
 
-html,
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  /* 'clip' does NOT break position:sticky, unlike 'hidden' */
+}
+
 body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -305,7 +312,7 @@ footer {
   border-top: 1px solid var(--card-border);
   color: var(--text-secondary);
   font-size: 14px;
-  margin-top: 100px;
+  margin-top: 0;
 }
 
 /* Utility */
@@ -381,6 +388,31 @@ footer {
 
 .modal.show {
   opacity: 1;
+}
+
+#zoom-modal {
+  z-index: 3000;
+  /* Above other modals so zoom works from within automation modal */
+}
+
+#zoom-modal .modal-content {
+  max-width: 95vw;
+  width: 95%;
+  max-height: 95vh;
+  padding: 20px;
+}
+
+#zoom-modal .zoom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+#zoom-modal .zoom-container img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
 }
 
 .modal-content {
@@ -481,13 +513,21 @@ footer {
   border-color: var(--accent-color);
 }
 
-/* Sticky Horizontal Scroll Section */
 /* Consolidated Certifications Section */
+
+/* Override section-container constraints for certifications */
+#certifications.section-container {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: auto !important;
+  /* Remove stacking context so sticky works */
+}
+
 .scroll-section-outer {
-  height: 300vh;
+  height: 1000vh;
   position: relative;
   background-color: var(--bg-color);
-  overflow: visible;
 }
 
 .sticky-wrapper {
@@ -603,46 +643,6 @@ footer {
   box-shadow: 0 0 10px var(--accent-color);
 }
 
-.cert-item:hover {
-  transform: scale(1.03) !important;
-  z-index: 10;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8) !important;
-  border-color: var(--accent-color) !important;
-}
-
-/* Ensure Certificates look like paper (White Background) */
-/* The user said "why is it still dark", implying the image content was dark/unreadable */
-.cert-item img {
-  background-color: #ffffff !important;
-  /* Force white background for the image frame */
-  padding: 10px !important;
-  /* Add white frame padding */
-  border-radius: 8px !important;
-}
-
-/* Fix Text Opacity */
-.cert-info h4 {
-  opacity: 1 !important;
-}
-
-.cert-info p {
-  opacity: 0.8 !important;
-  /* Slightly distinct but readable */
-}
-
-/* --- FIX V7: Scroll Length & Padding --- */
-
-/* Drastically increase scroll length to prevent early cutoff */
-.scroll-section-outer {
-  height: 1000vh !important;
-}
-
-/* Add end padding so the last item comes fully into view */
-.horizontal-track {
-  padding-right: 20vw !important;
-  /* Matches left padding logic */
-  box-sizing: border-box !important;
-}
 
 /* --- PROJECTS PAGE STYLES --- */
 
@@ -1020,10 +1020,7 @@ body.menu-open {
     font-size: 14px;
   }
 
-  /* Certifications Scroll Section */
-  .scroll-section-outer {
-    height: 250vh !important;
-  }
+  /* .scroll-section-outer height is set dynamically by JS */
 
   .sticky-wrapper {
     padding-top: 10px;
