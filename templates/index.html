@@ -68,58 +68,27 @@
 <div class="section-container" id="skills" style="position: relative; z-index: 60;">
     <h3 class="section-title">Skills</h3>
     <div class="skills-grid">
-        <div class="card">
-            <h4>Exploratory Data Analysis</h4>
-            <p>Uncovering patterns and insights through comprehensive data cleaning, manipulation, and statistical
-                analysis.</p>
-        </div>
-        <div class="card">
-            <h4>Data Visualization</h4>
-            <p>Communicating insights through clear, compelling charts and graphs using Python, Matplotlib, and Seaborn.
-            </p>
-        </div>
-        <div class="card">
-            <h4>Web Development</h4>
-            <p>Full-stack development using Python Flask, HTML, CSS, and JavaScript, demonstrated by this portfolio.</p>
-        </div>
-        <div class="card">
-            <h4>QA Testing</h4>
-            <p>Conducting Manual QA testing for Management Information Systems and optimizing bug reporting workflows.
-            </p>
-        </div>
-        <div class="card" id="ss-card" onclick="toggleDropdown(event, 'ss-dropdown', 'ss-card')"
-            style="cursor: pointer; position: relative;">
-            <h4>Spreadsheet Mastery <span>▼</span></h4>
-            <p>Advanced proficiency in Excel and Google Sheets, leveraging AI to improve workflows, specialized in
-                VLOOKUP and multi-dataset QUERY manipulation.</p>
+        {% for skill in skills %}
+        <div class="card" {% if skill.id %}id="{{ skill.id }}"
+            onclick="toggleDropdown(event, '{{ skill.dropdown_id }}', '{{ skill.id }}')"
+            style="cursor: pointer; position: relative;" {% endif %}>
+            <h4>{{ skill.title }} {% if skill.dropdown_items %}<span>▼</span>{% endif %}</h4>
+            <p>{{ skill.description }}</p>
 
+            {% if skill.dropdown_items %}
             <!-- Dropdown Menu -->
-            <div id="ss-dropdown" class="ml-dropdown-menu">
-                <a href="https://docs.google.com/spreadsheets/d/1nHLe3EgyBqxjKtO1FdYFaQbFSzSxvnpsF4z1tDfYr_w/edit?usp=sharing"
-                    target="_blank" class="dropdown-item">
-                    <span>1. VLOOKUP and QUERY</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+            <div id="{{ skill.dropdown_id }}" class="ml-dropdown-menu">
+                {% for item in skill.dropdown_items %}
+                <a href="{{ item.link }}" target="_blank" class="dropdown-item">
+                    <span>{{ item.text }}</span>
+                    {% if item.subtext %}<span style="font-size: 0.8rem; opacity: 0.7;">{{ item.subtext }}</span>{%
+                    endif %}
                 </a>
-                <a href="https://docs.google.com/spreadsheets/d/1dzfcWt7wnZmojssD76lOyCIr3W2dlEuwhAfNmpGFTRk/edit?usp=sharing"
-                    target="_blank" class="dropdown-item">
-                    <span>2. QA Bug Logs Structure</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
-                </a>
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
-        <div class="card">
-            <h4>Prompt Engineering</h4>
-            <p>Leveraging generative AI to streamline workflows and optimize complex task execution.</p>
-        </div>
-        <div class="card">
-            <h4>Version Control</h4>
-            <p>Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.</p>
-        </div>
-        <div class="card">
-            <h4>n8n Workflow Automation</h4>
-            <p>Designing complex automated workflows and custom node integrations to connect platforms and automate
-                repetitive tasks.</p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
@@ -127,61 +96,27 @@
 <div class="section-container" style="position: relative; z-index: 50;">
     <h3 class="section-title">What I can do for you</h3>
     <div class="skills-grid">
-        <div class="card">
-            <h4>Data Insights</h4>
-            <p>I mainly do collection, cleaning and interpretation of data to provide insightful information for
-                businesses.</p>
-        </div>
+        {% for service in services %}
+        <div class="card" {% if service.id %}id="{{ service.id }}"
+            onclick="toggleDropdown(event, '{{ service.dropdown_id }}', '{{ service.id }}')"
+            style="cursor: pointer; position: relative;" {% endif %}>
+            <h4>{{ service.title }} {% if service.dropdown_items %}<span>▼</span>{% endif %}</h4>
+            <p>{{ service.description }}</p>
 
-        <div class="card">
-            <h4>Web Solutions</h4>
-            <p>Building responsive, user-friendly websites and web applications tailored to your specific business
-                needs.</p>
-        </div>
-
-        <div class="card">
-            <h4>Quality Assurance</h4>
-            <p>Ensuring robust software performance through rigorous testing and efficient bug tracking workflows.
-            </p>
-        </div>
-
-        <div class="card">
-            <h4>Process Automation</h4>
-            <p>Architecting sophisticated n8n workflows and AI-driven systems to streamline business operations and
-                optimize complex data processes.</p>
-        </div>
-
-        <div class="card">
-            <h4>Data Storytelling</h4>
-            <p>Transforming complex data into clear, interactive dashboards that drive strategic decision-making.
-            </p>
-        </div>
-
-        <div class="card" id="ml-card" onclick="toggleDropdown(event, 'ml-dropdown', 'ml-card')"
-            style="cursor: pointer; position: relative;">
-            <h4>Machine Learning <span>▼</span></h4>
-            <p>Experienced in training ML models, evaluating performance metrics, and identifying optimal algorithms
-                for specific datasets.</p>
-
+            {% if service.dropdown_items %}
             <!-- Dropdown Menu -->
-            <div id="ml-dropdown" class="ml-dropdown-menu">
-                <a href="https://colab.research.google.com/drive/1yZxknpAbuI1djAGUyNtsXpZd2tLAHxbn?usp=sharing"
-                    target="_blank" class="dropdown-item">
-                    <span>1. Reddit Scraping (PRAW API)</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
+            <div id="{{ service.dropdown_id }}" class="ml-dropdown-menu">
+                {% for item in service.dropdown_items %}
+                <a href="{{ item.link }}" target="_blank" class="dropdown-item">
+                    <span>{{ item.text }}</span>
+                    {% if item.subtext %}<span style="font-size: 0.8rem; opacity: 0.7;">{{ item.subtext }}</span>{%
+                    endif %}
                 </a>
-                <a href="https://colab.research.google.com/drive/1SAKjZ0P1YuQ7oliU7AXvKfwwF5pw1zmZ?usp=sharing"
-                    target="_blank" class="dropdown-item">
-                    <span>2. ML Model Evaluation & Analysis</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
-                </a>
-                <a href="https://colab.research.google.com/drive/1QwFY_uxqNcCzrk34NncbaI488VwBy9nt?usp=sharing"
-                    target="_blank" class="dropdown-item">
-                    <span>3. Customer Segmentation (K-Means)</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view project)</span>
-                </a>
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
+        {% endfor %}
     </div>
 </div>
 
@@ -191,76 +126,22 @@
         <div class="sticky-wrapper">
             <h3 class="section-title">Certifications</h3>
             <div class="horizontal-track">
-                <!-- Cert 1 -->
+                {% for cert in certifications %}
                 <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/Google_AI.png') }}"
-                        alt="Google AI Essentials">
+                    <img src="{{ url_for('static', filename=cert.image) }}" alt="{{ cert.title }}">
                     <div class="cert-info">
-                        <h4>Google AI Essentials</h4>
-                        <p>A hands-on program by Google experts focusing on generative AI applications, prompt
-                            engineering, and responsible AI use to enhance productivity across various industries.</p>
+                        <h4>{{ cert.title }}</h4>
+                        <p>{{ cert.description }}</p>
                     </div>
                 </div>
-                <!-- Cert 2 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/Data_Science_Essentials_with_Python_certificate_hanzuriel-delacruz-students-isatu-edu-ph_83c2913b-ed-1.png') }}"
-                        alt="Data Science Essentials">
-                    <div class="cert-info">
-                        <h4>Data Science Essentials</h4>
-                        <p>An introductory course covering the full data science lifecycle using Python, including data
-                            cleaning, analysis, visualization, and storytelling with real-world datasets.</p>
-                    </div>
-                </div>
-                <!-- Cert 3 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/Python_Essentials_1_certificate_hdlcruz03-gmail-com_92673056-d0fd-4640-84a8-31dac583bf20-1.png') }}"
-                        alt="Python Essentials 1">
-                    <div class="cert-info">
-                        <h4>Python Essentials 1</h4>
-                        <p>A foundational course on Python programming, covering data types, control flow, lists, and
-                            functions, preparing learners for entry-level software development and data analysis.</p>
-                    </div>
-                </div>
-                <!-- Cert 4 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/ApplyAIAnalyzeCustomerReviewsv220251115-29-fesq-1.png') }}"
-                        alt="Apply AI: Analyze Customer Reviews">
-                    <div class="cert-info">
-                        <h4>Apply AI Customer Reviews</h4>
-                        <p>Focuses on transforming customer feedback into actionable insights through thematic analysis
-                            and sentiment scoring using AI tools and large language models.</p>
-                    </div>
-                </div>
-                <!-- Cert 5 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/I2CSUpdate20251116-30-5l7rjf-1.png') }}"
-                        alt="I2CS Intro to Cyber Security">
-                    <div class="cert-info">
-                        <h4>Intro to Cyber Security</h4>
-                        <p>Explores the cybersecurity landscape, covering trends, threats, and organizational
-                            protection, designed to provide a solid understanding of digital security principles.</p>
-                    </div>
-                </div>
-                <!-- Cert 6 -->
-                <div class="cert-item">
-                    <img src="{{ url_for('static', filename='images/Certifications/DevOps_Basics.png') }}"
-                        alt="DevOps Basics">
-                    <div class="cert-info">
-                        <h4>DevOps Basics</h4>
-                        <p>Covers fundamental DevOps practices, including continuous integration/deployment (CI/CD),
-                            infrastructure as code, and cloud-native development principles.</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
             <!-- Progress Dots -->
             <div class="progress-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+                {% for cert in certifications %}
+                <span class="dot {% if loop.first %}active{% endif %}"></span>
+                {% endfor %}
             </div>
         </div>
     </div>
