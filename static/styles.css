@@ -631,7 +631,7 @@ footer {
 .dot {
   width: 12px;
   height: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 50%;
   transition: all 0.3s;
   cursor: pointer;
