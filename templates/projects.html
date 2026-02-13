@@ -21,128 +21,906 @@
     </div>
 </div>
 
-<!-- Projects Grid Section -->
+<!-- Projects Content -->
 <div class="section-container">
-    <div class="projects-grid">
 
-        <!-- Project Card 1: Matrix Match -->
-        <div class="project-card">
-            <div class="project-image">
-                <div class="project-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2v10h14V7H5zm2 2h2v2H7V9zm0 4h2v2H7v-2zm4-4h6v2h-6V9zm0 4h6v2h-6v-2z" />
-                    </svg>
+    <!-- n8n Workflow Automation Section -->
+    <div class="portfolio-category">
+        <h3 class="portfolio-category-title">
+            <span class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+            </span>
+            n8n Workflow Automation
+        </h3>
+        <div class="projects-grid">
+
+            <div class="project-card clickable" onclick="openModal('n8n-modal-1', 'n8n-base44')">
+                <div class="project-image has-img">
+                    <img src="{{ url_for('static', filename='images/Automation/Chat Prompt to Base 44 Workflow.png') }}"
+                        alt="Chat Trigger to AI Agent to Base44 Workflow">
+                </div>
+                <div class="project-content">
+                    <h3>Chat Trigger → AI Agent to Base44</h3>
+                    <p>An end-to-end n8n automation where a chat trigger initiates an AI agent that processes prompts
+                        and pushes structured data directly into a Base44 chatbox application.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">n8n</span>
+                        <span class="tech-tag">AI Agent</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <span class="view-gallery-hint">Click to view gallery →</span>
                 </div>
             </div>
-            <div class="project-content">
-                <h3>Matrix Match</h3>
-                <p>A machine learning project that compares software system features and creates detailed comparison
-                    matrices based on user input.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Machine Learning</span>
-                    <span class="tech-tag">Flask</span>
+
+            <div class="project-card clickable" onclick="openModal('n8n-modal-2', 'n8n-gsheets')">
+                <div class="project-image has-img">
+                    <img src="{{ url_for('static', filename='images/Automation/GPT to Google Sheets Automation.png') }}"
+                        alt="Custom GPT to Google Sheets Automation Workflow">
                 </div>
-                <div class="project-links">
-                    <a href="https://github.com/HanzDLC" target="_blank" class="project-link">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                        </svg>
-                        GitHub
-                    </a>
+                <div class="project-content">
+                    <h3>Custom GPT → AI Agent to Google Sheets</h3>
+                    <p>A custom GPT routes formatted QA bug reports through an n8n AI agent, which parses and appends
+                        structured rows directly into Google Sheets for streamlined bug tracking.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">n8n</span>
+                        <span class="tech-tag">GPT</span>
+                        <span class="tech-tag">Google Sheets</span>
+                    </div>
+                    <span class="view-gallery-hint">Click to view gallery →</span>
                 </div>
             </div>
+
         </div>
+    </div>
 
-        <!-- Project Card 2: Thesis Data Visualization -->
-        <div class="project-card">
-            <div class="project-image">
-                <div class="project-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M5 12a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-8a1 1 0 0 0-1-1zm5-4a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1zm5-4a1 1 0 0 0-1 1v16a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1zm5 8a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-8a1 1 0 0 0-1-1z" />
-                    </svg>
+    <!-- Data Visualization Section -->
+    <div class="portfolio-category">
+        <h3 class="portfolio-category-title">
+            <span class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M18 20V10M12 20V4M6 20v-6" />
+                </svg>
+            </span>
+            Data Visualization
+        </h3>
+        <div class="projects-grid">
+
+            <div class="project-card clickable" onclick="openModal('dv-modal-proj', 'data-viz-proj')">
+                <div class="project-image has-img">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
+                        alt="Client Thesis Data Visualization">
+                </div>
+                <div class="project-content">
+                    <h3>Client Thesis Data Visualization</h3>
+                    <p>Commissioned biological research visualization project involving rigorous statistical analysis
+                        and data visualization for NH3 and NO2 concentrations using Python.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                    <span class="view-gallery-hint">Click to view gallery →</span>
                 </div>
             </div>
-            <div class="project-content">
-                <h3>Thesis Data Visualization</h3>
-                <p>Commissioned biological research visualization project involving statistical analysis of empirical
-                    data for NH3 and NO2 concentrations.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Matplotlib</span>
-                    <span class="tech-tag">Seaborn</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" onclick="window.location.href='/'; openModal(); return false;" class="project-link">
+
+        </div>
+    </div>
+
+    <!-- Other Projects Section -->
+    <div class="portfolio-category">
+        <h3 class="portfolio-category-title">
+            <span class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+            </span>
+            Other Projects
+        </h3>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-placeholder">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9z" />
-                            <path fill-rule="evenodd"
-                                d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3H4.5a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39zM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0z"
-                                clip-rule="evenodd" />
+                            <path
+                                d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2v10h14V7H5zm2 2h2v2H7V9zm0 4h2v2H7v-2zm4-4h6v2h-6V9zm0 4h6v2h-6v-2z" />
                         </svg>
-                        View Gallery
-                    </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Matrix Match</h3>
+                    <p>A machine learning project that compares software system features and creates detailed comparison
+                        matrices based on user input.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Flask</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/HanzDLC" target="_blank" class="project-link">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>This responsive Flask-based portfolio website featuring modern design, smooth animations, and
+                        horizontal scroll certifications.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/HanzDLC" target="_blank" class="project-link">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- n8n Modal 1: Chat Trigger → AI Agent to Base44 - ENHANCED DETAILS -->
+<div id="n8n-modal-1" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('n8n-modal-1', 'n8n-base44')">&times;</span>
+        <div class="modal-header">
+            <h2>Chat Trigger → AI Agent to Base44</h2>
+            <p class="project-desc">
+                An end-to-end n8n automation where a chat trigger initiates an AI agent that processes prompts and
+                pushes structured data directly into a Base44 chatbox application.
+            </p>
         </div>
 
-        <!-- Project Card 3: Portfolio Website -->
-        <div class="project-card">
-            <div class="project-image">
-                <div class="project-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="project-content">
-                <h3>Portfolio Website</h3>
-                <p>This responsive Flask-based portfolio website featuring modern design, smooth animations, and
-                    horizontal scroll certifications.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">SCSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/HanzDLC" target="_blank" class="project-link">
+        <div class="project-detail-content">
+            <!-- Problem Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="12" y1="9" x2="12" y2="13" stroke-width="2" stroke-linecap="round" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2" stroke-linecap="round" />
                         </svg>
-                        GitHub
-                    </a>
+                    </div>
+                    <span>Problem</span>
+                </div>
+                <div class="detail-section-content">
+                    <p>As QA testers performing manual testing, our workflow involved multiple manual handoffs that
+                        created bottlenecks. After identifying bugs during testing, we would:</p>
+                    <ul>
+                        <li>Write an issue description</li>
+                        <li>Use a custom GPT in ChatGPT to get a formatted output</li>
+                        <li>Send the formatted output via Messenger to our supervisor</li>
+                        <li>Wait for the supervisor to manually post it to Base44</li>
+                    </ul>
+                    <p>This multi-step process delayed system changes after bug reporting and created unnecessary
+                        dependencies on supervisor availability.</p>
+                </div>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Tools Used</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="tools-list">
+                        <span class="tool-badge">n8n Workflow Automation</span>
+                        <span class="tool-badge">DeepSeek v3.2 AI Model</span>
+                        <span class="tool-badge">OpenRouter API</span>
+                        <span class="tool-badge">Base44 Internal API</span>
+                        <span class="tool-badge">Chat Trigger</span>
+                        <span class="tool-badge">HTTP Requests</span>
+                        <span class="tool-badge">Session Management</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke-width="2" />
+                            <path
+                                d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Workflow</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">1</div>
+                            <div class="workflow-step-text">QA tester submits bug description via chat trigger interface
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">2</div>
+                            <div class="workflow-step-text">AI Agent (DeepSeek v3.2) processes the raw input using
+                                custom prompt engineering to format the bug report into structured developer-ready
+                                documentation</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">3</div>
+                            <div class="workflow-step-text">System extracts formatted output and prepares Base44 session
+                                identifiers</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">4</div>
+                            <div class="workflow-step-text">Validates Google authentication session with Base44 API to
+                                ensure access is still active</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">5</div>
+                            <div class="workflow-step-text">If session is valid, builds HTTP payload with formatted
+                                message content</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">6</div>
+                            <div class="workflow-step-text">Posts formatted bug report directly to Base44 chatbox,
+                                bypassing the manual Messenger handoff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Handling Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Error Handling</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="error-features">
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Google Session Validation - Checks authentication status
+                                before attempting to post to Base44 to prevent failed submissions</div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Conditional Logic Flow - IF node ensures workflow only
+                                proceeds when session validation returns a valid user identity</div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Payload Construction Safeguards - Code node builds
+                                structured JSON payload with proper headers and authentication tokens before API call
+                            </div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Fallback Message Extraction - Multiple fallback paths in
+                                code to extract AI output from different possible response structures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Impact Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="1" x2="12" y2="23" stroke-width="2" stroke-linecap="round" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Business Impact</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="business-impact-grid">
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke-width="2" />
+                                    <polyline points="12 6 12 12 16 14" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Time Saved</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Efficiency Gain</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Response Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                            <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Project Gallery</span>
+                </div>
+                <div class="gallery-scroll-container">
+                    <img src="{{ url_for('static', filename='images/Automation/Chat Prompt to Base 44 Workflow.png') }}"
+                        alt="Chat Prompt to Base 44 Workflow" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Automation/AI Agent Output.png') }}"
+                        alt="AI Agent Output" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Automation/Posted Prompt from AI Agent to Base44.png') }}"
+                        alt="Posted Prompt from AI Agent to Base44" onclick="openZoomModal(this)">
                 </div>
             </div>
         </div>
-
-        <!-- Project Card 4: Coming Soon -->
-        <div class="project-card coming-soon">
-            <div class="project-image">
-                <div class="project-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm1-13h-2v6h2zm0 8h-2v2h2z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="project-content">
-                <h3>More Coming Soon</h3>
-                <p>Exciting new data science and machine learning projects are currently in development. Stay tuned for
-                    updates!</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">In Progress</span>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
+
+<!-- n8n Modal 2: Custom GPT → AI Agent to Google Sheets - ENHANCED DETAILS -->
+<div id="n8n-modal-2" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('n8n-modal-2', 'n8n-gsheets')">&times;</span>
+        <div class="modal-header">
+            <h2>Custom GPT → AI Agent to Google Sheets</h2>
+            <p class="project-desc">
+                A custom GPT routes formatted QA bug reports through an n8n AI agent, which parses and appends
+                structured rows directly into Google Sheets for streamlined bug tracking.
+            </p>
+        </div>
+
+        <div class="project-detail-content">
+            <!-- Problem Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="12" y1="9" x2="12" y2="13" stroke-width="2" stroke-linecap="round" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Problem</span>
+                </div>
+                <div class="detail-section-content">
+                    <p>As QA testers for a Management Information System (MIS), we needed to log bug reports and issues
+                        into structured Excel sheets with specific formatting requirements. Our manual workflow
+                        involved:</p>
+                    <ul>
+                        <li>Identifying bugs during QA testing</li>
+                        <li>Writing issue descriptions</li>
+                        <li>Sending each prompt to ChatGPT to format according to our Excel template</li>
+                        <li>Copying the ChatGPT output</li>
+                        <li>Manually pasting formatted data into Excel/Google Sheets</li>
+                    </ul>
+                    <p>This repetitive manual process was time-consuming and created bottlenecks in our bug reporting
+                        workflow, delaying issue tracking and resolution.</p>
+                </div>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Tools Used</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="tools-list">
+                        <span class="tool-badge">n8n Workflow Automation</span>
+                        <span class="tool-badge">Custom GPT (ChatGPT)</span>
+                        <span class="tool-badge">DeepSeek v3.2 AI Model</span>
+                        <span class="tool-badge">Google Sheets API</span>
+                        <span class="tool-badge">OpenRouter API</span>
+                        <span class="tool-badge">JSON Data Processing</span>
+                        <span class="tool-badge">OAuth 2.0 Authentication</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke-width="2" />
+                            <path
+                                d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Workflow</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">1</div>
+                            <div class="workflow-step-text">QA tester submits raw bug description to Custom GPT via
+                                ChatGPT interface</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">2</div>
+                            <div class="workflow-step-text">Custom GPT formats the bug report according to predefined
+                                Excel/Google Sheets template structure</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">3</div>
+                            <div class="workflow-step-text">Formatted output is automatically sent to n8n webhook
+                                trigger</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">4</div>
+                            <div class="workflow-step-text">n8n AI Agent (DeepSeek v3.2) validates and structures the
+                                data into individual fields (Issue ID, Description, Severity, Status, etc.)</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">5</div>
+                            <div class="workflow-step-text">Structured data is mapped to Google Sheets columns and
+                                authenticated via OAuth 2.0</div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">6</div>
+                            <div class="workflow-step-text">Data is appended as a new row to the MIS bug tracking Google
+                                Sheet, eliminating manual copy-paste</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Handling Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Error Handling</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="error-features">
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Schema Validation - AI Agent verifies all required fields
+                                are present before attempting Google Sheets insertion</div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">OAuth Token Refresh - Automatic token renewal for Google
+                                Sheets API to prevent authentication failures</div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Data Type Enforcement - Ensures numeric fields, dates, and
+                                categorical values match Google Sheets column formats</div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">Retry Logic - Automatically retries failed Google Sheets API
+                                calls with exponential backoff for rate limiting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Impact Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="1" x2="12" y2="23" stroke-width="2" stroke-linecap="round" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Business Impact</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="business-impact-grid">
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke-width="2" />
+                                    <polyline points="12 6 12 12 16 14" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Time Saved Per Report</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Accuracy Improvement</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Reports Processed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                            <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Project Gallery</span>
+                </div>
+                <div class="gallery-scroll-container">
+                    <img src="{{ url_for('static', filename='images/Automation/GPT to Google Sheets Automation.png') }}"
+                        alt="GPT to Google Sheets Automation Workflow" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Automation/Test Entries for Google Sheets.png') }}"
+                        alt="Test Entries for Google Sheets" onclick="openZoomModal(this)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Visualization Modal - ENHANCED DETAILS -->
+<div id="dv-modal-proj" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('dv-modal-proj', 'data-viz-proj')">&times;</span>
+        <div class="modal-header">
+            <h2>Client Thesis Data Analysis and Visualization</h2>
+            <p class="project-desc">
+                Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
+                analysis and data visualization to interpret the results of a complex biological experiment.
+            </p>
+        </div>
+
+        <div class="project-detail-content">
+            <!-- Problem Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="12" y1="9" x2="12" y2="13" stroke-width="2" stroke-linecap="round" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Problem</span>
+                </div>
+                <div class="detail-section-content">
+                    <p><em>[Placeholder: Describe the data visualization challenge. Example: Complex biological data
+                            needed clear statistical analysis and publication-ready visualizations.]</em></p>
+                </div>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Tools Used</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="tools-list">
+                        <span class="tool-badge">Python</span>
+                        <span class="tool-badge">Matplotlib</span>
+                        <span class="tool-badge">Seaborn</span>
+                        <span class="tool-badge">Pandas</span>
+                        <span class="tool-badge">NumPy</span>
+                        <span class="tool-badge">Statistical Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke-width="2" />
+                            <path
+                                d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Workflow</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">1</div>
+                            <div class="workflow-step-text"><em>[Placeholder: Data collection and cleaning]</em></div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">2</div>
+                            <div class="workflow-step-text"><em>[Placeholder: Statistical analysis and hypothesis
+                                    testing]</em></div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">3</div>
+                            <div class="workflow-step-text"><em>[Placeholder: Creating publication-ready
+                                    visualizations]</em></div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">4</div>
+                            <div class="workflow-step-text"><em>[Placeholder: Client review and refinement]</em></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Methods Section (replaces Error Handling for this project) -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Analysis Methods</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="error-features">
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text"><em>[Placeholder: Descriptive statistics and distribution
+                                    analysis]</em></div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text"><em>[Placeholder: Comparative analysis across treatment
+                                    groups]</em></div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text"><em>[Placeholder: Trend analysis and correlation
+                                    studies]</em></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Impact Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="1" x2="12" y2="23" stroke-width="2" stroke-linecap="round" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Project Impact</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="business-impact-grid">
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                                    <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Charts Created</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Data Points Analyzed</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                            <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Visualization Gallery</span>
+                </div>
+                <div class="gallery-scroll-container">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
+                        alt="NH3 Media Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
+                        alt="NH3 Shrimp Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}"
+                        alt="NH3 WW Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
+                        alt="NH3 in Vitro Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
+                        alt="NO2 Media Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
+                        alt="NO2 Shrimp Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}"
+                        alt="NO2 WW Analysis" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
+                        alt="NO2 in Vitro Analysis" onclick="openZoomModal(this)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Zoom Modal -->
+<div id="zoom-modal" class="modal">
+    <span class="close-modal" onclick="closeZoomModal()">&times;</span>
+    <div class="modal-content zoom-modal-content">
+        <div class="modal-header">
+            <h2 id="zoom-modal-title">Image View</h2>
+        </div>
+        <div class="zoom-container">
+            <img id="zoom-modal-img" src="" alt="Zoomed View">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
 {% endblock %}
 
 {% block footer %}

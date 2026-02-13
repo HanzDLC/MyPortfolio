@@ -73,9 +73,10 @@
             <p>Uncovering patterns and insights through comprehensive data cleaning, manipulation, and statistical
                 analysis.</p>
         </div>
-        <div class="card" id="visualization" onclick="openModal('dv-modal', 'data-viz')" style="cursor: pointer;">
+        <div class="card">
             <h4>Data Visualization</h4>
-            <p>Communicating insights through visuals. (Click to View Gallery)</p>
+            <p>Communicating insights through clear, compelling charts and graphs using Python, Matplotlib, and Seaborn.
+            </p>
         </div>
         <div class="card">
             <h4>Web Development</h4>
@@ -114,25 +115,10 @@
             <h4>Version Control</h4>
             <p>Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.</p>
         </div>
-        <div class="card" id="automation-card" onclick="toggleDropdown(event, 'n8n-dropdown', 'automation-card')"
-            style="cursor: pointer; position: relative;">
-            <h4>n8n Workflow Automation <span>▼</span></h4>
+        <div class="card">
+            <h4>n8n Workflow Automation</h4>
             <p>Designing complex automated workflows and custom node integrations to connect platforms and automate
                 repetitive tasks.</p>
-
-            <!-- Dropdown Menu -->
-            <div id="n8n-dropdown" class="ml-dropdown-menu">
-                <a href="#" class="dropdown-item"
-                    onclick="event.preventDefault(); event.stopPropagation(); openModal('automation-modal-1', 'automation-1');">
-                    <span>1. Chat Trigger → AI Agent to Base44</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view workflow)</span>
-                </a>
-                <a href="#" class="dropdown-item"
-                    onclick="event.preventDefault(); event.stopPropagation(); openModal('automation-modal-2', 'automation-2');">
-                    <span>2. Custom GPT → AI Agent to Google Sheets</span>
-                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view workflow)</span>
-                </a>
-            </div>
         </div>
     </div>
 </div>
@@ -280,77 +266,7 @@
     </div>
 </div>
 
-<!-- Data Visualization Modal -->
-<div id="dv-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('dv-modal', 'data-viz')">&times;</span>
-        <div class="modal-header">
-            <h2>Client Thesis Data Analysis and Visualization Project</h2>
-            <p class="project-desc">
-                Commissioned for a thesis utilizing empirical data, this project entailed rigorous statistical
-                analysis and data visualization to interpret the results of a complex biological experiment.
-                (Visualized using Python-- Matplotlib, Seaborn)
-            </p>
-        </div>
-        <div class="gallery-scroll-container">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Media.png') }}"
-                alt="NH3 Media Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 Shrimp.png') }}"
-                alt="NH3 Shrimp Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 WW.png') }}" alt="NH3 WW Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NH3 in Vitro.png') }}"
-                alt="NH3 in Vitro Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Media.png') }}"
-                alt="NO2 Media Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 Shrimp.png') }}"
-                alt="NO2 Shrimp Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 WW.png') }}" alt="NO2 WW Analysis">
-            <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
-                alt="NO2 in Vitro Analysis">
-        </div>
-    </div>
-</div>
 
-<!-- Automation Modal 1: Chat Trigger → AI Agent to Base44 -->
-<div id="automation-modal-1" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('automation-modal-1', 'automation-1')">&times;</span>
-        <div class="modal-header">
-            <h2>Chat Trigger → AI Agent to Base44</h2>
-            <p class="project-desc">
-                An end-to-end n8n automation where a chat trigger initiates an AI agent that processes prompts and
-                pushes structured data directly into a Base44 chatbox application.
-            </p>
-        </div>
-        <div class="gallery-scroll-container">
-            <img src="{{ url_for('static', filename='images/Automation/Chat Prompt to Base 44 Workflow.png') }}"
-                alt="Chat Prompt to Base 44 workflow">
-            <img src="{{ url_for('static', filename='images/Automation/AI Agent Output.png') }}" alt="AI Agent Output">
-            <img src="{{ url_for('static', filename='images/Automation/Posted Prompt from AI Agent to Base44.png') }}"
-                alt="Posted prompt from AI Agent to Base44">
-        </div>
-    </div>
-</div>
-
-<!-- Automation Modal 2: Custom GPT → AI Agent to Google Sheets -->
-<div id="automation-modal-2" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('automation-modal-2', 'automation-2')">&times;</span>
-        <div class="modal-header">
-            <h2>Custom GPT → AI Agent to Google Sheets</h2>
-            <p class="project-desc">
-                A custom GPT routes formatted QA bug reports through an n8n AI agent, which parses and appends
-                structured rows directly into Google Sheets for streamlined bug tracking.
-            </p>
-        </div>
-        <div class="gallery-scroll-container">
-            <img src="{{ url_for('static', filename='images/Automation/GPT to Google Sheets Automation.png') }}"
-                alt="GPT to Google Sheets Automation workflow">
-            <img src="{{ url_for('static', filename='images/Automation/Test Entries for Google Sheets.png') }}"
-                alt="Test Entries for Google Sheets">
-        </div>
-    </div>
-</div>
 
 <!-- Image Zoom Modal -->
 <div id="zoom-modal" class="modal">
