@@ -55,6 +55,18 @@ def get_tool_info(tool_name):
             "color": "#74aa9c"
         }
 
+    if "gemini" in name_lower:
+        return {
+            "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg",
+            "color": "#8e44ef"
+        }
+
+    if "antigravity" in name_lower:
+        return {
+            "icon": "/static/images/icons/Google_Antigravity-logo_brandlogos.net_e23c83.svg",
+            "color": "#4285f4"
+        }
+
     if "javascript" in name_lower or "apps script" in name_lower:
         return {
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -127,6 +139,12 @@ def get_tool_info(tool_name):
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
             "color": "#000000"
         }
+
+    if "docker" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+            "color": "#2496ed"
+        }
         
     if "mysql" in name_lower or "sql" in name_lower:
         return {
@@ -193,6 +211,9 @@ def get_all_tools_with_icons():
         "Base44",
         "Power Query",
         "VBA",
+        "Gemini",
+        "Antigravity",
+        "Docker",
     ]
     results = []
     for tool in showcase_tools:
