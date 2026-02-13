@@ -122,20 +122,86 @@ nav ul.header-links {
 .hero-align {
   display: flex;
   flex-direction: row;
-  /* Side by side */
   justify-content: center;
-  /* Center them to bring them closer */
   align-items: center;
   min-height: 100vh;
   text-align: left;
-  /* Align text to left */
   padding: 100px 5%;
-  /* Use % for responsiveness */
-  background:
-    radial-gradient(ellipse 80% 60% at 30% 50%, rgba(67, 97, 238, 0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(124, 58, 237, 0.06) 0%, transparent 60%);
+  background: var(--bg-color);
   gap: 80px;
-  /* Space between text and image */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Effects */
+.hero-bg-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: blob-float 20s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-color);
+  top: -100px;
+  left: -200px;
+  animation-duration: 25s;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: #7c3aed;
+  bottom: -50px;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+@keyframes blob-float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(40px, 30px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-20px, 80px) scale(0.9);
+  }
+}
+
+/* Cursor Spotlight Container */
+.hero-spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(67, 97, 238, 0.06),
+      transparent 80%);
+  z-index: 2;
+}
+
+.hero-content,
+.hero-visual {
+  position: relative;
+  z-index: 5;
 }
 
 .hero-content {
@@ -191,12 +257,42 @@ nav ul.header-links {
   text-decoration: none;
   font-weight: 700;
   font-family: var(--font-heading);
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(35deg);
+  transition: none;
+  animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -60%;
+  }
+
+  20% {
+    left: 140%;
+  }
+
+  100% {
+    left: 140%;
+  }
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 25px rgba(67, 97, 238, 0.45);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(67, 97, 238, 0.5);
 }
 
 .btn-secondary {
@@ -228,15 +324,46 @@ nav ul.header-links {
 }
 
 .myimage {
-  width: 100%;
+  width: 1000px;
+  /* Base size for tilt calculation */
   max-width: 350px;
   height: auto;
   border-radius: 20px;
-  border: 1px solid rgba(67, 97, 238, 0.15);
+  border: 1px solid rgba(67, 97, 238, 0.2);
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.5),
     0 0 80px rgba(67, 97, 238, 0.08);
   display: block;
+  transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: floating 6s infinite ease-in-out;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(2px, -10px) rotate(0.5deg);
+  }
+
+  66% {
+    transform: translate(-2px, -5px) rotate(-0.5deg);
+  }
+
+  100% {
+    transform: translate(0, 0px) rotate(0deg);
+  }
+}
+
+/* Ensure tilt still works but doesn't conflict with floating too harshly */
+.hero-visual:hover .myimage {
+  animation-play-state: paused;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 100px rgba(67, 97, 238, 0.15);
 }
 
 /* Responsive for Mobile */
@@ -2140,5 +2267,47 @@ body.menu-open {
   .tool-logo-name {
     font-size: 0.65rem;
     max-width: 72px;
+  }
+}
+
+/* ===== Scroll Reveal Animations ===== */
+.reveal-hidden {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+/* Slide up from below */
+[data-reveal="fade-up"].reveal-hidden {
+  transform: translateY(40px);
+}
+
+/* Slide from left */
+[data-reveal="fade-left"].reveal-hidden {
+  transform: translateX(-40px);
+}
+
+/* Slide from right */
+[data-reveal="fade-right"].reveal-hidden {
+  transform: translateX(40px);
+}
+
+/* Zoom in */
+[data-reveal="zoom"].reveal-hidden {
+  transform: scale(0.92);
+}
+
+/* Revealed state — all variants */
+.reveal-hidden.revealed {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

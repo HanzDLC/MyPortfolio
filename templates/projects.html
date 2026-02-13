@@ -11,7 +11,7 @@
 
 <!-- Projects Hero Section -->
 <div class="projects-hero">
-    <div class="projects-hero-content">
+    <div class="projects-hero-content" data-reveal="fade-up">
         <span class="hero-pill">My Work</span>
         <h2 class="hero-title">Featured Projects</h2>
         <p class="hero-subtext">
@@ -27,13 +27,13 @@
 
     {% for category in projects %}
     <div class="portfolio-category">
-        <h3 class="portfolio-category-title">
+        <h3 class="portfolio-category-title" data-reveal="fade-up">
             <span class="category-icon">
                 {{ category.icon_svg | safe }}
             </span>
             {{ category.category }}
         </h3>
-        <div class="projects-grid">
+        <div class="projects-grid" data-reveal-children="fade-up">
             {% for project in category.projects %}
             <div class="project-card {% if project.has_modal %}clickable{% endif %}" {% if project.has_modal
                 %}onclick="openModal('{{ project.id }}', '{{ project.category_id }}')" {% endif %}>
@@ -303,6 +303,7 @@
 
 {% block scripts %}
 <script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="{{url_for('static', filename='js/scroll-reveal.js')}}"></script>
 {% endblock %}
 
 {% block footer %}

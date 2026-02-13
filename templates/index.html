@@ -15,7 +15,14 @@
 
 <!-- Hero Section -->
 <div class="hero-align">
-    <div class="hero-content">
+    <!-- Decorative Background Elements -->
+    <div class="hero-bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div class="hero-spotlight"></div>
+
+    <div class="hero-content" data-reveal="fade-right">
         <span class="hero-pill">Hi, I'm Hanz de la Cruz</span>
 
         <h2 class="hero-title">
@@ -59,15 +66,15 @@
         </div>
     </div>
 
-    <div class="hero-visual">
+    <div class="hero-visual" data-reveal="fade-left">
         <img src="{{ url_for('static', filename='images/myimage.jpg') }}" alt="Hanz de la Cruz" class="myimage">
     </div>
 </div>
 
 <!-- Skills Section -->
 <div class="section-container" id="skills" style="position: relative; z-index: 60;">
-    <h3 class="section-title">Skills</h3>
-    <div class="skills-grid">
+    <h3 class="section-title" data-reveal="fade-up">Skills</h3>
+    <div class="skills-grid" data-reveal-children="fade-up">
         {% for skill in skills %}
         <div class="card" {% if skill.id %}id="{{ skill.id }}"
             onclick="toggleDropdown(event, '{{ skill.dropdown_id }}', '{{ skill.id }}')"
@@ -94,8 +101,8 @@
 
 <!-- Services / What I Do Section -->
 <div class="section-container" style="position: relative; z-index: 50;">
-    <h3 class="section-title">What I can do for you</h3>
-    <div class="skills-grid">
+    <h3 class="section-title" data-reveal="fade-up">What I can do for you</h3>
+    <div class="skills-grid" data-reveal-children="fade-up">
         {% for service in services %}
         <div class="card" {% if service.id %}id="{{ service.id }}"
             onclick="toggleDropdown(event, '{{ service.dropdown_id }}', '{{ service.id }}')"
@@ -123,7 +130,7 @@
 <!-- Certifications Sticky Scroll Section -->
 <div class="section-container" id="certifications" style="position: relative; margin-bottom: 0;">
     <div class="scroll-section-outer">
-        <div class="sticky-wrapper">
+        <div class="sticky-wrapper" data-reveal="fade-up">
             <h3 class="section-title">Certifications</h3>
             <div class="horizontal-track">
                 {% for cert in certifications %}
@@ -152,9 +159,10 @@
 <!-- Tools & Technologies Showcase Section -->
 <section class="tools-showcase" id="tools">
     <div class="tools-showcase-inner">
-        <h3 class="tools-showcase-title">Tools & Technologies</h3>
-        <p class="tools-showcase-subtitle">The platforms, languages, and frameworks I use to build solutions</p>
-        <div class="tools-logo-grid">
+        <h3 class="tools-showcase-title" data-reveal="fade-up">Tools & Technologies</h3>
+        <p class="tools-showcase-subtitle" data-reveal="fade-up" data-reveal-delay="100">The platforms, languages, and
+            frameworks I use to build solutions</p>
+        <div class="tools-logo-grid" data-reveal-children="zoom">
             {% for tool in showcase_tools %}
             <div class="tool-logo-card" title="{{ tool.name }}">
                 <div class="tool-logo-icon">
@@ -184,6 +192,8 @@
 
 {% block scripts %}
 <script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="{{url_for('static', filename='js/scroll-reveal.js')}}"></script>
+<script src="{{url_for('static', filename='js/hero-effects.js')}}"></script>
 {% endblock %}
 
 <!-- Inherit Footer -->
