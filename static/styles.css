@@ -1411,9 +1411,13 @@ body.menu-open {
 }
 
 /* Social Grid */
+.social-col {
+  text-align: center;
+}
+
 .meta-social-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 40px);
+  display: inline-grid;
+  grid-template-columns: repeat(3, 40px);
   gap: 15px;
 }
 
