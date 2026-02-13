@@ -74,7 +74,7 @@
 <!-- Skills Section -->
 <div class="section-container" id="skills" style="position: relative; z-index: 60;">
     <h3 class="section-title" data-reveal="fade-up">Skills</h3>
-    <div class="skills-grid" data-reveal-children="fade-up">
+    <div class="skills-grid" data-reveal-children="flip-up">
         {% for skill in skills %}
         <div class="card" {% if skill.id %}id="{{ skill.id }}"
             onclick="toggleDropdown(event, '{{ skill.dropdown_id }}', '{{ skill.id }}')"
@@ -102,7 +102,7 @@
 <!-- Services / What I Do Section -->
 <div class="section-container" style="position: relative; z-index: 50;">
     <h3 class="section-title" data-reveal="fade-up">What I can do for you</h3>
-    <div class="skills-grid" data-reveal-children="fade-up">
+    <div class="skills-grid" data-reveal-children="zoom-out">
         {% for service in services %}
         <div class="card" {% if service.id %}id="{{ service.id }}"
             onclick="toggleDropdown(event, '{{ service.dropdown_id }}', '{{ service.id }}')"

@@ -2297,10 +2297,26 @@ body.menu-open {
   transform: scale(0.92);
 }
 
+/* 3D Flip Up */
+[data-reveal="flip-up"].reveal-hidden {
+  transform: translateY(30px) rotateX(-25deg);
+  transform-origin: top;
+}
+
+/* Rotate In from left */
+[data-reveal="rotate-in"].reveal-hidden {
+  transform: translateX(-50px) rotate(-5deg);
+}
+
+/* High impact Zoom Out into place */
+[data-reveal="zoom-out"].reveal-hidden {
+  transform: scale(1.1);
+}
+
 /* Revealed state — all variants */
 .reveal-hidden.revealed {
   opacity: 1;
-  transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) scale(1) rotate(0deg) rotateX(0deg);
 }
 
 /* Respect reduced motion preference */

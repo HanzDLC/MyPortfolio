@@ -26,286 +26,320 @@
 <div class="section-container">
 
     {% for category in projects %}
+    {% set cat_index = loop.index0 %}
     <div class="portfolio-category">
-        <h3 class="portfolio-category-title" data-reveal="fade-up">
-            <span class="category-icon">
-                {{ category.icon_svg | safe }}
-            </span>
-            {{ category.category }}
-        </h3>
-        <div class="projects-grid" data-reveal-children="fade-up">
-            {% for project in category.projects %}
-            <div class="project-card {% if project.has_modal %}clickable{% endif %}" {% if project.has_modal
-                %}onclick="openModal('{{ project.id }}', '{{ project.category_id }}')" {% endif %}>
-                <div class="project-image {% if project.image %}has-img{% endif %}">
-                    {% if project.image %}
-                    <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}">
-                    {% else %}
-                    <div class="project-placeholder">
-                        {{ project.placeholder_icon | safe }}
-                    </div>
+        <!-- Creative titles based on category index -->
+        {% if cat_index % 3 == 0 %}
+        <h3 class="portfolio-category-title" data-reveal="fade-left">
+            {% elif cat_index % 3 == 1 %}
+            <h3 class="portfolio-category-title" data-reveal="rotate-in">
+                {% else %}
+                <h3 class="portfolio-category-title" data-reveal="zoom">
                     {% endif %}
-                </div>
-                <div class="project-content">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.card_description }}</p>
-                    <div class="tech-tags">
-                        {% for tag in project.tags %}
-                        <span class="tech-tag">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
-                    {% if project.has_modal %}
-                    <span class="view-gallery-hint">Click to view details →</span>
-                    {% endif %}
-                    {% if project.link %}
-                    <div class="project-links">
-                        <a href="{{ project.link }}" target="_blank" class="project-link">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                            </svg>
-                            GitHub
-                        </a>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endfor %}
+                    <span class="category-icon">
+                        {{ category.icon_svg | safe }}
+                    </span>
+                    {{ category.category }}
+                </h3>
 
-</div>
-
-<!-- Modals -->
-{% for category in projects %}
-{% for project in category.projects %}
-{% if project.has_modal %}
-<div id="{{ project.id }}" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('{{ project.id }}', '{{ project.category_id }}')">&times;</span>
-        <div class="modal-header">
-            <h2>{{ project.title }}</h2>
-            <p class="project-desc">{{ project.modal_description }}</p>
-        </div>
-
-        <div class="project-detail-content">
-            <!-- Gallery Section -->
-            {% if project.gallery %}
-            <div class="detail-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
-                            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
-                            <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                    <span>{{ "Visualization Gallery" if "Visualization" in category.category else "Project Gallery"
-                        }}</span>
-                </div>
-                <div class="gallery-scroll-container">
-                    {% for image in project.gallery %}
-                    <img src="{{ url_for('static', filename=image.path) }}" alt="{{ image.alt }}"
-                        onclick="openZoomModal(this)">
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Problem Section -->
-            {% if project.problem %}
-            <div class="detail-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <line x1="12" y1="9" x2="12" y2="13" stroke-width="2" stroke-linecap="round" />
-                            <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                    <span>Problem</span>
-                </div>
-                <div class="detail-section-content">
-                    {{ project.problem | safe }}
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Tools Used Section -->
-            {% if project.tools %}
-            <div class="detail-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                    <span>Tools Used</span>
-                </div>
-                <div class="detail-section-content">
-                    <div class="tools-list">
-                        {% for tool in project.tools %}
-                        {% set tool_data = get_tool_info(tool) %}
-                        <span class="tool-badge" style="display: inline-flex; align-items: center; gap: 6px;">
-                            {% if tool_data.icon %}
-                            <img src="{{ tool_data.icon }}" alt="{{ tool }}"
-                                style="width: 16px; height: 16px; object-fit: contain;">
-                            {% endif %}
-                            {{ tool }}
-                        </span>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Workflow Section -->
-            {% if project.workflow %}
-            <div class="detail-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="3" stroke-width="2" />
-                            <path
-                                d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
-                                stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                    <span>Features & Implementation</span>
-                </div>
-                <div class="detail-section-content">
-                    <div class="workflow-steps">
-                        {% for step in project.workflow %}
-                        <div class="workflow-step">
-                            <div class="workflow-step-number">{{ step.number }}</div>
-                            <div class="workflow-step-text">{{ step.text | safe }}</div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Features / Analysis / Error Handling Section -->
-            {% if project.features %}
-            <div class="detail-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                    <span>{{ project.features_title }}</span>
-                </div>
-                <div class="detail-section-content">
-                    <div class="error-features">
-                        {% for feature in project.features %}
-                        <div class="error-feature-item">
-                            <div class="error-feature-icon">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <div class="error-feature-text"><strong>{{ feature.title }}</strong>: {{ feature.text | safe
-                                }}</div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Business Impact Section -->
-            {% if project.impact %}
-            <div class="detail-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="12" y1="1" x2="12" y2="23" stroke-width="2" stroke-linecap="round" />
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                    <span>Business Impact</span>
-                </div>
-                <div class="detail-section-content">
-                    <div class="business-impact-grid">
-                        {% for metric in project.impact %}
-                        <div class="impact-metric">
-                            <div class="impact-icon">
-                                {% if metric.icon_type == 'time' %}
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="10" stroke-width="2" />
-                                    <polyline points="12 6 12 12 16 14" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                                {% elif metric.icon_type == 'trend' %}
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                {% elif metric.icon_type == 'check' %}
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                {% elif metric.icon_type == 'image' %}
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
-                                    <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
-                                    <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                                {% elif metric.icon_type == 'lightning' %}
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+                <!-- Creative card animations based on category -->
+                {% if cat_index == 0 %} <!-- Automation -->
+                <div class="projects-grid" data-reveal-children="flip-up">
+                    {% elif cat_index == 1 %} <!-- Data Viz -->
+                    <div class="projects-grid" data-reveal-children="zoom-out">
+                        {% elif cat_index == 2 %} <!-- Google Sheets -->
+                        <div class="projects-grid" data-reveal-children="fade-up">
+                            {% else %} <!-- Other -->
+                            <div class="projects-grid" data-reveal-children="zoom">
                                 {% endif %}
+                                {% for project in category.projects %}
+                                <div class="project-card {% if project.has_modal %}clickable{% endif %}" {% if
+                                    project.has_modal
+                                    %}onclick="openModal('{{ project.id }}', '{{ project.category_id }}')" {% endif %}>
+                                    <div class="project-image {% if project.image %}has-img{% endif %}">
+                                        {% if project.image %}
+                                        <img src="{{ url_for('static', filename=project.image) }}"
+                                            alt="{{ project.title }}">
+                                        {% else %}
+                                        <div class="project-placeholder">
+                                            {{ project.placeholder_icon | safe }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="project-content">
+                                        <h3>{{ project.title }}</h3>
+                                        <p>{{ project.card_description }}</p>
+                                        <div class="tech-tags">
+                                            {% for tag in project.tags %}
+                                            <span class="tech-tag">{{ tag }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% if project.has_modal %}
+                                        <span class="view-gallery-hint">Click to view details →</span>
+                                        {% endif %}
+                                        {% if project.link %}
+                                        <div class="project-links">
+                                            <a href="{{ project.link }}" target="_blank" class="project-link">
+                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                                </svg>
+                                                GitHub
+                                            </a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
-                            <div class="impact-value">{{ metric.value }}</div>
-                            <div class="impact-label">{{ metric.label }}</div>
                         </div>
                         {% endfor %}
+
                     </div>
-                </div>
-            </div>
-            {% endif %}
 
-        </div>
-    </div>
-</div>
-{% endif %}
-{% endfor %}
-{% endfor %}
+                    <!-- Modals -->
+                    {% for category in projects %}
+                    {% for project in category.projects %}
+                    {% if project.has_modal %}
+                    <div id="{{ project.id }}" class="modal">
+                        <div class="modal-content">
+                            <span class="close-modal"
+                                onclick="closeModal('{{ project.id }}', '{{ project.category_id }}')">&times;</span>
+                            <div class="modal-header">
+                                <h2>{{ project.title }}</h2>
+                                <p class="project-desc">{{ project.modal_description }}</p>
+                            </div>
 
-<!-- Image Zoom Modal -->
-<div id="zoom-modal" class="modal">
-    <span class="close-modal" onclick="closeZoomModal()">&times;</span>
-    <div class="modal-content zoom-modal-content">
-        <div class="modal-header">
-            <h2 id="zoom-modal-title">Image View</h2>
-        </div>
-        <div class="zoom-container">
-            <img id="zoom-modal-img" src="" alt="Zoomed View">
-        </div>
-    </div>
-</div>
+                            <div class="project-detail-content">
+                                <!-- Gallery Section -->
+                                {% if project.gallery %}
+                                <div class="detail-section">
+                                    <div class="detail-section-header">
+                                        <div class="detail-section-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"
+                                                    stroke-width="2" />
+                                                <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                                                <polyline points="21 15 16 10 5 21" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <span>{{ "Visualization Gallery" if "Visualization" in category.category else
+                                            "Project Gallery"
+                                            }}</span>
+                                    </div>
+                                    <div class="gallery-scroll-container">
+                                        {% for image in project.gallery %}
+                                        <img src="{{ url_for('static', filename=image.path) }}" alt="{{ image.alt }}"
+                                            onclick="openZoomModal(this)">
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
 
-{% endblock %}
+                                <!-- Problem Section -->
+                                {% if project.problem %}
+                                <div class="detail-section">
+                                    <div class="detail-section-header">
+                                        <div class="detail-section-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                <line x1="12" y1="9" x2="12" y2="13" stroke-width="2"
+                                                    stroke-linecap="round" />
+                                                <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2"
+                                                    stroke-linecap="round" />
+                                            </svg>
+                                        </div>
+                                        <span>Problem</span>
+                                    </div>
+                                    <div class="detail-section-content">
+                                        {{ project.problem | safe }}
+                                    </div>
+                                </div>
+                                {% endif %}
 
-{% block scripts %}
-<script src="{{url_for('static', filename='js/main.js')}}"></script>
-<script src="{{url_for('static', filename='js/scroll-reveal.js')}}"></script>
-{% endblock %}
+                                <!-- Tools Used Section -->
+                                {% if project.tools %}
+                                <div class="detail-section">
+                                    <div class="detail-section-header">
+                                        <div class="detail-section-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <span>Tools Used</span>
+                                    </div>
+                                    <div class="detail-section-content">
+                                        <div class="tools-list">
+                                            {% for tool in project.tools %}
+                                            {% set tool_data = get_tool_info(tool) %}
+                                            <span class="tool-badge"
+                                                style="display: inline-flex; align-items: center; gap: 6px;">
+                                                {% if tool_data.icon %}
+                                                <img src="{{ tool_data.icon }}" alt="{{ tool }}"
+                                                    style="width: 16px; height: 16px; object-fit: contain;">
+                                                {% endif %}
+                                                {{ tool }}
+                                            </span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
 
-{% block footer %}
-{{ super() }}
-{% endblock %}
+                                <!-- Workflow Section -->
+                                {% if project.workflow %}
+                                <div class="detail-section">
+                                    <div class="detail-section-header">
+                                        <div class="detail-section-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="12" cy="12" r="3" stroke-width="2" />
+                                                <path
+                                                    d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
+                                                    stroke-width="2" stroke-linecap="round" />
+                                            </svg>
+                                        </div>
+                                        <span>Features & Implementation</span>
+                                    </div>
+                                    <div class="detail-section-content">
+                                        <div class="workflow-steps">
+                                            {% for step in project.workflow %}
+                                            <div class="workflow-step">
+                                                <div class="workflow-step-number">{{ step.number }}</div>
+                                                <div class="workflow-step-text">{{ step.text | safe }}</div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <!-- Features / Analysis / Error Handling Section -->
+                                {% if project.features %}
+                                <div class="detail-section">
+                                    <div class="detail-section-header">
+                                        <div class="detail-section-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <polyline points="22 4 12 14.01 9 11.01" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <span>{{ project.features_title }}</span>
+                                    </div>
+                                    <div class="detail-section-content">
+                                        <div class="error-features">
+                                            {% for feature in project.features %}
+                                            <div class="error-feature-item">
+                                                <div class="error-feature-icon">
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <polyline points="9 11 12 14 22 4" stroke-width="2"
+                                                            stroke-linecap="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="error-feature-text"><strong>{{ feature.title }}</strong>: {{
+                                                    feature.text | safe
+                                                    }}</div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <!-- Business Impact Section -->
+                                {% if project.impact %}
+                                <div class="detail-section">
+                                    <div class="detail-section-header">
+                                        <div class="detail-section-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="12" y1="1" x2="12" y2="23" stroke-width="2"
+                                                    stroke-linecap="round" />
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <span>Business Impact</span>
+                                    </div>
+                                    <div class="detail-section-content">
+                                        <div class="business-impact-grid">
+                                            {% for metric in project.impact %}
+                                            <div class="impact-metric">
+                                                <div class="impact-icon">
+                                                    {% if metric.icon_type == 'time' %}
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle cx="12" cy="12" r="10" stroke-width="2" />
+                                                        <polyline points="12 6 12 12 16 14" stroke-width="2"
+                                                            stroke-linecap="round" />
+                                                    </svg>
+                                                    {% elif metric.icon_type == 'trend' %}
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    {% elif metric.icon_type == 'check' %}
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                    {% elif metric.icon_type == 'image' %}
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"
+                                                            stroke-width="2" />
+                                                        <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                                                        <polyline points="21 15 16 10 5 21" stroke-width="2"
+                                                            stroke-linecap="round" />
+                                                    </svg>
+                                                    {% elif metric.icon_type == 'lightning' %}
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="impact-value">{{ metric.value }}</div>
+                                                <div class="impact-label">{{ metric.label }}</div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+
+                    <!-- Image Zoom Modal -->
+                    <div id="zoom-modal" class="modal">
+                        <span class="close-modal" onclick="closeZoomModal()">&times;</span>
+                        <div class="modal-content zoom-modal-content">
+                            <div class="modal-header">
+                                <h2 id="zoom-modal-title">Image View</h2>
+                            </div>
+                            <div class="zoom-container">
+                                <img id="zoom-modal-img" src="" alt="Zoomed View">
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endblock %}
+
+                    {% block scripts %}
+                    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+                    <script src="{{url_for('static', filename='js/scroll-reveal.js')}}"></script>
+                    {% endblock %}
+
+                    {% block footer %}
+                    {{ super() }}
+                    {% endblock %}
