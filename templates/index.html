@@ -149,6 +149,24 @@
 
 
 
+<!-- Tools & Technologies Showcase Section -->
+<section class="tools-showcase" id="tools">
+    <div class="tools-showcase-inner">
+        <h3 class="tools-showcase-title">Tools & Technologies</h3>
+        <p class="tools-showcase-subtitle">The platforms, languages, and frameworks I use to build solutions</p>
+        <div class="tools-logo-grid">
+            {% for tool in showcase_tools %}
+            <div class="tool-logo-card" title="{{ tool.name }}">
+                <div class="tool-logo-icon">
+                    <img src="{{ tool.icon }}" alt="{{ tool.name }}" loading="lazy">
+                </div>
+                <span class="tool-logo-name">{{ tool.name }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 <!-- Image Zoom Modal -->
 <div id="zoom-modal" class="modal">
     <span class="close-modal" onclick="closeZoomModal()">&times;</span>

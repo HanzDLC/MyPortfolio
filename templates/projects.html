@@ -151,7 +151,14 @@
                 <div class="detail-section-content">
                     <div class="tools-list">
                         {% for tool in project.tools %}
-                        <span class="tool-badge">{{ tool }}</span>
+                        {% set tool_data = get_tool_info(tool) %}
+                        <span class="tool-badge" style="display: inline-flex; align-items: center; gap: 6px;">
+                            {% if tool_data.icon %}
+                            <img src="{{ tool_data.icon }}" alt="{{ tool }}"
+                                style="width: 16px; height: 16px; object-fit: contain;">
+                            {% endif %}
+                            {{ tool }}
+                        </span>
                         {% endfor %}
                     </div>
                 </div>
