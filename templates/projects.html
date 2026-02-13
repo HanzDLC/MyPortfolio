@@ -15,7 +15,8 @@
         <span class="hero-pill">My Work</span>
         <h2 class="hero-title">Featured Projects</h2>
         <p class="hero-subtext">
-            A collection of data analysis, visualization, and machine learning projects
+            A collection of data analysis, visualization, machine learning projects,
+            Automation workflows.
             showcasing my skills in transforming data into actionable insights.
         </p>
     </div>
@@ -104,6 +105,63 @@
                         <span class="tech-tag">Seaborn</span>
                     </div>
                     <span class="view-gallery-hint">Click to view gallery →</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Google Sheets Mastery Section -->
+    <div class="portfolio-category">
+        <h3 class="portfolio-category-title">
+            <span class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
+            </span>
+            Google Sheets Mastery
+        </h3>
+        <div class="projects-grid">
+
+            <div class="project-card clickable" onclick="openModal('gsheets-modal', 'gsheets-mastery')">
+                <div class="project-image has-img">
+                    <img src="{{ url_for('static', filename='images/Spreadsheet/LookUp.png') }}"
+                        alt="VLOOKUP and QUERY Dashboard">
+                </div>
+                <div class="project-content">
+                    <h3>VLOOKUP and QUERY</h3>
+                    <p>Advanced Google Sheets system leveraging VLOOKUP, QUERY functions, and complex formulas for
+                        efficient data management, analysis, and automated reporting workflows.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Google Sheets</span>
+                        <span class="tech-tag">Apps Script</span>
+                        <span class="tech-tag">Data Analysis</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <span class="view-gallery-hint">Click to view details →</span>
+                </div>
+            </div>
+
+            <div class="project-card clickable" onclick="openModal('excel-modal-2', 'excel-mastery-2')">
+                <div class="project-image has-img">
+                    <img src="{{ url_for('static', filename='images/Spreadsheet/Query.png') }}"
+                        alt="QA Bug Logs Structure">
+                </div>
+                <div class="project-content">
+                    <h3>QA Bug Logs Structure</h3>
+                    <p>Structured Excel-based QA bug tracking system with automated logging, categorization, and
+                        reporting features for efficient issue management and quality assurance workflows.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Microsoft Excel</span>
+                        <span class="tech-tag">VBA</span>
+                        <span class="tech-tag">Power Query</span>
+                        <span class="tech-tag">Pivot Tables</span>
+                    </div>
+                    <span class="view-gallery-hint">Click to view details →</span>
                 </div>
             </div>
 
@@ -530,8 +588,10 @@
                         </div>
                         <div class="workflow-step">
                             <div class="workflow-step-number">3</div>
-                            <div class="workflow-step-text">Formatted output is automatically sent to n8n webhook
-                                trigger</div>
+                            <div class="workflow-step-text">Formatted JSON output is sent via POST request to an
+                                <strong>ngrok</strong> tunnel, securely exposing the local n8n AI agent webhook to the
+                                internet
+                            </div>
                         </div>
                         <div class="workflow-step">
                             <div class="workflow-step-number">4</div>
@@ -671,6 +731,8 @@
                 <div class="gallery-scroll-container">
                     <img src="{{ url_for('static', filename='images/Automation/GPT to Google Sheets Automation.png') }}"
                         alt="GPT to Google Sheets Automation Workflow" onclick="openZoomModal(this)">
+                    <img src="{{ url_for('static', filename='images/Automation/ngrok.png') }}"
+                        alt="ngrok Tunnel Configuration" onclick="openZoomModal(this)">
                     <img src="{{ url_for('static', filename='images/Automation/Test Entries for Google Sheets.png') }}"
                         alt="Test Entries for Google Sheets" onclick="openZoomModal(this)">
                 </div>
@@ -707,8 +769,10 @@
                     <span>Problem</span>
                 </div>
                 <div class="detail-section-content">
-                    <p><em>[Placeholder: Describe the data visualization challenge. Example: Complex biological data
-                            needed clear statistical analysis and publication-ready visualizations.]</em></p>
+                    <p>The client was manually analyzing complex biological data for her thesis, causing significant
+                        delays and potential for error. The challenge was to automate the statistical analysis of
+                        numerous Excel files, determining the appropriate tests (parametric vs. non-parametric) and
+                        generating publication-ready visualizations.</p>
                 </div>
             </div>
 
@@ -732,6 +796,7 @@
                         <span class="tool-badge">Pandas</span>
                         <span class="tool-badge">NumPy</span>
                         <span class="tool-badge">Statistical Analysis</span>
+                        <span class="tool-badge">Prompt Engineering</span>
                     </div>
                 </div>
             </div>
@@ -753,21 +818,22 @@
                     <div class="workflow-steps">
                         <div class="workflow-step">
                             <div class="workflow-step-number">1</div>
-                            <div class="workflow-step-text"><em>[Placeholder: Data collection and cleaning]</em></div>
+                            <div class="workflow-step-text"><strong>Data Pre-processing:</strong> Automated the
+                                ingestion of Excel files, first identifying whether the dataset required parametric or
+                                non-parametric analysis based on distribution characteristics.</div>
                         </div>
                         <div class="workflow-step">
                             <div class="workflow-step-number">2</div>
-                            <div class="workflow-step-text"><em>[Placeholder: Statistical analysis and hypothesis
-                                    testing]</em></div>
+                            <div class="workflow-step-text"><strong>Custom Statistical Function:</strong> Determined
+                                that ART (Aligned Rank Transform) ANOVA was the optimal statistical test. Since no
+                                direct Python implementation existed, I utilized <strong>Prompt Engineering</strong> to
+                                generate a custom ART ANOVA function via an LLM.</div>
                         </div>
                         <div class="workflow-step">
                             <div class="workflow-step-number">3</div>
-                            <div class="workflow-step-text"><em>[Placeholder: Creating publication-ready
-                                    visualizations]</em></div>
-                        </div>
-                        <div class="workflow-step">
-                            <div class="workflow-step-number">4</div>
-                            <div class="workflow-step-text"><em>[Placeholder: Client review and refinement]</em></div>
+                            <div class="workflow-step-text"><strong>Automated Analysis & Output:</strong> The script
+                                executed the ART ANOVA and post-hoc analysis for each file, automatically generating
+                                comprehensive results tables and corresponding visualizations.</div>
                         </div>
                     </div>
                 </div>
@@ -794,8 +860,9 @@
                                     <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </div>
-                            <div class="error-feature-text"><em>[Placeholder: Descriptive statistics and distribution
-                                    analysis]</em></div>
+                            <div class="error-feature-text"><strong>Assumption Testing:</strong> Automated Shapiro-Wilk
+                                and Levene's tests to determine if data met parametric assumptions, dynamically
+                                selecting the appropriate statistical method.</div>
                         </div>
                         <div class="error-feature-item">
                             <div class="error-feature-icon">
@@ -803,8 +870,9 @@
                                     <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </div>
-                            <div class="error-feature-text"><em>[Placeholder: Comparative analysis across treatment
-                                    groups]</em></div>
+                            <div class="error-feature-text"><strong>ART ANOVA Application:</strong> Applied Aligned Rank
+                                Transform (ART) ANOVA for non-parametric factorial analysis, enabling robust interaction
+                                effect assessment on skewed biological data.</div>
                         </div>
                         <div class="error-feature-item">
                             <div class="error-feature-icon">
@@ -812,8 +880,9 @@
                                     <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </div>
-                            <div class="error-feature-text"><em>[Placeholder: Trend analysis and correlation
-                                    studies]</em></div>
+                            <div class="error-feature-text"><strong>Post-hoc Analysis & Viz:</strong> Generated pairwise
+                                comparison tables (Tukey's HSD / Games-Howell) and automated the creation of
+                                publication-ready boxplots and interaction plots.</div>
                         </div>
                     </div>
                 </div>
@@ -841,7 +910,7 @@
                                     <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </div>
-                            <div class="impact-value">--</div>
+                            <div class="impact-value">50+</div>
                             <div class="impact-label">Charts Created</div>
                         </div>
                         <div class="impact-metric">
@@ -851,7 +920,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="impact-value">--</div>
+                            <div class="impact-value">15k+</div>
                             <div class="impact-label">Data Points Analyzed</div>
                         </div>
                         <div class="impact-metric">
@@ -861,7 +930,7 @@
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="impact-value">--</div>
+                            <div class="impact-value">100%</div>
                             <div class="impact-label">Client Satisfaction</div>
                         </div>
                     </div>
@@ -898,6 +967,398 @@
                         alt="NO2 WW Analysis" onclick="openZoomModal(this)">
                     <img src="{{ url_for('static', filename='images/Visualization Images/NO2 in Vitro.png') }}"
                         alt="NO2 in Vitro Analysis" onclick="openZoomModal(this)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Google Sheets Mastery Modal - ENHANCED DETAILS -->
+<div id="gsheets-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('gsheets-modal', 'gsheets-mastery')">&times;</span>
+        <div class="modal-header">
+            <h2>VLOOKUP and QUERY</h2>
+            <p class="project-desc">
+                Comprehensive data management and analytics system leveraging advanced Google Sheets functions, Apps
+                Script automation, and custom formulas for real-time business intelligence and reporting.
+            </p>
+        </div>
+
+        <div class="project-detail-content">
+            <!-- Problem Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="12" y1="9" x2="12" y2="13" stroke-width="2" stroke-linecap="round" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Problem</span>
+                </div>
+                <div class="detail-section-content">
+                    <p>Managing large datasets of student records manually was inefficient and prone to errors. The
+                        challenge was to create a dynamic system that allows for instant retrieval of individual student
+                        details by ID and automated generation of filtered class lists without manual copy-pasting.</p>
+                </div>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Tools Used</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="tools-list">
+                        <span class="tool-badge">Google Sheets</span>
+                        <span class="tool-badge">Apps Script (JavaScript)</span>
+                        <span class="tool-badge">Google Workspace API</span>
+                        <span class="tool-badge">Advanced Formulas</span>
+                        <span class="tool-badge">Pivot Tables</span>
+                        <span class="tool-badge">Conditional Formatting</span>
+                        <span class="tool-badge">Data Validation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke-width="2" />
+                            <path
+                                d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Features & Implementation</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">1</div>
+                            <div class="workflow-step-text"><strong>Dynamic Lookup System:</strong> Implemented
+                                <code>VLOOKUP</code> with absolute references to search a master
+                                <code>studentList</code> named range, instantly returning specific details (Result,
+                                Degree) based on a unique Student ID input.
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">2</div>
+                            <div class="workflow-step-text"><strong>Automated Reporting:</strong> Utilized the
+                                <code>QUERY</code> function to extract specific columns (Name, Postcode, Result, Degree)
+                                from the master dataset, creating auto-updating class performance lists.
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">3</div>
+                            <div class="workflow-step-text"><strong>Data Structuring:</strong> Established Named Ranges
+                                for scalable data management, ensuring formulas remain robust even as new student
+                                records are added to the database.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Functions Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Key Functions & Formulas</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="error-features">
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text"><code>=VLOOKUP($B$2,studentList,12,FALSE)</code><br><span
+                                    style="font-size: 0.85em; opacity: 0.8;">Retrieves specific record details based on
+                                    unique ID lookup.</span></div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text">
+                                <code>=QUERY(studentList,"select B,C,G,L,M",1)</code><br><span
+                                    style="font-size: 0.85em; opacity: 0.8;">Dynamically selects and displays specific
+                                    columns for reporting.</span>
+                            </div>
+                        </div>
+                        <div class="error-feature-item">
+                            <div class="error-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="9 11 12 14 22 4" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="error-feature-text"><strong>Named Ranges</strong><br><span
+                                    style="font-size: 0.85em; opacity: 0.8;">Utilized 'studentList' range for cleaner,
+                                    more maintainable formulas.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Impact Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="1" x2="12" y2="23" stroke-width="2" stroke-linecap="round" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Business Impact</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="business-impact-grid">
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke-width="2" />
+                                    <polyline points="12 6 12 12 16 14" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Time Saved Weekly</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Report Generation Speed</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Data Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                            <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Screenshots Gallery</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="gallery-scroll-container">
+                        <img src="{{ url_for('static', filename='images/Spreadsheet/LookUp.png') }}"
+                            alt="VLOOKUP and QUERY Dashboard" onclick="openZoomModal(this)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Excel Modal 2: Excel Data Analytics System - ENHANCED DETAILS -->
+<div id="excel-modal-2" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('excel-modal-2', 'excel-mastery-2')">&times;</span>
+        <div class="modal-header">
+            <h2>QA Bug Logs Structure</h2>
+            <p class="project-desc">
+                Advanced Excel-based data analytics and reporting system featuring complex formulas, VBA macros, Power
+                Query automation, and dynamic dashboards for comprehensive business metrics tracking and visualization.
+            </p>
+        </div>
+
+        <div class="project-detail-content">
+            <!-- Problem Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="12" y1="9" x2="12" y2="13" stroke-width="2" stroke-linecap="round" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Problem</span>
+                </div>
+                <div class="detail-section-content">
+                    <p><em>[Placeholder: Describe the business challenge or data management problem this Excel system
+                            solves]</em></p>
+                </div>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Tools Used</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="tools-list">
+                        <span class="tool-badge">Google Sheets</span>
+                        <span class="tool-badge">Pivot Tables & Charts</span>
+                        <span class="tool-badge">Advanced Formulas</span>
+                        <span class="tool-badge">Data Validation</span>
+                        <span class="tool-badge">Conditional Formatting</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke-width="2" />
+                            <path
+                                d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Features & Implementation</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">1</div>
+                            <div class="workflow-step-text"><strong>Dynamic Lookup System:</strong> Implemented
+                                <code>VLOOKUP</code> with absolute references to search a master
+                                <code>studentList</code> named range, instantly returning specific details (Result,
+                                Degree) based on a unique Student ID input.
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">2</div>
+                            <div class="workflow-step-text"><strong>Automated Reporting:</strong> Utilized the
+                                <code>QUERY</code> function to extract specific columns (Name, Postcode, Result, Degree)
+                                from the master dataset, creating auto-updating class performance lists.
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="workflow-step-number">3</div>
+                            <div class="workflow-step-text"><strong>Data Structuring:</strong> Established Named Ranges
+                                for scalable data management, ensuring formulas remain robust even as new student
+                                records are added to the database.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Business Impact Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="1" x2="12" y2="23" stroke-width="2" stroke-linecap="round" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Business Impact</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="business-impact-grid">
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke-width="2" />
+                                    <polyline points="12 6 12 12 16 14" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Hours Saved Monthly</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Faster Reporting</div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="impact-value">--</div>
+                            <div class="impact-label">Error Reduction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="detail-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="2" />
+                            <polyline points="21 15 16 10 5 21" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Screenshots Gallery</span>
+                </div>
+                <div class="detail-section-content">
+                    <div class="gallery-scroll-container">
+                        <img src="{{ url_for('static', filename='images/Spreadsheet/Query.png') }}"
+                            alt="QA Bug Logs Structure" onclick="openZoomModal(this)">
+                    </div>
                 </div>
             </div>
         </div>
