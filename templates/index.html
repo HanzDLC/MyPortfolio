@@ -114,11 +114,25 @@
             <h4>Version Control</h4>
             <p>Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.</p>
         </div>
-        <div class="card" id="automation-card" onclick="openModal('automation-modal', 'automation')"
-            style="cursor: pointer;">
-            <h4>n8n Workflow Automation</h4>
+        <div class="card" id="automation-card" onclick="toggleDropdown(event, 'n8n-dropdown', 'automation-card')"
+            style="cursor: pointer; position: relative;">
+            <h4>n8n Workflow Automation <span>▼</span></h4>
             <p>Designing complex automated workflows and custom node integrations to connect platforms and automate
-                repetitive tasks. (Click to View Gallery)</p>
+                repetitive tasks.</p>
+
+            <!-- Dropdown Menu -->
+            <div id="n8n-dropdown" class="ml-dropdown-menu">
+                <a href="#" class="dropdown-item"
+                    onclick="event.preventDefault(); event.stopPropagation(); openModal('automation-modal-1', 'automation-1');">
+                    <span>1. Chat Trigger → AI Agent to Base44</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view workflow)</span>
+                </a>
+                <a href="#" class="dropdown-item"
+                    onclick="event.preventDefault(); event.stopPropagation(); openModal('automation-modal-2', 'automation-2');">
+                    <span>2. Custom GPT → AI Agent to Google Sheets</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">(Click to view workflow)</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -297,23 +311,43 @@
     </div>
 </div>
 
-<!-- Automation Modal -->
-<div id="automation-modal" class="modal">
+<!-- Automation Modal 1: Chat Trigger → AI Agent to Base44 -->
+<div id="automation-modal-1" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('automation-modal', 'automation')">&times;</span>
+        <span class="close-modal" onclick="closeModal('automation-modal-1', 'automation-1')">&times;</span>
         <div class="modal-header">
-            <h2>n8n Workflow Automation</h2>
+            <h2>Chat Trigger → AI Agent to Base44</h2>
             <p class="project-desc">
-                Showcasing advanced end-to-end automation workflows built using n8n and AI agents to streamline complex
-                business logic.
+                An end-to-end n8n automation where a chat trigger initiates an AI agent that processes prompts and
+                pushes structured data directly into a Base44 chatbox application.
             </p>
         </div>
         <div class="gallery-scroll-container">
             <img src="{{ url_for('static', filename='images/Automation/Chat Prompt to Base 44 Workflow.png') }}"
-                alt="Chat Prompt to base 44 workflow">
+                alt="Chat Prompt to Base 44 workflow">
             <img src="{{ url_for('static', filename='images/Automation/AI Agent Output.png') }}" alt="AI Agent Output">
             <img src="{{ url_for('static', filename='images/Automation/Posted Prompt from AI Agent to Base44.png') }}"
-                alt="Posted prompt">
+                alt="Posted prompt from AI Agent to Base44">
+        </div>
+    </div>
+</div>
+
+<!-- Automation Modal 2: Custom GPT → AI Agent to Google Sheets -->
+<div id="automation-modal-2" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('automation-modal-2', 'automation-2')">&times;</span>
+        <div class="modal-header">
+            <h2>Custom GPT → AI Agent to Google Sheets</h2>
+            <p class="project-desc">
+                A custom GPT routes formatted QA bug reports through an n8n AI agent, which parses and appends
+                structured rows directly into Google Sheets for streamlined bug tracking.
+            </p>
+        </div>
+        <div class="gallery-scroll-container">
+            <img src="{{ url_for('static', filename='images/Automation/GPT to Google Sheets Automation.png') }}"
+                alt="GPT to Google Sheets Automation workflow">
+            <img src="{{ url_for('static', filename='images/Automation/Test Entries for Google Sheets.png') }}"
+                alt="Test Entries for Google Sheets">
         </div>
     </div>
 </div>
