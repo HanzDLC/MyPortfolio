@@ -227,7 +227,8 @@ def get_projects():
                     "image": "images/Spreadsheet/LookUp.png",
                     "has_modal": True,
                     "gallery": [
-                        {"path": "images/Spreadsheet/LookUp.png", "alt": "VLOOKUP and QUERY Dashboard"}
+                        {"path": "images/Spreadsheet/Query.png", "alt": "VLOOKUP and QUERY Dashboard"},
+                        {"path": "images/Spreadsheet/LookUp.png", "alt": "VLOOKUP Lookup View"}
                     ],
                     "problem": """<p>Managing large datasets of student records manually was inefficient and prone to errors. The challenge was to create a dynamic system that allows for instant retrieval of individual student details by ID and automated generation of filtered class lists without manual copy-pasting.</p>""",
                     "tools": ["Google Sheets", "Apps Script (JavaScript)", "Google Workspace API", "Advanced Formulas", "Pivot Tables", "Conditional Formatting", "Data Validation"],
@@ -251,10 +252,10 @@ def get_projects():
                     "card_description": "Structured Excel-based QA bug tracking system with automated logging, categorization, and reporting features for efficient issue management and quality assurance workflows.",
                     "modal_description": "Advanced Excel-based data analytics and reporting system featuring complex formulas, VBA macros, Power Query automation, and dynamic dashboards for comprehensive business metrics tracking and visualization.",
                     "tags": ["Microsoft Excel", "VBA", "Power Query", "Pivot Tables"],
-                    "image": "images/Spreadsheet/Query.png",
+                    "image": "images/Spreadsheet/QA Log Structure.png",
                     "has_modal": True,
                     "gallery": [
-                        {"path": "images/Spreadsheet/Query.png", "alt": "QA Bug Logs Structure"}
+                        {"path": "images/Spreadsheet/QA Log Structure.png", "alt": "QA Bug Logs Structure"}
                     ],
                     "problem": """<p><em>[Placeholder: Describe the business challenge or data management problem this Excel system solves]</em></p>""",
                     "tools": ["Google Sheets", "Pivot Tables & Charts", "Advanced Formulas", "Data Validation", "Conditional Formatting"],
