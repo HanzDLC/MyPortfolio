@@ -10,9 +10,16 @@
 function openModal(modalId, hash) {
     const modal = document.getElementById(modalId);
     if (!modal) return;
+    const modalContent = modal.querySelector('.modal-content');
 
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+    // Always open from top so mobile users can see gallery/problem sections first.
+    modal.scrollTop = 0;
+    if (modalContent) {
+        modalContent.scrollTop = 0;
+    }
 
     // Trigger animation
     requestAnimationFrame(() => {
