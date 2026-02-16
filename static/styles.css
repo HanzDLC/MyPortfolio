@@ -2253,6 +2253,14 @@ body.menu-open {
   border-radius: 2px;
 }
 
+.tools-showcase {
+  background-color: var(--bg-color);
+  position: relative;
+  z-index: 1;
+  padding: 60px 0;
+  /* Add vertical padding for breathing room */
+}
+
 .tools-showcase-inner {
   max-width: var(--container-width);
   margin: 0 auto;
