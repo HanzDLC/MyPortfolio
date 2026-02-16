@@ -1713,6 +1713,15 @@ body.menu-open {
     align-items: center;
   }
 
+  /* Center Section Titles */
+  .section-title,
+  .tools-showcase-title,
+  .tools-showcase-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* Footer Mobile Layout */
   .footer-top .footer-container {
     grid-template-columns: 1fr;
@@ -1723,6 +1732,10 @@ body.menu-open {
   .footer-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .actions-col {
     align-items: center;
   }
 
