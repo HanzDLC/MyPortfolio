@@ -988,7 +988,8 @@ footer {
 }
 
 .scroll-section-outer {
-  height: 1000vh;
+  /* Fallback height; JS sets exact sticky scroll height dynamically */
+  height: 300vh;
   position: relative;
   background-color: var(--bg-color);
 }
@@ -1453,7 +1454,7 @@ body.menu-open {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
 
