@@ -5,6 +5,17 @@
 
 'use strict';
 
+function syncMobileHeaderOffset() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        document.body.style.setProperty('--mobile-header-height', `${header.offsetHeight}px`);
+    } else {
+        document.body.style.removeProperty('--mobile-header-height');
+    }
+}
+
 // Mobile Menu Toggle
 function toggleMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
@@ -49,4 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(closeMobileMenu, 100);
         });
     });
+
+    syncMobileHeaderOffset();
 });
+
+window.addEventListener('resize', syncMobileHeaderOffset);

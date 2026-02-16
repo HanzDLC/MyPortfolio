@@ -1475,6 +1475,10 @@ body.menu-open {
     overflow-x: clip;
   }
 
+  body {
+    padding-top: var(--mobile-header-height, 72px);
+  }
+
 
   /* Show Mobile Menu Button */
   .mobile-menu-btn {
@@ -1528,9 +1532,14 @@ body.menu-open {
 
   /* Header */
   header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 15px 20px;
     width: 100%;
     box-sizing: border-box;
+    z-index: 1200;
   }
 
   .header-class {
