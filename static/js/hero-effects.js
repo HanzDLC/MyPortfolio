@@ -15,6 +15,83 @@
 
         if (!hero || !spotlight) return;
 
+        // --- Anime.js Grid Formation Logic ---
+        const ROWS = 5;
+        const COLS = 5;
+
+        function createBlocks() {
+            if (!visual || !profileImg) return;
+
+            // 1. Check if Anime.js is actually loaded
+            // If not loaded, we just return, leaving the image visible (opacity: 1 in CSS)
+            if (typeof anime === 'undefined') {
+                console.warn('Anime.js not loaded, skipping animation.');
+                return;
+            }
+
+            const existing = visual.querySelector('.image-blocks-container');
+            if (existing) existing.remove();
+
+            // Ensure image is ready before building
+            if (!profileImg.complete) {
+                profileImg.onload = createBlocks;
+                return;
+            }
+
+            // 2. Prepare for animation (HIDE original image)
+            // We do this via class to ensure we can revert easily
+            visual.classList.remove('blocks-complete');
+            visual.classList.add('blocks-active');
+
+            const blocksContainer = document.createElement('div');
+            blocksContainer.className = 'image-blocks-container';
+            const imgSrc = profileImg.src;
+            visual.appendChild(blocksContainer);
+
+            // Create 5x5 grid
+            for (let i = 0; i < ROWS * COLS; i++) {
+                const block = document.createElement('div');
+                block.className = 'image-block';
+                block.style.backgroundImage = `url(${imgSrc})`;
+
+                const r = Math.floor(i / COLS);
+                const c = i % COLS;
+
+                const posX = (c / (COLS - 1)) * 100;
+                const posY = (r / (ROWS - 1)) * 100;
+
+                block.style.backgroundPosition = `${posX}% ${posY}%`;
+                blocksContainer.appendChild(block);
+            }
+
+            // Anime.js Stagger Animation
+            anime({
+                targets: '.image-block',
+                scale: [0, 1],
+                opacity: [0, 1],
+                delay: anime.stagger(100, { grid: [ROWS, COLS], from: 'center' }),
+                duration: 800,
+                easing: 'easeInOutQuad',
+                complete: () => {
+                    visual.classList.remove('blocks-active');
+                    visual.classList.add('blocks-complete');
+                    profileImg.classList.add('floating-active');
+                }
+            });
+        }
+
+        // Trigger formation on intersection
+        const blockObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    createBlocks();
+                    blockObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        if (visual) blockObserver.observe(visual);
+
         // 1. Mouse Spotlight Follow
         hero.addEventListener('mousemove', (e) => {
             const rect = hero.getBoundingClientRect();
