@@ -130,14 +130,14 @@ def get_tool_info(tool_name):
 
     if "github" in name_lower or "git" in name_lower:
         return {
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-            "color": "#181717"
+            "icon": "https://cdn.simpleicons.org/github/ffffff",
+            "color": "#ffffff"
         }
         
     if "flask" in name_lower:
         return {
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
-            "color": "#000000"
+            "icon": "https://cdn.simpleicons.org/flask/ffffff",
+            "color": "#ffffff"
         }
 
     if "docker" in name_lower:
