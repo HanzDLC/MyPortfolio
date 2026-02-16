@@ -2425,3 +2425,66 @@ body.menu-open {
     transition: none !important;
   }
 }
+
+/* Background Animation Styles */
+#background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Behind all content */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scattered-cube {
+  position: absolute;
+  opacity: 0.15;
+  /* Reduced for less distraction */
+  mix-blend-mode: screen;
+  /* Best for glowing effects on dark backgrounds */
+  filter: contrast(1.1) brightness(0.9);
+  /* Subtle details */
+  animation: float-cube 10s infinite ease-in-out alternate;
+}
+
+@keyframes float-cube {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Global Cursor Spotlight */
+#global-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  /* Just above standard content for subtle overlay */
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(67, 97, 238, 0.08),
+      transparent 80%);
+  opacity: 0.6;
+  /* Ensure subtlety */
+  mix-blend-mode: screen;
+  /* Or overlay, to lighten content underneath */
+  transition: opacity 0.3s ease;
+}
+
+/* Make Featured Projects Hero Opaque */
+.projects-hero {
+  background-color: var(--bg-color);
+  position: relative;
+  z-index: 1;
+  padding: 100px 0;
+  /* Add padding to match typical hero spacing */
+}

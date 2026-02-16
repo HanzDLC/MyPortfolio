@@ -149,8 +149,14 @@
     </footer>
     {% endblock %}
 
+    <!-- Background Container -->
+    <div id="background-container" data-image-path="{{ url_for('static', filename='images/cube.gif') }}"></div>
+    <!-- Global Spotlight -->
+    <div id="global-spotlight"></div>
+
     <!-- JavaScript Files -->
     <script src="{{url_for('static', filename='js/navigation.js')}}"></script>
+    <script src="{{url_for('static', filename='js/background_animation.js')}}"></script>
     {% block scripts %}{% endblock %}
 
 </body>
