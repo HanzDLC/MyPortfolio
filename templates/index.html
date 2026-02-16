@@ -76,24 +76,9 @@
     <h3 class="section-title" data-reveal="fade-up">Skills</h3>
     <div class="skills-grid" data-reveal-children="flip-up">
         {% for skill in skills %}
-        <div class="card" {% if skill.id %}id="{{ skill.id }}"
-            onclick="toggleDropdown(event, '{{ skill.dropdown_id }}', '{{ skill.id }}')"
-            style="cursor: pointer; position: relative;" {% endif %}>
-            <h4>{{ skill.title }} {% if skill.dropdown_items %}<span>▼</span>{% endif %}</h4>
+        <div class="card">
+            <h4>{{ skill.title }}</h4>
             <p>{{ skill.description }}</p>
-
-            {% if skill.dropdown_items %}
-            <!-- Dropdown Menu -->
-            <div id="{{ skill.dropdown_id }}" class="ml-dropdown-menu">
-                {% for item in skill.dropdown_items %}
-                <a href="{{ item.link }}" target="_blank" class="dropdown-item">
-                    <span>{{ item.text }}</span>
-                    {% if item.subtext %}<span style="font-size: 0.8rem; opacity: 0.7;">{{ item.subtext }}</span>{%
-                    endif %}
-                </a>
-                {% endfor %}
-            </div>
-            {% endif %}
         </div>
         {% endfor %}
     </div>
@@ -104,24 +89,9 @@
     <h3 class="section-title" data-reveal="fade-up">What I can do for you</h3>
     <div class="skills-grid" data-reveal-children="zoom-out">
         {% for service in services %}
-        <div class="card" {% if service.id %}id="{{ service.id }}"
-            onclick="toggleDropdown(event, '{{ service.dropdown_id }}', '{{ service.id }}')"
-            style="cursor: pointer; position: relative;" {% endif %}>
-            <h4>{{ service.title }} {% if service.dropdown_items %}<span>▼</span>{% endif %}</h4>
+        <div class="card">
+            <h4>{{ service.title }}</h4>
             <p>{{ service.description }}</p>
-
-            {% if service.dropdown_items %}
-            <!-- Dropdown Menu -->
-            <div id="{{ service.dropdown_id }}" class="ml-dropdown-menu">
-                {% for item in service.dropdown_items %}
-                <a href="{{ item.link }}" target="_blank" class="dropdown-item">
-                    <span>{{ item.text }}</span>
-                    {% if item.subtext %}<span style="font-size: 0.8rem; opacity: 0.7;">{{ item.subtext }}</span>{%
-                    endif %}
-                </a>
-                {% endfor %}
-            </div>
-            {% endif %}
         </div>
         {% endfor %}
     </div>

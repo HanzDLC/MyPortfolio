@@ -1704,6 +1704,34 @@ body.menu-open {
     font-size: 0.75rem;
     padding: 5px 10px;
   }
+
+  /* Center Content for Cards */
+  .card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Footer Mobile Layout */
+  .footer-top .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .meta-social-grid {
+    display: flex;
+    /* Changed from inline-grid for better centering */
+    justify-content: center;
+    gap: 15px;
+  }
 }
 
 /* ===== SMALL MOBILE BREAKPOINT (480px) ===== */
