@@ -445,7 +445,7 @@ nav ul.header-links {
 
 /* SECTIONS (Skills, etc) */
 .section-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 100px auto;
   padding: 0 40px;
   position: relative;
@@ -1124,13 +1124,51 @@ footer {
   max-width: 700px;
 }
 
-/* Projects Grid */
+/* SECTIONS (Skills, etc) */
+.section-container {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+  position: relative;
+  /* Create stacking context */
+  z-index: 50;
+  /* Ensure it stays above sticky sections */
+}
+
+/* ... existing code ... */
+
+/* Projects Grid - Horizontal Scroll */
 .projects-grid {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 30px;
+  padding-bottom: 20px;
+  /* Space for scrollbar */
   margin-bottom: 60px;
+  justify-content: flex-start;
+  /* Align to start of scroll */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Scrollbar for Projects Grid */
+.projects-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb:hover {
+  background: #5a4bda;
 }
 
 /* Project Card */
@@ -1142,9 +1180,9 @@ footer {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
-  flex: 0 1 350px;
-  /* Base width 350px, allow shrink but limited grow */
-  min-width: 300px;
+  flex: 0 0 350px;
+  /* Fixed width, no shrink, no grow */
+  width: 350px;
 }
 
 .project-card:hover {
