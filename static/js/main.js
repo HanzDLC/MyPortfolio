@@ -137,6 +137,22 @@ function initGalleryScroll() {
     });
 }
 
+// ===== PROJECT GRID HORIZONTAL SCROLL =====
+
+function initProjectsScroll() {
+    const projectGrids = document.querySelectorAll('.projects-grid');
+    if (projectGrids.length === 0) return;
+
+    projectGrids.forEach(grid => {
+        grid.addEventListener('wheel', (evt) => {
+            // Prevent default vertical scroll
+            evt.preventDefault();
+            // Scroll horizontally instead
+            grid.scrollLeft += evt.deltaY * 3.0;
+        }, { passive: false });
+    });
+}
+
 // ===== CERTIFICATIONS SCROLL =====
 
 function initCertificationsScroll() {
@@ -285,6 +301,7 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     initGalleryScroll();
+    initProjectsScroll();
     initCertificationsScroll();
 
     // Persist Modal State on Refresh
