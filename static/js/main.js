@@ -145,9 +145,14 @@ function initProjectsScroll() {
 
     projectGrids.forEach(grid => {
         grid.addEventListener('wheel', (evt) => {
-            // Prevent default vertical scroll
+            if ((grid.scrollLeft === 0 && evt.deltaY < 0) ||
+                (Math.ceil(grid.scrollLeft + grid.clientWidth) >= grid.scrollWidth && evt.deltaY > 0)) {
+                // Allow vertical scroll if at boundaries
+                return;
+            }
+
+            // Otherwise prevent vertical scroll and scroll horizontally
             evt.preventDefault();
-            // Scroll horizontally instead
             grid.scrollLeft += evt.deltaY * 3.0;
         }, { passive: false });
     });
