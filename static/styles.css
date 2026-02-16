@@ -1535,11 +1535,16 @@ body.menu-open {
     width: 100%;
     box-sizing: border-box;
     margin: 0;
+    align-items: center;
+    /* Crucial for centering flex children */
+    justify-content: center;
   }
 
   .hero-content {
     max-width: 100%;
     padding: 0 10px;
+    margin: 0 auto;
+    /* Ensure block centering */
   }
 
   .hero-title {
@@ -1751,16 +1756,21 @@ body.menu-open {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 40px;
+    justify-items: center;
+    /* Center grid items */
   }
 
   .footer-column {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    /* Ensure full width for centering context */
   }
 
   .actions-col {
     align-items: center;
+    width: 100%;
   }
 
   .meta-social-grid {
@@ -1768,6 +1778,8 @@ body.menu-open {
     /* Changed from inline-grid for better centering */
     justify-content: center;
     gap: 15px;
+    margin: 0 auto;
+    /* Explicit auto margins */
   }
 }
 
