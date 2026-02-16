@@ -177,7 +177,25 @@ function initCertificationsScroll() {
 
     let horizontalDistance = 0;
     let scrollRange = 1;
+    let sectionTop = 0;
     let ticking = false;
+    let lastKnownScrollY = 0;
+    let lastTranslateX = null;
+    let lastActiveIndex = -1;
+    const itemCount = certItems.length;
+
+    function setActiveIndex(index) {
+        if (index === lastActiveIndex) return;
+
+        if (lastActiveIndex >= 0) {
+            if (dots[lastActiveIndex]) dots[lastActiveIndex].classList.remove('active');
+            certItems[lastActiveIndex].classList.remove('active-card');
+        }
+
+        if (dots[index]) dots[index].classList.add('active');
+        certItems[index].classList.add('active-card');
+        lastActiveIndex = index;
+    }
 
     function calculateMetrics() {
         const viewportWidth = window.innerWidth;
@@ -190,39 +208,37 @@ function initCertificationsScroll() {
         // Keeps sticky behavior predictable and scales with real content width.
         const targetHeight = Math.max(viewportHeight + horizontalDistance, viewportHeight * 1.5);
         stickySection.style.height = `${Math.ceil(targetHeight)}px`;
+        sectionTop = stickySection.getBoundingClientRect().top + window.pageYOffset;
         scrollRange = Math.max(1, stickySection.offsetHeight - viewportHeight);
     }
 
-    function updateActiveState(percentage) {
-        const clamped = Math.max(0, Math.min(1, percentage));
-        const itemCount = certItems.length;
-        const activeIndex = Math.min(Math.floor(clamped * itemCount), itemCount - 1);
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
-        certItems.forEach((cert, i) => cert.classList.toggle('active-card', i === activeIndex));
-    }
-
-    function updateScroll() {
-        const sectionTop = stickySection.getBoundingClientRect().top + window.pageYOffset;
-        const scrolledInto = window.scrollY - sectionTop;
+    function updateScroll(scrollY) {
+        const scrolledInto = scrollY - sectionTop;
+        let percentage;
 
         if (scrolledInto <= 0) {
-            horizontalTrack.style.transform = 'translateX(0px)';
-            updateActiveState(0);
+            percentage = 0;
         } else if (scrolledInto >= scrollRange) {
-            horizontalTrack.style.transform = `translateX(-${horizontalDistance}px)`;
-            updateActiveState(1);
+            percentage = 1;
         } else {
-            const percentage = scrolledInto / scrollRange;
-            const x = percentage * horizontalDistance;
-            horizontalTrack.style.transform = `translateX(-${x}px)`;
-            updateActiveState(percentage);
+            percentage = scrolledInto / scrollRange;
         }
+
+        const x = percentage * horizontalDistance;
+        if (x !== lastTranslateX) {
+            horizontalTrack.style.transform = `translate3d(-${x}px, 0, 0)`;
+            lastTranslateX = x;
+        }
+
+        const activeIndex = Math.min(Math.floor(percentage * itemCount), itemCount - 1);
+        setActiveIndex(activeIndex);
         ticking = false;
     }
 
     function requestUpdate() {
+        lastKnownScrollY = window.scrollY || window.pageYOffset;
         if (!ticking) {
-            requestAnimationFrame(updateScroll);
+            requestAnimationFrame(() => updateScroll(lastKnownScrollY));
             ticking = true;
         }
     }
@@ -262,8 +278,7 @@ function initCertificationsScroll() {
     // Dot click: maps dot index to scroll position using identical math
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            const sectionTop = stickySection.getBoundingClientRect().top + window.pageYOffset;
-            const targetPercentage = index / Math.max(certItems.length - 1, 1);
+            const targetPercentage = index / Math.max(itemCount - 1, 1);
             window.scrollTo({
                 top: sectionTop + (targetPercentage * scrollRange),
                 behavior: 'smooth'
