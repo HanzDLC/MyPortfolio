@@ -178,6 +178,8 @@ function initCertificationsScroll() {
     let horizontalDistance = 0;
     let scrollRange = 1;
     let sectionTop = 0;
+    let isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+    let scrollStepPx = isMobileViewport ? 2 : 1;
     let ticking = false;
     let lastKnownScrollY = 0;
     let lastTranslateX = null;
@@ -200,6 +202,8 @@ function initCertificationsScroll() {
     function calculateMetrics() {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
+        isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+        scrollStepPx = isMobileViewport ? 2 : 1;
 
         // Distance the horizontal track needs to travel.
         horizontalDistance = Math.max(0, horizontalTrack.scrollWidth - viewportWidth);
@@ -224,8 +228,12 @@ function initCertificationsScroll() {
             percentage = scrolledInto / scrollRange;
         }
 
-        const x = percentage * horizontalDistance;
-        if (x !== lastTranslateX) {
+        let x = percentage * horizontalDistance;
+        if (scrollStepPx > 1) {
+            x = Math.round(x / scrollStepPx) * scrollStepPx;
+        }
+
+        if (lastTranslateX === null || Math.abs(x - lastTranslateX) >= 0.5) {
             horizontalTrack.style.transform = `translate3d(-${x}px, 0, 0)`;
             lastTranslateX = x;
         }

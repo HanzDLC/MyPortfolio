@@ -1038,6 +1038,8 @@ footer {
   padding-left: 15vw !important;
   padding-right: 15vw !important;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   align-items: center;
 }
 
@@ -1054,7 +1056,7 @@ footer {
   flex-direction: row !important;
   align-items: center !important;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
-  transition: all 0.5s ease-out;
+  transition: border-color 0.22s ease-out, box-shadow 0.22s ease-out, transform 0.22s ease-out;
   cursor: pointer;
 }
 
@@ -1668,6 +1670,7 @@ body.menu-open {
     gap: 30px !important;
     padding-left: 5vw !important;
     padding-right: 5vw !important;
+    transform: translate3d(0, 0, 0);
   }
 
   .cert-item {
@@ -1676,6 +1679,16 @@ body.menu-open {
     min-height: 50vh !important;
     flex-direction: column !important;
     padding: 20px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35) !important;
+    transition: border-color 0.16s linear, box-shadow 0.16s linear !important;
+  }
+
+  .cert-item.active-card {
+    box-shadow: 0 0 0 1px rgba(67, 97, 238, 0.35) !important;
+  }
+
+  .cert-item:hover {
+    transform: none;
   }
 
   .cert-item img {
@@ -1710,6 +1723,11 @@ body.menu-open {
   .dot {
     width: 10px;
     height: 10px;
+  }
+
+  .dot.active {
+    transform: none;
+    box-shadow: none;
   }
 
   /* Modal */

@@ -105,7 +105,8 @@
             <div class="horizontal-track">
                 {% for cert in certifications %}
                 <div class="cert-item">
-                    <img src="{{ url_for('static', filename=cert.image) }}" alt="{{ cert.title }}">
+                    <img src="{{ url_for('static', filename=cert.image) }}" alt="{{ cert.title }}" loading="lazy"
+                        decoding="async" fetchpriority="low">
                     <div class="cert-info">
                         <h4>{{ cert.title }}</h4>
                         <p>{{ cert.description }}</p>
