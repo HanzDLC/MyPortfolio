@@ -124,7 +124,7 @@ def get_tool_info(tool_name):
         
     if "seaborn" in name_lower:
         return {
-            "icon": "https://seaborn.pydata.org/_static/logo-mark-lightbg.svg",
+            "icon": "https://cdn.jsdelivr.net/gh/mwaskom/seaborn@v0.13.2/doc/_static/logo-mark-lightbg.svg",
             "color": "#4c72b0"
         }
 
