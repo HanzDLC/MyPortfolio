@@ -131,7 +131,7 @@ def get_projects():
             "projects": [
                 {
                     "id": "proj-matrix-match",
-                    "title": "Matrix Match",
+                    "title": "MatrixMatch",
                     "card_description": "A machine learning project that compares software system features and creates detailed comparison matrices based on user input.",
                     "tags": ["Python", "Machine Learning", "Flask"],
                     "image": None,
