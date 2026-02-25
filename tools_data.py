@@ -152,6 +152,12 @@ def get_tool_info(tool_name):
             "color": "#4479a1"
         }
 
+    if "mongodb" in name_lower or "mongo db" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+            "color": "#47a248"
+        }
+
     # Miscellaneous Logic / Fallbacks
     if "base44" in name_lower:
          return {
@@ -203,6 +209,7 @@ def get_all_tools_with_icons():
         "CSS",
         "Flask",
         "MySQL",
+        "MongoDB",
         "Pandas",
         "NumPy",
         "Matplotlib",

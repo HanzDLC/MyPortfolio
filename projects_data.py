@@ -2,6 +2,53 @@
 def get_projects():
     return [
         {
+            "category": "Web Development / MVP Creation",
+            "icon_svg": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/><path d="M12 18v2"/><path d="M8 10l-2 2 2 2"/><path d="M16 10l2 2-2 2"/></svg>""",
+            "projects": [
+                {
+                    "id": "mvp-school-mis-modal",
+                    "category_id": "mvp-school-mis",
+                    "title": "School MIS & ECR System (Ongoing MVP)",
+                    "card_description": "Ongoing web-based school MIS MVP centralizing accounting transparency, audit trails, DepEd-aligned ECR grading, and core school setup workflows in one integrated system.",
+                    "modal_description": "Ongoing MVP development of a school MIS platform covering accounting transparency, audit trail support, DepEd-aligned ECR grading, and administrative setup modules (school, subjects, teachers, and grading configs). Disclaimer: all screenshots use test data in a testing environment (not production).",
+                    "tags": ["Base44", "ChatGPT", "n8n", "MongoDB", "MIS", "MVP"],
+                    "image": "images/MVP Project/MVP_Dashboard.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/MVP Project/MVP_Dashboard.png", "alt": "MVP MIS Dashboard (Test Data)"},
+                        {"path": "images/MVP Project/MVP_ECR.png", "alt": "Electronic Class Record (ECR) Module (Test Data)"},
+                        {"path": "images/MVP Project/MVP_Accounting1.png", "alt": "Accounting Module View 1 (Test Data)"},
+                        {"path": "images/MVP Project/MVP_Accounting2.png", "alt": "Accounting Module View 2 (Test Data)"}
+                    ],
+                    "problem": """<p>The school process relied on manual and fragmented workflows, which caused delays, missing records, and inconsistent tracking. Key pain points included:</p><ul><li>Manual tracking of accounting trails and audit trails</li><li>Manual grade processing</li><li>Slow system-wide operational processes</li><li>Missing data and incomplete audit visibility</li></ul><p><strong>Disclaimer:</strong> All data shown in the screenshots are test data in a testing environment and are not production data.</p>""",
+                    "tools": ["ChatGPT", "Base44", "n8n Workflow Automation", "MongoDB", "Prompt Engineering"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Problem Mapping:</strong> Identified manual bottlenecks in accounting/audit tracking, grading workflows, and school administrative setup processes."},
+                        {"number": 2, "text": "<strong>MVP Planning & Prompt Engineering:</strong> Prompt-engineered the system behavior and module requirements to accelerate MVP creation and iteration in Base44."},
+                        {"number": 3, "text": "<strong>Core MIS Module Setup:</strong> Built foundational school setup, subject setup, teacher setup, and grading configuration modules for integrated data flow."},
+                        {"number": 4, "text": "<strong>ECR Integration:</strong> Created an Electronic Class Record (ECR) grading system using the same DepEd formula and format so grading workflows stay integrated in one system."},
+                        {"number": 5, "text": "<strong>Process Support & Transparency:</strong> Implemented accounting process handling focused on improving transparency and supporting audit trail visibility."},
+                        {"number": 6, "text": "<strong>Automation Support:</strong> Used n8n workflows to support related process automation and operational efficiency during MVP development/testing."}
+                    ],
+                    "features_title": "Modules and Implementations",
+                    "features": [
+                        {"title": "Accounting Transparency", "text": "Implemented MIS workflows to support accounting transparency and process handling within the school system."},
+                        {"title": "Electronic Class Record (ECR)", "text": "Built an integrated grading system module with DepEd-aligned formula and format for centralized grade processing."},
+                        {"title": "Grading Configurations", "text": "Created grading setup/configuration options to standardize grading logic across the system."},
+                        {"title": "School Setup", "text": "Configured foundational school settings to support system-wide initialization and integration."},
+                        {"title": "Subject Setup", "text": "Implemented subject configuration modules for organized academic structure and grading linkage."},
+                        {"title": "Teacher Setup", "text": "Created teacher setup/management modules for assignment and grading workflow integration."},
+                        {"title": "Prompt-Engineered MVP Build", "text": "Used prompt engineering to accelerate system design, feature iteration, and module implementation during development."}
+                    ],
+                    "impact": [
+                        {"value": "Ongoing", "label": "Project Status", "icon_type": "check"},
+                        {"value": "Integrated", "label": "MIS + ECR Workflow", "icon_type": "trend"},
+                        {"value": "Test Env", "label": "Current Environment", "icon_type": "time"}
+                    ]
+                }
+            ]
+        },
+        {
             "category": "n8n Workflow Automation",
             "icon_svg": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>""",
             "projects": [
