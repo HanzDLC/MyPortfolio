@@ -29,5 +29,11 @@ def projects():
     return render_template("projects.html", projects=projects_list)
 
 
+@app.route("/cv")
+@app.route("/documents")
+def documents():
+    return render_template("documents.html")
+
+
 if __name__ in "__main__":
     app.run(debug=True)

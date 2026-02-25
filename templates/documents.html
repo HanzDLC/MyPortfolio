@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% block title %}CV / Resume - Hanz de la Cruz{% endblock %}
+
+{% block body %}
+
+<div class="cv-actions">
+    <button class="cv-btn cv-btn-save" type="button" onclick="saveActiveDocumentAsPDF()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Save as PDF
+    </button>
+    <button class="cv-btn cv-btn-print" type="button" onclick="printActiveDocument()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Print Active
+    </button>
+</div>
+
+<div class="cv-doc-toggle" role="tablist" aria-label="Document type">
+    <button class="cv-btn cv-btn-toggle is-active" type="button" role="tab" aria-selected="true"
+        aria-controls="doc-view-cv" id="toggle-cv" data-doc-target="cv" onclick="switchDocument('cv')">
+        CV
+    </button>
+    <button class="cv-btn cv-btn-toggle" type="button" role="tab" aria-selected="false"
+        aria-controls="doc-view-resume" id="toggle-resume" data-doc-target="resume" onclick="switchDocument('resume')">
+        Resume
+    </button>
+</div>
+
+<section id="doc-view-cv" class="document-view is-active" data-doc-view="cv" role="tabpanel" aria-labelledby="toggle-cv">
+    {% with printable_id='cv-printable', doc_name='CV' %}
+    {% include 'cv_document.html' %}
+    {% endwith %}
+</section>
+
+<section id="doc-view-resume" class="document-view" data-doc-view="resume" role="tabpanel" aria-labelledby="toggle-resume"
+    hidden>
+    {% with printable_id='resume-printable', doc_name='Resume' %}
+    {% include 'resume_document.html' %}
+    {% endwith %}
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    function getActiveDocumentView() {
+        return document.querySelector('.document-view.is-active');
+    }
+
+    function getActivePrintable() {
+        const activeView = getActiveDocumentView();
+        return activeView ? activeView.querySelector('.cv-paper-container') : null;
+    }
+
+    function switchDocument(docType) {
+        const views = document.querySelectorAll('.document-view');
+        const buttons = document.querySelectorAll('.cv-btn-toggle');
+
+        views.forEach(view => {
+            const isActive = view.dataset.docView === docType;
+            view.classList.toggle('is-active', isActive);
+            view.hidden = !isActive;
+        });
+
+        buttons.forEach(button => {
+            const isActive = button.dataset.docTarget === docType;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+    }
+
+    function buildPDFExportNode(sourceEl) {
+        const exportEl = document.createElement('div');
+        exportEl.className = 'cv-pdf-export';
+        exportEl.setAttribute('aria-hidden', 'true');
+        exportEl.style.position = 'fixed';
+        exportEl.style.left = '-10000px';
+        exportEl.style.top = '0';
+        exportEl.style.width = '8in';
+        exportEl.style.maxWidth = '8in';
+        exportEl.style.boxSizing = 'border-box';
+        exportEl.style.background = '#ffffff';
+        exportEl.style.color = '#1a1a1a';
+        exportEl.style.fontFamily = "'Times New Roman', Times, serif";
+        exportEl.style.fontSize = '11pt';
+        exportEl.style.lineHeight = '1.4';
+        exportEl.style.padding = '0.25in 0.6in 0.4in';
+
+        // Flatten on-screen page wrappers so PDF pagination is controlled by html2pdf.
+        const pages = sourceEl.querySelectorAll('.cv-paper');
+        pages.forEach(page => {
+            Array.from(page.children).forEach(child => {
+                exportEl.appendChild(child.cloneNode(true));
+            });
+        });
+
+        exportEl.querySelectorAll('.cv-header, .cv-edu-entry, .cv-skills-grid').forEach(el => {
+            el.style.breakInside = 'avoid';
+            el.style.pageBreakInside = 'avoid';
+        });
+        exportEl.querySelectorAll('.cv-section-title').forEach(el => {
+            el.style.breakAfter = 'avoid-page';
+            el.style.pageBreakAfter = 'avoid';
+        });
+        exportEl.querySelectorAll('.cv-courses li, .cv-skills-col li').forEach(el => {
+            el.style.breakInside = 'avoid';
+            el.style.pageBreakInside = 'avoid';
+        });
+
+        return exportEl;
+    }
+
+    function saveActiveDocumentAsPDF() {
+        const sourceEl = getActivePrintable();
+        const actionsEl = document.querySelector('.cv-actions');
+        const toggleEl = document.querySelector('.cv-doc-toggle');
+
+        if (!sourceEl) {
+            return;
+        }
+
+        const docName = (sourceEl.dataset.docName || 'Document').trim();
+        const fileSafeDocName = docName.replace(/\s+/g, '_');
+
+        actionsEl.style.display = 'none';
+        if (toggleEl) {
+            toggleEl.style.display = 'none';
+        }
+
+        const exportEl = buildPDFExportNode(sourceEl);
+        document.body.appendChild(exportEl);
+
+        const opt = {
+            margin: [0.5, 0.6, 0.5, 0.6],
+            filename: `de la Cruz, Hanz_${fileSafeDocName}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff',
+                windowWidth: exportEl.scrollWidth
+            },
+            jsPDF: {
+                unit: 'in',
+                format: [8, 13],
+                orientation: 'portrait'
+            },
+            pagebreak: {
+                mode: ['css'],
+                avoid: '.cv-header, .cv-edu-entry, .cv-skills-grid'
+            }
+        };
+
+        const cleanup = () => {
+            actionsEl.style.display = '';
+            if (toggleEl) {
+                toggleEl.style.display = '';
+            }
+            if (exportEl.parentNode) {
+                exportEl.parentNode.removeChild(exportEl);
+            }
+        };
+
+        html2pdf().set(opt).from(exportEl).save().then(cleanup).catch(cleanup);
+    }
+
+    function printActiveDocument() {
+        window.print();
+    }
+
+    window.addEventListener('beforeprint', () => {
+        document.querySelectorAll('.site-header, header, footer, .main-footer, .cv-actions, .cv-doc-toggle, #background-container, #global-spotlight').forEach(el => {
+            el.dataset.origDisplay = el.style.display;
+            el.style.display = 'none';
+        });
+
+        const pages = document.querySelectorAll('.document-view.is-active .cv-paper');
+        pages.forEach(page => {
+            page.style.transform = 'none';
+            page.style.width = '100%';
+            page.style.padding = '0';
+            page.style.margin = '0';
+            page.style.boxShadow = 'none';
+            page.style.borderRadius = '0';
+        });
+    });
+
+    window.addEventListener('afterprint', () => {
+        document.querySelectorAll('.site-header, header, footer, .main-footer, .cv-actions, .cv-doc-toggle, #background-container, #global-spotlight').forEach(el => {
+            el.style.display = el.dataset.origDisplay || '';
+        });
+
+        const pages = document.querySelectorAll('.document-view.is-active .cv-paper');
+        pages.forEach(page => {
+            page.style.transform = '';
+            page.style.width = '';
+            page.style.padding = '';
+            page.style.margin = '';
+            page.style.boxShadow = '';
+            page.style.borderRadius = '';
+        });
+    });
+</script>
+{% endblock %}
