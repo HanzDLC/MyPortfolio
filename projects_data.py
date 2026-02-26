@@ -324,6 +324,64 @@ def get_projects():
                 # Matrix Match moved to Machine Learning
 
                 {
+                    "id": "proj-cronjob",
+                    "category_id": "other-cronjob",
+                    "title": "Render Services Keep-Alive",
+                    "card_description": "A scheduled cron job implemented to prevent two Render web services from spinning down when idling.",
+                    "modal_description": "A scheduled cron job to continuously ping two Render web services, preventing them from spinning down during periods of inactivity and avoiding cold starts for users.",
+                    "tags": ["Cron", "Automation", "Web Services"],
+                    "image": "images/Cronjob/Cronjob1.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/Cronjob/Cronjob1.png", "alt": "Render Keep-Alive Cronjob"}
+                    ],
+                    "problem": "<p>Render's free tier web services spin down after a period of inactivity, causing significant delays (cold starts) for the next user who tries to access them. To provide a better user experience, the services needed a way to stay awake passively.</p>",
+                    "tools": ["Cron", "Automation", "HTTP Requests"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Identify Endpoints:</strong> Gathered the active URLs for both Render web services that needed to be kept alive."},
+                        {"number": 2, "text": "<strong>Schedule Pings:</strong> Set up a cron job to send regular HTTP requests to these endpoints before the inactivity timeout is reached."},
+                        {"number": 3, "text": "<strong>Monitor Uptime:</strong> Verified that the services maintain their active state and respond instantly to real user requests without cold starts."}
+                    ],
+                    "features_title": "Project Highlights",
+                    "features": [
+                        {"title": "Automated Keep-Alive", "text": "Prevents web services from entering sleep mode by simulating traffic."},
+                        {"title": "Performance Optimization", "text": "Eliminates annoying cold start load times for end-users."}
+                    ],
+                    "impact": [
+                        {"value": "Active", "label": "Service Status", "icon_type": "check"},
+                        {"value": "0s", "label": "Cold Start Delay", "icon_type": "lightning"}
+                    ]
+                },
+                {
+                    "id": "proj-postgres",
+                    "category_id": "other-postgres",
+                    "title": "Postgres/Supabase Workflow Storage",
+                    "card_description": "Cloud-hosted Postgres database powered by Supabase used for storing and managing automation workflows.",
+                    "modal_description": "Implemented a scalable, cloud-hosted PostgreSQL database using Supabase to store, track, and manage web-hosted automation workflows, providing a reliable backend for continuous data operation.",
+                    "tags": ["PostgreSQL", "Supabase", "Database", "Automation"],
+                    "image": "images/postgres/supabase.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/postgres/supabase.png", "alt": "Supabase Workflow Database"}
+                    ],
+                    "problem": "<p>Automation workflows and their historical execution data needed a reliable, accessible, and structured cloud storage solution. Storing them locally or in unstructured formats led to data silos and difficulties in scaling or retrieving logs.</p>",
+                    "tools": ["PostgreSQL", "Supabase", "Database Design", "Cloud Hosting"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Database Design:</strong> Structured tables in PostgreSQL to efficiently relationalize workflow configs and logs."},
+                        {"number": 2, "text": "<strong>Supabase Integration:</strong> Connected automation tools to the Supabase backend via secure API endpoints."},
+                        {"number": 3, "text": "<strong>Data Management:</strong> Enabled real-time storage and easy retrieval of execution states and workflow metadata."}
+                    ],
+                    "features_title": "Database Capabilities",
+                    "features": [
+                        {"title": "Cloud Reliability", "text": "Robust Postgres hosting with high availability, accessible from any web service."},
+                        {"title": "Structured Data", "text": "Easily queryable formats ensuring fast data ingestion and extraction."}
+                    ],
+                    "impact": [
+                        {"value": "Cloud", "label": "Hosting", "icon_type": "check"},
+                        {"value": "Structured", "label": "Data Format", "icon_type": "trend"}
+                    ]
+                },
+                {
                     "id": "proj-portfolio",
                     "title": "Portfolio Website",
                     "card_description": "This responsive Flask-based portfolio website featuring modern design, smooth animations, and horizontal scroll certifications.",
