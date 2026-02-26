@@ -382,6 +382,35 @@ def get_projects():
                     ]
                 },
                 {
+                    "id": "proj-docker",
+                    "category_id": "other-docker",
+                    "title": "Local Docker Environment",
+                    "card_description": "Local development setup consisting of multi-container Docker deployments for various services.",
+                    "modal_description": "Implemented a local development environment leveraging Docker to containerize and manage multiple services. This setup ensures consistency across development environments and simplifies the deployment process of local applications.",
+                    "tags": ["Docker", "Containerization", "Local Env"],
+                    "image": "images/Docker Setup/containers.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/Docker Setup/containers.png", "alt": "Docker Containers Interface"}
+                    ],
+                    "problem": "<p>Running multiple tools locally requires managing various dependencies and environments, which can lead to configuration conflicts (the 'it works on my machine' problem). Containerizing these applications provides a clean and isolated way to run them.</p>",
+                    "tools": ["Docker", "Docker Desktop", "Container Management"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Container Config:</strong> Pulled necessary Docker images and set up the corresponding configurations for the desired services."},
+                        {"number": 2, "text": "<strong>Environment Execution:</strong> Ran the containers to create an isolated, reproducible local environment."},
+                        {"number": 3, "text": "<strong>Local Service Management:</strong> Monitored container health and managed their execution lifecycle using Docker Desktop."}
+                    ],
+                    "features_title": "Setup Capabilities",
+                    "features": [
+                        {"title": "Isolated Instances", "text": "Services run in separate containers, preventing dependency conflicts."},
+                        {"title": "Reproducible Environments", "text": "Consistent environment setup that can be easily recreated or moved."}
+                    ],
+                    "impact": [
+                        {"value": "Isolated", "label": "Environment", "icon_type": "check"},
+                        {"value": "Containerized", "label": "Deployment", "icon_type": "trend"}
+                    ]
+                },
+                {
                     "id": "proj-portfolio",
                     "title": "Portfolio Website",
                     "card_description": "This responsive Flask-based portfolio website featuring modern design, smooth animations, and horizontal scroll certifications.",
