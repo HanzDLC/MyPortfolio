@@ -158,6 +158,12 @@ def get_tool_info(tool_name):
             "color": "#47a248"
         }
 
+    if "supabase" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+            "color": "#3ecf8e"
+        }
+
     # Miscellaneous Logic / Fallbacks
     if "base44" in name_lower:
          return {
@@ -221,6 +227,7 @@ def get_all_tools_with_icons():
         "Gemini",
         "Antigravity",
         "Docker",
+        "Supabase",
     ]
     results = []
     for tool in showcase_tools:

@@ -359,10 +359,10 @@ def get_projects():
                     "card_description": "Cloud-hosted Postgres database powered by Supabase used for storing and managing automation workflows.",
                     "modal_description": "Implemented a scalable, cloud-hosted PostgreSQL database using Supabase to store, track, and manage web-hosted automation workflows, providing a reliable backend for continuous data operation.",
                     "tags": ["PostgreSQL", "Supabase", "Database", "Automation"],
-                    "image": "images/postgres/supabase.png",
+                    "image": "images/Postgres/supabase.png",
                     "has_modal": True,
                     "gallery": [
-                        {"path": "images/postgres/supabase.png", "alt": "Supabase Workflow Database"}
+                        {"path": "images/Postgres/supabase.png", "alt": "Supabase Workflow Database"}
                     ],
                     "problem": "<p>Automation workflows and their historical execution data needed a reliable, accessible, and structured cloud storage solution. Storing them locally or in unstructured formats led to data silos and difficulties in scaling or retrieving logs.</p>",
                     "tools": ["PostgreSQL", "Supabase", "Database Design", "Cloud Hosting"],
