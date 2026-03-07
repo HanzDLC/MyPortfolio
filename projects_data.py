@@ -58,7 +58,7 @@ def get_projects():
                     "title": "OpenClaw Agentic AI",
                     "card_description": "Set up an OpenClaw AI Agent to autonomously manage, orchestrate, and monitor automation workflows — bringing agentic AI capabilities to workflow management.",
                     "modal_description": "Deployed an OpenClaw Agentic AI system to autonomously manage and orchestrate automation workflows. The agent handles workflow monitoring, execution decisions, and orchestration tasks that would otherwise require manual oversight.",
-                    "tags": ["OpenClaw", "Agentic AI", "Workflow Management", "Automation"],
+                    "tags": ["OpenClaw", "Agentic AI", "Ollama", "Workflow Management", "Automation"],
                     "image": "images/OpenClaw/OpenClaw1.png",
                     "has_modal": True,
                     "gallery": [
