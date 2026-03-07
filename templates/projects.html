@@ -24,102 +24,103 @@
 
 <!-- Projects Content -->
 <div class="section-container">
+    <div class="projects-flex-wrapper">
 
-    {% for category in projects %}
-    {% set cat_index = loop.index0 %}
-    <div class="portfolio-category">
-        <!-- Creative titles based on category index -->
-        {% if cat_index % 3 == 0 %}
-        <h3 class="portfolio-category-title" data-reveal="fade-left">
-            {% elif cat_index % 3 == 1 %}
-            <h3 class="portfolio-category-title" data-reveal="rotate-in">
-                {% else %}
-                <h3 class="portfolio-category-title" data-reveal="zoom">
-                    {% endif %}
-                    <span class="category-icon">
-                        {{ category.icon_svg | safe }}
-                    </span>
-                    {{ category.category }}
-                </h3>
+        {% for category in projects %}
+        {% set cat_index = loop.index0 %}
+        <div class="portfolio-category">
+            <!-- Creative titles based on category index -->
+            {% if cat_index % 3 == 0 %}
+            <h3 class="portfolio-category-title" data-reveal="fade-left">
+                {% elif cat_index % 3 == 1 %}
+                <h3 class="portfolio-category-title" data-reveal="rotate-in">
+                    {% else %}
+                    <h3 class="portfolio-category-title" data-reveal="zoom">
+                        {% endif %}
+                        <span class="category-icon">
+                            {{ category.icon_svg | safe }}
+                        </span>
+                        {{ category.category }}
+                    </h3>
 
-                <!-- Creative card animations based on category -->
-                {% if cat_index == 0 %} <!-- Automation -->
-                <div class="projects-grid" data-reveal-children="flip-up">
-                    {% elif cat_index == 1 %} <!-- Data Viz -->
-                    <div class="projects-grid" data-reveal-children="zoom-out">
-                        {% elif cat_index == 2 %} <!-- Google Sheets -->
-                        <div class="projects-grid" data-reveal-children="fade-up">
-                            {% else %} <!-- Other -->
-                            <div class="projects-grid" data-reveal-children="zoom">
-                                {% endif %}
-                                {% for project in category.projects %}
-                                <div class="project-card {% if project.has_modal or project.container_link %}clickable{% endif %}"
-                                    {% if project.has_modal %}
-                                    onclick="openModal('{{ project.id }}', '{{ project.category_id }}')"
-                                    {% elif project.container_link %}
-                                    onclick="window.location.href='{{ project.container_link }}'"
-                                    role="link"
-                                    tabindex="0"
-                                    onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();window.location.href='{{ project.container_link }}';}"
-                                    {% endif %}>
-                                    <div class="project-image {% if project.image %}has-img{% endif %}">
-                                        {% if project.image %}
-                                        <img src="{{ url_for('static', filename=project.image) }}"
-                                            alt="{{ project.title }}">
-                                        {% else %}
-                                        <div class="project-placeholder">
-                                            {{ project.placeholder_icon | safe }}
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>{{ project.title }}</h3>
-                                        <p>{{ project.card_description }}</p>
-                                        <div class="tech-tags">
-                                            {% for tag in project.tags %}
-                                            <span class="tech-tag">{{ tag }}</span>
-                                            {% endfor %}
-                                        </div>
+                    <!-- Creative card animations based on category -->
+                    {% if cat_index == 0 %} <!-- Automation -->
+                    <div class="projects-grid" data-reveal-children="flip-up">
+                        {% elif cat_index == 1 %} <!-- Data Viz -->
+                        <div class="projects-grid" data-reveal-children="zoom-out">
+                            {% elif cat_index == 2 %} <!-- Google Sheets -->
+                            <div class="projects-grid" data-reveal-children="fade-up">
+                                {% else %} <!-- Other -->
+                                <div class="projects-grid" data-reveal-children="zoom">
+                                    {% endif %}
+                                    {% for project in category.projects %}
+                                    <div class="project-card {% if project.has_modal or project.container_link %}clickable{% endif %}"
                                         {% if project.has_modal %}
-                                        <span class="view-gallery-hint">Click to view details →</span>
-                                        {% endif %}
-                                        {% if project.notebook_link %}
-                                        <div class="project-links">
-                                            <a href="{{ project.notebook_link }}" target="_blank"
-                                                onclick="event.stopPropagation()"
-                                                class="project-link notebook-link" style="color: #fca311;">
-                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                                    <path
-                                                        d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z">
-                                                    </path>
-                                                </svg>
-                                                Notebook
-                                            </a>
+                                        onclick="openModal('{{ project.id }}', '{{ project.category_id }}')" {% elif
+                                        project.container_link %}
+                                        onclick="window.location.href='{{ project.container_link }}'" role="link"
+                                        tabindex="0"
+                                        onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();window.location.href='{{ project.container_link }}';}"
+                                        {% endif %}>
+                                        <div class="project-image {% if project.image %}has-img{% endif %}">
+                                            {% if project.image %}
+                                            <img src="{{ url_for('static', filename=project.image) }}"
+                                                alt="{{ project.title }}">
+                                            {% else %}
+                                            <div class="project-placeholder">
+                                                {{ project.placeholder_icon | safe }}
+                                            </div>
+                                            {% endif %}
                                         </div>
-                                        {% endif %}
-                                        {% if project.link %}
-                                        <div class="project-links">
-                                            <a href="{{ project.link }}" target="_blank"
-                                                onclick="event.stopPropagation()" class="project-link">
-                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                                                </svg>
-                                                GitHub
-                                            </a>
+                                        <div class="project-content">
+                                            <h3>{{ project.title }}</h3>
+                                            <p>{{ project.card_description }}</p>
+                                            <div class="tech-tags">
+                                                {% for tag in project.tags %}
+                                                <span class="tech-tag">{{ tag }}</span>
+                                                {% endfor %}
+                                            </div>
+                                            {% if project.has_modal %}
+                                            <span class="view-gallery-hint">Click to view details →</span>
+                                            {% endif %}
+                                            {% if project.notebook_link %}
+                                            <div class="project-links">
+                                                <a href="{{ project.notebook_link }}" target="_blank"
+                                                    onclick="event.stopPropagation()" class="project-link notebook-link"
+                                                    style="color: #fca311;">
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                                        <path
+                                                            d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z">
+                                                        </path>
+                                                    </svg>
+                                                    Notebook
+                                                </a>
+                                            </div>
+                                            {% endif %}
+                                            {% if project.link %}
+                                            <div class="project-links">
+                                                <a href="{{ project.link }}" target="_blank"
+                                                    onclick="event.stopPropagation()" class="project-link">
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                                    </svg>
+                                                    GitHub
+                                                </a>
+                                            </div>
+                                            {% endif %}
                                         </div>
-                                        {% endif %}
                                     </div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
                             </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
 
-                    </div>
+                        </div> <!-- end projects-flex-wrapper -->
+                    </div> <!-- end section-container -->
 
                     <!-- Modals -->
                     {% for category in projects %}

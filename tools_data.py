@@ -183,6 +183,18 @@ def get_tool_info(tool_name):
             "color": "#217346"
         }
 
+    if "openclaw" in name_lower:
+        return {
+            "icon": "https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openclaw.svg",
+            "color": "#ff6b35"
+        }
+
+    if "ollama" in name_lower:
+        return {
+            "icon": "https://ollama.com/public/ollama.png",
+            "color": "#ffffff"
+        }
+
     # If no match found
     return {
         "icon": None,
@@ -228,6 +240,8 @@ def get_all_tools_with_icons():
         "Antigravity",
         "Docker",
         "Supabase",
+        "OpenClaw",
+        "Ollama",
     ]
     results = []
     for tool in showcase_tools:
