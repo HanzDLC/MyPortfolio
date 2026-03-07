@@ -49,6 +49,44 @@ def get_projects():
             ]
         },
         {
+            "category": "Agentic AI",
+            "icon_svg": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1a2 2 0 0 1 2 2v1a4 4 0 0 1-1.17 2.83L12 18l-4.83-5.17A4 4 0 0 1 6 10V9a2 2 0 0 1 2-2V6a4 4 0 0 1 4-4z"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/><path d="M8 22h8"/><path d="M12 18v4"/></svg>""",
+            "projects": [
+                {
+                    "id": "openclaw-modal",
+                    "category_id": "agentic-ai-openclaw",
+                    "title": "OpenClaw Agentic AI",
+                    "card_description": "Set up an OpenClaw AI Agent to autonomously manage, orchestrate, and monitor automation workflows — bringing agentic AI capabilities to workflow management.",
+                    "modal_description": "Deployed an OpenClaw Agentic AI system to autonomously manage and orchestrate automation workflows. The agent handles workflow monitoring, execution decisions, and orchestration tasks that would otherwise require manual oversight.",
+                    "tags": ["OpenClaw", "Agentic AI", "Workflow Management", "Automation"],
+                    "image": "images/OpenClaw/OpenClaw1.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/OpenClaw/OpenClaw1.png", "alt": "OpenClaw Agentic AI Setup"},
+                        {"path": "images/OpenClaw/OpenClaw2.png", "alt": "OpenClaw Agentic AI Workflow Management"}
+                    ],
+                    "problem": """<p>Managing multiple automation workflows required constant manual oversight and intervention. Key challenges included:</p><ul><li>Manually monitoring workflow execution status and health</li><li>Deciding when and how to trigger, retry, or adjust workflows</li><li>Coordinating between multiple automation pipelines</li><li>Lack of an intelligent layer that could autonomously manage workflows end-to-end</li></ul><p>An agentic AI solution was needed to act as an autonomous manager over the entire workflow ecosystem.</p>""",
+                    "tools": ["OpenClaw", "Agentic AI", "Workflow Orchestration", "Automation Management"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Agent Setup:</strong> Configured the OpenClaw Agentic AI environment and connected it to existing automation workflows."},
+                        {"number": 2, "text": "<strong>Workflow Integration:</strong> Linked the agent to manage and monitor active automation pipelines and their execution states."},
+                        {"number": 3, "text": "<strong>Autonomous Management:</strong> The agent autonomously orchestrates workflow execution, handling decisions, retries, and pipeline coordination without manual intervention."}
+                    ],
+                    "features_title": "Key Capabilities",
+                    "features": [
+                        {"title": "Autonomous Orchestration", "text": "The AI agent manages workflow execution autonomously, reducing the need for manual monitoring and intervention."},
+                        {"title": "Intelligent Decision Making", "text": "Uses agentic reasoning to make real-time decisions about workflow execution, retries, and error handling."},
+                        {"title": "Centralized Management", "text": "Provides a single intelligent layer to oversee and coordinate multiple automation pipelines."}
+                    ],
+                    "impact": [
+                        {"value": "Autonomous", "label": "Workflow Mgmt", "icon_type": "check"},
+                        {"value": "Centralized", "label": "Orchestration", "icon_type": "trend"},
+                        {"value": "24/7", "label": "Monitoring", "icon_type": "time"}
+                    ]
+                }
+            ]
+        },
+        {
             "category": "n8n Workflow Automation",
             "icon_svg": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>""",
             "projects": [
@@ -121,9 +159,44 @@ def get_projects():
                         {"title": "Retry Logic", "text": "Automatically retries failed Google Sheets API calls with exponential backoff for rate limiting"}
                     ],
                     "impact": [
-                        {"value": "--", "label": "Time Saved Per Report", "icon_type": "time"},
-                        {"value": "--", "label": "Accuracy Improvement", "icon_type": "trend"},
-                        {"value": "--", "label": "Reports Processed", "icon_type": "check"}
+                        {"value": "1-2 hrs", "label": "Saved Per Day", "icon_type": "time"},
+                        {"value": "100%", "label": "Accuracy Improvement", "icon_type": "trend"},
+                        {"value": "Automated", "label": "Log Entry Process", "icon_type": "check"}
+                    ]
+                },
+                {
+                    "id": "n8n-modal-3",
+                    "category_id": "n8n-daily-logs",
+                    "title": "Daily Logs Automation",
+                    "card_description": "Automated daily log tracker that pulls the day's issues, summarizes tasks and bugs, and generates a structured daily log sheet — saving at least an hour of manual work each day.",
+                    "modal_description": "An n8n workflow automation that automatically populates and summarizes daily tasks and bugs into a structured Google Sheets log. It retrieves the day's issues, generates a summary via AI, and creates a new sheet tab formatted as 'Day ## (Month Day, Year)' — eliminating the need for manual copy-pasting and tracking.",
+                    "tags": ["n8n", "Google Sheets API", "Gemini AI", "Automation"],
+                    "image": "images/Automation/Daily Logs Automation.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/Automation/Daily Logs Automation.png", "alt": "Daily Logs Automation Workflow"},
+                        {"path": "images/Automation/Daily Logs Automation2.png", "alt": "Daily Logs Automation Workflow (Continued)"}
+                    ],
+                    "problem": """<p>At the end of each workday, the team had to manually summarize and track all the bugs found and tasks completed. This involved:</p><ul><li>Reviewing all issues logged throughout the day</li><li>Manually copying and pasting issue details into a summary sheet</li><li>Formatting the daily log with the correct date and day count</li><li>Tracking what was done for the day across the team</li></ul><p>This repetitive process consumed at least <strong>1 hour per day</strong> and was prone to missed entries and inconsistent formatting.</p>""",
+                    "tools": ["n8n Workflow Automation", "Google Sheets API", "Google Gemini AI", "HTTP Requests", "JavaScript (Code Nodes)", "Schedule Trigger"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Scheduled Trigger:</strong> A schedule trigger fires automatically at the end of each workday to initiate the daily log generation."},
+                        {"number": 2, "text": "<strong>Duplicate Template Tab:</strong> An HTTP request duplicates the template sheet tab in Google Sheets, creating a new sheet named with the format 'Day ## (Month Day, Year)'."},
+                        {"number": 3, "text": "<strong>Obtain Day's Issues:</strong> The workflow fetches all issues and tasks logged for that day via HTTP requests and the Google Sheets API."},
+                        {"number": 4, "text": "<strong>AI Summarization:</strong> The collected issues are passed to a Google Gemini AI agent which summarizes the day's bugs and tasks into a structured daily log format."},
+                        {"number": 5, "text": "<strong>Store & Append:</strong> The AI-generated summaries are stored as structured JSON arrays and appended as rows into the newly created daily log sheet."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Fully Automated", "text": "Runs on a schedule trigger with zero manual intervention — the entire log is created end-to-end automatically."},
+                        {"title": "AI-Powered Summaries", "text": "Uses Google Gemini to intelligently summarize issues and tasks into concise, readable daily log entries."},
+                        {"title": "Dynamic Sheet Creation", "text": "Automatically duplicates a template tab and names it with the correct day number and date format."},
+                        {"title": "Memory-Enabled AI Agent", "text": "The AI agent uses Simple Memory to maintain context across daily log generations for consistent formatting."}
+                    ],
+                    "impact": [
+                        {"value": "1+ hr", "label": "Saved Per Day", "icon_type": "time"},
+                        {"value": "100%", "label": "Automated", "icon_type": "trend"},
+                        {"value": "0", "label": "Manual Steps", "icon_type": "lightning"}
                     ]
                 }
             ]
