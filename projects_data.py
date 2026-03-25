@@ -53,10 +53,11 @@ def get_projects():
                     "card_description": "Full-stack car rental app prototype with admin dashboard, booking management, owner verification, and Kanban-style availability scheduling — built with Next.js 16, Prisma 7, and PostgreSQL.",
                     "modal_description": "A full-stack car rental platform prototype featuring an admin workspace for managing car listings, bookings, owners, and customers. Built with Next.js 16 (Turbopack), React 19, Prisma 7 ORM, PostgreSQL, and Tailwind CSS 4 with a custom Material Design-inspired design system.",
                     "tags": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Docker", "Supabase"],
-                    "image": None,
-                    "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-3h8l2 3h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2M5 17v2m14-2v2"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>""",
+                    "image": "images/CarBnb/landing.png",
                     "has_modal": True,
-                    "gallery": [],
+                    "gallery": [
+                        {"path": "images/CarBnb/landing.png", "alt": "CarBnb Landing Page — Rent a car or become a host"}
+                    ],
                     "problem": """<p>Car rental businesses often rely on fragmented tools — spreadsheets for bookings, manual owner verification, and no centralized system for availability and accounting. Key pain points included:</p><ul><li>No centralized platform for managing car listings, bookings, and owner payouts</li><li>Manual availability tracking leading to double-bookings</li><li>Lack of transparency in accounting and commission calculations</li><li>No structured verification workflow for onboarding car owners</li></ul>""",
                     "tools": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Docker", "Supabase"],
                     "workflow": [
