@@ -45,6 +45,41 @@ def get_projects():
                         {"value": "Integrated", "label": "MIS + ECR Workflow", "icon_type": "trend"},
                         {"value": "Test Env", "label": "Current Environment", "icon_type": "time"}
                     ]
+                },
+                {
+                    "id": "carbnb-modal",
+                    "category_id": "carbnb",
+                    "title": "CarBnb — Car Rental Platform",
+                    "card_description": "Full-stack car rental app prototype with admin dashboard, booking management, owner verification, and Kanban-style availability scheduling — built with Next.js 16, Prisma 7, and PostgreSQL.",
+                    "modal_description": "A full-stack car rental platform prototype featuring an admin workspace for managing car listings, bookings, owners, and customers. Built with Next.js 16 (Turbopack), React 19, Prisma 7 ORM, PostgreSQL, and Tailwind CSS 4 with a custom Material Design-inspired design system.",
+                    "tags": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Docker", "Supabase"],
+                    "image": None,
+                    "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-3h8l2 3h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2M5 17v2m14-2v2"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>""",
+                    "has_modal": True,
+                    "gallery": [],
+                    "problem": """<p>Car rental businesses often rely on fragmented tools — spreadsheets for bookings, manual owner verification, and no centralized system for availability and accounting. Key pain points included:</p><ul><li>No centralized platform for managing car listings, bookings, and owner payouts</li><li>Manual availability tracking leading to double-bookings</li><li>Lack of transparency in accounting and commission calculations</li><li>No structured verification workflow for onboarding car owners</li></ul>""",
+                    "tools": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Docker", "Supabase"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Architecture Design:</strong> Designed a full-stack app with Next.js 16 App Router, Prisma 7 ORM with PostgreSQL, and a custom Material Design-inspired design system (\"The Curated Engine\")."},
+                        {"number": 2, "text": "<strong>Database Modeling:</strong> Built 9 interconnected Prisma models covering Users, Owners, CarListings, Bookings, Customers, Availability Rules/Exceptions, Accounting Entries, and Owner Payouts."},
+                        {"number": 3, "text": "<strong>Admin Dashboard:</strong> Created 16 admin pages including dashboard with KPIs, owner management with verification flow, car listing CRUD, booking tracking, customer profiles, and accounting reports."},
+                        {"number": 4, "text": "<strong>Public Interface:</strong> Built landing page with vehicle showcase, listing detail pages, and booking initiation flow for end-user customers."},
+                        {"number": 5, "text": "<strong>Containerization:</strong> Configured multi-stage Docker builds and docker-compose with PostgreSQL for portable local development and deployment."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Admin Workspace", "text": "16 admin pages covering dashboard, owners, listings, bookings, customers, accounting, availability, calendar, reports, and settings."},
+                        {"title": "Owner Verification Flow", "text": "Structured onboarding workflow for car owners with status tracking (Pending → Verified → Active)."},
+                        {"title": "Booking Management", "text": "Full booking lifecycle with reference numbers, date ranges, pricing breakdowns, and payment status tracking."},
+                        {"title": "Availability Engine", "text": "Weekly availability rules and date-specific exceptions with calendar visualization for scheduling management."},
+                        {"title": "Accounting & Payouts", "text": "Financial tracking for booking amounts, platform commission, and owner payout management."},
+                        {"title": "Custom Design System", "text": "Material Design-inspired tokens with primary (#003d9b), surface hierarchy, Manrope/Inter typography, and tonal layering."}
+                    ],
+                    "impact": [
+                        {"value": "Prototype", "label": "Project Status", "icon_type": "check"},
+                        {"value": "16 Pages", "label": "Admin Dashboard", "icon_type": "trend"},
+                        {"value": "9 Models", "label": "Database Schema", "icon_type": "time"}
+                    ]
                 }
             ]
         },
@@ -82,6 +117,75 @@ def get_projects():
                         {"value": "Autonomous", "label": "Workflow Mgmt", "icon_type": "check"},
                         {"value": "Centralized", "label": "Orchestration", "icon_type": "trend"},
                         {"value": "24/7", "label": "Monitoring", "icon_type": "time"}
+                    ]
+                },
+                {
+                    "id": "aria-modal",
+                    "category_id": "aria-ai",
+                    "title": "ARIA — AI Runs It All",
+                    "card_description": "Multi-tenant B2B SaaS platform deploying 5 AI marketing agents (CEO, Content Writer, Email Marketer, Social Manager, Ad Strategist) for developer founders — powered by Claude and orchestrated through Paperclip AI.",
+                    "modal_description": "A full-stack AI marketing team platform for developer founders. ARIA deploys 5 specialized AI agents that autonomously handle GTM strategy, content creation, email campaigns, social media, and ad management. Built with Next.js 14, FastAPI, Supabase, and orchestrated through Paperclip AI with real-time Socket.IO updates.",
+                    "tags": ["Next.js", "FastAPI", "Claude AI", "Paperclip AI", "Supabase", "Socket.IO", "Python", "TypeScript"],
+                    "image": None,
+                    "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 4l2-2"/><path d="M8 4L6 2"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/><path d="M4 12h4"/><path d="M16 12h4"/></svg>""",
+                    "has_modal": True,
+                    "gallery": [],
+                    "problem": """<p>Developer founders building SaaS products often lack marketing expertise and budget for a full marketing team. Key challenges:</p><ul><li>No time or knowledge to execute GTM strategy, content marketing, and paid ads simultaneously</li><li>Hiring a marketing team is expensive and slow for early-stage startups</li><li>Existing AI tools are point solutions — no coordinated multi-agent marketing team</li><li>Marketing outputs need to be consistent with brand voice and strategy across all channels</li></ul>""",
+                    "tools": ["Next.js", "FastAPI", "Claude AI", "Paperclip AI", "Supabase", "Socket.IO", "Python", "TypeScript", "Railway"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Conversational Onboarding:</strong> CEO Agent interviews the founder with 6-8 questions about their product, audience, goals, and brand voice, then generates a structured GTM playbook with 30/60/90 day plans."},
+                        {"number": 2, "text": "<strong>Agent Orchestration:</strong> Paperclip AI manages the 5-agent hierarchy (CEO → Content Writer, Email Marketer, Social Manager, Ad Strategist) with atomic task checkout and budget tracking."},
+                        {"number": 3, "text": "<strong>Content Generation:</strong> Agents produce blog posts, email campaigns, social media content, and ad creatives — all filtered through the tenant's brand voice configuration."},
+                        {"number": 4, "text": "<strong>Real-Time Dashboard:</strong> Next.js dashboard with Kanban board, KPI cards, CEO chat interface, and agent status monitoring via Socket.IO events."},
+                        {"number": 5, "text": "<strong>Automated Workflows:</strong> 5 reusable workflow templates (GTM Launch, Weekly Content, Product Hunt Launch, Strategy Review, Ad Campaign) with cron-scheduled execution."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "5 AI Marketing Agents", "text": "CEO (GTM strategist), Content Writer (blogs, landing pages), Email Marketer (sequences, newsletters), Social Manager (X/LinkedIn/Facebook), Ad Strategist (Meta ads setup guides)."},
+                        {"title": "Conversational GTM Builder", "text": "Onboarding agent interviews founders and generates structured go-to-market playbooks with positioning, messaging pillars, and channel strategy."},
+                        {"title": "Paperclip AI Orchestration", "text": "Distributed agent management with heartbeat invocation, atomic task checkout, org chart hierarchy, and graceful local fallback."},
+                        {"title": "Multi-Tenant Architecture", "text": "Complete tenant isolation via Supabase with per-tenant agent configs, brand voice, ICP profiles, and integration credentials."},
+                        {"title": "Real-Time Dashboard", "text": "Kanban task board, KPI metrics, CEO chat interface, and live agent status updates via Socket.IO."},
+                        {"title": "Zero-API-Key Agents", "text": "Agents use local Claude Code CLI instead of API keys — reducing cost and simplifying developer setup."}
+                    ],
+                    "impact": [
+                        {"value": "5 Agents", "label": "AI Marketing Team", "icon_type": "check"},
+                        {"value": "Multi-Tenant", "label": "Architecture", "icon_type": "trend"},
+                        {"value": "Automated", "label": "GTM Workflows", "icon_type": "time"}
+                    ]
+                },
+                {
+                    "id": "paperclip-modal",
+                    "category_id": "paperclip-orchestration",
+                    "title": "AI Orchestration with Paperclip AI",
+                    "card_description": "Built an AI organization structure using Paperclip AI to coordinate multiple autonomous agents — managing hierarchies, heartbeat scheduling, task delegation, and budget tracking across agent teams.",
+                    "modal_description": "Implemented a multi-agent orchestration layer using Paperclip AI to manage AI agent teams as a virtual organization. The system handles agent registration, org chart hierarchies, heartbeat-based invocation, atomic task checkout, and budget enforcement — enabling coordinated autonomous agent execution.",
+                    "tags": ["Paperclip AI", "Claude AI", "FastAPI", "Python", "Agent Orchestration", "Agentic AI"],
+                    "image": None,
+                    "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>""",
+                    "has_modal": True,
+                    "gallery": [],
+                    "problem": """<p>Running multiple AI agents independently leads to coordination chaos. Without orchestration:</p><ul><li>Agents duplicate work or conflict with each other's outputs</li><li>No central authority to enforce budget limits or rate limiting</li><li>No visibility into which agents are active, idle, or failed</li><li>Task handoffs between agents require manual coordination</li><li>No org chart structure to define reporting relationships and delegation chains</li></ul>""",
+                    "tools": ["Paperclip AI", "Claude AI", "FastAPI", "Python", "Supabase", "Socket.IO"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Agent Registration:</strong> On startup, automatically registers all agents with Paperclip AI — syncing metadata, roles (CMO, general), and heartbeat schedules."},
+                        {"number": 2, "text": "<strong>Org Chart Setup:</strong> Establishes reporting hierarchy (CEO → subordinate agents) in Paperclip to define delegation chains and authority levels."},
+                        {"number": 3, "text": "<strong>Heartbeat Invocation:</strong> Paperclip triggers agents via HTTP callbacks at scheduled intervals, passing context and task assignments through the heartbeat protocol."},
+                        {"number": 4, "text": "<strong>Task Coordination:</strong> Atomic task checkout prevents double-work — when one agent claims a task, others skip it. All actions are logged to Supabase with timestamps."},
+                        {"number": 5, "text": "<strong>Fallback Strategy:</strong> Dual-mode orchestration — primary routing through Paperclip with automatic fallback to local dispatch when the orchestrator is unreachable."}
+                    ],
+                    "features_title": "Orchestration Capabilities",
+                    "features": [
+                        {"title": "Agent Lifecycle Management", "text": "Automatic registration, status tracking (active/running/idle), and metadata synchronization with Paperclip AI."},
+                        {"title": "Org Chart Hierarchy", "text": "Defined reporting relationships enabling delegation chains — CEO agent coordinates and reviews work from subordinate agents."},
+                        {"title": "Atomic Task Checkout", "text": "Prevents duplicate work across agents by ensuring only one agent can claim a given task at a time."},
+                        {"title": "Budget & Rate Enforcement", "text": "Paperclip tracks run costs and enforces budget limits and rate limiting across the agent team."},
+                        {"title": "Graceful Fallback", "text": "Dual-mode dispatch — routes through Paperclip when available, falls back to local execution seamlessly when unreachable."}
+                    ],
+                    "impact": [
+                        {"value": "Coordinated", "label": "Agent Teams", "icon_type": "check"},
+                        {"value": "Zero Conflicts", "label": "Task Management", "icon_type": "trend"},
+                        {"value": "Resilient", "label": "Dual-Mode Dispatch", "icon_type": "time"}
                     ]
                 }
             ]

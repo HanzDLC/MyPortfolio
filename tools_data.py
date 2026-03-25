@@ -183,6 +183,72 @@ def get_tool_info(tool_name):
             "color": "#217346"
         }
 
+    if "next" in name_lower and ("js" in name_lower or "next.js" in name_lower or name_lower == "next.js"):
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+            "color": "#000000"
+        }
+
+    if "react" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+            "color": "#61dafb"
+        }
+
+    if "fastapi" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+            "color": "#009688"
+        }
+
+    if "prisma" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+            "color": "#2d3748"
+        }
+
+    if "tailwind" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+            "color": "#38bdf8"
+        }
+
+    if "socket" in name_lower and "io" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+            "color": "#010101"
+        }
+
+    if "typescript" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+            "color": "#3178c6"
+        }
+
+    if "paperclip" in name_lower:
+        return {
+            "icon": None,
+            "color": "#7c3aed"
+        }
+
+    if "claude" in name_lower:
+        return {
+            "icon": None,
+            "color": "#d97706"
+        }
+
+    if "railway" in name_lower:
+        return {
+            "icon": None,
+            "color": "#0b0d0e"
+        }
+
+    if "vercel" in name_lower:
+        return {
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+            "color": "#000000"
+        }
+
     if "openclaw" in name_lower:
         return {
             "icon": "https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openclaw.svg",
