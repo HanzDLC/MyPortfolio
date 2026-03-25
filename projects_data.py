@@ -161,10 +161,11 @@ def get_projects():
                     "card_description": "Built an AI organization structure using Paperclip AI to coordinate multiple autonomous agents — managing hierarchies, heartbeat scheduling, task delegation, and budget tracking across agent teams.",
                     "modal_description": "Implemented a multi-agent orchestration layer using Paperclip AI to manage AI agent teams as a virtual organization. The system handles agent registration, org chart hierarchies, heartbeat-based invocation, atomic task checkout, and budget enforcement — enabling coordinated autonomous agent execution.",
                     "tags": ["Paperclip AI", "Claude AI", "FastAPI", "Python", "Agent Orchestration", "Agentic AI"],
-                    "image": None,
-                    "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>""",
+                    "image": "images/Paperclip/org_chart.png",
                     "has_modal": True,
-                    "gallery": [],
+                    "gallery": [
+                        {"path": "images/Paperclip/org_chart.png", "alt": "Paperclip AI Org Chart — ARIA Agent Hierarchy"}
+                    ],
                     "problem": """<p>Running multiple AI agents independently leads to coordination chaos. Without orchestration:</p><ul><li>Agents duplicate work or conflict with each other's outputs</li><li>No central authority to enforce budget limits or rate limiting</li><li>No visibility into which agents are active, idle, or failed</li><li>Task handoffs between agents require manual coordination</li><li>No org chart structure to define reporting relationships and delegation chains</li></ul>""",
                     "tools": ["Paperclip AI", "Claude AI", "FastAPI", "Python", "Supabase", "Socket.IO"],
                     "workflow": [
