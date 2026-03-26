@@ -155,8 +155,14 @@
                                     </div>
                                     <div class="gallery-scroll-container">
                                         {% for image in project.gallery %}
+                                        {% if image.path.endswith('.mp4') %}
+                                        <video src="{{ url_for('static', filename=image.path) }}" controls muted
+                                            style="max-height:300px; border-radius:8px; cursor:pointer;">
+                                        </video>
+                                        {% else %}
                                         <img src="{{ url_for('static', filename=image.path) }}" alt="{{ image.alt }}"
                                             onclick="openZoomModal(this)">
+                                        {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>
