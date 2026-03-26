@@ -131,7 +131,9 @@ def get_projects():
                     "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 4l2-2"/><path d="M8 4L6 2"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/><path d="M4 12h4"/><path d="M16 12h4"/></svg>""",
                     "has_modal": True,
                     "gallery": [
-                        {"path": "images/ARIA/virtual-office.png", "alt": "ARIA Virtual Office — 6 AI Agent Rooms (CEO, Meeting, Content Studio, Email Center, Social Hub, Ads)"}
+                        {"path": "images/ARIA/virtual-office.png", "alt": "ARIA Virtual Office — 6 AI Agent Rooms (CEO, Meeting, Content Studio, Email Center, Social Hub, Ads)"},
+                        {"path": "images/ARIA/ceo-chat-email-delegation.png", "alt": "CEO Agent chat — delegating email marketing strategy to the Email Marketer agent for automated sending"},
+                        {"path": "images/ARIA/email-marketer-output.png", "alt": "Email Marketer output — 90-Day Campaign Blueprint auto-sent to client via Gmail integration"}
                     ],
                     "problem": """<p>Developer founders building SaaS products often lack marketing expertise and budget for a full marketing team. Key challenges:</p><ul><li>No time or knowledge to execute GTM strategy, content marketing, and paid ads simultaneously</li><li>Hiring a marketing team is expensive and slow for early-stage startups</li><li>Existing AI tools are point solutions — no coordinated multi-agent marketing team</li><li>Marketing outputs need to be consistent with brand voice and strategy across all channels</li></ul>""",
                     "tools": ["Next.js", "FastAPI", "Claude AI", "Paperclip AI", "Supabase", "Socket.IO", "Python", "TypeScript", "Railway"],
