@@ -49,6 +49,61 @@ def get_skills():
         }
     ]
 
+
+def get_about_content():
+    return {
+        "eyebrow": "About Me",
+        "title": "I like building useful things that make work a little easier.",
+        "intro": [
+            "I am an IT professional who enjoys finding better ways to do things, especially when a process feels too manual, messy, or time-consuming. Most of the work in this portfolio comes from that mindset: make it clearer, make it easier, and make it more useful.",
+            "Lately, I have been working on school system projects, testing workflows, automation, and data-related tasks. I enjoy building things that people can actually use, whether that means organizing information better, speeding up repetitive work, or helping turn raw data into something easier to understand.",
+            "Outside of tech, I also love playing guitar. I have joined a few contests over the years and have been lucky enough to win some of them, which taught me a lot about discipline, creativity, and showing up with confidence."
+        ],
+        "chips": [
+            "Data Work",
+            "Visuals & Reports",
+            "Testing & QA",
+            "Automation",
+            "Web Projects",
+            "AI-Assisted Work",
+            "Claude Code"
+        ],
+        "spotlights": [
+            {
+                "title": "Useful Systems",
+                "text": "I like building systems that solve real day-to-day problems, especially when they help people keep things organized and easier to manage."
+            },
+            {
+                "title": "Less Manual Work",
+                "text": "A lot of my work focuses on cutting down repetitive tasks through simple automation, cleaner tracking, and better workflows."
+            },
+            {
+                "title": "Clear Data Stories",
+                "text": "When I work with data, I want the result to be easy to explain, easy to present, and actually helpful for the people looking at it."
+            },
+            {
+                "title": "Always Learning",
+                "text": "I am still growing, and that is a big part of how I work. I keep learning new tools based on what a project needs and what will genuinely help."
+            },
+            {
+                "title": "Creative Side",
+                "text": "I also enjoy music and playing guitar, and joining contests has helped me grow more confident, creative, and comfortable performing under pressure."
+            }
+        ],
+        "placeholders": [
+            {
+                "label": "About Photo",
+                "caption": "",
+                "image": "images/about/about.jpg",
+                "alt": "Hanz de la Cruz"
+            },
+            {
+                "label": "Project / Work Photo",
+                "caption": "A workspace or project photo can be added here when you are ready."
+            }
+        ]
+    }
+
 def get_services():
     return [
         {
