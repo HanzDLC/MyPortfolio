@@ -62,8 +62,12 @@
                                         tabindex="0"
                                         onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();window.location.href='{{ project.container_link }}';}"
                                         {% endif %}>
-                                        <div class="project-image {% if project.image %}has-img{% endif %}">
-                                            {% if project.image %}
+                                        <div class="project-image {% if project.image or project.thumbnail_video %}has-img{% endif %}">
+                                            {% if project.thumbnail_video %}
+                                            <video src="{{ url_for('static', filename=project.thumbnail_video) }}"
+                                                autoplay muted loop playsinline
+                                                alt="{{ project.title }}"></video>
+                                            {% elif project.image %}
                                             <img src="{{ url_for('static', filename=project.image) }}"
                                                 alt="{{ project.title }}">
                                             {% else %}

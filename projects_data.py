@@ -128,6 +128,7 @@ def get_projects():
                     "modal_description": "A full-stack AI marketing team platform for developer founders. ARIA deploys 5 specialized AI agents that autonomously handle GTM strategy, content creation, email campaigns, social media, and ad management. Built with Next.js 14, FastAPI, Supabase, and orchestrated through Paperclip AI with real-time Socket.IO updates.",
                     "tags": ["Next.js", "FastAPI", "Claude AI", "Paperclip AI", "Supabase", "Socket.IO", "Python", "TypeScript"],
                     "image": "images/ARIA/aria-demo-thumbnail.png",
+                    "thumbnail_video": "Videos/aria-demo.mp4",
                     "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 4l2-2"/><path d="M8 4L6 2"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/><path d="M4 12h4"/><path d="M16 12h4"/></svg>""",
                     "has_modal": True,
                     "gallery": [
