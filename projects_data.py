@@ -195,6 +195,70 @@ def get_projects():
                         {"value": "Zero Conflicts", "label": "Task Management", "icon_type": "trend"},
                         {"value": "Resilient", "label": "Dual-Mode Dispatch", "icon_type": "time"}
                     ]
+                },
+                {
+                    "id": "google-sheet-agent-modal",
+                    "category_id": "agentic-ai-gsheet",
+                    "title": "Google Sheet DTR Agent",
+                    "card_description": "An OpenClaw AI agent that automatically logs Daily Time Records to a Google Sheet via a daily cron job at 11:59 PM PH time — tracking work on the ARIA project through a service account.",
+                    "modal_description": "A quiet, automated data agent deployed on OpenClaw that runs a daily cron job to log DTR entries to a Google Sheet. It tracks work on the ARIA AI marketing SaaS project, writing entries via a service account. The main script is update_dtr_sheet.py — set it and forget it.",
+                    "tags": ["OpenClaw", "Google Sheets API", "Cron", "Python", "Automation"],
+                    "image": "images/OpenClaw/google-sheet-agent.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/OpenClaw/google-sheet-agent.png", "alt": "Google Sheet Agent — OpenClaw Chat showing DTR logging capabilities"}
+                    ],
+                    "problem": """<p>Manually logging daily time records to a Google Sheet is tedious and error-prone:</p><ul><li>Easy to forget logging at the end of a long workday</li><li>Manual entry leads to inconsistent formatting and missed days</li><li>No automated tracking of which project (ARIA) work was done on</li></ul>""",
+                    "tools": ["OpenClaw", "Google Sheets API", "Python", "Cron", "Service Account"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Cron Scheduling:</strong> Runs a daily cron job at 11:59 PM Philippine time to capture the full day's work."},
+                        {"number": 2, "text": "<strong>DTR Entry Generation:</strong> The agent compiles the day's DTR entry and formats it for the Google Sheet."},
+                        {"number": 3, "text": "<strong>Google Sheets Write:</strong> Writes the DTR entry to the target sheet via a service account using <code>update_dtr_sheet.py</code>."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Fully Automated", "text": "Zero manual intervention — the agent logs DTR entries every day without prompting."},
+                        {"title": "Service Account Auth", "text": "Uses a Google service account for secure, headless authentication to the Google Sheets API."},
+                        {"title": "Project Tracking", "text": "Tracks work specifically on the ARIA AI marketing SaaS project."}
+                    ],
+                    "impact": [
+                        {"value": "Daily", "label": "Auto-Logging", "icon_type": "time"},
+                        {"value": "Zero Manual", "label": "DTR Entry", "icon_type": "check"},
+                        {"value": "11:59 PM", "label": "PH Cron Job", "icon_type": "trend"}
+                    ]
+                },
+                {
+                    "id": "dtr-docx-agent-modal",
+                    "category_id": "agentic-ai-dtr",
+                    "title": "DTR Document Generator Agent",
+                    "card_description": "An OpenClaw AI agent that pulls DTR data from Google Sheets and generates formatted SIP Experience Record .docx files — with automatic break deductions, monthly organization, and scheduled daily execution.",
+                    "modal_description": "The DTR agent manages SIP Experience Record .docx generation from Google Sheets data. It pulls from the 'FINAL DTR Log Excel Structure 2026' sheet, applies formatting rules (Arial Narrow 12pt, max 8 dates per file, break deductions), and generates compliant .docx files via generate_dtr_from_sheets.py — running automatically via Windows Task Scheduler at 12:30 AM daily.",
+                    "tags": ["OpenClaw", "Google Sheets API", "Python", "docx", "Task Scheduler"],
+                    "image": "images/OpenClaw/dtr-agent.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/OpenClaw/dtr-agent.png", "alt": "DTR Agent — OpenClaw Chat showing SIP Experience Record generation capabilities"}
+                    ],
+                    "problem": """<p>Generating compliant SIP Experience Record documents manually is time-consuming and error-prone:</p><ul><li>DTR data spread across a Google Sheet needs to be pulled, formatted, and organized monthly</li><li>Break deductions (lunch 12–1 PM, dinner 6–7:30 PM) must be calculated correctly every time</li><li>Documents must follow strict formatting rules (Arial Narrow 12pt, No Spacing, max 8 dates per file)</li><li>Hours need to be formatted as "X hrs Y mins" consistently</li></ul>""",
+                    "tools": ["OpenClaw", "Google Sheets API", "Python", "python-docx", "Windows Task Scheduler", "Service Account"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Data Pull:</strong> Pulls DTR data from the 'FINAL DTR Log Excel Structure 2026' Google Sheet using a service account."},
+                        {"number": 2, "text": "<strong>Rule Application:</strong> Applies DTR rules — max 8 dates per file, monthly organization, lunch and dinner break deductions, and hour formatting as 'X hrs Y mins'."},
+                        {"number": 3, "text": "<strong>Document Generation:</strong> Generates formatted .docx files using <code>generate_dtr_from_sheets.py</code> with Arial Narrow 12pt, No Spacing style."},
+                        {"number": 4, "text": "<strong>Scheduled Execution:</strong> Runs automatically via Windows Task Scheduler at 12:30 AM daily to keep records up to date."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Automated .docx Generation", "text": "Generates SIP Experience Record documents from raw Google Sheets DTR data without manual intervention."},
+                        {"title": "Break Deduction Logic", "text": "Automatically deducts lunch (12–1 PM) and dinner (6–7:30 PM) breaks from logged hours."},
+                        {"title": "Compliant Formatting", "text": "Applies Arial Narrow 12pt, No Spacing style and organizes entries with max 8 dates per file, sorted monthly."},
+                        {"title": "Daily Scheduling", "text": "Windows Task Scheduler triggers the agent at 12:30 AM daily for hands-off operation."}
+                    ],
+                    "impact": [
+                        {"value": "Automated", "label": ".docx Generation", "icon_type": "check"},
+                        {"value": "Daily", "label": "Scheduled Runs", "icon_type": "time"},
+                        {"value": "Compliant", "label": "SIP Records", "icon_type": "trend"}
+                    ]
                 }
             ]
         },
