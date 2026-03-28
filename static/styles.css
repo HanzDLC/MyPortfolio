@@ -1412,9 +1412,9 @@ footer {
 
 /* Project Image */
 .project-image {
-  height: 350px;
-  min-height: 350px;
-  flex: 0 0 350px;
+  height: 265px;
+  min-height: 265px;
+  flex: 0 0 265px;
   background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
   display: flex;
   align-items: center;
