@@ -3722,6 +3722,111 @@ body.menu-open {
     margin: 0 0 5px 0 !important;
   }
 
+  /* CV document print compaction to fit 2 pages */
+  .document-view.is-active[data-doc-view="cv"] .cv-paper {
+    font-size: 10.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-header {
+    margin-bottom: 3px !important;
+    padding-bottom: 3px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-name {
+    font-size: 16pt !important;
+    margin: 0 0 2px 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-contact-grid {
+    gap: 2px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-contact-item {
+    font-size: 10pt !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-section {
+    margin-bottom: 5px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-section-title {
+    font-size: 13.4pt !important;
+    margin: 0 0 2px 0 !important;
+    padding-bottom: 2px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-section-content {
+    padding-top: 1px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-section-content>p {
+    font-size: 10.4pt !important;
+    line-height: 1.42 !important;
+    margin: 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-edu-entry {
+    margin-bottom: 5px !important;
+    padding-bottom: 3px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-edu-left h4 {
+    font-size: 10.5pt !important;
+    margin: 0 0 1px 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-edu-detail {
+    font-size: 9.8pt !important;
+    margin: 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-date {
+    font-size: 9.8pt !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-institution {
+    font-size: 9.4pt !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-courses {
+    margin-top: 1px !important;
+    padding-left: 1px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-courses ul,
+  .document-view.is-active[data-doc-view="cv"] .cv-skills-col ul {
+    padding-left: 16px !important;
+    margin: 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-courses li,
+  .document-view.is-active[data-doc-view="cv"] .cv-skills-col li {
+    font-size: 9.8pt !important;
+    line-height: 1.25 !important;
+    padding: 0.5px 0 !important;
+    margin: 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-skills-grid {
+    gap: 8px !important;
+    padding: 8px 10px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-skills-col h4 {
+    font-size: 10.4pt !important;
+    margin: 0 0 3px 0 !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-activities {
+    margin-top: 2px !important;
+  }
+
+  .document-view.is-active[data-doc-view="cv"] .cv-courses-label {
+    font-size: 9.8pt !important;
+    margin: 0 !important;
+  }
+
   /* Only force a new print page where explicitly marked.
      This lets later wrappers (e.g., Page 3 content) fill unused space first. */
   .cv-paper+.cv-paper {
