@@ -3562,7 +3562,7 @@ body.menu-open {
    ============================================ */
 @media print {
   @page {
-    size: auto;
+    size: letter;
     margin: 0.6in 10mm 5mm 10mm;
   }
 
