@@ -12,10 +12,15 @@ Format:
 
 ---
 
-## 2026-04-15 — Initialized Portfolio Agent memory system
-- Created [CLAUDE.md](CLAUDE.md), [PORTFOLIO_LOGS.md](PORTFOLIO_LOGS.md), and seeded `memory/` with user, project, feedback, and reference memories.
-- Why: User requested persistent memory + knowledge base retention across sessions, with a fixed opening prompt ("I am your Portfolio Agent. What do we need to update?") to verify context is loaded.
-- Commit: (pending)
+## 2026-04-15 — Initialized Portfolio Agent memory system + Vercel deploy unblock
+- Created [CLAUDE.md](CLAUDE.md), [PORTFOLIO_LOGS.md](PORTFOLIO_LOGS.md), and seeded `memory/` with user, project, feedback, and reference memories. Opening handshake: "I am your Portfolio Agent. What do we need to update?"
+- Vercel deploy was blocked with "commit author does not have contributing access" / "Hobby teams do not support collaboration." Root cause: earlier commits were authored with `internz.2026@gmail.com` (maps to a different GitHub account, `internz2026-sys`). Fixed by:
+  1. Set local `git config user.email` to `144861507+HanzDLC@users.noreply.github.com` (HanzDLC's GitHub noreply — required because "Keep my email addresses private" is ON under github.com/settings/emails).
+  2. Rebased last 2 commits with `--reset-author` to rewrite author.
+  3. Force-pushed `main`.
+- Also made the repo public to remove the Hobby-plan private-repo collaboration restriction.
+- Commits on `main`: `dc68d19` (Hermes + ARIA-6) and `2623dfd` (Portfolio Agent instructions + logs), both authored by `HanzDLC <144861507+HanzDLC@users.noreply.github.com>`.
+- If Vercel still blocks after this, root cause shifts to Vercel project ownership (project was imported under a non-HanzDLC Vercel account) — fix = delete and re-import under the HanzDLC Vercel login.
 
 ## 2026-03-29 — Added Hermes AI Agent + updated ARIA to 6 agents
 - Files: [projects_data.py](projects_data.py), [templates/cv_document.html](templates/cv_document.html), [templates/resume_document.html](templates/resume_document.html), new `static/images/Hermes/` (banner, sessions, workspace, hermes1).
