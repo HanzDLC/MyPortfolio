@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-04-15 — Resume print compaction (force 1-page fit)
+- File: [static/styles.css](static/styles.css) — `@media print` block.
+- Shrank `@page` margins (0.6in/5mm → 0.35in/0.25in) and tightened resume-scoped overrides: base font 10.5pt → 9.5pt, line-height 1.35 → 1.22, section/entry margins halved, list `padding/margin` zeroed, skills grid padding reduced.
+- Why: User reported resume downloading as 2 pages (Education + Certifications overflowed). Goal: fit on one letter page.
+- CV print styles untouched (still tuned for 2-page fit); smaller `@page` margins only give CV more room, won't push it past 2 pages.
+- Not committed yet — verify print preview before commit.
+
 ## 2026-04-15 — Initialized Portfolio Agent memory system + Vercel deploy unblock
 - Created [CLAUDE.md](CLAUDE.md), [PORTFOLIO_LOGS.md](PORTFOLIO_LOGS.md), and seeded `memory/` with user, project, feedback, and reference memories. Opening handshake: "I am your Portfolio Agent. What do we need to update?"
 - Vercel deploy was blocked with "commit author does not have contributing access" / "Hobby teams do not support collaboration." Root cause: earlier commits were authored with `internz.2026@gmail.com` (maps to a different GitHub account, `internz2026-sys`). Fixed by:
