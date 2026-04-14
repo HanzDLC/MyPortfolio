@@ -3656,7 +3656,7 @@ body.menu-open {
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-section {
-    margin-bottom: 3px !important;
+    margin-bottom: 2px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-section-title {
@@ -3676,8 +3676,8 @@ body.menu-open {
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-edu-entry {
-    margin-bottom: 3px !important;
-    padding-bottom: 2px !important;
+    margin-bottom: 2px !important;
+    padding-bottom: 1px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-edu-left h4 {
@@ -3725,6 +3725,16 @@ body.menu-open {
   .document-view.is-active[data-doc-view="resume"] .cv-skills-col h4 {
     font-size: 9.4pt !important;
     margin: 0 0 2px 0 !important;
+  }
+
+  /* Resume: allow entries/sections to split so Education can start on page 1
+     instead of being pushed whole to page 2 by page-break-inside:avoid */
+  .document-view.is-active[data-doc-view="resume"] .cv-edu-entry,
+  .document-view.is-active[data-doc-view="resume"] .cv-skills-grid,
+  .document-view.is-active[data-doc-view="resume"] .cv-section,
+  .document-view.is-active[data-doc-view="resume"] .cv-header {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
   }
 
   /* CV document print compaction to fit 2 pages */

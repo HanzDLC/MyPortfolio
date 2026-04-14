@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-04-15 — Resume print fit v2 (override page-break-inside)
+- File: [static/styles.css](static/styles.css).
+- First pass (font/margin shrink) didn't fully fix 2-page issue: Education section was getting pushed to page 2 by `page-break-inside: avoid` on `.cv-edu-entry` even though content had room.
+- Added resume-scoped override setting `page-break-inside: auto` on `.cv-edu-entry`, `.cv-skills-grid`, `.cv-section`, `.cv-header`. Also trimmed `.cv-section` margin 3px→2px and `.cv-edu-entry` margin 3px→2px, padding 2px→1px.
+- Why: User confirmed PDF download still spilled to 2 pages. Goal: force single-page resume.
+- Note for user: In Chrome print dialog, set **Margins: Minimum or None** if it still spills — `@page` rules can be overridden by browser "Default" margins.
+
 ## 2026-04-15 — Resume print compaction (force 1-page fit)
 - File: [static/styles.css](static/styles.css) — `@media print` block.
 - Shrank `@page` margins (0.6in/5mm → 0.35in/0.25in) and tightened resume-scoped overrides: base font 10.5pt → 9.5pt, line-height 1.35 → 1.22, section/entry margins halved, list `padding/margin` zeroed, skills grid padding reduced.
