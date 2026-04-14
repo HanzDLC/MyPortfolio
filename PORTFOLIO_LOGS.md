@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## 2026-04-15 — Resume print v3 (readable sizing + balanced margins)
+- File: [static/styles.css](static/styles.css).
+- v2 was too aggressive (8.8pt lists looked cramped) and margins were asymmetric (0.35in top / 0.25in bottom / 10mm sides).
+- Balanced `@page margin` to uniform `0.4in 0.5in` and bumped resume fonts: base 9.5→10pt, lists 8.8→9.5pt, name 14→15pt, section titles 11.5→12.5pt. Kept the `page-break-inside: auto` override from v2.
+- Note: User's print dialog was set to Legal paper. Must select **Letter** to match `@page size: letter`.
+
 ## 2026-04-15 — Resume print fit v2 (override page-break-inside)
 - File: [static/styles.css](static/styles.css).
 - First pass (font/margin shrink) didn't fully fix 2-page issue: Education section was getting pushed to page 2 by `page-break-inside: avoid` on `.cv-edu-entry` even though content had room.
