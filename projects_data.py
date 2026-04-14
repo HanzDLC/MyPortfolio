@@ -121,11 +121,51 @@ def get_projects():
                     ]
                 },
                 {
+                    "id": "hermes-modal",
+                    "category_id": "agentic-ai-hermes",
+                    "title": "Hermes AI Agent",
+                    "card_description": "Deployed Hermes — Nous Research's self-improving AI agent — with all OpenClaw agents migrated over, adding persistent memory, cron-scheduled automations, a web UI, and cross-platform messaging gateway (Telegram, Discord, Slack).",
+                    "modal_description": "Set up Hermes Agent by Nous Research as the next-generation home for my agentic workflows — migrating all existing OpenClaw agents via the built-in migration path. Hermes adds a self-improving learning loop, persistent cross-session memory, a built-in cron scheduler, a web UI (Hermes WebUI), and a single gateway that reaches the agent from Telegram, Discord, Slack, and more. Runs the same agents I had on OpenClaw, but smarter and more reachable.",
+                    "tags": ["Hermes", "Nous Research", "Agentic AI", "Cron", "Messaging Gateway", "Subagents", "Python"],
+                    "image": "images/Hermes/hermes-banner.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/Hermes/hermes-banner.png", "alt": "Hermes Agent — Self-improving AI agent by Nous Research"},
+                        {"path": "images/Hermes/hermes-sessions.png", "alt": "Hermes WebUI — Session projects, tags, and tool call cards"},
+                        {"path": "images/Hermes/hermes-workspace.png", "alt": "Hermes WebUI — Workspace file browser with inline preview"}
+                    ],
+                    "problem": """<p>OpenClaw gave me autonomous workflow orchestration, but I wanted a platform that could persist knowledge across sessions, reach me off the laptop, and keep improving itself over time. Key limitations I hit:</p><ul><li>No persistent memory — agents re-learned my environment every session</li><li>No built-in messaging gateway — I couldn't reach my agents from Telegram, Discord, or Slack on the go</li><li>No native cron scheduler for unattended daily/weekly tasks</li><li>No skill self-improvement loop — reusable procedures weren't being captured or refined automatically</li></ul><p>Hermes solved all four in one platform, and the built-in <code>hermes claw migrate</code> command made the migration painless.</p>""",
+                    "tools": ["Hermes Agent", "Nous Research", "Hermes WebUI", "Python", "Cron Scheduler", "Messaging Gateway", "Subagents"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Hermes Setup:</strong> Installed Hermes Agent and configured the model provider, tools, and gateway through the <code>hermes setup</code> wizard."},
+                        {"number": 2, "text": "<strong>OpenClaw Migration:</strong> Ran <code>hermes claw migrate</code> to import all existing OpenClaw agents, sessions, and configuration into Hermes with minimal manual rework."},
+                        {"number": 3, "text": "<strong>Web UI Deployment:</strong> Deployed Hermes WebUI — a three-panel Claude-style browser interface (sessions sidebar, chat, workspace browser) accessed through an SSH tunnel for secure remote use."},
+                        {"number": 4, "text": "<strong>Cron Automations:</strong> Configured the built-in cron scheduler so agents fire daily/weekly jobs even while offline, with results delivered to messaging platforms."},
+                        {"number": 5, "text": "<strong>Messaging Gateway:</strong> Enabled the Hermes gateway so the same agent is reachable from Telegram, Discord, and Slack — not just the terminal."},
+                        {"number": 6, "text": "<strong>Skill Capture:</strong> Let Hermes's self-improvement loop autonomously create and refine reusable skills from completed tasks, building up a persistent procedural memory."}
+                    ],
+                    "features_title": "Key Capabilities",
+                    "features": [
+                        {"title": "Self-Improving Learning Loop", "text": "Hermes autonomously creates skills from experience, refines them during use, and nudges itself to persist knowledge — the agent gets more capable the longer it runs."},
+                        {"title": "Persistent Memory", "text": "Agent-curated memory with FTS5 session search and LLM summarization for cross-session recall — no more re-explaining the environment every chat."},
+                        {"title": "Cross-Platform Messaging", "text": "Single gateway process reaches the agent from Telegram, Discord, Slack, WhatsApp, Signal, and CLI — with voice memo transcription and continuity across platforms."},
+                        {"title": "Scheduled Automations", "text": "Built-in cron scheduler fires daily/weekly jobs while offline and delivers results to any connected messaging platform — all configured in natural language."},
+                        {"title": "Subagent Delegation", "text": "Spawns isolated subagents for parallel workstreams, collapsing multi-step pipelines into zero-context-cost turns."},
+                        {"title": "OpenClaw Migration Path", "text": "Used <code>hermes claw migrate</code> to bring over all my existing OpenClaw agents into Hermes without rebuilding from scratch."},
+                        {"title": "Web UI with Workspace Browser", "text": "Hermes WebUI gives a three-panel Claude-style browser interface with workspace file preview — 1:1 parity with the CLI, accessible through an SSH tunnel."}
+                    ],
+                    "impact": [
+                        {"value": "Migrated", "label": "OpenClaw → Hermes", "icon_type": "check"},
+                        {"value": "Persistent", "label": "Cross-Session Memory", "icon_type": "trend"},
+                        {"value": "Multi-Platform", "label": "Messaging Reach", "icon_type": "time"}
+                    ]
+                },
+                {
                     "id": "aria-modal",
                     "category_id": "aria-ai",
                     "title": "ARIA — AI Runs It All",
-                    "card_description": "Multi-tenant B2B SaaS platform deploying 5 AI marketing agents (CEO, Content Writer, Email Marketer, Social Manager, Ad Strategist) for developer founders — powered by Claude and orchestrated through Paperclip AI.",
-                    "modal_description": "A full-stack AI marketing team platform for developer founders. ARIA deploys 5 specialized AI agents that autonomously handle GTM strategy, content creation, email campaigns, social media, and ad management. Built with Next.js 14, FastAPI, Supabase, and orchestrated through Paperclip AI with real-time Socket.IO updates.",
+                    "card_description": "Multi-tenant B2B SaaS platform deploying 6 AI marketing agents (CEO, Content Writer, Email Marketer, Social Manager, Ad Strategist, Media) for developer founders — powered by Claude and orchestrated through Paperclip AI with sub-agent delegation and real-time inbox plumbing.",
+                    "modal_description": "A full-stack AI marketing team platform for developer founders. ARIA deploys 6 specialized AI agents that autonomously handle GTM strategy, content creation, email campaigns, social media, ad management, and media asset generation. Built with Next.js 14, FastAPI, Supabase, and orchestrated through Paperclip AI with real-time Socket.IO updates, a hardened sub-agent delegation watcher, structured email drafting, and self-healing Claude CLI integration.",
                     "tags": ["Next.js", "FastAPI", "Claude AI", "Paperclip AI", "Supabase", "Socket.IO", "Python", "TypeScript"],
                     "image": "images/ARIA/aria-demo-thumbnail.png",
                     "thumbnail_video": "Videos/aria-demo.mp4",
@@ -141,24 +181,29 @@ def get_projects():
                     "tools": ["Next.js", "FastAPI", "Claude AI", "Paperclip AI", "Supabase", "Socket.IO", "Python", "TypeScript", "Railway"],
                     "workflow": [
                         {"number": 1, "text": "<strong>Conversational Onboarding:</strong> CEO Agent interviews the founder with 6-8 questions about their product, audience, goals, and brand voice, then generates a structured GTM playbook with 30/60/90 day plans."},
-                        {"number": 2, "text": "<strong>Agent Orchestration:</strong> Paperclip AI manages the 5-agent hierarchy (CEO → Content Writer, Email Marketer, Social Manager, Ad Strategist) with atomic task checkout and budget tracking."},
-                        {"number": 3, "text": "<strong>Content Generation:</strong> Agents produce blog posts, email campaigns, social media content, and ad creatives — all filtered through the tenant's brand voice configuration."},
-                        {"number": 4, "text": "<strong>Real-Time Dashboard:</strong> Next.js dashboard with Kanban board, KPI cards, CEO chat interface, and agent status monitoring via Socket.IO events."},
-                        {"number": 5, "text": "<strong>Automated Workflows:</strong> 5 reusable workflow templates (GTM Launch, Weekly Content, Product Hunt Launch, Strategy Review, Ad Campaign) with cron-scheduled execution."}
+                        {"number": 2, "text": "<strong>Agent Orchestration:</strong> Paperclip AI manages the 6-agent hierarchy (CEO → Content Writer, Email Marketer, Social Manager, Ad Strategist, Media) with atomic task checkout, wake-on-comment dispatch, and budget tracking."},
+                        {"number": 3, "text": "<strong>Sub-Agent Delegation Watcher:</strong> Per-issue adaptive poller (1–4s intervals) tracks delegated sub-agent runs end-to-end, writes placeholder inbox rows immediately, and updates them when agent replies land — replacing the old fire-and-forget dispatch."},
+                        {"number": 4, "text": "<strong>Content Generation:</strong> Agents produce blog posts, email campaigns, social media content, ad creatives, and media assets — all filtered through the tenant's brand voice configuration with structured email_draft fields for direct Gmail sending."},
+                        {"number": 5, "text": "<strong>Real-Time Dashboard:</strong> Next.js dashboard with Kanban board, KPI cards, CEO chat interface (~3x faster after Paperclip routing overhaul), and agent status monitoring via Socket.IO events."},
+                        {"number": 6, "text": "<strong>Automated Workflows:</strong> Reusable workflow templates (GTM Launch, Weekly Content, Product Hunt Launch, Strategy Review, Ad Campaign) with cron-scheduled execution and self-healing Claude CLI config restore."}
                     ],
                     "features_title": "Key Features",
                     "features": [
-                        {"title": "5 AI Marketing Agents", "text": "CEO (GTM strategist), Content Writer (blogs, landing pages), Email Marketer (sequences, newsletters), Social Manager (X/LinkedIn/Facebook), Ad Strategist (Meta ads setup guides)."},
+                        {"title": "6 AI Marketing Agents", "text": "CEO (GTM strategist), Content Writer (blogs, landing pages), Email Marketer (sequences, newsletters), Social Manager (X/LinkedIn/Facebook), Ad Strategist (Meta ads setup guides), and Media Agent (creative asset generation)."},
+                        {"title": "Fast CEO Chat (~3x Speedup)", "text": "Chat replies dropped from 10–30s to 1–4s by bypassing Paperclip for conversational turns and calling Claude Haiku directly — Paperclip remains the orchestrator only for actual agent dispatch."},
                         {"title": "Conversational GTM Builder", "text": "Onboarding agent interviews founders and generates structured go-to-market playbooks with positioning, messaging pillars, and channel strategy."},
-                        {"title": "Paperclip AI Orchestration", "text": "Distributed agent management with heartbeat invocation, atomic task checkout, org chart hierarchy, and graceful local fallback."},
+                        {"title": "Paperclip AI Orchestration", "text": "Distributed agent management with wake-on-comment dispatch, atomic task checkout, org chart hierarchy, and graceful local fallback on outages."},
+                        {"title": "Hardened Delegation Pipeline", "text": "Sub-agent dispatch, placeholder creation, active polling, and inbox writes bundled in one background task — prevents lost replies and ensures delegated outputs actually reach users."},
+                        {"title": "Structured Email Drafting", "text": "Email parser extracts email_draft fields (subject, body, recipient) from agent outputs so Email Marketer results can be reviewed and sent via Gmail integration without copy-paste."},
+                        {"title": "Self-Healing Claude CLI", "text": "Auto-detects CLI auth file rotation and atomically restores from backups — ARIA recovers from container restarts and mid-runtime failures without manual SSH intervention."},
                         {"title": "Multi-Tenant Architecture", "text": "Complete tenant isolation via Supabase with per-tenant agent configs, brand voice, ICP profiles, and integration credentials."},
                         {"title": "Real-Time Dashboard", "text": "Kanban task board, KPI metrics, CEO chat interface, and live agent status updates via Socket.IO."},
                         {"title": "Zero-API-Key Agents", "text": "Agents use local Claude Code CLI instead of API keys — reducing cost and simplifying developer setup."}
                     ],
                     "impact": [
-                        {"value": "5 Agents", "label": "AI Marketing Team", "icon_type": "check"},
-                        {"value": "Multi-Tenant", "label": "Architecture", "icon_type": "trend"},
-                        {"value": "Automated", "label": "GTM Workflows", "icon_type": "time"}
+                        {"value": "6 Agents", "label": "AI Marketing Team", "icon_type": "check"},
+                        {"value": "~3x Faster", "label": "CEO Chat Latency", "icon_type": "trend"},
+                        {"value": "Self-Healing", "label": "Claude CLI Pipeline", "icon_type": "time"}
                     ]
                 },
                 {
