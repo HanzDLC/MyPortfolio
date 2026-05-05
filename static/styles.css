@@ -56,6 +56,9 @@ body {
   color: var(--text-primary);
   /* Removed global font-family to match original behavior */
   line-height: 1.6;
+  /* Additional 10% global shrink on top of the in-code clamp/px
+     reductions — user wanted everything visibly smaller still. */
+  zoom: 0.9;
 }
 
 /* HEADER */
@@ -4653,16 +4656,18 @@ body.contact-modal-open {
    etc.). Existing markup keeps working unchanged.
    ============================================================ */
 
-/* Cube.gif scattered background — restored at lower opacity so
-   it complements rather than competes with the editorial design. */
+/* Cube.gif scattered background — kept very dim so it can't compete
+   with text anywhere on the site. Sections containing text apply
+   their own `isolation: isolate` + opaque backdrop on top, so cubes
+   only peek through gaps between sections. */
 #background-container {
   pointer-events: none;
 }
 
 .scattered-cube,
 img.scattered-cube {
-  opacity: 0.35;
-  filter: saturate(0.85);
+  opacity: 0.12;
+  filter: saturate(0.7) brightness(0.85);
 }
 
 :root {
@@ -4744,6 +4749,12 @@ body {
 .hero-v3__visual {
   max-width: 414px;
   width: 100%;
+  align-self: center;
+  /* The text column has eyebrow + title + lede + buttons + meta (tall),
+     while the photo is shorter (4:5 portrait). Pure grid-center makes
+     the photo appear to "float" too low — nudge it up so its center
+     aligns with the title's optical center, which reads as balanced. */
+  margin-top: -32px;
 }
 
 .hero-v3__bg {
@@ -5142,6 +5153,24 @@ body {
   max-width: 1350px;
   margin: 126px auto 0;
   padding: 0 6vw;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Full-viewport-width opaque backdrop behind every .section-shell.
+   Combined with isolation: isolate this blocks the body-level cube
+   tiles (mix-blend-mode: screen) from leaking into section content
+   even when the section itself is narrower than the viewport. */
+.section-shell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  background: var(--bg-color);
+  z-index: -1;
 }
 
 .section-eyebrow {
@@ -5987,6 +6016,31 @@ body {
 
 .cert-skip-btn svg {
   flex-shrink: 0;
+}
+
+/* Isolate remaining text-bearing sections so cubes don't bleed in. */
+.tools-showcase,
+.scroll-section-outer,
+.main-footer,
+.projects-flex-wrapper {
+  position: relative;
+  isolation: isolate;
+  background: var(--bg-color);
+}
+
+.tools-showcase::before,
+.scroll-section-outer::before,
+.main-footer::before,
+.projects-flex-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  background: var(--bg-color);
+  z-index: -1;
 }
 
 @media (max-width: 640px) {

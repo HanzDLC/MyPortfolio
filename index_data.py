@@ -134,7 +134,7 @@ def get_about_content():
             {
                 "label": "About Photo",
                 "caption": "",
-                "image": "images/about/about.jpg",
+                "image": "images/About/about.jpg",
                 "alt": "Hanz de la Cruz"
             },
             {
