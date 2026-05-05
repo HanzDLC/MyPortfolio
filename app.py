@@ -22,19 +22,21 @@ app.jinja_env.globals.update(get_tool_info=get_tool_info)
 
 
 
-from index_data import get_about_content, get_skills
+from index_data import get_about_content, get_skills, get_services, get_certifications
+from tools_data import get_all_tools_with_icons
 
 CONTACT_TO = "hdlcruz03@gmail.com"
 
 
 @app.route("/")
 def index():
-    about_content = get_about_content()
-    skills = get_skills()
     return render_template(
         "index.html",
-        about_content=about_content,
-        skills=skills,
+        about_content=get_about_content(),
+        skills=get_skills(),
+        services=get_services(),
+        certifications=get_certifications(),
+        showcase_tools=get_all_tools_with_icons(),
         contact_to=CONTACT_TO,
     )
 

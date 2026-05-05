@@ -12,6 +12,16 @@ Format:
 
 ---
 
+## 2026-05-06 — Reverted homepage to April 15 design (kept Skills v2 + Services)
+- Files: [templates/index.html](templates/index.html), [app.py](app.py).
+- Restored hero section (with `myimage.jpg`, hero pill, hero-title, hero-subtext, hero-actions, social-links, hero-bg-blobs, hero-spotlight) + certifications sticky-scroll + tools showcase grid + image zoom modal — exact markup from commit `c7ae82b` (the April 15 baseline).
+- Substituted the old `<div class="card">` Skills section with the new Skills v2 markup (icon + accent + tools chip row + proficiency dots).
+- Kept the "What I can do for you" Services section as-is.
+- Hero "Contact Me" button now opens the contact modal via `data-contact-trigger` (was previously a dead `#` link).
+- `app.py /index` now passes `skills`, `services`, `certifications`, `showcase_tools` (was only passing `about_content` after the earlier cleanup).
+- Re-enabled `js/hero-effects.js` (referenced by the hero animations).
+- Why: User said the April 15 landing was more beautiful than the current one and wanted it back, but with the new Skills design preserved.
+
 ## 2026-05-06 — Let's Talk contact form (Flask + Gmail SMTP)
 - Files: [app.py](app.py), [requirements.txt](requirements.txt), [templates/base.html](templates/base.html), [static/js/contact-modal.js](static/js/contact-modal.js), [static/styles.css](static/styles.css), [.env.example](.env.example).
 - New `/contact` POST route: validates subject/message, builds an `EmailMessage`, sends via `smtplib.SMTP_SSL('smtp.gmail.com', 465)` using `GMAIL_USER` + `GMAIL_APP_PASSWORD` from env. Returns JSON `{ok: true}` or descriptive error.
