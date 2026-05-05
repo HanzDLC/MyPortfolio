@@ -1722,6 +1722,14 @@ footer {
   border-bottom: 1px solid var(--rule-color);
 }
 
+.portfolio-category-title:hover .category-icon {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: rotate(-3deg);
+}
+.portfolio-category-title .category-icon {
+  transition: border-color 0.3s ease, transform 0.3s cubic-bezier(.22,.61,.36,1);
+}
+
 /* Reduced motion — disable transforms, keep color/opacity changes */
 @media (prefers-reduced-motion: reduce) {
   .project-card,
@@ -4311,6 +4319,7 @@ body.menu-open {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.06em;
+  color: var(--skill-accent, var(--accent-color));
   color: color-mix(in srgb, var(--skill-accent) 80%, white);
   text-transform: uppercase;
   padding: 3px 8px;
@@ -4732,7 +4741,7 @@ body {
   grid-template-columns: minmax(0, 560px) minmax(0, 414px);
   justify-content: center;
   align-items: center;
-  gap: clamp(28px, 3.6vw, 56px);
+  gap: 130px;
   overflow: hidden;
   /* Block the body-level cube tiles (which use mix-blend-mode: screen)
      from showing through this section. Drift gradient blobs stay,
@@ -4860,6 +4869,8 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  vertical-align: baseline;
+  line-height: inherit;
 }
 
 /* Section + about titles use the same single accent so they
@@ -4869,6 +4880,8 @@ body {
   font-style: italic;
   font-weight: 400;
   color: var(--accent-color);
+  vertical-align: baseline;
+  line-height: inherit;
 }
 
 .hero-v3__display .line {
@@ -5487,6 +5500,14 @@ body {
   width: 100%;
 }
 
+.header-links li a[aria-current="page"]::after {
+  width: 100%;
+  background: var(--accent-color);
+}
+.header-links li a[aria-current="page"] {
+  color: var(--text-primary);
+}
+
 /* ----- About v3 (full redesign) ---------------------------- */
 .about-v3 {
   position: relative;
@@ -5802,6 +5823,8 @@ body {
 .about-pullquote__text em.accent-italic {
   font-style: italic;
   color: var(--accent-color);
+  vertical-align: baseline;
+  line-height: inherit;
 }
 
 .about-pullquote__mark {
@@ -5846,6 +5869,8 @@ body {
 .about-cta__title .accent-italic {
   font-style: italic;
   color: var(--accent-color);
+  vertical-align: baseline;
+  line-height: inherit;
 }
 
 .about-cta__sub {
@@ -5979,13 +6004,26 @@ body {
 
 /* ----- Projects hero refresh ------------------------------- */
 /* ----- Certifications: skip controls ----------------------- */
+/* Fixed to viewport so they stay visible throughout the entire
+   300vh sticky horizontal scroll. Visibility is toggled by JS via
+   IntersectionObserver on #certifications. */
 .cert-skip-controls {
-  position: absolute;
-  top: 24px;
+  position: fixed;
+  top: 80px;
   right: 5vw;
   display: flex;
   gap: 10px;
-  z-index: 20;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.cert-skip-controls.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .cert-skip-btn {
@@ -6072,6 +6110,11 @@ body {
 
 .projects-hero-v3 .section-display {
   margin-bottom: 24px;
+}
+
+.projects-hero-v3 .section-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.22em;
 }
 
 /* Pull the first project grid close to the hero — the default

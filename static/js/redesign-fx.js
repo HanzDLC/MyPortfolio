@@ -210,6 +210,27 @@
         els.forEach(function (el) { observer.observe(el); });
     }
 
+    /* --- Cert skip-controls visibility -------------------------- */
+    function initCertSkipVisibility() {
+        var section = document.getElementById('certifications');
+        var controls = document.querySelector('.cert-skip-controls');
+        if (!section || !controls) return;
+        if (!('IntersectionObserver' in window)) {
+            controls.classList.add('is-visible');
+            return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    controls.classList.add('is-visible');
+                } else {
+                    controls.classList.remove('is-visible');
+                }
+            });
+        }, { threshold: 0.05 });
+        observer.observe(section);
+    }
+
     /* --- Init --------------------------------------------------- */
     function init() {
         initScrollProgress();
@@ -221,6 +242,7 @@
         initHeroTilt();
         initHeroFloat();
         initStatCounters();
+        initCertSkipVisibility();
     }
 
     if (document.readyState === 'loading') {
