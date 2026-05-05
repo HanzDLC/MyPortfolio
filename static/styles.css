@@ -56,6 +56,10 @@ body {
   color: var(--text-primary);
   /* Removed global font-family to match original behavior */
   line-height: 1.6;
+  /* Global 10% shrink — user prefers a more compact 100% zoom view.
+     `zoom` scales everything (px, vw, rem, images, padding) and is
+     supported in Chrome/Edge/Safari/FF 126+. */
+  zoom: 0.9;
 }
 
 /* HEADER */
