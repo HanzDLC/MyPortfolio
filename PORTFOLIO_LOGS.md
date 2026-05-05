@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-06 — Hero meta strip on one line
+- Files: [static/styles.css](static/styles.css) (`.hero-v3__meta` flex-wrap → nowrap, gap 24px, `width: max-content`; `.hero-v3__meta-item` `white-space: nowrap` + `flex: 0 0 auto`), [templates/base.html](templates/base.html) (cache buster `v=2.2` → `v=2.3`).
+- Why: user wanted Currently / Based in / Building / Reach me on a single row instead of wrapping "Reach me · GitHub · LinkedIn" onto its own line. Meta row now extends into the 160px hero gap (which has clear space) so all four items fit horizontally.
+- Commit: pending.
+
+---
+
 ## 2026-05-06 — Hero gap bumped 130px → 160px
 - Files: [static/styles.css](static/styles.css) (`.hero-v3` gap), [templates/base.html](templates/base.html) (cache buster `v=2.1` → `v=2.2`).
 - Why: user wanted a little more breathing room between the hero text column and the photo card.

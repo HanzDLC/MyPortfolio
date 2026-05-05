@@ -4998,16 +4998,20 @@ body {
 /* Meta row — location / role / availability */
 .hero-v3__meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px 36px;
+  flex-wrap: nowrap;
+  gap: 24px;
   padding-top: 28px;
   border-top: 1px solid var(--rule-color);
+  width: max-content;
+  max-width: none;
 }
 
 .hero-v3__meta-item {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .hero-v3__meta-label {
