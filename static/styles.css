@@ -56,10 +56,6 @@ body {
   color: var(--text-primary);
   /* Removed global font-family to match original behavior */
   line-height: 1.6;
-  /* Global 10% shrink — user prefers a more compact 100% zoom view.
-     `zoom` scales everything (px, vw, rem, images, padding) and is
-     supported in Chrome/Edge/Safari/FF 126+. */
-  zoom: 0.9;
 }
 
 /* HEADER */
@@ -4657,17 +4653,16 @@ body.contact-modal-open {
    etc.). Existing markup keeps working unchanged.
    ============================================================ */
 
-/* Hide the legacy scattered cube background — clashes with the
-   editorial design. Targeting the container AND children so any
-   late-injected images from background_animation.js stay hidden. */
-#background-container,
-#background-container *,
+/* Cube.gif scattered background — restored at lower opacity so
+   it complements rather than competes with the editorial design. */
+#background-container {
+  pointer-events: none;
+}
+
 .scattered-cube,
 img.scattered-cube {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+  opacity: 0.35;
+  filter: saturate(0.85);
 }
 
 :root {
@@ -4726,23 +4721,23 @@ body {
    close to the text instead of parking far-right in a 50/50 split. */
 .hero-v3 {
   position: relative;
-  min-height: 92vh;
-  padding: 110px 5vw 64px;
+  min-height: 86vh;
+  padding: 96px 5vw 56px;
   display: grid;
-  grid-template-columns: minmax(0, 620px) minmax(0, 460px);
+  grid-template-columns: minmax(0, 560px) minmax(0, 414px);
   justify-content: center;
   align-items: center;
-  gap: clamp(32px, 4vw, 64px);
+  gap: clamp(28px, 3.6vw, 56px);
   overflow: hidden;
 }
 
 .hero-v3__content {
-  max-width: 620px;
+  max-width: 560px;
   width: 100%;
 }
 
 .hero-v3__visual {
-  max-width: 460px;
+  max-width: 414px;
   width: 100%;
 }
 
@@ -4834,11 +4829,11 @@ body {
 .hero-v3__display {
   font-family: var(--display-stack);
   font-weight: 400;
-  font-size: clamp(40px, 5.2vw, 80px);
+  font-size: clamp(36px, 4.7vw, 72px);
   line-height: 1.02;
   letter-spacing: -0.022em;
   color: var(--text-primary);
-  margin: 0 0 28px;
+  margin: 0 0 24px;
 }
 
 /* Hero gets the full multi-stop gradient — it's the moment. */
@@ -5139,8 +5134,8 @@ body {
 
 /* ----- Editorial section titles ---------------------------- */
 .section-shell {
-  max-width: 1500px;
-  margin: 140px auto 0;
+  max-width: 1350px;
+  margin: 126px auto 0;
   padding: 0 6vw;
 }
 
@@ -5166,11 +5161,11 @@ body {
 .section-display {
   font-family: var(--display-stack);
   font-weight: 400;
-  font-size: clamp(34px, 4.2vw, 64px);
+  font-size: clamp(30px, 3.8vw, 58px);
   line-height: 1.04;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .section-display .accent-italic {
@@ -5345,7 +5340,7 @@ body {
 .work-card__title {
   font-family: var(--display-stack);
   font-weight: 400;
-  font-size: clamp(18px, 1.5vw, 24px);
+  font-size: clamp(16px, 1.35vw, 22px);
   line-height: 1.22;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -5358,7 +5353,7 @@ body {
 }
 
 .works-grid > li:nth-child(1) .work-card__title {
-  font-size: clamp(24px, 2.2vw, 34px);
+  font-size: clamp(22px, 2vw, 31px);
 }
 
 .work-card__arrow {
@@ -5858,7 +5853,7 @@ body {
 .about-v3__intro-display {
   font-family: var(--display-stack);
   font-weight: 400;
-  font-size: clamp(36px, 4.6vw, 68px);
+  font-size: clamp(32px, 4.1vw, 61px);
   line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--text-primary);
