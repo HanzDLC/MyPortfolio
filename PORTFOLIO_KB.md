@@ -39,9 +39,11 @@
 
 ## Current Role
 **Lead Full-Stack Developer at Zilla Media** (2026 - Present)
-- Developing ARIA (AI Runs It All) - Full-stack AI marketing platform
-- Building DriveXP - Comprehensive car rental platform
+- Developing ARIA (AI Runs It All) - Full-stack AI marketing platform with 6 agents
+- Building DriveXP (formerly CarBnb) - Comprehensive car rental platform
 - Architecting OpenClaw - Autonomous workflow orchestration system
+- Running Hermes SuperAgent (Nous Research) - self-improving agent hub
+- Right hand of CTO; helping certify Virtual Professionals as part of company mission
 
 ## Services Offered
 1. **Full-Stack Development** - Next.js, React, FastAPI, Node.js production systems
@@ -116,6 +118,31 @@
 
 **Purpose**: Autonomously manage and orchestrate automation workflows with agentic AI capabilities
 
+#### Hermes SuperAgent (Nous Research)
+**Status**: Deployed
+**Tech Stack**: Hermes Agent, Python, Cron Scheduler, Messaging Gateway (Telegram/Discord/Slack), Hermes WebUI, Subagents
+
+**Purpose**: Self-improving agent hub migrated from OpenClaw via `hermes claw migrate`. Adds persistent cross-session memory, native cron automations, multi-platform messaging gateway, and a self-improving learning loop that captures and refines reusable skills automatically.
+
+**Key Capabilities**:
+- Persistent memory with FTS5 session search and cross-session recall
+- Cross-platform messaging (Telegram, Discord, Slack, WhatsApp, Signal, CLI)
+- Built-in cron scheduler for unattended jobs
+- Subagent delegation for parallel workstreams
+- Hermes WebUI: three-panel browser interface accessible via SSH tunnel
+
+#### ARIA (AI Runs It All)
+**Status**: Deployed (production, real clients)
+**Tech Stack**: Next.js 14, FastAPI, Claude AI, Paperclip AI orchestration, Supabase, Socket.IO, Python, TypeScript
+
+**Purpose**: Multi-tenant B2B SaaS deploying 6 AI marketing agents (CEO, Content Writer, Email Marketer, Social Manager, Ad Strategist, Media) for developer founders. Used in production every day; supports the company mission of helping Filipino Virtual Professionals do higher-leverage work.
+
+**Key Improvements (2026)**:
+- Paperclip integration overhaul cutting CEO chat latency ~3x
+- Hardened sub-agent delegation with per-issue watcher
+- Structured email drafting for Gmail sending
+- Self-healing Claude CLI config that retries on transient failures
+
 ### Category: Data & Analysis Projects
 
 **Machine Learning Projects**:
@@ -166,11 +193,56 @@
 
 ## Contact & Links
 - Portfolio: This Flask portfolio site
+- Portfolio URL: https://hanzdlc-portfolio.vercel.app/
 - Google Sheets Projects: VLOOKUP/QUERY projects, QA Bug Logs
 - Google Colab ML Projects: Reddit Scraping, Model Evaluation, Customer Segmentation
-- GitHub: Version control and project collaboration
+- GitHub: HanzDLC/MyPortfolio (push needs HanzDLC noreply email + token)
+- DriveXP repo: github.com/internz2026-sys/CarBNB (still has the old repo name; portfolio rebrand is local-only)
+
+## Portfolio Site Infrastructure (the Flask app itself)
+
+This is meta-context about the portfolio site that hosts this KB:
+
+### Stack
+- Flask (Python) + Jinja2 templates + vanilla JS + plain CSS
+- Deployed on Vercel via `@vercel/python` (see `vercel.json`)
+- Branches: `main` (deployed), `feature` (working/preview)
+
+### Routes (`app.py`)
+- `/` — homepage: hero, Skills v2, Services, Certifications scroll, Tools showcase, image zoom modal
+- `/about` — About page (eyebrow, intro, chips, photo cards, spotlights from `get_about_content()`)
+- `/projects` — full project list from `projects_data.py`
+- `/cv` and `/documents` — CV/Resume document view
+- `/contact` (POST) — Gmail SMTP form handler; sends to `hdlcruz03@gmail.com`
+
+### Key conventions
+- Project cards/modals: edit `projects_data.py`
+- Skills, services, certifications, about: edit `index_data.py`
+- Tools showcase + tool icons: edit `tools_data.py` (icon fallback chain matters; specific names go before generic ones, e.g., `claude code` before `claude`)
+- CV + resume must stay in sync with `projects_data.py` (agent counts, project names, key metrics)
+
+### Skills v2 design system (current)
+- Each skill in `get_skills()` carries: `title`, `description`, `icon` (lucide-style key), `accent` (hex), `tools` (list), `proficiency` (1–5), `years` (string)
+- Card uses `--skill-accent` CSS variable + `color-mix()` for icon background, dots, chip hover
+- Hover reveals tool chip row; mobile shows chips always
+
+### Contact form (Let's Talk modal)
+- Required env vars: `GMAIL_USER`, `GMAIL_APP_PASSWORD` (set in Vercel + locally in `.env`)
+- 2FA must be enabled on the Google account; app password generated at https://myaccount.google.com/apppasswords
+- Modal triggered by any element with `data-contact-trigger`; closes via ESC, backdrop, or `data-contact-close`
+- Status messages route through `[data-contact-status]` element with `data-kind` (info/success/error)
+
+### SessionStart auto-context hook
+- `.claude/settings.json` registers a SessionStart hook
+- Runs `.claude/hooks/load-portfolio-context.ps1` (PowerShell)
+- Outputs JSON injecting full PORTFOLIO_KB.md + 5 most recent PORTFOLIO_LOGS.md entries as `additionalContext`
+- If a new session doesn't pick up the hook, open `/hooks` once or restart Claude Code (settings watcher caveat)
+
+### Hero
+- April 15 layout (commit `c7ae82b`) was restored at user's request — uses `myimage.jpg`, hero pill, hero-title, hero-subtext, hero-actions, social-links, hero-bg-blobs, hero-spotlight, hero-effects.js animations
+- "Contact Me" button in hero opens the contact modal via `data-contact-trigger`
 
 ---
 
-**Last Updated**: 2026-03-29
+**Last Updated**: 2026-05-06
 **Portfolio Status**: Active - For updates, chat with Claude Code on this Flask project folder

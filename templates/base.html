@@ -1,19 +1,54 @@
 <!-- base.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>{% block title %}Page Title{% endblock %}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href="{{url_for('static', filename='styles.css')}}?v=1.1">
+
+    <!-- SEO meta -->
+    <meta name="description" content="{% block description %}Hanz Uriel A. de la Cruz — Lead Full-Stack Developer at Zilla Media building agentic AI systems, automation, and data-driven web platforms from Iloilo City, PH.{% endblock %}" />
+    <meta name="author" content="Hanz Uriel A. de la Cruz" />
+    <meta name="keywords" content="Hanz de la Cruz, Full-Stack Developer, Agentic AI, AI Systems Architect, Flask, Python, Automation, Data Analysis, ARIA, Hermes, DriveXP, OpenClaw, Zilla Media, Iloilo City, Philippines" />
+    <meta name="theme-color" content="#08090d" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% block ogtitle %}Hanz de la Cruz — Full-Stack Developer & AI Systems Architect{% endblock %}" />
+    <meta property="og:description" content="{% block ogdescription %}Lead Full-Stack Developer at Zilla Media building agentic AI systems, automation, and data-driven web platforms from Iloilo City, PH.{% endblock %}" />
+    <meta property="og:url" content="{{ request.url }}" />
+    <meta property="og:site_name" content="Hanz de la Cruz Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="{{ url_for('static', filename='images/myimage.jpg', _external=True) }}" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% block twittertitle %}Hanz de la Cruz — Full-Stack Developer & AI Systems Architect{% endblock %}" />
+    <meta name="twitter:description" content="{% block twitterdescription %}Lead Full-Stack Developer at Zilla Media building agentic AI systems, automation, and data-driven web platforms from Iloilo City, PH.{% endblock %}" />
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/myimage.jpg', _external=True) }}" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ request.url }}" />
+
+    <!-- TODO: add favicon file at static/images/favicon.ico (or .png) and uncomment below -->
+    <!-- <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" /> -->
+
+    <link rel='stylesheet' href="{{url_for('static', filename='styles.css')}}?v=2.0">
 </head>
 
 <body>
 
+    <!-- Scroll progress bar (top of page) -->
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
+
+    <!-- Subtle film-grain overlay -->
+    <div class="fx-grain" aria-hidden="true"></div>
+
     {% block header %}
-    <header>
+    <header class="site-header">
         <div class="header-class">
             <h1>HD</h1>
             <!-- Mobile Hamburger Button -->
@@ -28,7 +63,7 @@
                     <li><a href="{{ url_for('projects') }}">Projects</a></li>
                     <li><a href="{{ url_for('documents') }}">CV / Resume</a></li>
                     <li><a href="{{ url_for('about') }}">About</a></li>
-                    <li><a href="#contact" class="btn-cta-small" data-contact-trigger>Let's Talk</a></li>
+                    <li><a href="#contact-modal" class="btn-cta-small" data-contact-trigger>Let's Talk</a></li>
                 </ul>
             </nav>
             <!-- Mobile Menu Overlay -->
@@ -116,7 +151,7 @@
                             <path
                                 d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z">
                             </path>
-                            <path d="M22 6L12 13L2V6"></path>
+                            <path d="M22 6L12 13L2 6"></path>
                         </svg>
                         hdlcruz03@gmail.com
                     </a>
@@ -190,6 +225,7 @@
     <script src="{{url_for('static', filename='js/navigation.js')}}"></script>
     <script src="{{url_for('static', filename='js/background_animation.js')}}"></script>
     <script src="{{url_for('static', filename='js/contact-modal.js')}}"></script>
+    <script src="{{url_for('static', filename='js/redesign-fx.js')}}?v=2.0"></script>
     {% block scripts %}{% endblock %}
 
 </body>

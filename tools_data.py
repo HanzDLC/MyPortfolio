@@ -239,7 +239,7 @@ def get_tool_info(tool_name):
 
     if "hermes" in name_lower:
         return {
-            "icon": "/static/images/Hermes/hermes1.png",
+            "icon": "/static/images/Hermes/hermes-banner.png",
             "color": "#7c3aed"
         }
 

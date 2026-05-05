@@ -10,54 +10,127 @@
 {% endblock %}
 
 {% block body %}
-<section class="section-container about-section" id="about" style="position: relative; z-index: 55;">
-    <div class="about-shell" data-reveal="fade-up">
-        <div class="about-copy">
-            <span class="about-eyebrow">{{ about_content.eyebrow }}</span>
-            <h3 class="section-title about-title">{{ about_content.title }}</h3>
+<section class="about-v3" id="about" style="position: relative; z-index: 55;">
 
-            <div class="about-prose">
+    <!-- Background drift gradient -->
+    <div class="about-v3__bg" aria-hidden="true">
+        <div class="about-v3__drift about-v3__drift--a"></div>
+        <div class="about-v3__drift about-v3__drift--b"></div>
+    </div>
+
+    <!-- 1. HERO INTRO -->
+    <div class="about-v3__intro" data-reveal="fade-up">
+        <div class="about-v3__intro-head">
+            <span class="section-eyebrow">{{ about_content.eyebrow }}</span>
+            <h1 class="about-v3__intro-display">
+                {{ about_content.title.split(' ')[:-1] | join(' ') }}
+                <em class="accent-italic">{{ about_content.title.split(' ')[-1] }}</em>
+            </h1>
+        </div>
+
+        <div class="about-v3__intro-grid">
+            <div class="about-v3__intro-prose" data-reveal-children="fade-up">
                 {% for paragraph in about_content.intro %}
                 <p>{{ paragraph }}</p>
                 {% endfor %}
             </div>
 
-            <div class="about-chip-row" data-reveal-children="fade-up">
-                {% for chip in about_content.chips %}
-                <span class="about-chip">{{ chip }}</span>
+            <div class="about-v3__visual-col" data-parallax="0.04">
+                {% set first_photo = about_content.placeholders[0] if about_content.placeholders else None %}
+                {% if first_photo and first_photo.image %}
+                <div class="about-v3__photo">
+                    <img src="{{ url_for('static', filename=first_photo.image) }}"
+                         alt="{{ first_photo.alt or first_photo.label }}">
+                    <span class="about-v3__photo-tag">
+                        <span class="about-v3__photo-tag-dot" aria-hidden="true"></span>
+                        Iloilo City, PH · 2026
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. QUICK FACTS STRIP -->
+    <div class="about-stats" data-reveal-children="fade-up">
+        <div class="about-stat">
+            <div class="about-stat__value" data-counter-target="4" data-counter-suffix="+">0</div>
+            <div class="about-stat__label">Years building</div>
+        </div>
+        <div class="about-stat">
+            <div class="about-stat__value" data-counter-target="20" data-counter-suffix="+">0</div>
+            <div class="about-stat__label">Projects shipped</div>
+        </div>
+        <div class="about-stat">
+            <div class="about-stat__value about-stat__value--text">Iloilo</div>
+            <div class="about-stat__label">Based in PH</div>
+        </div>
+        <div class="about-stat">
+            <div class="about-stat__value about-stat__value--text">Lead</div>
+            <div class="about-stat__label">Full-Stack @ Zilla</div>
+        </div>
+    </div>
+
+    <!-- 3. WHAT I WORK ON — auto-scrolling chip marquee -->
+    <div class="about-chips-section" data-reveal="fade-up">
+        <div class="about-chips-head">
+            <span class="section-eyebrow">Things I Work On</span>
+            <h2 class="section-display" style="font-size: clamp(28px, 3.2vw, 48px);">A bit of <em class="accent-italic">everything.</em></h2>
+        </div>
+        <div class="about-chips-marquee" aria-hidden="true">
+            <div class="about-chips-track">
+                {# Two passes for seamless loop #}
+                {% for _ in range(2) %}
+                    {% for chip in about_content.chips %}
+                    <span class="about-v3__chip">{{ chip }}</span>
+                    {% endfor %}
                 {% endfor %}
             </div>
         </div>
+    </div>
 
-        <div class="about-visuals" data-reveal-children="zoom-out">
-            {% for placeholder in about_content.placeholders %}
-            <div class="about-photo-card">
-                {% if placeholder.image %}
-                <img
-                    src="{{ url_for('static', filename=placeholder.image) }}"
-                    alt="{{ placeholder.alt or placeholder.label }}"
-                    class="about-photo-image">
-                {% else %}
-                <div class="about-photo-placeholder">
-                    <span>{{ placeholder.label }}</span>
-                </div>
-                {% endif %}
-                {% if placeholder.caption %}
-                <p>{{ placeholder.caption }}</p>
-                {% endif %}
-            </div>
+    <!-- 4. WHAT I CARE ABOUT — spotlight cards -->
+    <div class="about-spotlights-wrap" data-reveal="fade-up">
+        <div style="margin-bottom: 48px;">
+            <span class="section-eyebrow">What I Care About</span>
+            <h2 class="section-display" style="font-size: clamp(32px, 3.6vw, 56px);">Highlights &amp; <em class="accent-italic">principles.</em></h2>
+        </div>
+        <div class="about-spotlights" data-reveal-children="fade-up">
+            {% for item in about_content.spotlights %}
+            <article class="about-spotlight-card-v2">
+                <div class="about-spotlight-card-v2__num">{{ '%02d' | format(loop.index) }}</div>
+                <h4 class="about-spotlight-card-v2__title">{{ item.title }}</h4>
+                <p class="about-spotlight-card-v2__text">{{ item.text }}</p>
+            </article>
             {% endfor %}
         </div>
     </div>
 
-    <div class="about-spotlights" data-reveal-children="fade-up">
-        {% for item in about_content.spotlights %}
-        <article class="about-spotlight-card">
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.text }}</p>
-        </article>
-        {% endfor %}
+    <!-- 5. BEYOND TECH — pull quote moment -->
+    <div class="about-pullquote" data-reveal="fade-up">
+        <span class="section-eyebrow">Beyond Tech</span>
+        <blockquote class="about-pullquote__text">
+            <span class="about-pullquote__mark" aria-hidden="true">&ldquo;</span>
+            Outside of tech, I play <em class="accent-italic">guitar</em> — and I've been
+            lucky enough to win a few contests over the years. Music taught me discipline,
+            creativity, and how to show up under pressure.
+        </blockquote>
+        <div class="about-pullquote__byline">— Hanz, on showing up</div>
     </div>
+
+    <!-- 6. CLOSING CTA -->
+    <div class="about-cta" data-reveal="fade-up">
+        <h2 class="about-cta__title">Let's build something <em class="accent-italic">useful.</em></h2>
+        <p class="about-cta__sub">Open for collaborations, freelance projects, and full-time roles.</p>
+        <a href="#contact-modal" class="btn-arrow" data-contact-trigger>
+            <span>Let's Talk</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </a>
+    </div>
+
 </section>
 {% endblock %}
 

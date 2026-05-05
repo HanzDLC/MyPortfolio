@@ -9,52 +9,40 @@
 
 {% block body %}
 
-<!-- Projects Hero Section -->
-<div class="projects-hero">
-    <div class="projects-hero-content" data-reveal="fade-up">
-        <span class="hero-pill">My Work</span>
-        <h2 class="hero-title">Featured Projects</h2>
-        <p class="hero-subtext">
-            A collection of data analysis, visualization, machine learning projects,
-            Automation workflows.
-            showcasing my skills in transforming data into actionable insights.
+<!-- Projects Hero v3 -->
+<section class="projects-hero-v3">
+    <div data-reveal="fade-up" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-eyebrow" style="justify-content: center;">Index · 2024–2026</span>
+        <h1 class="section-display">All <em class="accent-italic">projects.</em></h1>
+        <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+            A collection of full-stack MVPs, agentic AI systems, automation workflows,
+            machine learning experiments, and data visualizations — each one a real
+            problem I worked through end to end.
         </p>
     </div>
-</div>
+</section>
 
 <!-- Projects Content -->
-<div class="section-container">
+<div class="section-shell">
     <div class="projects-flex-wrapper">
 
         {% for category in projects %}
         {% set cat_index = loop.index0 %}
+        {% set title_anim = 'fade-left' if cat_index % 3 == 0 else ('rotate-in' if cat_index % 3 == 1 else 'zoom') %}
+        {% set grid_anim = 'flip-up' if cat_index == 0 else ('zoom-out' if cat_index == 1 else ('fade-up' if cat_index == 2 else 'zoom')) %}
         <div class="portfolio-category">
             <!-- Creative titles based on category index -->
-            {% if cat_index % 3 == 0 %}
-            <h3 class="portfolio-category-title" data-reveal="fade-left">
-                {% elif cat_index % 3 == 1 %}
-                <h3 class="portfolio-category-title" data-reveal="rotate-in">
-                    {% else %}
-                    <h3 class="portfolio-category-title" data-reveal="zoom">
-                        {% endif %}
-                        <span class="category-icon">
-                            {{ category.icon_svg | safe }}
-                        </span>
-                        {{ category.category }}
-                    </h3>
+            <h3 class="portfolio-category-title" data-reveal="{{ title_anim }}">
+                <span class="category-icon">
+                    {{ category.icon_svg | safe }}
+                </span>
+                {{ category.category }}
+            </h3>
 
-                    <!-- Creative card animations based on category -->
-                    {% if cat_index == 0 %} <!-- Automation -->
-                    <div class="projects-grid" data-reveal-children="flip-up">
-                        {% elif cat_index == 1 %} <!-- Data Viz -->
-                        <div class="projects-grid" data-reveal-children="zoom-out">
-                            {% elif cat_index == 2 %} <!-- Google Sheets -->
-                            <div class="projects-grid" data-reveal-children="fade-up">
-                                {% else %} <!-- Other -->
-                                <div class="projects-grid" data-reveal-children="zoom">
-                                    {% endif %}
-                                    {% for project in category.projects %}
-                                    <div class="project-card {% if project.has_modal or project.container_link %}clickable{% endif %}"
+            <!-- Creative card animations based on category -->
+            <div class="projects-grid" data-reveal-children="{{ grid_anim }}">
+                {% for project in category.projects %}
+                <div class="project-card {% if project.has_modal or project.container_link %}clickable{% endif %}"
                                         {% if project.has_modal %}
                                         onclick="openModal('{{ project.id }}', '{{ project.category_id }}')" {% elif
                                         project.container_link %}
@@ -66,7 +54,7 @@
                                             {% if project.thumbnail_video %}
                                             <video src="{{ url_for('static', filename=project.thumbnail_video) }}"
                                                 autoplay muted loop playsinline
-                                                alt="{{ project.title }}"></video>
+                                                aria-label="{{ project.title }}"></video>
                                             {% elif project.image %}
                                             <img src="{{ url_for('static', filename=project.image) }}"
                                                 alt="{{ project.title }}">
@@ -118,13 +106,13 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
 
-                        </div> <!-- end projects-flex-wrapper -->
-                    </div> <!-- end section-container -->
+    </div> <!-- end projects-flex-wrapper -->
+</div> <!-- end section-shell -->
 
                     <!-- Modals -->
                     {% for category in projects %}
