@@ -4741,7 +4741,7 @@ body {
   grid-template-columns: minmax(0, 560px) minmax(0, 414px);
   justify-content: center;
   align-items: center;
-  gap: 130px;
+  gap: 250px;
   overflow: hidden;
   /* Block the body-level cube tiles (which use mix-blend-mode: screen)
      from showing through this section. Drift gradient blobs stay,

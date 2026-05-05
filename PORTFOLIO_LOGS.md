@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-06 — Hero gap bumped 130px → 160px
+- Files: [static/styles.css](static/styles.css) (`.hero-v3` gap), [templates/base.html](templates/base.html) (cache buster `v=2.1` → `v=2.2`).
+- Why: user wanted a little more breathing room between the hero text column and the photo card.
+- Commit: pending.
+
+---
+
 ## 2026-05-06 — Editorial redesign 2026 (homepage, projects, about) + parallel agent workflow
 - Files: [static/styles.css](static/styles.css) (~+1000 lines new "REDESIGN 2026" block), [static/js/redesign-fx.js](static/js/redesign-fx.js) (new), [templates/index.html](templates/index.html), [templates/projects.html](templates/projects.html), [templates/about.html](templates/about.html), [templates/base.html](templates/base.html), [app.py](app.py), [tools_data.py](tools_data.py).
 - New homepage hero (`.hero-v3`): centered text+photo cluster, oversized Kameron serif title with multi-color gradient italic on "AI Systems Architect", live "Available for new work — 2026" pill with pulse dot, meta strip (Currently / Based in / Building / Reach me), refined CTA buttons (`.btn-arrow` filled + `.btn-ghost` outline). Photo card with status badge + 3D tilt (mouse-tracked) + scroll parallax. Drift gradient blobs spanning full viewport.
