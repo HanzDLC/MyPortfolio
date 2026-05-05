@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-06 — Let's Talk contact form (Flask + Gmail SMTP)
+- Files: [app.py](app.py), [requirements.txt](requirements.txt), [templates/base.html](templates/base.html), [static/js/contact-modal.js](static/js/contact-modal.js), [static/styles.css](static/styles.css), [.env.example](.env.example).
+- New `/contact` POST route: validates subject/message, builds an `EmailMessage`, sends via `smtplib.SMTP_SSL('smtp.gmail.com', 465)` using `GMAIL_USER` + `GMAIL_APP_PASSWORD` from env. Returns JSON `{ok: true}` or descriptive error.
+- "Let's Talk" nav button now opens a dark-themed modal (matches the screenshot's TO/SUBJECT/MESSAGE structure) with TO pre-filled to `hdlcruz03@gmail.com`. ESC/backdrop/Cancel close it; Send Email POSTs JSON to `/contact` and shows inline status (info/success/error).
+- Required env vars (must be set in Vercel dashboard for production): `GMAIL_USER`, `GMAIL_APP_PASSWORD` (Gmail app password — needs 2FA on the Google account first; generate at https://myaccount.google.com/apppasswords). Locally, drop them in `.env` (gitignored). `python-dotenv` added to requirements for local loading.
+- Why: User chose Gmail SMTP (option 2 from a 3-option pitch covering Web3Forms / SMTP / mailto). Wanted form submissions to land directly in Hanz's Gmail inbox.
+
 ## 2026-05-06 — Renamed CarBnb → DriveXP across portfolio
 - Files: [projects_data.py](projects_data.py), [PORTFOLIO_KB.md](PORTFOLIO_KB.md), [CLAUDE.md](CLAUDE.md), [vectordb.py](vectordb.py), [templates/cv_document.html](templates/cv_document.html), [templates/resume_document.html](templates/resume_document.html), folder rename `static/images/CarBnb/` → `static/images/DriveXP/`, plus memory entry `user_profile.md`.
 - Updated project title, modal id (`carbnb-modal` → `drivexp-modal`), category id (`carbnb` → `drivexp`), image paths, and gallery alt text. Updated CV/resume professional summary and experience bullets. Memory note keeps "(formerly CarBnb)" tag for continuity.

@@ -28,7 +28,7 @@
                     <li><a href="{{ url_for('projects') }}">Projects</a></li>
                     <li><a href="{{ url_for('documents') }}">CV / Resume</a></li>
                     <li><a href="{{ url_for('about') }}">About</a></li>
-                    <li><a href="#contact" class="btn-cta-small">Let's Talk</a></li>
+                    <li><a href="#contact" class="btn-cta-small" data-contact-trigger>Let's Talk</a></li>
                 </ul>
             </nav>
             <!-- Mobile Menu Overlay -->
@@ -155,9 +155,41 @@
     <!-- Global Spotlight -->
     <div id="global-spotlight"></div>
 
+    <!-- Contact Modal (Let's Talk) -->
+    <div class="contact-modal" id="contact-modal" aria-hidden="true" role="dialog" aria-labelledby="contact-modal-title">
+        <div class="contact-modal__backdrop" data-contact-close></div>
+        <div class="contact-modal__panel" role="document">
+            <header class="contact-modal__header">
+                <h3 id="contact-modal-title">Email Hanz</h3>
+                <button type="button" class="contact-modal__close" aria-label="Close" data-contact-close>&times;</button>
+            </header>
+            <form class="contact-modal__form" id="contact-form" novalidate>
+                <div class="contact-field">
+                    <label class="contact-field__label" for="contact-to">TO</label>
+                    <input class="contact-field__input is-readonly" id="contact-to" type="email" value="{{ contact_to or 'hdlcruz03@gmail.com' }}" readonly>
+                </div>
+                <div class="contact-field">
+                    <label class="contact-field__label" for="contact-subject">SUBJECT <span class="contact-field__req">*</span></label>
+                    <input class="contact-field__input" id="contact-subject" name="subject" type="text" placeholder="What's this about?" maxlength="200" required>
+                </div>
+                <div class="contact-field">
+                    <label class="contact-field__label" for="contact-message">MESSAGE <span class="contact-field__req">*</span></label>
+                    <textarea class="contact-field__input contact-field__textarea" id="contact-message" name="message" placeholder="Write your message..." rows="6" maxlength="5000" required></textarea>
+                </div>
+                <p class="contact-modal__hint">Sent over Gmail SMTP. Replies route to {{ contact_to or 'hdlcruz03@gmail.com' }}.</p>
+                <div class="contact-modal__status" data-contact-status role="status" aria-live="polite"></div>
+                <div class="contact-modal__actions">
+                    <button type="button" class="contact-btn contact-btn--ghost" data-contact-close>Cancel</button>
+                    <button type="submit" class="contact-btn contact-btn--primary" data-contact-submit>Send Email</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- JavaScript Files -->
     <script src="{{url_for('static', filename='js/navigation.js')}}"></script>
     <script src="{{url_for('static', filename='js/background_animation.js')}}"></script>
+    <script src="{{url_for('static', filename='js/contact-modal.js')}}"></script>
     {% block scripts %}{% endblock %}
 
 </body>
