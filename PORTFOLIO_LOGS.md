@@ -12,6 +12,40 @@ Format:
 
 ---
 
+## 2026-05-06 — Renamed CarBnb → DriveXP across portfolio
+- Files: [projects_data.py](projects_data.py), [PORTFOLIO_KB.md](PORTFOLIO_KB.md), [CLAUDE.md](CLAUDE.md), [vectordb.py](vectordb.py), [templates/cv_document.html](templates/cv_document.html), [templates/resume_document.html](templates/resume_document.html), folder rename `static/images/CarBnb/` → `static/images/DriveXP/`, plus memory entry `user_profile.md`.
+- Updated project title, modal id (`carbnb-modal` → `drivexp-modal`), category id (`carbnb` → `drivexp`), image paths, and gallery alt text. Updated CV/resume professional summary and experience bullets. Memory note keeps "(formerly CarBnb)" tag for continuity.
+- The GitHub repo at internz2026-sys/CarBNB still uses the old name; this rebrand is portfolio-side only until the repo is renamed.
+- Why: User rebranded the project from CarBnb to DriveXP and replaced the landing image.
+- Note: historical log entry from 2026-03-29 still says "ARIA, CarBnb, OpenClaw & Hermes" — left intact as a record of what was true at that time.
+
+## 2026-05-06 — Skills section creative redesign (v2)
+- Files: [index_data.py](index_data.py), [app.py](app.py), [templates/index.html](templates/index.html), [static/styles.css](static/styles.css).
+- Re-added Skills section to homepage (was removed in earlier uncommitted index.html cleanup) with three visual upgrades: per-card icon + accent color, hover-reveal tool chips, and proficiency dots + years badge.
+- `index_data.py`: each skill now carries `icon` (lucide-style key), `accent` (hex), `tools` (array), `proficiency` (1–5), `years` (string). Renamed "n8n Workflow Automation" → "Automation & Agentic AI" to cover n8n + OpenClaw + Hermes SuperAgent.
+- `app.py`: imported `get_skills`, passed to `index.html`.
+- `templates/index.html`: new `<section class="skills-v2-section">` with inline SVG icon switch by `skill.icon`.
+- `static/styles.css`: added ~210 lines for `.skill-card-v2` system — uses CSS `color-mix()` with the per-card `--skill-accent` so accents drive icon background, border, dots, and chip hover color.
+- Mobile: tool chips always show (no hover available); single-column grid below 720px.
+- Why: User asked to make the Skills tab more creative; greenlit options 1+2+3 from a 3-option pitch.
+
+## 2026-05-06 — Added Claude Code + Hermes SuperAgent to tools showcase
+- Files: [tools_data.py](tools_data.py), [PORTFOLIO_KB.md](PORTFOLIO_KB.md).
+- `tools_data.py`: added a `claude code` branch (lobehub claude-color icon) before the generic `claude` fallback so "Claude Code" matches first; also gave the generic `claude` branch a real icon. Added a `hermes` branch using `/static/images/Hermes/hermes1.png`. Appended `"Claude Code"` and `"Hermes SuperAgent"` to the showcase list.
+- `PORTFOLIO_KB.md`: added Hermes SuperAgent and Claude Code to the Tools & Platforms list.
+- Why: User asked to surface his actual daily AI dev tools (Claude Code, Hermes) in the homepage tools grid.
+
+## 2026-05-06 — SessionStart hook auto-loads PORTFOLIO_KB + recent logs
+- Files: [.claude/settings.json](.claude/settings.json), [.claude/hooks/load-portfolio-context.ps1](.claude/hooks/load-portfolio-context.ps1).
+- Added a SessionStart hook (PowerShell) that emits `hookSpecificOutput.additionalContext` containing the full PORTFOLIO_KB.md and the 5 most recent PORTFOLIO_LOGS.md entries, so each new Portfolio Agent session opens with the latest KB+logs already in context.
+- Pipe-tested: script produced ~11.7K chars of valid JSON; settings.json validated against schema.
+- Note: if Claude Code doesn't pick the hook up live, open `/hooks` once or restart the CLI — the settings watcher only re-reads `.claude/` if the file existed at session start.
+
+## 2026-04-23 — Added Hostinger to skills KB
+- File: [PORTFOLIO_KB.md](PORTFOLIO_KB.md).
+- Added Hostinger under DevOps skills and to Tools & Platforms list alongside Vercel.
+- Why: User confirmed Hostinger is part of his deployment/hosting toolkit; including it in KB so future applications and portfolio updates pick it up automatically.
+
 ## 2026-04-15 — Resume print v3 (readable sizing + balanced margins)
 - File: [static/styles.css](static/styles.css).
 - v2 was too aggressive (8.8pt lists looked cramped) and margins were asymmetric (0.35in top / 0.25in bottom / 10mm sides).

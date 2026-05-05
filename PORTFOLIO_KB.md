@@ -28,7 +28,7 @@
 - **Databases**: MongoDB, PostgreSQL, MySQL
 - **Frontend**: React, Next.js, Tailwind CSS, TypeScript, JavaScript
 - **Backend**: Flask, FastAPI, Node.js, Prisma ORM
-- **DevOps**: Docker, Containerization
+- **DevOps**: Docker, Containerization, Hostinger (hosting/deployment)
 
 ### Core Competencies
 1. **Useful Systems** - Builds systems that solve real problems and help manage day-to-day work
@@ -40,7 +40,7 @@
 ## Current Role
 **Lead Full-Stack Developer at Zilla Media** (2026 - Present)
 - Developing ARIA (AI Runs It All) - Full-stack AI marketing platform
-- Building CarBnb - Comprehensive car rental platform
+- Building DriveXP - Comprehensive car rental platform
 - Architecting OpenClaw - Autonomous workflow orchestration system
 
 ## Services Offered
@@ -85,7 +85,7 @@
 
 **Impact**: Integrated MIS + ECR Workflow, Test Environment
 
-#### 2. CarBnb - Car Rental Platform
+#### 2. DriveXP - Car Rental Platform
 **Status**: Prototype
 **Tech Stack**: Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL, Tailwind CSS 4, Docker, Supabase
 
@@ -147,8 +147,8 @@
 - Flask, FastAPI, Node.js, MongoDB, PostgreSQL, MySQL
 
 ### Tools & Platforms
-- n8n, OpenClaw, Ollama, ChatGPT, Gemini, OpenRouter, DeepSeek
-- Base44, Docker, Supabase, GitHub, Git
+- n8n, OpenClaw, Hermes SuperAgent, Ollama, ChatGPT, Claude Code, Gemini, OpenRouter, DeepSeek
+- Base44, Docker, Supabase, GitHub, Git, Hostinger, Vercel
 - Google Sheets, Excel, Power Query
 - Prisma ORM, MongoDB
 

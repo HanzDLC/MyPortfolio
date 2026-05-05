@@ -178,7 +178,7 @@ if __name__ == "__main__":
         "What experience do you have with web development?",
         "Tell me about your machine learning projects",
         "What automation tools do you use?",
-        "Describe your CarBnb project"
+        "Describe your DriveXP project"
     ]
 
     print("\n" + "="*60)

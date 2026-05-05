@@ -1,0 +1,74 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html>
+{% extends 'base.html' %}
+
+{% block title %}About | Hanz Portfolio{% endblock %}
+
+{% block header %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+<section class="section-container about-section" id="about" style="position: relative; z-index: 55;">
+    <div class="about-shell" data-reveal="fade-up">
+        <div class="about-copy">
+            <span class="about-eyebrow">{{ about_content.eyebrow }}</span>
+            <h3 class="section-title about-title">{{ about_content.title }}</h3>
+
+            <div class="about-prose">
+                {% for paragraph in about_content.intro %}
+                <p>{{ paragraph }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="about-chip-row" data-reveal-children="fade-up">
+                {% for chip in about_content.chips %}
+                <span class="about-chip">{{ chip }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="about-visuals" data-reveal-children="zoom-out">
+            {% for placeholder in about_content.placeholders %}
+            <div class="about-photo-card">
+                {% if placeholder.image %}
+                <img
+                    src="{{ url_for('static', filename=placeholder.image) }}"
+                    alt="{{ placeholder.alt or placeholder.label }}"
+                    class="about-photo-image">
+                {% else %}
+                <div class="about-photo-placeholder">
+                    <span>{{ placeholder.label }}</span>
+                </div>
+                {% endif %}
+                {% if placeholder.caption %}
+                <p>{{ placeholder.caption }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="about-spotlights" data-reveal-children="fade-up">
+        {% for item in about_content.spotlights %}
+        <article class="about-spotlight-card">
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.text }}</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="{{url_for('static', filename='js/scroll-reveal.js')}}"></script>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+
+</html>

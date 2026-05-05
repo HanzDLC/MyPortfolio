@@ -4,7 +4,7 @@
 from flask import Flask, render_template
 from flask_scss import Scss
 from projects_data import get_projects
-from tools_data import get_tool_info, get_all_tools_with_icons
+from tools_data import get_tool_info
 
 
 app = Flask(__name__)
@@ -12,15 +12,26 @@ app.jinja_env.globals.update(get_tool_info=get_tool_info)
 
 
 
-from index_data import get_skills, get_services, get_certifications
+from index_data import get_about_content, get_skills
 
 @app.route("/")
 def index():
+    about_content = get_about_content()
     skills = get_skills()
-    services = get_services()
-    certifications = get_certifications()
-    showcase_tools = get_all_tools_with_icons()
-    return render_template("index.html", skills=skills, services=services, certifications=certifications, showcase_tools=showcase_tools)
+    return render_template(
+        "index.html",
+        about_content=about_content,
+        skills=skills
+    )
+
+
+@app.route("/about")
+def about():
+    about_content = get_about_content()
+    return render_template(
+        "about.html",
+        about_content=about_content
+    )
 
 
 @app.route("/projects")

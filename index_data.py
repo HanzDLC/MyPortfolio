@@ -3,23 +3,48 @@ def get_skills():
     return [
         {
             "title": "Exploratory Data Analysis",
-            "description": "Uncovering patterns and insights through comprehensive data cleaning, manipulation, and statistical analysis."
+            "description": "Uncovering patterns and insights through comprehensive data cleaning, manipulation, and statistical analysis.",
+            "icon": "chart",
+            "accent": "#4361ee",
+            "tools": ["Python", "Pandas", "NumPy"],
+            "proficiency": 4,
+            "years": "3+ yrs"
         },
         {
             "title": "Data Visualization",
-            "description": "Communicating insights through clear, compelling charts and graphs using Python, Matplotlib, and Seaborn."
+            "description": "Communicating insights through clear, compelling charts and graphs using Python, Matplotlib, and Seaborn.",
+            "icon": "trending",
+            "accent": "#8e44ef",
+            "tools": ["Matplotlib", "Seaborn", "Power Query"],
+            "proficiency": 4,
+            "years": "3+ yrs"
         },
         {
             "title": "Web Development",
-            "description": "Full-stack development using Python Flask, HTML, CSS, and JavaScript, demonstrated by this portfolio."
+            "description": "Full-stack development using Python Flask, HTML, CSS, and JavaScript, demonstrated by this portfolio.",
+            "icon": "code",
+            "accent": "#3ecf8e",
+            "tools": ["Flask", "Next.js", "React", "Tailwind"],
+            "proficiency": 4,
+            "years": "3+ yrs"
         },
         {
             "title": "QA Testing",
-            "description": "Conducting Manual QA testing for Management Information Systems and optimizing bug reporting workflows."
+            "description": "Conducting Manual QA testing for Management Information Systems and optimizing bug reporting workflows.",
+            "icon": "bug",
+            "accent": "#ef4444",
+            "tools": ["Manual QA", "Bug Tracking", "Jira"],
+            "proficiency": 4,
+            "years": "2+ yrs"
         },
         {
             "title": "Spreadsheet Mastery",
             "description": "Advanced proficiency in Excel and Google Sheets, leveraging AI to improve workflows, specialized in VLOOKUP and multi-dataset QUERY manipulation.",
+            "icon": "grid",
+            "accent": "#34a853",
+            "tools": ["Excel", "Google Sheets", "Power Query", "VBA"],
+            "proficiency": 5,
+            "years": "4+ yrs",
             "id": "ss-card",
             "dropdown_id": "ss-dropdown",
             "dropdown_items": [
@@ -37,15 +62,30 @@ def get_skills():
         },
         {
             "title": "Prompt Engineering",
-            "description": "Leveraging generative AI to streamline workflows and optimize complex task execution."
+            "description": "Leveraging generative AI to streamline workflows and optimize complex task execution.",
+            "icon": "sparkles",
+            "accent": "#d97706",
+            "tools": ["Claude Code", "ChatGPT", "Gemini"],
+            "proficiency": 5,
+            "years": "2+ yrs"
         },
         {
             "title": "Version Control",
-            "description": "Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration."
+            "description": "Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.",
+            "icon": "git",
+            "accent": "#f97316",
+            "tools": ["Git", "GitHub"],
+            "proficiency": 4,
+            "years": "3+ yrs"
         },
         {
-            "title": "n8n Workflow Automation",
-            "description": "Designing complex automated workflows and custom node integrations to connect platforms and automate repetitive tasks."
+            "title": "Automation & Agentic AI",
+            "description": "Designing complex automated workflows and agentic AI systems with n8n, OpenClaw, and Hermes SuperAgent to orchestrate platforms end-to-end.",
+            "icon": "bolt",
+            "accent": "#7c3aed",
+            "tools": ["n8n", "OpenClaw", "Hermes SuperAgent"],
+            "proficiency": 5,
+            "years": "2+ yrs"
         }
     ]
 

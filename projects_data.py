@@ -47,16 +47,16 @@ def get_projects():
                     ]
                 },
                 {
-                    "id": "carbnb-modal",
-                    "category_id": "carbnb",
-                    "title": "CarBnb — Car Rental Platform",
+                    "id": "drivexp-modal",
+                    "category_id": "drivexp",
+                    "title": "DriveXP — Car Rental Platform",
                     "card_description": "Full-stack car rental app prototype with admin dashboard, booking management, owner verification, and Kanban-style availability scheduling — built with Next.js 16, Prisma 7, and PostgreSQL.",
                     "modal_description": "A full-stack car rental platform prototype featuring an admin workspace for managing car listings, bookings, owners, and customers. Built with Next.js 16 (Turbopack), React 19, Prisma 7 ORM, PostgreSQL, and Tailwind CSS 4 with a custom Material Design-inspired design system.",
                     "tags": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Docker", "Supabase"],
-                    "image": "images/CarBnb/landing.png",
+                    "image": "images/DriveXP/landing.png",
                     "has_modal": True,
                     "gallery": [
-                        {"path": "images/CarBnb/landing.png", "alt": "CarBnb Landing Page — Rent a car or become a host"}
+                        {"path": "images/DriveXP/landing.png", "alt": "DriveXP Landing Page — Rent a car or become a host"}
                     ],
                     "problem": """<p>Car rental businesses often rely on fragmented tools — spreadsheets for bookings, manual owner verification, and no centralized system for availability and accounting. Key pain points included:</p><ul><li>No centralized platform for managing car listings, bookings, and owner payouts</li><li>Manual availability tracking leading to double-bookings</li><li>Lack of transparency in accounting and commission calculations</li><li>No structured verification workflow for onboarding car owners</li></ul>""",
                     "tools": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Docker", "Supabase"],

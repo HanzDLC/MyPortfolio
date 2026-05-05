@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(python generate_response_doc.py)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "& '.\\.claude\\hooks\\load-portfolio-context.ps1'",
+            "timeout": 10,
+            "statusMessage": "Loading portfolio KB and recent logs..."
+          }
+        ]
+      }
+    ]
+  }
+}

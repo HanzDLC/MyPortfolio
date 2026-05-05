@@ -231,9 +231,21 @@ def get_tool_info(tool_name):
             "color": "#7c3aed"
         }
 
+    if "claude code" in name_lower:
+        return {
+            "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg",
+            "color": "#d97706"
+        }
+
+    if "hermes" in name_lower:
+        return {
+            "icon": "/static/images/Hermes/hermes1.png",
+            "color": "#7c3aed"
+        }
+
     if "claude" in name_lower:
         return {
-            "icon": None,
+            "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg",
             "color": "#d97706"
         }
 
@@ -308,6 +320,8 @@ def get_all_tools_with_icons():
         "Supabase",
         "OpenClaw",
         "Ollama",
+        "Claude Code",
+        "Hermes SuperAgent",
     ]
     results = []
     for tool in showcase_tools:
