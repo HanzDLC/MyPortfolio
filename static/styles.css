@@ -5462,9 +5462,20 @@ body {
 .about-v3 {
   position: relative;
   padding: 110px 5vw 80px;
-  max-width: 1300px;
-  margin: 0 auto;
   overflow: visible;
+  /* Block body-level cube tiles (mix-blend-mode: screen) from
+     bleeding into the about content. Drift gradients stay because
+     they're children of this isolated stacking context. The
+     section is full viewport width so the opaque bg fills both
+     edges and cubes can't leak in via gaps. */
+  isolation: isolate;
+  background: var(--bg-color);
+}
+
+.about-v3 > *:not(.about-v3__bg) {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-v3__bg {
@@ -5994,11 +6005,15 @@ body {
 
 .projects-hero-v3 {
   padding: 120px 6vw 32px;
-  max-width: 1500px;
-  margin: 0 auto;
   position: relative;
   isolation: isolate;
   background: var(--bg-color);
+}
+
+.projects-hero-v3 > * {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .projects-hero-v3 .section-display {
