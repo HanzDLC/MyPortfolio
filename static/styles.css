@@ -4729,6 +4729,11 @@ body {
   align-items: center;
   gap: clamp(28px, 3.6vw, 56px);
   overflow: hidden;
+  /* Block the body-level cube tiles (which use mix-blend-mode: screen)
+     from showing through this section. Drift gradient blobs stay,
+     cubes stay everywhere else on the site. */
+  isolation: isolate;
+  background: var(--bg-color);
 }
 
 .hero-v3__content {
@@ -5991,6 +5996,9 @@ body {
   padding: 120px 6vw 32px;
   max-width: 1500px;
   margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+  background: var(--bg-color);
 }
 
 .projects-hero-v3 .section-display {
