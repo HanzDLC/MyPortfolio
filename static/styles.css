@@ -3583,6 +3583,25 @@ body.menu-open {
   margin-top: 6px;
 }
 
+/* Inline skills band — horizontal pipe-separated layout at bottom of resume */
+.cv-skills-inline {
+  color: #333;
+  font-size: 10pt;
+  line-height: 1.55;
+  margin: 0 0 6px 0;
+  padding: 0;
+}
+
+.cv-skills-inline:last-child {
+  margin-bottom: 0;
+}
+
+.cv-skills-inline strong {
+  color: #1a1a1a;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
 .cv-activities>.cv-edu-header>.cv-edu-left>p {
   color: #333;
   font-size: 10pt;

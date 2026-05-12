@@ -12,6 +12,19 @@ Format:
 
 ---
 
+## 2026-05-13 — Resume restructure: stronger bullets + reordered sections
+- Files: [templates/resume_document.html](templates/resume_document.html), [templates/cv_document.html](templates/cv_document.html), [static/styles.css](static/styles.css).
+- **Resume section reorder:** new order is Header → Professional Summary → Relevant Experience (moved up, was after Core Skills) → Certifications (vertical bullets, moved up from bottom) → Education → Core Skills (horizontal inline, moved to bottom).
+- **Skills layout:** Technical + Professional Skills now render as two inline pipe-separated rows (`<p class="cv-skills-inline">`) at the bottom of the resume instead of a two-column bulleted grid at the top.
+- **Certifications layout:** Now a vertical bulleted list (4 items, one per line) instead of a single inline pipe-separated row.
+- **Bullets strengthened** in both resume and CV:
+  - Removed duplicate "Product Specialist / Hoversight" entry — user clarified Hoversight work and School System MVP Project are the same engagement. Kept the "Prompt Engineer / QA Tester / n8n Automation Specialist" title and retained "January 2026 - Present" date from the Hoversight entry.
+  - OpenClaw bullet rewritten with action verb + outcome: "Architected and deployed an autonomous workflow orchestration system that handles task automation and real-time monitoring without manual oversight."
+  - ARIA bullet leads with stronger verb ("Led development of…"); DriveXP bullet now includes 9 database models alongside the 16-page admin dashboard.
+  - Freelance Thesis bullets rewritten to lead with action verbs (Cleaned and analyzed / Prepared and organized / Translated) and added outcome ("helped the client successfully defend their research").
+- **CSS:** added `.cv-skills-inline` rule for the new horizontal skills band (10pt body text, bold label, middot separators).
+- Why: user audit revealed weak bullets (e.g., "Creating and managing systems.", "Automations.", "Prompt engineering."), duplicate experience entry, and wanted a less skills-heavy top of resume. Reorganized so the first thing recruiters see after Professional Summary is real work, not a skills list.
+
 ## 2026-05-06 — Hero meta strip on one line
 - Files: [static/styles.css](static/styles.css) (`.hero-v3__meta` flex-wrap → nowrap, gap 24px, `width: max-content`; `.hero-v3__meta-item` `white-space: nowrap` + `flex: 0 0 auto`), [templates/base.html](templates/base.html) (cache buster `v=2.2` → `v=2.3`).
 - Why: user wanted Currently / Based in / Building / Reach me on a single row instead of wrapping "Reach me · GitHub · LinkedIn" onto its own line. Meta row now extends into the 160px hero gap (which has clear space) so all four items fit horizontally.
