@@ -12,6 +12,14 @@ Format:
 
 ---
 
+## 2026-05-16 — Synced full certifications list into resume + CV
+- Files: [templates/resume_document.html](templates/resume_document.html), [templates/cv_document.html](templates/cv_document.html).
+- Resume Certifications was showing only 4 (with mismatched names). Now lists all 7: the 6 canonical portfolio certs from `get_certifications()` (Google AI Essentials, Data Science Essentials, Python Essentials 1, Apply AI: Analyze Customer Reviews, Intro to Cyber Security, DevOps Basics) + CSE Professional Passer (2024).
+- CV "Certifications and Eligibility" was missing Python Essentials 1 — added it (Cisco Networking Academy style to match the others). CV now also has the full set.
+- Why: User noted the resume only showed 4 certs when the portfolio (index.html via `get_certifications()`) has 6–7. Synced both docs to the canonical list.
+- Note: +3 cert lines on the resume (~42px) — must re-verify one-page Letter fit on the live deploy with Playwright.
+- Commit: pending.
+
 ## 2026-05-16 — Resume ATS pass: ≥10pt fonts, linear contact, comma skills (Letter + A4 verified)
 - Files: [static/styles.css](static/styles.css) (resume `@media print` block), [templates/resume_document.html](templates/resume_document.html).
 - **Fonts raised to ATS-safe minimums** (all ≥10pt): body/bullets/details/dates/institution 10pt (was 9–9.8pt), edu job-title h4 10.5pt, section titles 12.5pt, name 17pt. No text below the 10pt ATS/readability floor anymore.
