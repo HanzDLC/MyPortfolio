@@ -12,6 +12,16 @@ Format:
 
 ---
 
+## 2026-05-16 — Resume ATS pass: ≥10pt fonts, linear contact, comma skills (Letter + A4 verified)
+- Files: [static/styles.css](static/styles.css) (resume `@media print` block), [templates/resume_document.html](templates/resume_document.html).
+- **Fonts raised to ATS-safe minimums** (all ≥10pt): body/bullets/details/dates/institution 10pt (was 9–9.8pt), edu job-title h4 10.5pt, section titles 12.5pt, name 17pt. No text below the 10pt ATS/readability floor anymore.
+- **Contact block de-risked for ATS:** `.cv-contact-grid` changed from CSS grid → `display:flex; flex-wrap:wrap` so parsers read Address/Phone/Email/Portfolio in DOM/source order (multi-column grid was the real ATS risk, not point size).
+- **Skills separators:** `&middot;` (·) → commas in both `.cv-skills-inline` lines — commas are the most universally ATS-parseable skill separator. Skills were already inline `<p>` text (not columns/table), so structurally fine; this is the max-compatibility refinement.
+- **Spacing tightened to keep one page:** bigger fonts overflowed Letter by 141px (Playwright-measured 1120px). Tightened line-heights (~1.18–1.25) and section/entry margins (no font reduction) → recompacted to **907px**, fits Letter (979px limit) AND A4 (1045px limit) with headroom.
+- **Playwright-verified end to end:** natural 907px; fits Letter + A4; flex-fill distributes evenly on both (Letter gaps ~2–3px, A4 ~8–9px). Single resume works for US (Letter) and UK/EU (A4) applications.
+- Why: User asked to follow ATS font-size standards, fix the structural ATS killers (contact grid, separators), and keep it applicable to both Letter and A4 for US + UK applications.
+- Commit: pending.
+
 ## 2026-05-16 — Print: resume flex-fills the full page on any size (Playwright-verified)
 - File: [static/styles.css](static/styles.css) — resume-scoped `@media print` `.cv-paper` rule.
 - Made the resume print container `display:flex; flex-direction:column; min-height:100vh; justify-content:space-between` so sections distribute to fill the full page height instead of clustering at the top with a big bottom gap. `.cv-paper > *` set to `flex:0 0 auto` so sections keep natural size and only the gaps absorb leftover space.

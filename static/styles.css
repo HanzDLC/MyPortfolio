@@ -3836,7 +3836,7 @@ body.menu-open {
   /* Resume-only print compaction — readable 1-page fit */
   .document-view.is-active[data-doc-view="resume"] .cv-paper {
     font-size: 10pt !important;
-    line-height: 1.3 !important;
+    line-height: 1.18 !important;
     /* Fill the full page on ANY standard size (Letter/A4/Legal):
        distribute sections to absorb leftover vertical space evenly
        instead of clustering at the top. */
@@ -3851,68 +3851,73 @@ body.menu-open {
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-header {
-    margin-bottom: 4px !important;
-    padding-bottom: 3px !important;
+    margin-bottom: 3px !important;
+    padding-bottom: 2px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-name {
-    font-size: 15pt !important;
+    font-size: 17pt !important;
     margin: 0 0 2px 0 !important;
   }
 
+  /* ATS: contact info as a single linear, source-ordered flow (flex-wrap,
+     not a CSS grid) so parsers read Address/Phone/Email/Portfolio in order */
   .document-view.is-active[data-doc-view="resume"] .cv-contact-grid {
-    gap: 2px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px 14px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-contact-item {
-    font-size: 9.5pt !important;
+    font-size: 10pt !important;
+    line-height: 1.25 !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-section {
-    margin-bottom: 5px !important;
+    margin-bottom: 3px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-section-title {
     font-size: 12.5pt !important;
-    margin: 0 0 2px 0 !important;
-    padding-bottom: 2px !important;
+    margin: 0 0 1px 0 !important;
+    padding-bottom: 1px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-section-content {
-    padding-top: 2px !important;
+    padding-top: 1px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-section-content>p {
-    font-size: 9.8pt !important;
-    line-height: 1.35 !important;
+    font-size: 10pt !important;
+    line-height: 1.25 !important;
     margin: 0 !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-edu-entry {
-    margin-bottom: 4px !important;
-    padding-bottom: 2px !important;
+    margin-bottom: 2px !important;
+    padding-bottom: 1px !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-edu-left h4 {
-    font-size: 10.2pt !important;
-    margin: 0 0 1px 0 !important;
+    font-size: 10.5pt !important;
+    margin: 0 !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-edu-detail {
-    font-size: 9.4pt !important;
+    font-size: 10pt !important;
     margin: 0 !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-date {
-    font-size: 9.4pt !important;
+    font-size: 10pt !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-institution {
-    font-size: 9pt !important;
+    font-size: 10pt !important;
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-courses {
-    margin-top: 2px !important;
+    margin-top: 1px !important;
     padding-left: 2px !important;
   }
 
@@ -3924,9 +3929,9 @@ body.menu-open {
 
   .document-view.is-active[data-doc-view="resume"] .cv-courses li,
   .document-view.is-active[data-doc-view="resume"] .cv-skills-col li {
-    font-size: 9.5pt !important;
-    line-height: 1.28 !important;
-    padding: 0.5px 0 !important;
+    font-size: 10pt !important;
+    line-height: 1.22 !important;
+    padding: 0 !important;
     margin: 0 !important;
   }
 
@@ -3936,8 +3941,15 @@ body.menu-open {
   }
 
   .document-view.is-active[data-doc-view="resume"] .cv-skills-col h4 {
-    font-size: 10pt !important;
+    font-size: 11pt !important;
     margin: 0 0 3px 0 !important;
+  }
+
+  /* ATS: keep inline skills band as plain readable text */
+  .document-view.is-active[data-doc-view="resume"] .cv-skills-inline {
+    font-size: 10pt !important;
+    line-height: 1.3 !important;
+    margin: 0 0 2px 0 !important;
   }
 
   /* Resume: allow entries/sections to split so Education can start on page 1
