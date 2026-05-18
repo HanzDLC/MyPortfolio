@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-16 — Print: make CV/resume adapt to any standard paper size
+- File: [static/styles.css](static/styles.css) — `@media print` `@page` rule.
+- Changed `@page { size: letter }` → `@page { size: auto }` so the printed CV/resume adapts to whatever standard paper size the user selects (Letter, Legal, A4) instead of forcing Letter and leaving dead space when the dialog is set to Legal.
+- `.cv-paper` already uses `width: 100%` + `height: auto` + `min-height: auto`, so content flows naturally on any page size. Only the one `@page` rule existed in the whole stylesheet — no other hardcoded sizes.
+- Why: User repeatedly hit the Legal-vs-Letter print mismatch (resume didn't fill the page when the dialog defaulted to Legal). `size: auto` removes the forced-Letter conflict so it's flexible to any standard size.
+- Commit: pending.
+
 ## 2026-05-13 — Resume restructure: stronger bullets + reordered sections
 - Files: [templates/resume_document.html](templates/resume_document.html), [templates/cv_document.html](templates/cv_document.html), [static/styles.css](static/styles.css).
 - **Resume section reorder:** new order is Header → Professional Summary → Relevant Experience (moved up, was after Core Skills) → Certifications (vertical bullets, moved up from bottom) → Education → Core Skills (horizontal inline, moved to bottom).
