@@ -12,6 +12,14 @@ Format:
 
 ---
 
+## 2026-05-16 — Print: resume flex-fills the full page on any size (Playwright-verified)
+- File: [static/styles.css](static/styles.css) — resume-scoped `@media print` `.cv-paper` rule.
+- Made the resume print container `display:flex; flex-direction:column; min-height:100vh; justify-content:space-between` so sections distribute to fill the full page height instead of clustering at the top with a big bottom gap. `.cv-paper > *` set to `flex:0 0 auto` so sections keep natural size and only the gaps absorb leftover space.
+- Playwright-tested against the deployed site with print compaction simulated: compacted resume = exactly 979px (one Letter page) → fills Letter perfectly; on Legal (1267px) the inter-section gaps grow evenly from ~5px to ~36px and content spreads from ending at 947px → 1101px (even distribution instead of one ~320px bottom void); A4 distributes similarly.
+- Combined with the earlier `@page size: auto` change, the resume now fills Letter/A4/Legal cleanly with evenly distributed spacing.
+- Why: User wanted the resume to maximize/fill the page on any standard size, not leave dead space — verified with Playwright per their request.
+- Commit: pending.
+
 ## 2026-05-16 — Print: make CV/resume adapt to any standard paper size
 - File: [static/styles.css](static/styles.css) — `@media print` `@page` rule.
 - Changed `@page { size: letter }` → `@page { size: auto }` so the printed CV/resume adapts to whatever standard paper size the user selects (Letter, Legal, A4) instead of forcing Letter and leaving dead space when the dialog is set to Legal.
