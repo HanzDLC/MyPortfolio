@@ -106,16 +106,28 @@
         </div>
     </div>
 
-    <!-- 5. BEYOND TECH — pull quote moment -->
+    <!-- 5. BEYOND TECH — guitar photo + pull quote moment -->
     <div class="about-pullquote" data-reveal="fade-up">
-        <span class="section-eyebrow">Beyond Tech</span>
-        <blockquote class="about-pullquote__text">
-            <span class="about-pullquote__mark" aria-hidden="true">&ldquo;</span>
-            Outside of tech, I play <em class="accent-italic">guitar</em> — and I've been
-            lucky enough to win a few contests over the years. Music taught me discipline,
-            creativity, and how to show up under pressure.
-        </blockquote>
-        <div class="about-pullquote__byline">— Hanz, on showing up</div>
+        <div class="about-pullquote__media">
+            <div class="about-pullquote__photo">
+                <img src="{{ url_for('static', filename='images/About/guitar.jpg') }}"
+                     alt="Hanz playing guitar" loading="lazy">
+                <span class="about-v3__photo-tag">
+                    <span class="about-v3__photo-tag-dot" aria-hidden="true"></span>
+                    Guitarist · Multiple contest wins
+                </span>
+            </div>
+        </div>
+        <div class="about-pullquote__text-col">
+            <span class="section-eyebrow">Beyond Tech</span>
+            <blockquote class="about-pullquote__text">
+                <span class="about-pullquote__mark" aria-hidden="true">&ldquo;</span>
+                Outside of tech, I play <em class="accent-italic">guitar</em> — and I've been
+                lucky enough to win a few contests over the years. Music taught me discipline,
+                creativity, and how to show up under pressure.
+            </blockquote>
+            <div class="about-pullquote__byline">— Hanz, on showing up</div>
+        </div>
     </div>
 
     <!-- 6. CLOSING CTA -->

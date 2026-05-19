@@ -5842,24 +5842,58 @@ body {
   margin: 0;
 }
 
-/* ----- About: pull quote ----------------------------------- */
+/* ----- About: guitar photo + pull quote --------------------- */
 .about-pullquote {
   margin: 120px auto;
-  max-width: 880px;
-  text-align: center;
+  max-width: 1120px;
   padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.about-pullquote__media {
+  position: relative;
+}
+
+.about-pullquote__photo {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  aspect-ratio: 4 / 5;
+  background: var(--card-bg);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s cubic-bezier(.22,.61,.36,1), box-shadow 0.4s ease;
+}
+
+.about-pullquote__photo:hover {
+  transform: translateY(-4px) rotate(-0.6deg);
+  box-shadow: 0 36px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(67, 97, 238, 0.2);
+}
+
+.about-pullquote__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-pullquote__text-col {
+  text-align: left;
 }
 
 .about-pullquote .section-eyebrow {
-  margin-bottom: 32px;
-  justify-content: center;
+  margin-bottom: 28px;
+  justify-content: flex-start;
 }
 
 .about-pullquote__text {
   position: relative;
   font-family: var(--display-stack);
-  font-size: clamp(24px, 3vw, 38px);
-  line-height: 1.3;
+  font-size: clamp(26px, 2.9vw, 40px);
+  line-height: 1.28;
   letter-spacing: -0.012em;
   color: var(--text-primary);
   margin: 0 0 24px;
@@ -5875,13 +5909,13 @@ body {
 
 .about-pullquote__mark {
   position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -54px;
+  left: -10px;
+  transform: none;
   font-size: 120px;
   line-height: 1;
   color: var(--accent-color);
-  opacity: 0.18;
+  opacity: 0.16;
   font-family: var(--display-stack);
   pointer-events: none;
 }
@@ -6425,10 +6459,12 @@ body {
   .about-spotlight-card-v2 { padding: 24px 20px; }
   .about-spotlight-card-v2__title { font-size: 20px; }
   .about-spotlight-card-v2__text { font-size: 14px; }
-  .about-pullquote { margin: 72px auto; padding: 0 8px; }
-  .about-pullquote .section-eyebrow { margin-bottom: 22px; }
+  .about-pullquote { margin: 72px auto; padding: 0 8px; grid-template-columns: 1fr; gap: 28px; }
+  .about-pullquote__photo { aspect-ratio: 4 / 5; max-width: 360px; margin: 0 auto; }
+  .about-pullquote__text-col { text-align: center; }
+  .about-pullquote .section-eyebrow { margin-bottom: 22px; justify-content: center; }
   .about-pullquote__text { font-size: clamp(20px, 5.6vw, 30px); line-height: 1.32; }
-  .about-pullquote__mark { top: -28px; font-size: 80px; }
+  .about-pullquote__mark { top: -34px; left: 50%; transform: translateX(-50%); font-size: 80px; }
   .about-cta { margin: 64px 0 24px; padding: 48px 16px; }
   .about-cta__title { font-size: clamp(26px, 7.5vw, 40px); }
   .about-cta__sub { font-size: 15px; }

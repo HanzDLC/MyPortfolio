@@ -12,6 +12,14 @@ Format:
 
 ---
 
+## 2026-05-20 — About page: guitar photo + editorial pull-quote redesign
+- Files: [templates/about.html](templates/about.html), [static/styles.css](static/styles.css), [templates/base.html](templates/base.html), new `static/images/About/guitar.jpg`.
+- "Beyond Tech" section (section 5) was a plain centered pull-quote with no image. Rebuilt it as a two-column editorial layout: `guitar.jpg` on the left in a styled photo card (rounded 18px, bordered, 4/5 ratio, shadow, hover lift + slight rotate, reused `.about-v3__photo-tag` pill = "Guitarist · Multiple contest wins"), quote + byline on the right, left-aligned with the oversized quote mark.
+- No `data-parallax` on the new media (about.html doesn't load redesign-fx.js anyway) — avoids the hero-style transform/overlap risk.
+- Mobile (`@media ≤768px`): stacks single-column, photo centered max-width 360px, text/eyebrow re-centered, quote mark re-centered. 480px inherits.
+- Cache-buster `v=2.7` → `v=2.8`.
+- Commit: pending.
+
 ## 2026-05-20 — Mobile: kill hero photo parallax that covered the text
 - Files: [static/styles.css](static/styles.css), [templates/base.html](templates/base.html).
 - Playwright confirmed `.hero-v3__visual` had `transform: matrix(1,0,0,1,0,-563.2)` — the JS scroll-parallax (`redesign-fx.js` reading `data-parallax="0.08"`) translating the photo UP ~563px so it overlapped `.hero-v3__content` at every scroll position on the stacked mobile layout (equal z-index:5, photo later in DOM → painted over the text).
