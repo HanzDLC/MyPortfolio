@@ -85,9 +85,18 @@ def get_tool_info(tool_name):
             "color": "#1572b6"
         }
         
+    # NOTE: must come before the generic "api" check below —
+    # "api" is a substring of "fastapi", so without this the
+    # FastAPI tile would fall through to the generic API icon.
+    if "fastapi" in name_lower:
+        return {
+            "icon": "https://cdn.simpleicons.org/fastapi/009688",
+            "color": "#009688"
+        }
+
     if "webhooks" in name_lower or "api" in name_lower:
         return {
-            "icon": "https://www.svgrepo.com/show/331307/api.svg", 
+            "icon": "https://www.svgrepo.com/show/331307/api.svg",
             "color": "#007bff"
         }
 
@@ -195,12 +204,6 @@ def get_tool_info(tool_name):
             "color": "#61dafb"
         }
 
-    if "fastapi" in name_lower:
-        return {
-            "icon": "https://cdn.simpleicons.org/fastapi/009688",
-            "color": "#009688"
-        }
-
     if "prisma" in name_lower:
         return {
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
@@ -263,8 +266,8 @@ def get_tool_info(tool_name):
 
     if "codex" in name_lower:
         return {
-            "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg",
-            "color": "#000000"
+            "icon": "https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openai.svg",
+            "color": "#ffffff"
         }
 
     if "openclaw" in name_lower:
