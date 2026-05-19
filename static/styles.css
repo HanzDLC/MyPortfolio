@@ -6299,6 +6299,17 @@ body {
    older @media blocks. Built from 3 parallel selector-lane drafts.
    ================================================================== */
 @media (max-width: 768px) {
+  /* ---------- Header: stop the sticky nav from covering content ----------
+     On desktop the header stays sticky (untouched). On phones the
+     near-opaque blurred 66px band pinned at top:0 overlays whatever
+     scrolls under it. Make it scroll away with the page (standard
+     mobile pattern). CSS-only, no JS/markup/desktop change. */
+  header,
+  .site-header,
+  .site-header.is-scrolled {
+    position: static !important;
+  }
+
   /* ---------- Lane A: hero-v3 ---------- */
   .hero-v3 {
     grid-template-columns: 1fr;

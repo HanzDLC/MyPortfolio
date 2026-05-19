@@ -12,6 +12,15 @@ Format:
 
 ---
 
+## 2026-05-20 — Mobile: stop sticky header covering content + icon resolution
+- Files: [static/styles.css](static/styles.css), [tools_data.py](tools_data.py), [templates/base.html](templates/base.html).
+- **Scroll-covering fix:** Playwright `elementsFromPoint` confirmed the sticky `.site-header` (z-index 1000, 66px, bg rgba(8,9,13,0.92) + blur(20px) backdrop) overlays content (hero photo + sections below) as you scroll on mobile. Added `header,.site-header,.site-header.is-scrolled { position: static !important; }` inside the existing `@media (max-width:768px)` block — header scrolls away with the page on phones; desktop sticky nav untouched. CSS-only, no JS/markup change.
+- **FastAPI icon:** root cause was the generic `if "api" in name_lower` branch matching "fastapi" first (substring) → moved a `fastapi` check above it; removed the dead duplicate. Now `cdn.simpleicons.org/fastapi/009688`, verified rendering live.
+- **Codex icon:** simpleicons removed the `openai` slug; lobehub's openai.svg is a `currentColor`/`1em` glyph (invisible in `<img>`). Switched to the ChatGPT blossom Wikimedia SVG already proven rendering on the site (Codex is an OpenAI product). 
+- Cache-buster `v=2.5` → `v=2.6`.
+- Approach (answer to "refactor mobile without touching desktop/logic"): all changes are CSS overrides scoped to `@media (max-width:768/480px)` appended at end of styles.css; no HTML/JS edits; verified on the live Vercel deploy via Playwright DOM measurement.
+- Commit: pending.
+
 ## 2026-05-20 — Fix FastAPI icon + wrap long tool names
 - Files: [tools_data.py](tools_data.py), [static/styles.css](static/styles.css), [templates/base.html](templates/base.html).
 - FastAPI showcase icon was broken in-browser (devicon jsdelivr SVG not rendering). Swapped to `https://cdn.simpleicons.org/fastapi/009688` (Simple Icons — reliable single-path SVG for `<img>` embedding).
