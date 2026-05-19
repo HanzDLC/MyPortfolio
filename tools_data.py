@@ -265,9 +265,13 @@ def get_tool_info(tool_name):
         }
 
     if "codex" in name_lower:
+        # OpenAI's simpleicons slug was removed and lobehub's openai.svg
+        # is a currentColor/1em glyph (invisible in <img>). Reuse the
+        # ChatGPT blossom logo — Codex is an OpenAI product and this
+        # exact URL already renders on the site for the ChatGPT tile.
         return {
-            "icon": "https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openai.svg",
-            "color": "#ffffff"
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+            "color": "#74aa9c"
         }
 
     if "openclaw" in name_lower:
