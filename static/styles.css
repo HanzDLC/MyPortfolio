@@ -6319,8 +6319,19 @@ body {
     min-height: auto;
     padding: 88px 6vw 48px;
   }
-  .hero-v3__content { max-width: 100%; width: 100%; order: 1; }
-  .hero-v3__visual { max-width: 360px; width: 100%; order: 2; justify-self: start; margin-top: 0; }
+  .hero-v3__content { max-width: 100%; width: 100%; order: 1; position: relative; z-index: 6; }
+  /* Kill the JS scroll-parallax/tilt on mobile (redesign-fx.js sets an
+     inline transform via data-parallax — !important beats inline). On
+     the stacked layout that translateY drags the photo up OVER the
+     text. Force it back into normal flow, below the content. */
+  .hero-v3__visual,
+  .hero-v3__visual[data-parallax],
+  .hero-v3__photo-wrap,
+  .hero-v3__photo-wrap.is-floating {
+    transform: none !important;
+    animation: none !important;
+  }
+  .hero-v3__visual { max-width: 360px; width: 100%; order: 2; justify-self: start; margin-top: 0; position: relative; z-index: 1; }
   .hero-v3__drift--a { width: 360px; height: 360px; top: -120px; left: -140px; }
   .hero-v3__drift--b { width: 300px; height: 300px; bottom: -140px; right: -120px; }
   .hero-v3__eyebrow { margin-bottom: 24px; font-size: 11px; }

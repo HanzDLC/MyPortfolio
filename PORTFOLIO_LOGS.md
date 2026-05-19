@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-20 — Mobile: kill hero photo parallax that covered the text
+- Files: [static/styles.css](static/styles.css), [templates/base.html](templates/base.html).
+- Playwright confirmed `.hero-v3__visual` had `transform: matrix(1,0,0,1,0,-563.2)` — the JS scroll-parallax (`redesign-fx.js` reading `data-parallax="0.08"`) translating the photo UP ~563px so it overlapped `.hero-v3__content` at every scroll position on the stacked mobile layout (equal z-index:5, photo later in DOM → painted over the text).
+- Fix (CSS-only, no JS change): in `@media (max-width:768px)` set `.hero-v3__visual / [data-parallax] / .hero-v3__photo-wrap(.is-floating) { transform:none !important; animation:none !important; }` (CSS `!important` overrides the JS inline transform). Hardened stacking: content `z-index:6`, visual `z-index:1`. Photo now stays in normal flow below the text.
+- Cache-buster `v=2.6` → `v=2.7`. Desktop parallax untouched.
+- Commit: pending.
+
 ## 2026-05-20 — Mobile: stop sticky header covering content + icon resolution
 - Files: [static/styles.css](static/styles.css), [tools_data.py](tools_data.py), [templates/base.html](templates/base.html).
 - **Scroll-covering fix:** Playwright `elementsFromPoint` confirmed the sticky `.site-header` (z-index 1000, 66px, bg rgba(8,9,13,0.92) + blur(20px) backdrop) overlays content (hero photo + sections below) as you scroll on mobile. Added `header,.site-header,.site-header.is-scrolled { position: static !important; }` inside the existing `@media (max-width:768px)` block — header scrolls away with the page on phones; desktop sticky nav untouched. CSS-only, no JS/markup change.
