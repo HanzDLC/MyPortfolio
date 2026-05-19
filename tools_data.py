@@ -261,6 +261,12 @@ def get_tool_info(tool_name):
             "color": "#000000"
         }
 
+    if "codex" in name_lower:
+        return {
+            "icon": "https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg",
+            "color": "#000000"
+        }
+
     if "openclaw" in name_lower:
         return {
             "icon": "https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openclaw.svg",
@@ -321,7 +327,9 @@ def get_all_tools_with_icons():
         "OpenClaw",
         "Ollama",
         "Claude Code",
+        "Codex",
         "Hermes SuperAgent",
+        "FastAPI",
     ]
     results = []
     for tool in showcase_tools:

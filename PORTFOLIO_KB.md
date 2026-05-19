@@ -57,8 +57,8 @@
 
 ### Category: Web Development / MVP Creation
 
-#### 1. School MIS & ECR System (Ongoing MVP)
-**Status**: Ongoing Development
+#### 1. School MIS & ECR System (Completed)
+**Status**: Completed / Delivered
 **Tech Stack**: Base44, ChatGPT, n8n, MongoDB, MIS, MVP
 
 **Problem Solved**:
@@ -174,7 +174,7 @@
 - Flask, FastAPI, Node.js, MongoDB, PostgreSQL, MySQL
 
 ### Tools & Platforms
-- n8n, OpenClaw, Hermes SuperAgent, Ollama, ChatGPT, Claude Code, Gemini, OpenRouter, DeepSeek
+- n8n, OpenClaw, Hermes SuperAgent, Ollama, ChatGPT, Claude Code, Codex, FastAPI, Gemini, OpenRouter, DeepSeek
 - Base44, Docker, Supabase, GitHub, Git, Hostinger, Vercel
 - Google Sheets, Excel, Power Query
 - Prisma ORM, MongoDB

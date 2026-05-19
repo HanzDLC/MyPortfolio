@@ -12,6 +12,16 @@ Format:
 
 ---
 
+## 2026-05-19 — Mobile responsive overhaul (v3 sections) + content updates
+- Files: [static/styles.css](static/styles.css), [templates/base.html](templates/base.html), [projects_data.py](projects_data.py), [tools_data.py](tools_data.py), [PORTFOLIO_KB.md](PORTFOLIO_KB.md).
+- **Mobile fix:** the v3 editorial sections (hero-v3, marquee, Selected Works, projects-hero-v3, project cards, certifications sticky-scroll, about-v3) had NO mobile breakpoint. Root cause: `.hero-v3` is a fixed grid `minmax(0,560px) minmax(0,414px)` with `gap:250px`, so on a 375px phone the content block was ~563px and clipped on both sides (Playwright-measured: `.hero-v3__content` left:-94 right:469 at vw 375). Appended a consolidated `@media (max-width:768px)` + `@media (max-width:480px)` block at the END of styles.css (wins equal-specificity cascade over old @media blocks). Built via 3 parallel selector-lane agents (hero / works+marquee+sections / projects+about+certs) returning CSS text; orchestrator assembled + wrote once (no file conflicts).
+- Hero now single-column (text over photo), display heading clamps down to ~28–40px, meta row wraps then stacks, buttons full-width on ≤480px, chip cluster hidden, drift blobs shrunk. Works grid → 1 col. Certs sticky-scroll neutralized into a native swipe carousel on mobile (kills the 300vh horizontal-overflow risk). Project cards → full width. About-v3 fully single-column.
+- Cache-buster bumped `styles.css?v=2.3` → `?v=2.4` so the new CSS isn't served stale.
+- **School MIS status:** changed from "Ongoing MVP / Ongoing Development" to "Completed / Delivered" in projects_data.py (title, card/modal descriptions, impact chips) and PORTFOLIO_KB.md — user confirmed the school system is finished, not an ongoing MVP.
+- **Tools showcase:** added FastAPI (icon mapping already existed) and Codex (new OpenAI-mark icon branch) to `get_all_tools_with_icons()`; added Codex + FastAPI to the KB Tools & Platforms list.
+- Verification: pushed first, then Playwright-checks the live deployed site at 375px (per the verify-after-deploy workflow).
+- Commit: pending.
+
 ## 2026-05-16 — Synced full certifications list into resume + CV
 - Files: [templates/resume_document.html](templates/resume_document.html), [templates/cv_document.html](templates/cv_document.html).
 - Resume Certifications was showing only 4 (with mismatched names). Now lists all 7: the 6 canonical portfolio certs from `get_certifications()` (Google AI Essentials, Data Science Essentials, Python Essentials 1, Apply AI: Analyze Customer Reviews, Intro to Cyber Security, DevOps Basics) + CSE Professional Passer (2024).

@@ -8,9 +8,9 @@ def get_projects():
                 {
                     "id": "mvp-school-mis-modal",
                     "category_id": "mvp-school-mis",
-                    "title": "School MIS & ECR System (Ongoing MVP)",
-                    "card_description": "Ongoing web-based school MIS MVP centralizing accounting transparency, audit trails, DepEd-aligned ECR grading, and core school setup workflows in one integrated system.",
-                    "modal_description": "Ongoing MVP development of a school MIS platform covering accounting transparency, audit trail support, DepEd-aligned ECR grading, and administrative setup modules (school, subjects, teachers, and grading configs). Disclaimer: all screenshots use test data in a testing environment (not production).",
+                    "title": "School MIS & ECR System (Completed)",
+                    "card_description": "Completed web-based school MIS centralizing accounting transparency, audit trails, DepEd-aligned ECR grading, and core school setup workflows in one integrated system.",
+                    "modal_description": "Completed and delivered school MIS platform covering accounting transparency, audit trail support, DepEd-aligned ECR grading, and administrative setup modules (school, subjects, teachers, and grading configs). Disclaimer: all screenshots use test data in a testing environment (not production).",
                     "tags": ["Base44", "ChatGPT", "n8n", "MongoDB", "MIS", "MVP"],
                     "image": "images/MVP Project/MVP_Dashboard.png",
                     "has_modal": True,
@@ -41,9 +41,9 @@ def get_projects():
                         {"title": "Prompt-Engineered MVP Build", "text": "Used prompt engineering to accelerate system design, feature iteration, and module implementation during development."}
                     ],
                     "impact": [
-                        {"value": "Ongoing", "label": "Project Status", "icon_type": "check"},
+                        {"value": "Completed", "label": "Project Status", "icon_type": "check"},
                         {"value": "Integrated", "label": "MIS + ECR Workflow", "icon_type": "trend"},
-                        {"value": "Test Env", "label": "Current Environment", "icon_type": "time"}
+                        {"value": "Delivered", "label": "Outcome", "icon_type": "time"}
                     ]
                 },
                 {
