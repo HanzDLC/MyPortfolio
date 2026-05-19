@@ -197,7 +197,7 @@ def get_tool_info(tool_name):
 
     if "fastapi" in name_lower:
         return {
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+            "icon": "https://cdn.simpleicons.org/fastapi/009688",
             "color": "#009688"
         }
 

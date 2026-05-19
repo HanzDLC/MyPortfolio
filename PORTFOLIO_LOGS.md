@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-20 — Fix FastAPI icon + wrap long tool names
+- Files: [tools_data.py](tools_data.py), [static/styles.css](static/styles.css), [templates/base.html](templates/base.html).
+- FastAPI showcase icon was broken in-browser (devicon jsdelivr SVG not rendering). Swapped to `https://cdn.simpleicons.org/fastapi/009688` (Simple Icons — reliable single-path SVG for `<img>` embedding).
+- `.tool-logo-name` was truncating long names ("Hermes Su…") via `white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px`. Changed to `white-space:normal; overflow-wrap/word-break:break-word; max-width:100%` so names wrap to multiple lines under the icon. Mobile override `max-width:72px` → `100%`. Both duplicate rule instances updated.
+- Cache-buster `v=2.4` → `v=2.5`.
+- Commit: pending.
+
 ## 2026-05-19 — Mobile responsive overhaul (v3 sections) + content updates
 - Files: [static/styles.css](static/styles.css), [templates/base.html](templates/base.html), [projects_data.py](projects_data.py), [tools_data.py](tools_data.py), [PORTFOLIO_KB.md](PORTFOLIO_KB.md).
 - **Mobile fix:** the v3 editorial sections (hero-v3, marquee, Selected Works, projects-hero-v3, project cards, certifications sticky-scroll, about-v3) had NO mobile breakpoint. Root cause: `.hero-v3` is a fixed grid `minmax(0,560px) minmax(0,414px)` with `gap:250px`, so on a 375px phone the content block was ~563px and clipped on both sides (Playwright-measured: `.hero-v3__content` left:-94 right:469 at vw 375). Appended a consolidated `@media (max-width:768px)` + `@media (max-width:480px)` block at the END of styles.css (wins equal-specificity cascade over old @media blocks). Built via 3 parallel selector-lane agents (hero / works+marquee+sections / projects+about+certs) returning CSS text; orchestrator assembled + wrote once (no file conflicts).
