@@ -1,0 +1,12 @@
+- [User profile](user_profile.md) — Hanz de la Cruz: Lead Full-Stack Dev at Zilla Media, Iloilo City, AI systems architect.
+- [User seniority](user_seniority.md) — Mid-level, NOT senior. Never use "senior" framing in applications.
+- [Portfolio agent role](portfolio_agent_role.md) — Opening prompt + session handshake for this project.
+- [Portfolio project context](project_portfolio.md) — Flask portfolio repo facts, active projects, branches.
+- [Knowledge base reference](reference_kb.md) — Canonical KB and logs file pointers inside the repo.
+- [Workflow: update CV+resume together](feedback_cv_sync.md) — Keep agent counts/project names in sync across projects_data.py, CV, and resume.
+- [Workflow: no push without approval](feedback_no_autopush.md) — Never push/merge without explicit user confirmation.
+- [Workflow: verify after deploy](feedback_verify_after_deploy.md) — Push to Vercel first, then Playwright-verify the live site; don't simulate CSS before pushing.
+- [External: GitHub account](reference_github.md) — User has multiple GitHub accounts; confirm correct one before push.
+- [Vercel deploy requirements](reference_vercel_deploy.md) — Commit must use HanzDLC noreply email; repo is public; Vercel project ownership gotcha.
+- [ARIA canonical spec](project_aria.md) — 6 marketing agents, stack, key improvements.
+- [Hermes canonical spec](project_hermes.md) — Self-improving agent hub migrated from OpenClaw.

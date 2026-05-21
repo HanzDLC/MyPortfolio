@@ -7,7 +7,8 @@
       "Bash(curl -s \"https://hanzdlc-portfolio.vercel.app/static/styles.css?cb=$\\(date +%s\\)\")",
       "Bash(curl -s \"https://hanzdlc-portfolio.vercel.app/?cb=$\\(date +%s\\)\")",
       "WebFetch(domain:www.sbs.ox.ac.uk)",
-      "mcp__playwright__browser_snapshot"
+      "mcp__playwright__browser_snapshot",
+      "Bash(python .claude/hooks/update_kb.py)"
     ]
   },
   "hooks": {

@@ -223,11 +223,70 @@ Each skill in `get_skills()` carries: `title`, `description`, `icon` (lucide key
 - **Commit style**: `feat:`, `fix:`, `refactor:` conventional commits
 - **Never push without user approval** — ask every time
 - **Never commit `.env`** — GMAIL credentials are gitignored
-- **Verify live with Playwright** after every deploy — push first, then check live URL
+- **Verify live with Playwright** after every deploy — push first, then check live URL; never simulate CSS locally before pushing
 - **Mobile CSS**: append at END of `styles.css`, never edit desktop rules
-- **Account note**: GitHub push must use HanzDLC noreply email. User has multiple GitHub accounts — confirm before push.
+
+### Seniority Rule (IMPORTANT)
+Hanz is **mid-level**, not senior. Do NOT use "senior", "senior-level", or equivalent in cover letters, applications, LinkedIn copy, or salary anchoring. Use "mid-level", "experienced full-stack developer", "hands-on builder", or just describe shipped work. His title "Lead Full-Stack Developer" is a role name at Zilla Media, not a seniority claim.
+
+### GitHub Accounts (IMPORTANT)
+Two accounts exist on this machine:
+- **HanzDLC** — owns the portfolio repo (`HanzDLC/MyPortfolio`, public). Noreply: `144861507+HanzDLC@users.noreply.github.com`. **This is the correct account.**
+- **internz2026-sys** — associated with `internz.2026@gmail.com`. Do NOT author commits with this email — Vercel will reject.
+
+Before every push: confirm `git remote -v` points to `HanzDLC/MyPortfolio` and `git config user.email` is the HanzDLC noreply. If push fails with "Repository not found", surface the error — do NOT retry blindly.
+
+### Vercel Commit Email (IMPORTANT)
+Commit author email MUST be `144861507+HanzDLC@users.noreply.github.com` for Vercel to accept the deploy. Local git is already configured this way — do NOT change it. If Vercel still blocks after correct author email and public repo, the fix is: delete the Vercel project and re-import under the HanzDLC-linked Vercel login (incognito window → sign in with HanzDLC GitHub → re-add custom domain + env vars).
 
 ---
 
-**Last Updated**: 2026-05-22
+**Last Updated**: 2026-05-22 (auto-refreshed on idle)
 **Portfolio Status**: Active — chat with Claude Code on this folder for updates
+
+---
+
+## Recent Changes (Auto-Updated)
+
+_Pulled from PORTFOLIO_LOGS.md on idle — last 5 entries._
+
+## 2026-05-20 — About page: guitar photo + editorial pull-quote redesign
+- Files: [templates/about.html](templates/about.html), [static/styles.css](static/styles.css), [templates/base.html](templates/base.html), new `static/images/About/guitar.jpg`.
+- "Beyond Tech" section (section 5) was a plain centered pull-quote with no image. Rebuilt it as a two-column editorial layout: `guitar.jpg` on the left in a styled photo card (rounded 18px, bordered, 4/5 ratio, shadow, hover lift + slight rotate, reused `.about-v3__photo-tag` pill = "Guitarist · Multiple contest wins"), quote + byline on the right, left-aligned with the oversized quote mark.
+- No `data-parallax` on the new media (about.html doesn't load redesign-fx.js anyway) — avoids the hero-style transform/overlap risk.
+- Mobile (`@media ≤768px`): stacks single-column, photo centered max-width 360px, text/eyebrow re-centered, quote mark re-centered. 480px inherits.
+- Cache-buster `v=2.7` → `v=2.8`.
+- Commit: pending.
+
+## 2026-05-20 — Mobile: kill hero photo parallax that covered the text
+- Files: [static/styles.css](static/styles.css), [templates/base.html](templates/base.html).
+- Playwright confirmed `.hero-v3__visual` had `transform: matrix(1,0,0,1,0,-563.2)` — the JS scroll-parallax (`redesign-fx.js` reading `data-parallax="0.08"`) translating the photo UP ~563px so it overlapped `.hero-v3__content` at every scroll position on the stacked mobile layout (equal z-index:5, photo later in DOM → painted over the text).
+- Fix (CSS-only, no JS change): in `@media (max-width:768px)` set `.hero-v3__visual / [data-parallax] / .hero-v3__photo-wrap(.is-floating) { transform:none !important; animation:none !important; }` (CSS `!important` overrides the JS inline transform). Hardened stacking: content `z-index:6`, visual `z-index:1`. Photo now stays in normal flow below the text.
+- Cache-buster `v=2.6` → `v=2.7`. Desktop parallax untouched.
+- Commit: pending.
+
+## 2026-05-20 — Mobile: stop sticky header covering content + icon resolution
+- Files: [static/styles.css](static/styles.css), [tools_data.py](tools_data.py), [templates/base.html](templates/base.html).
+- **Scroll-covering fix:** Playwright `elementsFromPoint` confirmed the sticky `.site-header` (z-index 1000, 66px, bg rgba(8,9,13,0.92) + blur(20px) backdrop) overlays content (hero photo + sections below) as you scroll on mobile. Added `header,.site-header,.site-header.is-scrolled { position: static !important; }` inside the existing `@media (max-width:768px)` block — header scrolls away with the page on phones; desktop sticky nav untouched. CSS-only, no JS/markup change.
+- **FastAPI icon:** root cause was the generic `if "api" in name_lower` branch matching "fastapi" first (substring) → moved a `fastapi` check above it; removed the dead duplicate. Now `cdn.simpleicons.org/fastapi/009688`, verified rendering live.
+- **Codex icon:** simpleicons removed the `openai` slug; lobehub's openai.svg is a `currentColor`/`1em` glyph (invisible in `<img>`). Switched to the ChatGPT blossom Wikimedia SVG already proven rendering on the site (Codex is an OpenAI product). 
+- Cache-buster `v=2.5` → `v=2.6`.
+- Approach (answer to "refactor mobile without touching desktop/logic"): all changes are CSS overrides scoped to `@media (max-width:768/480px)` appended at end of styles.css; no HTML/JS edits; verified on the live Vercel deploy via Playwright DOM measurement.
+- Commit: pending.
+
+## 2026-05-20 — Fix FastAPI icon + wrap long tool names
+- Files: [tools_data.py](tools_data.py), [static/styles.css](static/styles.css), [templates/base.html](templates/base.html).
+- FastAPI showcase icon was broken in-browser (devicon jsdelivr SVG not rendering). Swapped to `https://cdn.simpleicons.org/fastapi/009688` (Simple Icons — reliable single-path SVG for `<img>` embedding).
+- `.tool-logo-name` was truncating long names ("Hermes Su…") via `white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px`. Changed to `white-space:normal; overflow-wrap/word-break:break-word; max-width:100%` so names wrap to multiple lines under the icon. Mobile override `max-width:72px` → `100%`. Both duplicate rule instances updated.
+- Cache-buster `v=2.4` → `v=2.5`.
+- Commit: pending.
+
+## 2026-05-19 — Mobile responsive overhaul (v3 sections) + content updates
+- Files: [static/styles.css](static/styles.css), [templates/base.html](templates/base.html), [projects_data.py](projects_data.py), [tools_data.py](tools_data.py), [PORTFOLIO_KB.md](PORTFOLIO_KB.md).
+- **Mobile fix:** the v3 editorial sections (hero-v3, marquee, Selected Works, projects-hero-v3, project cards, certifications sticky-scroll, about-v3) had NO mobile breakpoint. Root cause: `.hero-v3` is a fixed grid `minmax(0,560px) minmax(0,414px)` with `gap:250px`, so on a 375px phone the content block was ~563px and clipped on both sides (Playwright-measured: `.hero-v3__content` left:-94 right:469 at vw 375). Appended a consolidated `@media (max-width:768px)` + `@media (max-width:480px)` block at the END of styles.css (wins equal-specificity cascade over old @media blocks). Built via 3 parallel selector-lane agents (hero / works+marquee+sections / projects+about+certs) returning CSS text; orchestrator assembled + wrote once (no file conflicts).
+- Hero now single-column (text over photo), display heading clamps down to ~28–40px, meta row wraps then stacks, buttons full-width on ≤480px, chip cluster hidden, drift blobs shrunk. Works grid → 1 col. Certs sticky-scroll neutralized into a native swipe carousel on mobile (kills the 300vh horizontal-overflow risk). Project cards → full width. About-v3 fully single-column.
+- Cache-buster bumped `styles.css?v=2.3` → `?v=2.4` so the new CSS isn't served stale.
+- **School MIS status:** changed from "Ongoing MVP / Ongoing Development" to "Completed / Delivered" in projects_data.py (title, card/modal descriptions, impact chips) and PORTFOLIO_KB.md — user confirmed the school system is finished, not an ongoing MVP.
+- **Tools showcase:** added FastAPI (icon mapping already existed) and Codex (new OpenAI-mark icon branch) to `get_all_tools_with_icons()`; added Codex + FastAPI to the KB Tools & Platforms list.
+- Verification: pushed first, then Playwright-checks the live deployed site at 375px (per the verify-after-deploy workflow).
+- Commit: pending.
