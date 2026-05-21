@@ -1,248 +1,233 @@
-# Hanz de la Cruz - Portfolio Knowledge Base
-
-## Personal Identity
-- **Name**: Hanz de la Cruz (hdlcruz03)
-- **Role**: IT Professional
-- **Location**: Philippines
-- **Focus**: Building useful things that make work easier
-- **Hobbies**: Playing guitar, won several guitar contests
-
-## Core Philosophy
-- Make processes clearer, easier, and more useful
-- Focus on solving real day-to-day problems
-- Prefer systems that help people stay organized
-- Reduce manual/repetitive work through automation
-- Turn raw data into understandable stories
-
-## Skills & Expertise
-
-### Technical Skills
-- **Data**: Exploratory Data Analysis, Data Visualization, Data Cleaning, Statistical Analysis
-- **Web Development**: Flask, HTML, CSS, JavaScript, full-stack development
-- **QA Testing**: Manual QA, Bug Tracking, Test Workflow Optimization
-- **Spreadsheets**: Excel, Google Sheets, VLOOKUP, QUERY formulas, Advanced Spreadsheet Mastery
-- **AI/Prompt Engineering**: Generative AI, Workflow Optimization, Prompt Engineering
-- **Version Control**: Git, GitHub
-- **Automation**: n8n Workflow Automation, Custom Node Integration, Process Automation
-- **Machine Learning**: Model Training, Performance Evaluation, ML Algorithm Selection
-- **Databases**: MongoDB, PostgreSQL, MySQL
-- **Frontend**: React, Next.js, Tailwind CSS, TypeScript, JavaScript
-- **Backend**: Flask, FastAPI, Node.js, Prisma ORM
-- **DevOps**: Docker, Containerization, Hostinger (hosting/deployment)
-
-### Core Competencies
-1. **Useful Systems** - Builds systems that solve real problems and help manage day-to-day work
-2. **Less Manual Work** - Focuses on automation and cleaner workflows to reduce repetitive tasks
-3. **Clear Data Stories** - Makes data analysis results easy to explain and actionable
-4. **Always Learning** - Continuously adopts new tools based on project needs
-5. **Creative Side** - Balances technical work with creative pursuits (music)
-
-## Current Role
-**Lead Full-Stack Developer at Zilla Media** (2026 - Present)
-- Developing ARIA (AI Runs It All) - Full-stack AI marketing platform with 6 agents
-- Building DriveXP (formerly CarBnb) - Comprehensive car rental platform
-- Architecting OpenClaw - Autonomous workflow orchestration system
-- Running Hermes SuperAgent (Nous Research) - self-improving agent hub
-- Right hand of CTO; helping certify Virtual Professionals as part of company mission
-
-## Services Offered
-1. **Full-Stack Development** - Next.js, React, FastAPI, Node.js production systems
-2. **Agentic AI Systems** - LLM integration, autonomous agent design, AI orchestration
-3. **Web Solutions** - Responsive, scalable web applications with modern tech stacks
-4. **Quality Assurance** - Software testing, bug tracking, workflow optimization
-5. **Process Automation** - n8n workflows, AI-driven systems, OpenClaw orchestration
-6. **Data Solutions** - Analytics, visualization, and data storytelling
-
-## Projects
-
-### Category: Web Development / MVP Creation
-
-#### 1. School MIS & ECR System (Completed)
-**Status**: Completed / Delivered
-**Tech Stack**: Base44, ChatGPT, n8n, MongoDB, MIS, MVP
-
-**Problem Solved**:
-- Manual and fragmented workflows causing delays and missing records
-- No centralized system for accounting/audit trails
-- Manual grade processing
-- Slow operational processes
-- Missing data visibility
-
-**Key Features**:
-- Accounting Transparency with process handling and audit trail support
-- Electronic Class Record (ECR) - integrated grading system with DepEd-aligned formula
-- Grading Configurations for standardized grading logic
-- School Setup module
-- Subject Setup module
-- Teacher Setup/Management module
-- Prompt-engineered MVP build for faster iteration
-
-**Workflow**:
-1. Problem Mapping - identified manual bottlenecks
-2. MVP Planning & Prompt Engineering - accelerated MVP creation
-3. Core MIS Module Setup - built foundational modules
-4. ECR Integration - created integrated grading system
-5. Process Support & Transparency - implemented accounting handling
-6. Automation Support - used n8n for workflow automation
-
-**Impact**: Integrated MIS + ECR Workflow, Test Environment
-
-#### 2. DriveXP - Car Rental Platform
-**Status**: Prototype
-**Tech Stack**: Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL, Tailwind CSS 4, Docker, Supabase
-
-**Problem Solved**:
-- Fragmented tools for car rental management
-- Manual owner verification
-- No centralized platform for listings, bookings, payouts
-- Manual availability tracking leading to double-bookings
-- Lack of accounting transparency
-
-**Key Features**:
-- Admin Workspace with 16 admin pages (dashboard, owners, listings, bookings, customers, accounting)
-- Owner Verification Flow (Pending > Verified > Active)
-- Full Booking Management with reference numbers and payment tracking
-- Availability Engine with weekly rules and date-specific exceptions
-- Accounting & Payouts - financial tracking and owner payout management
-- Custom Design System - Material Design-inspired with primary color #003d9b
-
-**Database**: 9 Prisma models covering Users, Owners, CarListings, Bookings, Customers, Availability Rules, Accounting, Payouts
-
-**Impact**: 16 admin pages, 9 database models, Docker containerization
-
-### Category: Agentic AI
-
-#### OpenClaw Agentic AI
-**Status**: Deployed
-**Tech Stack**: OpenClaw, Agentic AI, Ollama, Workflow Management, Automation
-
-**Purpose**: Autonomously manage and orchestrate automation workflows with agentic AI capabilities
-
-#### Hermes SuperAgent (Nous Research)
-**Status**: Deployed
-**Tech Stack**: Hermes Agent, Python, Cron Scheduler, Messaging Gateway (Telegram/Discord/Slack), Hermes WebUI, Subagents
-
-**Purpose**: Self-improving agent hub migrated from OpenClaw via `hermes claw migrate`. Adds persistent cross-session memory, native cron automations, multi-platform messaging gateway, and a self-improving learning loop that captures and refines reusable skills automatically.
-
-**Key Capabilities**:
-- Persistent memory with FTS5 session search and cross-session recall
-- Cross-platform messaging (Telegram, Discord, Slack, WhatsApp, Signal, CLI)
-- Built-in cron scheduler for unattended jobs
-- Subagent delegation for parallel workstreams
-- Hermes WebUI: three-panel browser interface accessible via SSH tunnel
-
-#### ARIA (AI Runs It All)
-**Status**: Deployed (production, real clients)
-**Tech Stack**: Next.js 14, FastAPI, Claude AI, Paperclip AI orchestration, Supabase, Socket.IO, Python, TypeScript
-
-**Purpose**: Multi-tenant B2B SaaS deploying 6 AI marketing agents (CEO, Content Writer, Email Marketer, Social Manager, Ad Strategist, Media) for developer founders. Used in production every day; supports the company mission of helping Filipino Virtual Professionals do higher-leverage work.
-
-**Key Improvements (2026)**:
-- Paperclip integration overhaul cutting CEO chat latency ~3x
-- Hardened sub-agent delegation with per-issue watcher
-- Structured email drafting for Gmail sending
-- Self-healing Claude CLI config that retries on transient failures
-
-### Category: Data & Analysis Projects
-
-**Machine Learning Projects**:
-1. Reddit Scraping (PRAW API)
-2. ML Model Evaluation & Analysis
-3. Customer Segmentation (K-Means)
-
-**Spreadsheet Projects**:
-1. VLOOKUP and QUERY - Advanced spreadsheet formulas
-2. QA Bug Logs Structure - Bug tracking and reporting optimization
-
-## Certifications
-1. **Google AI Essentials** - Generative AI, prompt engineering, responsible AI use
-2. **Data Science Essentials** - Full data science lifecycle with Python
-3. **Python Essentials 1** - Foundational Python programming
-4. **Apply AI Customer Reviews** - AI-driven sentiment analysis and thematic analysis
-5. **Intro to Cyber Security** - Cybersecurity landscape and digital security principles
-6. **DevOps Basics** - CI/CD, Infrastructure as Code, cloud-native development
-
-## Technology Stack Summary
-
-### Languages
-- Python, JavaScript, TypeScript, HTML, CSS, SQL, VBA
-
-### Frontend
-- React, Next.js, Tailwind CSS, JavaScript
-
-### Backend
-- Flask, FastAPI, Node.js, MongoDB, PostgreSQL, MySQL
-
-### Tools & Platforms
-- n8n, OpenClaw, Hermes SuperAgent, Ollama, ChatGPT, Claude Code, Codex, FastAPI, Gemini, OpenRouter, DeepSeek
-- Base44, Docker, Supabase, GitHub, Git, Hostinger, Vercel
-- Google Sheets, Excel, Power Query
-- Prisma ORM, MongoDB
-
-### Data & Analysis
-- Pandas, NumPy, Matplotlib, Seaborn
-
-## Work Characteristics
-- Problem-focused: Always starts with understanding the problem
-- Automation-oriented: Seeks to eliminate repetitive manual work
-- System-minded: Builds integrated solutions rather than isolated pieces
-- Data-driven: Uses data to inform decisions and communicate results
-- AI-assisted: Leverages AI tools (ChatGPT, Claude, DeepSeek) for acceleration
-- Iterative: Embraces MVP approach and continuous improvement
-- Full-stack capable: Can work across frontend, backend, databases
-
-## Contact & Links
-- Portfolio: This Flask portfolio site
-- Portfolio URL: https://hanzdlc-portfolio.vercel.app/
-- Google Sheets Projects: VLOOKUP/QUERY projects, QA Bug Logs
-- Google Colab ML Projects: Reddit Scraping, Model Evaluation, Customer Segmentation
-- GitHub: HanzDLC/MyPortfolio (push needs HanzDLC noreply email + token)
-- DriveXP repo: github.com/internz2026-sys/CarBNB (still has the old repo name; portfolio rebrand is local-only)
-
-## Portfolio Site Infrastructure (the Flask app itself)
-
-This is meta-context about the portfolio site that hosts this KB:
-
-### Stack
-- Flask (Python) + Jinja2 templates + vanilla JS + plain CSS
-- Deployed on Vercel via `@vercel/python` (see `vercel.json`)
-- Branches: `main` (deployed), `feature` (working/preview)
-
-### Routes (`app.py`)
-- `/` — homepage: hero, Skills v2, Services, Certifications scroll, Tools showcase, image zoom modal
-- `/about` — About page (eyebrow, intro, chips, photo cards, spotlights from `get_about_content()`)
-- `/projects` — full project list from `projects_data.py`
-- `/cv` and `/documents` — CV/Resume document view
-- `/contact` (POST) — Gmail SMTP form handler; sends to `hdlcruz03@gmail.com`
-
-### Key conventions
-- Project cards/modals: edit `projects_data.py`
-- Skills, services, certifications, about: edit `index_data.py`
-- Tools showcase + tool icons: edit `tools_data.py` (icon fallback chain matters; specific names go before generic ones, e.g., `claude code` before `claude`)
-- CV + resume must stay in sync with `projects_data.py` (agent counts, project names, key metrics)
-
-### Skills v2 design system (current)
-- Each skill in `get_skills()` carries: `title`, `description`, `icon` (lucide-style key), `accent` (hex), `tools` (list), `proficiency` (1–5), `years` (string)
-- Card uses `--skill-accent` CSS variable + `color-mix()` for icon background, dots, chip hover
-- Hover reveals tool chip row; mobile shows chips always
-
-### Contact form (Let's Talk modal)
-- Required env vars: `GMAIL_USER`, `GMAIL_APP_PASSWORD` (set in Vercel + locally in `.env`)
-- 2FA must be enabled on the Google account; app password generated at https://myaccount.google.com/apppasswords
-- Modal triggered by any element with `data-contact-trigger`; closes via ESC, backdrop, or `data-contact-close`
-- Status messages route through `[data-contact-status]` element with `data-kind` (info/success/error)
-
-### SessionStart auto-context hook
-- `.claude/settings.json` registers a SessionStart hook
-- Runs `.claude/hooks/load-portfolio-context.ps1` (PowerShell)
-- Outputs JSON injecting full PORTFOLIO_KB.md + 5 most recent PORTFOLIO_LOGS.md entries as `additionalContext`
-- If a new session doesn't pick up the hook, open `/hooks` once or restart Claude Code (settings watcher caveat)
-
-### Hero
-- April 15 layout (commit `c7ae82b`) was restored at user's request — uses `myimage.jpg`, hero pill, hero-title, hero-subtext, hero-actions, social-links, hero-bg-blobs, hero-spotlight, hero-effects.js animations
-- "Contact Me" button in hero opens the contact modal via `data-contact-trigger`
+# Hanz de la Cruz — Portfolio Knowledge Base
+<!-- Auto-maintained by .claude/hooks/update_kb.py. Manual edits are safe. -->
 
 ---
 
-**Last Updated**: 2026-05-06
-**Portfolio Status**: Active - For updates, chat with Claude Code on this Flask project folder
+## 1. Identity & Contact
+
+| Field | Value |
+|---|---|
+| Full Name | Hanz Uriel A. de la Cruz |
+| Alias / Handle | hdlcruz03 |
+| Location | Landheights Ville, Tagbak, Jaro, Iloilo City, PH |
+| Personal Email | hdlcruz03@gmail.com |
+| Work Email (REDACTED) | hanz@weREDACTED.com |
+| Portfolio | https://hanzdlc-portfolio.vercel.app/ |
+| GitHub (portfolio) | HanzDLC / MyPortfolio |
+| LinkedIn | https://www.linkedin.com/in/hanz-uriel-de-la-cruz-46495a2b6 |
+
+**Hobbies**: Guitar (multiple Battle of the Bands wins — Champion at Sigabong XXXIV, ISACOM, Iloilo Bike Fest)
+**Philosophy**: Make processes clearer, easier, and more useful. Build things that reduce manual work and turn raw data into actionable stories.
+
+---
+
+## 2. Current Roles
+
+### Lead Full-Stack Developer — Zilla Media (2026 – Present, Remote)
+- Right hand of CTO; leads development of ARIA, DriveXP, OpenClaw, Hermes
+- Helping certify Filipino Virtual Professionals as part of company mission
+
+### AI Specialist — REDACTED AI (May 2026 – Present, Remote)
+- Onboarded May 2026 with REDACTED (CEO) and the REDACTED team
+- Focus: AI-driven workflows, automation, and prompt systems for the business
+- Work email provisioned: hanz@weREDACTED.com
+
+---
+
+## 3. Flask Portfolio Infrastructure
+
+### Overview
+- **Framework**: Flask (Python) + Jinja2 templates + vanilla JS + plain CSS
+- **Deployed**: Vercel via `@vercel/python` (see `vercel.json`)
+- **Repo**: HanzDLC/MyPortfolio (public; push needs HanzDLC noreply email + token)
+- **Branches**: `main` (deployed to Vercel), `feature` (working/preview)
+- **URL**: https://hanzdlc-portfolio.vercel.app/
+
+### Key Files
+| File | Purpose |
+|---|---|
+| `app.py` | Flask routes — `/`, `/about`, `/projects`, `/documents`, `/contact` POST |
+| `projects_data.py` | All project cards + modal content (large; read with offset/limit) |
+| `index_data.py` | Skills v2, About content, Services, Certifications |
+| `tools_data.py` | Tool icon/color map; `get_tool_info()`, `get_all_tools_with_icons()` |
+| `templates/base.html` | Global layout, nav, footer, contact modal, cache-buster version |
+| `templates/about.html` | About page — intro grid, stats strip, chips marquee, spotlight cards, guitar pull-quote, CTA |
+| `templates/cv_document.html` | CV (Oxford format — Education first, action-verb bullets, single-column skills) |
+| `templates/resume_document.html` | Resume (ATS-safe — linear layout, ≥10pt, comma-separated skills) |
+| `static/styles.css` | All CSS; mobile overrides appended at END of file for cascade priority |
+| `PORTFOLIO_LOGS.md` | Chronological change log — append entry on every content change |
+| `PORTFOLIO_KB.md` | This file — canonical knowledge base |
+| `.claude/settings.json` | Claude Code hooks (SessionStart loads KB; Stop triggers idle KB refresh) |
+| `.claude/hooks/load-portfolio-context.ps1` | SessionStart hook — injects KB + recent logs as additionalContext |
+| `.claude/hooks/update_kb.py` | Idle KB updater — refreshes Last Updated + Recent Changes section |
+| `.claude/hooks/update-kb-on-idle.ps1` | Stop hook — stamps timestamp, launches 5-min idle watcher job |
+
+### Coding Conventions
+- **Mobile CSS**: Always append overrides at END of `styles.css` — never edit desktop rules; override only
+- **Cache-buster**: `styles.css?v=X.X` in `base.html` — bump version on every CSS deploy
+- **Tools**: `tools_data.py` uses first-match branching; specific names MUST come before generic substrings (e.g., `fastapi` before `api`, `claude code` before `claude`)
+- **CV ↔ Resume sync**: Agent counts, project names, key metrics must match across `projects_data.py`, `cv_document.html`, and `resume_document.html`
+- **No push without user approval** — always confirm before `git push`
+- **Verify after deploy** — push first, then Playwright-verify the live URL; never simulate CSS locally
+
+### Contact Form
+- Route: `POST /contact` in `app.py` (Gmail SMTP via smtplib)
+- Env vars needed: `GMAIL_USER=hdlcruz03@gmail.com`, `GMAIL_APP_PASSWORD=<app-password>`
+- Must be set in Vercel dashboard (Production scope) **and** local `.env` (gitignored)
+- Returns 503 if env vars missing, 502 on SMTP error, 200 on success
+- If Vercel blocks outbound SMTP → fallback: convert to Resend HTTP API
+
+---
+
+## 4. Active Projects
+
+### ARIA — AI Runs It All
+- **Status**: Deployed (production, real clients)
+- **Stack**: Next.js 14, FastAPI, Claude AI, Paperclip AI orchestration, Supabase, Socket.IO, Python, TypeScript
+- **Purpose**: Multi-tenant B2B SaaS with 6 autonomous AI marketing agents (CEO, Content Writer, Email Marketer, Social Manager, Ad Strategist, Media) for developer founders
+- **Key 2026 improvements**: Paperclip overhaul (~3x CEO latency cut), hardened sub-agent delegation, Gmail sending pipeline, self-healing Claude CLI config, Socket.IO real-time monitoring
+
+### DriveXP — Car Rental Platform
+- **Status**: Prototype (was CarBnb, renamed DriveXP)
+- **Stack**: Next.js 16, React 19, TypeScript, Prisma 7 ORM, PostgreSQL, Tailwind CSS 4, Docker, Supabase
+- **Scope**: 16 admin pages, 9 interconnected database models; owner verification, booking management, availability engine, payout accounting
+- **Repo**: github.com/internz2026-sys/CarBNB (old repo name; portfolio shows "DriveXP")
+
+### OpenClaw — Agentic AI Orchestration
+- **Status**: Deployed
+- **Stack**: OpenClaw, Agentic AI, Ollama, Workflow Management
+- **Purpose**: Autonomous workflow orchestration handling task automation and real-time monitoring
+
+### Hermes SuperAgent — Self-Improving Agent Hub
+- **Status**: Deployed
+- **Stack**: Hermes (Nous Research), Python, Cron Scheduler, Telegram/Discord/Slack gateway, Hermes WebUI
+- **Purpose**: Migrated all OpenClaw agents via `hermes claw migrate`; adds persistent cross-session memory, native cron automations, multi-platform messaging, self-improving skill capture
+- **Access**: Hermes WebUI via SSH tunnel; three-panel browser interface
+
+---
+
+## 5. Completed / Past Projects
+
+### School MIS & ECR System
+- **Status**: Completed / Delivered
+- **Stack**: Base44, ChatGPT, n8n, MongoDB
+- **Impact**: Centralized school management with accounting transparency, Electronic Class Record (ECR) with DepEd-aligned grading, automated QA logging via n8n
+
+### MatrixMatch — BSIT Capstone
+- **Status**: Academic (ISAT U)
+- **Stack**: Python, SBERT semantic similarity
+- **Purpose**: Automated matrix comparison of theses/capstone projects to support research idea creation
+
+### Data & ML Projects
+- Reddit Scraping (PRAW API), ML Model Evaluation, Customer Segmentation (K-Means)
+- Freelance thesis data visualisation support (Pandas, Matplotlib, Seaborn)
+
+### Spreadsheet Projects
+- Advanced VLOOKUP/QUERY formulas, QA Bug Logs structure
+
+---
+
+## 6. Skills & Tech Stack
+
+### Languages
+Python, JavaScript, TypeScript, HTML, CSS, SQL, VBA
+
+### Frontend
+React, Next.js, Tailwind CSS, TypeScript, JavaScript
+
+### Backend
+Flask, FastAPI, Node.js, Python
+
+### Databases
+PostgreSQL, MongoDB, MySQL, Supabase, Prisma ORM
+
+### AI & Automation
+Claude, ChatGPT, Gemini, Paperclip AI, OpenRouter, DeepSeek, n8n, OpenClaw, Hermes, Ollama, Claude Code, Codex
+
+### Data & Analysis
+Pandas, NumPy, Matplotlib, Seaborn — EDA, data visualisation, statistical analysis
+
+### DevOps & Tools
+Git, GitHub, Docker, Vercel, Hostinger, VS Code, Base44, Google Sheets, Excel, Power Query
+
+### QA
+Manual testing, bug documentation, test workflow design, n8n QA automation
+
+### Soft Skills
+Leadership, communication, analytical thinking, initiative, adaptable, coachable, open to feedback
+
+---
+
+## 7. Certifications (7 total)
+
+1. **Civil Service Examination Passer — Professional** (2024)
+2. **Google AI Essentials** — Coursera (2026)
+3. **Cisco — Data Science Essentials with Python**
+4. **Cisco — Python Essentials 1**
+5. **Cisco — Apply AI: Analyse Customer Reviews**
+6. **Cisco — Introduction to Cybersecurity**
+7. **DICT — Cloud and DevOps Basics**
+
+---
+
+## 8. Education
+
+| Degree | Institution | Period |
+|---|---|---|
+| BS Information Technology | Iloilo Science and Technology University (ISAT U) | Aug 2022 – Present |
+| Senior High School — STEM, With High Honors | University of San Agustin | 2020 – 2022 |
+
+**Activities**: ISAT U Performing Arts — Lead Guitarist and Band Leader (2022 – Present)
+**Dean's Lister**: A.Y. 2022-2023 and A.Y. 2023-2024
+
+---
+
+## 9. Services Offered
+
+1. **Full-Stack Development** — Next.js, React, FastAPI, Node.js production systems
+2. **Agentic AI Systems** — LLM integration, autonomous agent design, AI orchestration
+3. **Web Solutions** — Responsive, scalable web applications with modern tech stacks
+4. **Quality Assurance** — Software testing, bug tracking, workflow optimization
+5. **Process Automation** — n8n workflows, AI-driven systems, OpenClaw orchestration
+6. **Data Solutions** — Analytics, visualisation, and data storytelling
+
+---
+
+## 10. Portfolio Page Sections (reference for edits)
+
+| Page | Sections | Data Source |
+|---|---|---|
+| `/` (Home) | Hero, Skills v2, Services, Certifications carousel, Tools showcase | `index_data.py`, `tools_data.py` |
+| `/about` | Intro + photo, Stats strip, Chips marquee, Spotlight cards, Guitar pull-quote, CTA | `index_data.py` → `get_about_content()` |
+| `/projects` | Project cards + modals | `projects_data.py` |
+| `/documents` | CV (Oxford) + Resume (ATS) tabs, Save/Print PDF | `cv_document.html`, `resume_document.html` |
+
+### Skills v2 Card System
+Each skill in `get_skills()` carries: `title`, `description`, `icon` (lucide key), `accent` (hex), `tools` (list), `proficiency` (1–5), `years` (string). Card uses `--skill-accent` CSS var + `color-mix()` for icon bg, dots, chip hover.
+
+### About Page (current design — 2026-05-20)
+- Section 5 "Beyond Tech": two-column editorial layout — `guitar.jpg` (left, styled photo card with `.about-v3__photo-tag` pill "Guitarist · Multiple contest wins") + pull-quote/byline (right)
+- Mobile ≤768px: stacks single-column, photo centered max-width 360px
+
+### CV (current design — 2026-05-22, Oxford format)
+- Section order: Header → Professional Summary → Education → Relevant Experience → Projects → Skills → Certifications → Awards → Training
+- Skills: single-column `.cv-skills-inline` rows with bold category labels
+- Dates: right-aligned (`.cv-edu-right`), role/org left-aligned (`.cv-edu-left`)
+
+---
+
+## 11. Workflow Guardrails
+
+- **Always update KB + PORTFOLIO_LOGS.md** on the same turn as any content change
+- **CV and resume stay in sync** with `projects_data.py` — agent counts, project names, key metrics must match
+- **Commit style**: `feat:`, `fix:`, `refactor:` conventional commits
+- **Never push without user approval** — ask every time
+- **Never commit `.env`** — GMAIL credentials are gitignored
+- **Verify live with Playwright** after every deploy — push first, then check live URL
+- **Mobile CSS**: append at END of `styles.css`, never edit desktop rules
+- **Account note**: GitHub push must use HanzDLC noreply email. User has multiple GitHub accounts — confirm before push.
+
+---
+
+**Last Updated**: 2026-05-22
+**Portfolio Status**: Active — chat with Claude Code on this folder for updates

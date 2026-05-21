@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(python -c ' *)",
-      "Bash(python generate_response_doc.py)"
+      "Bash(python generate_response_doc.py)",
+      "mcp__playwright__browser_evaluate",
+      "Bash(curl -s \"https://hanzdlc-portfolio.vercel.app/static/styles.css?cb=$\\(date +%s\\)\")",
+      "Bash(curl -s \"https://hanzdlc-portfolio.vercel.app/?cb=$\\(date +%s\\)\")",
+      "WebFetch(domain:www.sbs.ox.ac.uk)",
+      "mcp__playwright__browser_snapshot"
     ]
   },
   "hooks": {
@@ -11,10 +16,23 @@
         "hooks": [
           {
             "type": "command",
-            "shell": "powershell",
             "command": "& '.\\.claude\\hooks\\load-portfolio-context.ps1'",
+            "shell": "powershell",
             "timeout": 10,
             "statusMessage": "Loading portfolio KB and recent logs..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "& '.\\.claude\\hooks\\update-kb-on-idle.ps1'",
+            "shell": "powershell",
+            "timeout": 8,
+            "statusMessage": "Scheduling idle KB refresh (5 min)..."
           }
         ]
       }
