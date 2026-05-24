@@ -17,25 +17,25 @@
 
 <div class="cv-doc-toggle" role="tablist" aria-label="Document type">
     <button class="cv-btn cv-btn-toggle is-active" type="button" role="tab" aria-selected="true"
-        aria-controls="doc-view-cv" id="toggle-cv" data-doc-target="cv" onclick="switchDocument('cv')">
-        CV
-    </button>
-    <button class="cv-btn cv-btn-toggle" type="button" role="tab" aria-selected="false"
         aria-controls="doc-view-resume" id="toggle-resume" data-doc-target="resume" onclick="switchDocument('resume')">
         Resume
     </button>
+    <button class="cv-btn cv-btn-toggle" type="button" role="tab" aria-selected="false"
+        aria-controls="doc-view-cv" id="toggle-cv" data-doc-target="cv" onclick="switchDocument('cv')">
+        CV
+    </button>
 </div>
 
-<section id="doc-view-cv" class="document-view is-active" data-doc-view="cv" role="tabpanel" aria-labelledby="toggle-cv">
-    {% with printable_id='cv-printable', doc_name='CV' %}
-    {% include 'cv_document.html' %}
+<section id="doc-view-resume" class="document-view is-active" data-doc-view="resume" role="tabpanel" aria-labelledby="toggle-resume">
+    {% with printable_id='resume-printable', doc_name='Resume' %}
+    {% include 'resume_document.html' %}
     {% endwith %}
 </section>
 
-<section id="doc-view-resume" class="document-view" data-doc-view="resume" role="tabpanel" aria-labelledby="toggle-resume"
+<section id="doc-view-cv" class="document-view" data-doc-view="cv" role="tabpanel" aria-labelledby="toggle-cv"
     hidden>
-    {% with printable_id='resume-printable', doc_name='Resume' %}
-    {% include 'resume_document.html' %}
+    {% with printable_id='cv-printable', doc_name='CV' %}
+    {% include 'cv_document.html' %}
     {% endwith %}
 </section>
 
