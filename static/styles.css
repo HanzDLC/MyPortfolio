@@ -5142,6 +5142,61 @@ body {
   display: none !important;
 }
 
+/* ---------- Showreel — full-bleed cinematic film (Remotion) ---------- */
+.showreel-film {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #08090d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.showreel-film__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #08090d;
+}
+.showreel-film__tag {
+  position: absolute;
+  left: 5vw;
+  top: 28px;
+  font-family: var(--label-stack, ui-monospace, Menlo, Consolas, monospace);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 242, 245, 0.7);
+  pointer-events: none;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .showreel-film {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ---------- Featured demo — ARIA ---------- */
+.aria-demo__frame {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  background: linear-gradient(145deg, #11142a 0%, #08090d 100%);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55), 0 0 100px rgba(67, 97, 238, 0.12);
+  aspect-ratio: 1920 / 1020;
+}
+.aria-demo__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #08090d;
+}
+
 /* ----- Marquee band ---------------------------------------- */
 .marquee-band {
   position: relative;

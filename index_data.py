@@ -2,6 +2,42 @@
 def get_skills():
     return [
         {
+            "title": "Automation & Agentic AI",
+            "description": "Designing complex automated workflows and agentic AI systems with n8n, OpenClaw, and Hermes SuperAgent to orchestrate platforms end-to-end.",
+            "icon": "bolt",
+            "accent": "#7c3aed",
+            "tools": ["n8n", "OpenClaw", "Hermes SuperAgent"],
+            "proficiency": 5,
+            "years": "1 yr"
+        },
+        {
+            "title": "Web Development",
+            "description": "Full-stack development using Python Flask, HTML, CSS, and JavaScript, demonstrated by this portfolio.",
+            "icon": "code",
+            "accent": "#3ecf8e",
+            "tools": ["Flask", "Next.js", "React", "Tailwind"],
+            "proficiency": 4,
+            "years": "3+ yrs"
+        },
+        {
+            "title": "Prompt Engineering",
+            "description": "Leveraging generative AI to streamline workflows and optimize complex task execution.",
+            "icon": "sparkles",
+            "accent": "#d97706",
+            "tools": ["Claude Code", "ChatGPT", "Gemini"],
+            "proficiency": 5,
+            "years": "2+ yrs"
+        },
+        {
+            "title": "Version Control",
+            "description": "Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.",
+            "icon": "git",
+            "accent": "#f97316",
+            "tools": ["Git", "GitHub"],
+            "proficiency": 4,
+            "years": "3+ yrs"
+        },
+        {
             "title": "Exploratory Data Analysis",
             "description": "Uncovering patterns and insights through comprehensive data cleaning, manipulation, and statistical analysis.",
             "icon": "chart",
@@ -16,15 +52,6 @@ def get_skills():
             "icon": "trending",
             "accent": "#8e44ef",
             "tools": ["Matplotlib", "Seaborn", "Power Query"],
-            "proficiency": 4,
-            "years": "3+ yrs"
-        },
-        {
-            "title": "Web Development",
-            "description": "Full-stack development using Python Flask, HTML, CSS, and JavaScript, demonstrated by this portfolio.",
-            "icon": "code",
-            "accent": "#3ecf8e",
-            "tools": ["Flask", "Next.js", "React", "Tailwind"],
             "proficiency": 4,
             "years": "3+ yrs"
         },
@@ -59,33 +86,6 @@ def get_skills():
                     "link": "https://docs.google.com/spreadsheets/d/1dzfcWt7wnZmojssD76lOyCIr3W2dlEuwhAfNmpGFTRk/edit?usp=sharing"
                 }
             ]
-        },
-        {
-            "title": "Prompt Engineering",
-            "description": "Leveraging generative AI to streamline workflows and optimize complex task execution.",
-            "icon": "sparkles",
-            "accent": "#d97706",
-            "tools": ["Claude Code", "ChatGPT", "Gemini"],
-            "proficiency": 5,
-            "years": "2+ yrs"
-        },
-        {
-            "title": "Version Control",
-            "description": "Utilizing Git and GitHub for efficient source code management, project versioning, and collaboration.",
-            "icon": "git",
-            "accent": "#f97316",
-            "tools": ["Git", "GitHub"],
-            "proficiency": 4,
-            "years": "3+ yrs"
-        },
-        {
-            "title": "Automation & Agentic AI",
-            "description": "Designing complex automated workflows and agentic AI systems with n8n, OpenClaw, and Hermes SuperAgent to orchestrate platforms end-to-end.",
-            "icon": "bolt",
-            "accent": "#7c3aed",
-            "tools": ["n8n", "OpenClaw", "Hermes SuperAgent"],
-            "proficiency": 5,
-            "years": "2+ yrs"
         }
     ]
 

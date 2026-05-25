@@ -13,3 +13,16 @@ static/storage
 *.png
 *.jpeg
 .playwright-mcp/
+
+# Client work product / secrets (NDA) — never commit
+*backup codes*
+/generate_response_doc.py
+/Test Sales Automation.docx
+/Test_Sales_Automation_Response_Hanz_de la Cruz.docx
+
+# Remotion video source (kept local; not needed for the Flask deploy)
+/remotion-landing/
+
+# Large raw screen recordings (only the web-compressed versions are committed)
+/static/Videos/aria-demo.mp4
+/static/Videos/*Microsoft*.mp4

@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## 2026-05-25 — Landing page showreel (Remotion 30s video)
+- New `remotion-landing/` Remotion project (React + TypeScript) renders a 30s 1920×1080 showreel → [static/Videos/portfolio-showreel.mp4](static/Videos/portfolio-showreel.mp4) + poster [static/images/showreel-poster.jpg](static/images/showreel-poster.jpg).
+- Wired into [templates/index.html](templates/index.html) as a new `<section class="showreel">` between the Hero and the tool marquee (`autoplay muted loop playsinline`). CSS `.showreel__frame` / `.showreel__video` added in [static/styles.css](static/styles.css) (16:9 glass frame + glow, mirrors `.hero-v3__photo-wrap`).
+- Video mirrors the site design: Kameron font, `#08090d` bg, `#4361ee→#a584ff→#f5b14a` gradient, drifting blobs + grain. 5 scenes: name intro → role/title → project montage (ARIA, Hermes, DriveXP, OpenClaw in browser frames) → tech-stack marquee + stat counters (20+, 6, 4+, 30+) → portrait CTA. Silent (autoplay-muted, per user).
+- Branch: `feature` (fast-forwarded from stale `6e00f93` to main `b8ad757` first, so the diff is video-only). NOT pushed — local preview per user request.
+- Commit: pending.
+
 ## 2026-05-20 — About page: guitar photo + editorial pull-quote redesign
 - Files: [templates/about.html](templates/about.html), [static/styles.css](static/styles.css), [templates/base.html](templates/base.html), new `static/images/About/guitar.jpg`.
 - "Beyond Tech" section (section 5) was a plain centered pull-quote with no image. Rebuilt it as a two-column editorial layout: `guitar.jpg` on the left in a styled photo card (rounded 18px, bordered, 4/5 ratio, shadow, hover lift + slight rotate, reused `.about-v3__photo-tag` pill = "Guitarist · Multiple contest wins"), quote + byline on the right, left-aligned with the oversized quote mark.

@@ -101,6 +101,45 @@
     </div>
 </section>
 
+<!-- Showreel — full-bleed cinematic film (Remotion). Auto-plays as you scroll into it. -->
+<section class="showreel-film" id="showreel" aria-label="Showreel — what I build">
+    <video class="showreel-film__video" muted loop playsinline preload="metadata"
+           poster="{{ url_for('static', filename='images/showreel-poster.jpg') }}">
+        <source src="{{ url_for('static', filename='Videos/portfolio-showreel.mp4') }}?v=2" type="video/mp4">
+    </video>
+    <span class="showreel-film__tag">Showreel · what I build</span>
+</section>
+<script>
+(function () {
+  var video = document.querySelector('.showreel-film__video');
+  if (!video) return;
+  // Play while on screen; pause + restart from the top when scrolled away.
+  if ('IntersectionObserver' in window) {
+    var seen = false;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          if (!seen) { try { video.currentTime = 0; } catch (x) {} seen = true; }
+          var p = video.play(); if (p && p.catch) p.catch(function () {});
+        } else { video.pause(); seen = false; }
+      });
+    }, { threshold: 0.4 }).observe(video);
+  } else { video.setAttribute('autoplay', ''); }
+})();
+</script>
+
+<!-- Smooth (eased) page scrolling — Lenis -->
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function () {
+  if (typeof Lenis === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var lenis = new Lenis({ duration: 1.05, smoothWheel: true });
+  function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+})();
+</script>
+
 <!-- Marquee tool/stack band — icons + names -->
 {% set marquee_tools = ['Next.js', 'React', 'TypeScript', 'Flask', 'Python', 'Prisma', 'Tailwind', 'n8n', 'Claude Code', 'Hermes', 'Docker', 'Supabase', 'MongoDB', 'ChatGPT', 'Gemini'] %}
 <div class="marquee-band" aria-hidden="true">
@@ -138,7 +177,7 @@
         </a>
     </div>
 
-    <ul class="works-grid">
+    <ul class="works-grid" data-reveal-children="fade-up">
         {% for work in featured_works %}
         <li>
             <a class="work-card" href="{{ url_for('projects') }}#{{ work.modal_id }}">
@@ -162,6 +201,24 @@
         </li>
         {% endfor %}
     </ul>
+</section>
+
+<!-- Featured demo — ARIA (real product footage) -->
+<section class="section-shell aria-demo" id="aria-demo">
+    <div data-reveal="fade-up" style="text-align: center; margin-bottom: 40px; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-eyebrow" style="justify-content: center;">Featured build · In action</span>
+        <h2 class="section-display">ARIA, <em class="accent-italic">live.</em></h2>
+        <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+            Six AI marketing agents — CEO, Content, Email, Social, Ads &amp; Media — running a real go-to-market workflow inside one virtual office.
+        </p>
+    </div>
+
+    <div class="aria-demo__frame" data-reveal="fade-up">
+        <video class="aria-demo__video" controls muted playsinline preload="none"
+               poster="{{ url_for('static', filename='images/aria-demo-poster.jpg') }}">
+            <source src="{{ url_for('static', filename='Videos/aria-demo-web.mp4') }}" type="video/mp4">
+        </video>
+    </div>
 </section>
 
 <!-- Skills Section (creative redesign v2) -->

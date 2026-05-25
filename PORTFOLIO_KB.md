@@ -11,7 +11,6 @@
 | Alias / Handle | hdlcruz03 |
 | Location | Landheights Ville, Tagbak, Jaro, Iloilo City, PH |
 | Personal Email | hdlcruz03@gmail.com |
-| Work Email (REDACTED) | hanz@weREDACTED.com |
 | Portfolio | https://hanzdlc-portfolio.vercel.app/ |
 | GitHub (portfolio) | HanzDLC / MyPortfolio |
 | LinkedIn | https://www.linkedin.com/in/hanz-uriel-de-la-cruz-46495a2b6 |
@@ -27,10 +26,9 @@
 - Right hand of CTO; leads development of ARIA, DriveXP, OpenClaw, Hermes
 - Helping certify Filipino Virtual Professionals as part of company mission
 
-### AI Specialist — REDACTED AI (May 2026 – Present, Remote)
-- Onboarded May 2026 with REDACTED (CEO) and the REDACTED team
-- Focus: AI-driven workflows, automation, and prompt systems for the business
-- Work email provisioned: hanz@weREDACTED.com
+### AI Specialist — US commercial flooring company (May 2026 – Present, Remote · NDA)
+- Public description (resume / LinkedIn only): "AI Specialist building lead-response and proposal automations for a US commercial flooring company."
+- ⚠️ Under NDA: do NOT disclose the client's name, people, workflows, prompts, systems, or source code in any portfolio, video, public post, or marketing material without written approval. Only the one-line description above is cleared for public use.
 
 ---
 
@@ -197,10 +195,15 @@ Leadership, communication, analytical thinking, initiative, adaptable, coachable
 
 | Page | Sections | Data Source |
 |---|---|---|
-| `/` (Home) | Hero, Skills v2, Services, Certifications carousel, Tools showcase | `index_data.py`, `tools_data.py` |
+| `/` (Home) | Hero, Showreel (autoplay video), Skills v2, Services, Certifications carousel, Tools showcase | `index_data.py`, `tools_data.py`, `static/Videos/portfolio-showreel.mp4` |
 | `/about` | Intro + photo, Stats strip, Chips marquee, Spotlight cards, Guitar pull-quote, CTA | `index_data.py` → `get_about_content()` |
 | `/projects` | Project cards + modals | `projects_data.py` |
 | `/documents` | CV (Oxford) + Resume (ATS) tabs, Save/Print PDF | `cv_document.html`, `resume_document.html` |
+
+### Landing Showreel (2026-05-25)
+- 30s autoplay / muted / loop video on `/`, placed between the Hero and the tool marquee. Markup: `<section class="showreel">` in [templates/index.html](templates/index.html); styles `.showreel__frame` / `.showreel__video` in [static/styles.css](static/styles.css) (16:9, glass frame, glow — mirrors `.hero-v3__photo-wrap`).
+- Assets: [static/Videos/portfolio-showreel.mp4](static/Videos/portfolio-showreel.mp4) + poster [static/images/showreel-poster.jpg](static/images/showreel-poster.jpg).
+- **Source project**: `remotion-landing/` (Remotion + React + TypeScript; not deployed, source only). Composition id `PortfolioShowreel` (1920×1080, 30fps, 900 frames). 5 scenes: Intro → Title → Projects (ARIA · Hermes · DriveXP · OpenClaw, browser-framed) → Stack (marquee + stat counters) → CTA (portrait). Design tokens mirror the site (Kameron font, `#08090d` bg, `#4361ee → #a584ff → #f5b14a` gradient). Re-render: `cd remotion-landing && npx remotion render PortfolioShowreel out/portfolio-showreel.mp4`, then copy to `static/Videos/`.
 
 ### Skills v2 Card System
 Each skill in `get_skills()` carries: `title`, `description`, `icon` (lucide key), `accent` (hex), `tools` (list), `proficiency` (1–5), `years` (string). Card uses `--skill-accent` CSS var + `color-mix()` for icon bg, dots, chip hover.
