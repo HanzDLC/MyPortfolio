@@ -1906,6 +1906,18 @@ body.menu-open {
     visibility: visible;
   }
 
+  /* When the mobile menu is open, lift the header out of the document flow so
+     the fixed .nav-menu (trapped in the header's backdrop-filter stacking
+     context) escapes above .hero-v3's isolation context. */
+  body.menu-open header.site-header,
+  body.menu-open .site-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+
   .header-links {
     flex-direction: column;
     gap: 0;

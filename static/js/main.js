@@ -283,14 +283,18 @@ function initCertificationsScroll() {
         }, { once: true });
     });
 
-    // Dot click: maps dot index to scroll position using identical math
+    // Dot click: maps dot index to scroll position using identical math.
+    // Lenis (smooth-scroll) hijacks native scrolling, so prefer lenis.scrollTo
+    // when available; native window.scrollTo is unreliable under Lenis.
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             const targetPercentage = index / Math.max(itemCount - 1, 1);
-            window.scrollTo({
-                top: sectionTop + (targetPercentage * scrollRange),
-                behavior: 'smooth'
-            });
+            const targetY = sectionTop + (targetPercentage * scrollRange);
+            if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+                window.lenis.scrollTo(targetY, { duration: 1.0 });
+            } else {
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }
         });
     });
 
