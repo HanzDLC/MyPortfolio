@@ -283,17 +283,45 @@ function initCertificationsScroll() {
         }, { once: true });
     });
 
-    // Dot click: maps dot index to scroll position using identical math.
-    // Lenis (smooth-scroll) hijacks native scrolling, so prefer lenis.scrollTo
-    // when available; native window.scrollTo is unreliable under Lenis.
+    // Mobile uses a native horizontal-scroll on .horizontal-track itself
+    // (overflow-x: auto, height: auto !important — the sticky-vertical-to-
+    // horizontal pattern is disabled on mobile). Detect at runtime and branch
+    // both the dot click and the active-state tracking accordingly.
+    const trackIsScroller = () =>
+        ['auto', 'scroll'].includes(getComputedStyle(horizontalTrack).overflowX);
+
+    // Mobile: keep the active dot in sync with whichever cert is centered as
+    // the user swipes the horizontal track.
+    horizontalTrack.addEventListener('scroll', () => {
+        if (!trackIsScroller()) return;
+        const center = horizontalTrack.scrollLeft + horizontalTrack.clientWidth / 2;
+        let nearest = 0, best = Infinity;
+        certItems.forEach((c, i) => {
+            const d = Math.abs((c.offsetLeft + c.offsetWidth / 2) - center);
+            if (d < best) { best = d; nearest = i; }
+        });
+        setActiveIndex(nearest);
+    }, { passive: true });
+
+    // Dot click — branch on which scroll mode is active.
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            const targetPercentage = index / Math.max(itemCount - 1, 1);
-            const targetY = sectionTop + (targetPercentage * scrollRange);
-            if (window.lenis && typeof window.lenis.scrollTo === 'function') {
-                window.lenis.scrollTo(targetY, { duration: 1.0 });
+            if (trackIsScroller()) {
+                // Mobile: scroll the horizontal track so this cert is centered.
+                const cert = certItems[index];
+                if (!cert) return;
+                const left = cert.offsetLeft + cert.offsetWidth / 2 - horizontalTrack.clientWidth / 2;
+                horizontalTrack.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+                setActiveIndex(index);
             } else {
-                window.scrollTo({ top: targetY, behavior: 'smooth' });
+                // Desktop: vertical scroll within the sticky section.
+                const targetPercentage = index / Math.max(itemCount - 1, 1);
+                const targetY = sectionTop + (targetPercentage * scrollRange);
+                if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+                    window.lenis.scrollTo(targetY, { duration: 1.0 });
+                } else {
+                    window.scrollTo({ top: targetY, behavior: 'smooth' });
+                }
             }
         });
     });
