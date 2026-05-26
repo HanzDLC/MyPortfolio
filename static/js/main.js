@@ -217,6 +217,14 @@ function initCertificationsScroll() {
     }
 
     function updateScroll(scrollY) {
+        // Mobile uses native horizontal-track scrolling (the sticky-vertical
+        // pattern is disabled by CSS via height:auto !important). Skipping the
+        // sticky math here avoids two problems:
+        //  1. With scrollRange clamped to 1, every page scroll re-set the
+        //     active dot to 0, fighting the horizontal-track scroll listener.
+        //  2. Setting `transform: translate3d(...)` on the track would conflict
+        //     with the user's native horizontal swipe.
+        if (isMobileViewport) { ticking = false; return; }
         const scrolledInto = scrollY - sectionTop;
         let percentage;
 
