@@ -6500,7 +6500,7 @@ body {
   .cert-info h4 { font-size: 1.05rem !important; }
   .cert-info p { font-size: 0.85rem; }
   .cert-skip-controls { display: none !important; }
-  .progress-dots { position: relative; bottom: auto; left: auto; transform: none; justify-content: center; margin-top: 18px; gap: 10px; }
+  .progress-dots { position: relative; bottom: auto; left: auto; transform: none; width: 100%; justify-content: center; margin-top: 18px; gap: 10px; }
   .about-v3 { padding: 80px 5vw 56px; }
   .about-v3 > *:not(.about-v3__bg) { max-width: 100%; }
   .about-v3__drift--a { width: 320px; height: 320px; }
