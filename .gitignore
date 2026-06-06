@@ -14,6 +14,19 @@ static/storage
 *.jpeg
 .playwright-mcp/
 
+# Service-account / credential keys — never commit
+openclaw123.json
+*service*account*.json
+*.iam.gserviceaccount.com.json
+
+# Generated resume artifacts (rebuilt by generate_resume_docx.py on demand)
+/Hanz_de_la_Cruz_Resume.docx
+/Hanz_de_la_Cruz_Resume.pdf
+.claude/.resume_publish_hash
+
+# Private Drive publisher (personal folder ID + service-account path) — keep local
+/publish_resume.py
+
 # Client work product / secrets (NDA) — never commit
 *backup codes*
 /generate_response_doc.py
