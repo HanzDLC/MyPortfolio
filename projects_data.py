@@ -125,9 +125,12 @@ def get_projects():
                     "card_description": "Login-gated internal web app presenting AI system roadmaps, SOPs, and developer documentation for a commercial flooring client — roadmaps are themed as the flooring install process, revealing layer-by-layer as you scroll.",
                     "modal_description": "A login-gated case study and knowledge base presenting the AI systems built for a commercial flooring client. Roadmaps are visualized as the flooring install process — each layer pours and cures as you scroll. Each system includes plain-language SOPs for staff and full developer documentation covering architecture, DevOps, and security. Built as a standalone Docker container behind Nginx on a VPS.",
                     "tags": ["FastAPI", "React", "TypeScript", "PostgreSQL", "Docker", "Nginx", "Tailwind CSS", "Vite"],
+                    "image": "images/AI-Systems-Roadmap/roadmap-overview.png",
                     "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>""",
                     "has_modal": True,
-                    "gallery": [],
+                    "gallery": [
+                        {"path": "images/AI-Systems-Roadmap/roadmap-overview.png", "alt": "Systems roadmap — the delivery roadmap for a system, themed as a flooring install process with per-stage cards"}
+                    ],
                     "problem": """<p>As multiple AI systems were built for the client, there was no centralized place for stakeholders, staff, and developers to understand how each system worked. Key needs:</p><ul><li>Non-technical staff needed plain-language SOPs for each tool</li><li>Developers needed architecture, DevOps, and security documentation per system</li><li>Stakeholders needed a visual overview of the AI roadmap and implementation progress</li><li>All content needed to be login-gated and not publicly accessible</li></ul>""",
                     "tools": ["FastAPI", "React", "TypeScript", "Vite", "Tailwind CSS", "PostgreSQL", "Docker", "Nginx", "Let's Encrypt"],
                     "workflow": [
@@ -148,6 +151,43 @@ def get_projects():
                         {"value": "Login-Gated", "label": "Internal Access", "icon_type": "check"},
                         {"value": "SOPs + Dev Docs", "label": "Per System", "icon_type": "trend"},
                         {"value": "NDA", "label": "Confidential Client", "icon_type": "time"}
+                    ]
+                },
+                {
+                    "id": "ai-news-feed-modal",
+                    "category_id": "ai-news-feed",
+                    "title": "AI Construction Opportunity Radar — Confidential Client",
+                    "card_description": "Daily AI pipeline that monitors news, permits, and filings — clustering them into deduplicated project records enriched with location, stage, and contractor hierarchy — then emails a digest so a commercial flooring team can identify leads before bid invites go out.",
+                    "modal_description": "A standalone AI-powered lead intelligence system built under NDA for a commercial flooring client. The system ingests RSS feeds and HTML sources daily, uses Claude to extract construction project signals, clusters them into deduplicated project-level records enriched with build stage and team hierarchy (GC, Developer, Owner), filters by radius from the client's base, and emails a daily digest to subscribers.",
+                    "tags": ["FastAPI", "React", "TypeScript", "Supabase", "Claude CLI", "Docker", "Nginx", "APScheduler", "Resend"],
+                    "image": "images/AI-News-Feed/feed-projects.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/AI-News-Feed/feed-projects.png", "alt": "Project feed — construction opportunities ranked by relevance with HOT score, radius filter, and stage"},
+                        {"path": "images/AI-News-Feed/feed-pipeline.png", "alt": "Pipeline view — Watching and Pursuing projects with status tracking and notes"}
+                    ],
+                    "problem": """<p>Commercial flooring companies need to get in front of large construction projects before bid invites go out — but tracking news, permits, and filings manually is not viable. Key gaps:</p><ul><li>No centralized view of upcoming commercial construction projects in the target region</li><li>News articles and permit filings about the same project arrive from multiple sources, creating duplicates</li><li>No way to identify project stage, size, or the GC and developer without manual research per project</li><li>Relevant opportunities were being missed because discovery depended entirely on manual effort</li></ul>""",
+                    "tools": ["FastAPI", "React", "Vite", "TypeScript", "Tailwind CSS", "Supabase (Postgres)", "Claude CLI", "APScheduler", "Resend", "httpx", "feedparser", "BeautifulSoup", "Docker", "Nginx", "certbot"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Source Ingestion:</strong> Daily job fetches RSS feeds and HTML pages from construction news and permit sources using httpx, feedparser, and BeautifulSoup."},
+                        {"number": 2, "text": "<strong>Signal Extraction:</strong> Claude CLI processes each article to extract structured project signals — name, location, type, stage, value, and team contacts."},
+                        {"number": 3, "text": "<strong>Deduplication and Clustering:</strong> Signals from multiple sources about the same project are clustered into a single deduplicated record and updated over time as new signals arrive."},
+                        {"number": 4, "text": "<strong>Enrichment and Radius Filter:</strong> Each project is geocoded and filtered by distance from the client's base, with different radius rules by project type."},
+                        {"number": 5, "text": "<strong>Daily Digest Email:</strong> In-radius projects are compiled into a digest and emailed to subscribers via Resend — one email per daily pipeline run."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Daily AI Pipeline", "text": "APScheduler triggers the full pipeline daily — ingest, extract, dedup, enrich, geocode, score, digest, email — without manual intervention."},
+                        {"title": "Project-Level Deduplication", "text": "Multiple articles about the same construction project are clustered into one record and enriched over time as new signals arrive."},
+                        {"title": "Team Hierarchy Enrichment", "text": "Each project record maps the team: General Contractor, Developer, and Owner — with confidence scoring on each contact."},
+                        {"title": "Radius-Based Filtering", "text": "Projects are geocoded and filtered by distance from the client's base, with different radius rules per project type."},
+                        {"title": "Daily Email Digest", "text": "In-radius projects are compiled and emailed to subscribers via Resend — keeping the team informed without logging in."},
+                        {"title": "Demo Mode", "text": "System starts with sample fixture data when the database is unconfigured, making local development and demos frictionless."}
+                    ],
+                    "impact": [
+                        {"value": "Daily", "label": "AI Pipeline", "icon_type": "time"},
+                        {"value": "Automated", "label": "Lead Discovery", "icon_type": "check"},
+                        {"value": "NDA", "label": "Confidential Client", "icon_type": "trend"}
                     ]
                 }
             ]
@@ -373,43 +413,6 @@ def get_projects():
                         {"value": "Compliant", "label": "SIP Records", "icon_type": "trend"}
                     ]
                 },
-                {
-                    "id": "ai-news-feed-modal",
-                    "category_id": "ai-news-feed",
-                    "title": "AI Construction Opportunity Radar — Confidential Client",
-                    "card_description": "Daily AI pipeline that monitors news, permits, and filings — clustering them into deduplicated project records enriched with location, stage, and contractor hierarchy — then emails a digest so a commercial flooring team can identify leads before bid invites go out.",
-                    "modal_description": "A standalone AI-powered lead intelligence system built under NDA for a commercial flooring client. The system ingests RSS feeds and HTML sources daily, uses Claude to extract construction project signals, clusters them into deduplicated project-level records enriched with build stage and team hierarchy (GC, Developer, Owner), filters by radius from the client's base, and emails a daily digest to subscribers.",
-                    "tags": ["FastAPI", "React", "TypeScript", "Supabase", "Claude CLI", "Docker", "Nginx", "APScheduler", "Resend"],
-                    "image": "images/AI-News-Feed/feed-projects.png",
-                    "has_modal": True,
-                    "gallery": [
-                        {"path": "images/AI-News-Feed/feed-projects.png", "alt": "Project feed — construction opportunities ranked by relevance with HOT score, radius filter, and stage"},
-                        {"path": "images/AI-News-Feed/feed-pipeline.png", "alt": "Pipeline view — Watching and Pursuing projects with status tracking and notes"}
-                    ],
-                    "problem": """<p>Commercial flooring companies need to get in front of large construction projects before bid invites go out — but tracking news, permits, and filings manually is not viable. Key gaps:</p><ul><li>No centralized view of upcoming commercial construction projects in the target region</li><li>News articles and permit filings about the same project arrive from multiple sources, creating duplicates</li><li>No way to identify project stage, size, or the GC and developer without manual research per project</li><li>Relevant opportunities were being missed because discovery depended entirely on manual effort</li></ul>""",
-                    "tools": ["FastAPI", "React", "Vite", "TypeScript", "Tailwind CSS", "Supabase (Postgres)", "Claude CLI", "APScheduler", "Resend", "httpx", "feedparser", "BeautifulSoup", "Docker", "Nginx", "certbot"],
-                    "workflow": [
-                        {"number": 1, "text": "<strong>Source Ingestion:</strong> Daily job fetches RSS feeds and HTML pages from construction news and permit sources using httpx, feedparser, and BeautifulSoup."},
-                        {"number": 2, "text": "<strong>Signal Extraction:</strong> Claude CLI processes each article to extract structured project signals — name, location, type, stage, value, and team contacts."},
-                        {"number": 3, "text": "<strong>Deduplication and Clustering:</strong> Signals from multiple sources about the same project are clustered into a single deduplicated record and updated over time as new signals arrive."},
-                        {"number": 4, "text": "<strong>Enrichment and Radius Filter:</strong> Each project is geocoded and filtered by distance from the client's base, with different radius rules by project type."},
-                        {"number": 5, "text": "<strong>Daily Digest Email:</strong> In-radius projects are compiled into a digest and emailed to subscribers via Resend — one email per daily pipeline run."}
-                    ],
-                    "features_title": "Key Features",
-                    "features": [
-                        {"title": "Daily AI Pipeline", "text": "APScheduler triggers the full pipeline daily — ingest, extract, dedup, enrich, geocode, score, digest, email — without manual intervention."},
-                        {"title": "Project-Level Deduplication", "text": "Multiple articles about the same construction project are clustered into one record and enriched over time as new signals arrive."},
-                        {"title": "Team Hierarchy Enrichment", "text": "Each project record maps the team: General Contractor, Developer, and Owner — with confidence scoring on each contact."},
-                        {"title": "Radius-Based Filtering", "text": "Projects are geocoded and filtered by distance from the client's base, with different radius rules per project type."},
-                        {"title": "Daily Email Digest", "text": "In-radius projects are compiled and emailed to subscribers via Resend — keeping the team informed without logging in."},
-                        {"title": "Demo Mode", "text": "System starts with sample fixture data when the database is unconfigured, making local development and demos frictionless."}
-                    ],
-                    "impact": [
-                        {"value": "Daily", "label": "AI Pipeline", "icon_type": "time"},
-                        {"value": "Automated", "label": "Lead Discovery", "icon_type": "check"},
-                        {"value": "NDA", "label": "Confidential Client", "icon_type": "trend"}
-                    ]
-                }
             ]
         },
         {
