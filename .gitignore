@@ -22,6 +22,9 @@ openclaw123.json
 # Generated resume artifacts (rebuilt by generate_resume_docx.py on demand)
 /Hanz_de_la_Cruz_Resume.docx
 /Hanz_de_la_Cruz_Resume.pdf
+/Hanz_de_la_Cruz_Resume_VA.docx
+/Hanz_de_la_Cruz_Resume_VA.pdf
+/generate_resume_va.py
 .claude/.resume_publish_hash
 
 # Private Drive publisher (personal folder ID + service-account path) — keep local

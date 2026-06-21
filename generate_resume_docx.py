@@ -20,6 +20,25 @@ from docx.oxml import OxmlElement
 OUT_DOCX = "Hanz_de_la_Cruz_Resume.docx"
 OUT_PDF = "Hanz_de_la_Cruz_Resume.pdf"
 
+# Resume content — overridable by variant scripts (e.g. generate_resume_va.py).
+# Defaults below produce the canonical resume verbatim.
+SUMMARY = ("Full-stack developer with hands-on experience building production-grade web "
+           "applications and autonomous AI systems. Skilled in modern JavaScript frameworks, "
+           "Python, database design, and AI/LLM integration. Known for shipping reliable, "
+           "well-architected systems that solve real operational problems and deliver "
+           "measurable impact.")
+SKILLS = [
+    ("Technical:",
+     "Full-Stack Development (Next.js, React, FastAPI, Node.js), Frontend (TypeScript, "
+     "Tailwind CSS, HTML/CSS/JavaScript), Backend (FastAPI, Python, PostgreSQL, Prisma ORM), "
+     "Agentic AI and LLM Integration (Claude, ChatGPT, Paperclip), Prompt Engineering, "
+     "Workflow Automation (n8n, OpenClaw), QA Testing and Bug Documentation, Data Analysis "
+     "and Visualization"),
+    ("Professional:",
+     "Communication, Team Collaboration, Analytical Problem Solving, Time Management, "
+     "Attention to Detail, Ownership and Coachability, Adaptability"),
+]
+
 SERIF = "Times New Roman"
 INK = RGBColor(0x1A, 0x1A, 0x1A)      # #1a1a1a name/title/date/labels
 GRAY3 = RGBColor(0x33, 0x33, 0x33)    # #333 contact values
@@ -169,13 +188,20 @@ def build(cfg):
     contact_row("Portfolio:", "https://hanzdlc-portfolio.vercel.app/", link=True)
 
     section_title("Professional Summary")
-    para("Full-stack developer with hands-on experience building production-grade web "
-         "applications and autonomous AI systems. Skilled in modern JavaScript frameworks, "
-         "Python, database design, and AI/LLM integration. Known for shipping reliable, "
-         "well-architected systems that solve real operational problems and deliver "
-         "measurable impact.")
+    para(SUMMARY)
 
     section_title("Relevant Experience")
+
+    role_header("Chief Technology Officer (CTO)",
+                "2026 - Present",
+                "SMAPS — School Management AI-Powered System", "Iloilo, Philippines")
+    bullets([
+        "Lead technical direction, architecture, and the product roadmap for SMAPS, a web-based school management information system with DepEd-aligned electronic class record (ECR) grading.",
+        ("Built the core platform: ", "school, subject, teacher, and grading-configuration "
+         "modules plus an integrated ECR grading system, using Base44, MongoDB, and n8n "
+         "automation accelerated by prompt engineering."),
+        "Replaced manual, fragmented school workflows with accounting-transparency and audit-trail processes across the system.",
+    ])
 
     role_header("AI Specialist — Confidential (US Commercial Flooring Company)",
                 "May 2026 - Present",
@@ -214,25 +240,6 @@ def build(cfg):
                                            "OpenClaw."),
     ])
 
-    role_header("Prompt Engineer / QA Tester / n8n Automation Specialist",
-                "January 2026 - Present",
-                "School System MVP Project", "San Miguel, Iloilo")
-    bullets([
-        "Built and iterated school system MVP features in Base44 based on project requirements and feedback.",
-        "Refined prompts and workflows to improve output quality and development speed.",
-        "Performed functional QA testing on user flows and documented defects with clear reproduction steps.",
-        "Created n8n automations for QA logging to improve issue tracking consistency.",
-    ])
-
-    role_header("Freelance Data Analytics and Thesis Visualization Support",
-                "Commission-Based",
-                "Client Commission (Academic Thesis Project)", "Freelance")
-    bullets([
-        "Cleaned and analyzed thesis datasets, producing presentation-ready charts and statistical summaries that helped the client successfully defend their research.",
-        "Prepared and organized raw data for analysis, ensuring accuracy and consistency across reporting outputs.",
-        "Translated statistical results into clear, interpretable findings for non-technical thesis review.",
-    ])
-
     section_title("Certifications")
     bullets([
         "Google AI Essentials — Coursera (2026)",
@@ -251,15 +258,8 @@ def build(cfg):
                 "Iloilo Science and Technology University")
 
     section_title("Core Skills")
-    labeled("Technical:",
-        "Full-Stack Development (Next.js, React, FastAPI, Node.js), Frontend (TypeScript, "
-        "Tailwind CSS, HTML/CSS/JavaScript), Backend (FastAPI, Python, PostgreSQL, Prisma ORM), "
-        "Agentic AI and LLM Integration (Claude, ChatGPT, Paperclip), Prompt Engineering, "
-        "Workflow Automation (n8n, OpenClaw), QA Testing and Bug Documentation, Data Analysis "
-        "and Visualization")
-    labeled("Professional:",
-        "Communication, Team Collaboration, Analytical Problem Solving, Time Management, "
-        "Attention to Detail, Ownership and Coachability, Adaptability")
+    for _label, _text in SKILLS:
+        labeled(_label, _text)
 
     doc.save(OUT_DOCX)
 
