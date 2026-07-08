@@ -192,7 +192,7 @@ def build(cfg):
 
     section_title("Relevant Experience")
 
-    role_header("Chief Technology Officer (CTO)",
+    role_header("Chief Technology Officer (CTO) and Forward Deployed Engineer",
                 "2026 - Present",
                 "SMAPS — School Management AI-Powered System", "Iloilo, Philippines")
     bullets([
