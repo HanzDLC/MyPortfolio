@@ -86,8 +86,8 @@ def get_projects():
                     "id": "ai-proposal-builder-modal",
                     "category_id": "ai-proposal-builder",
                     "title": "AI Proposal Builder — Confidential Client",
-                    "card_description": "AI proposal tool that auto-fills structured project info from pasted lead notes (emails/call notes), computes a live-editable cost estimate, and auto-drafts the proposal — built for a US commercial flooring client under NDA.",
-                    "modal_description": "A full-stack AI tool that replaces manual proposal creation with a 3-screen workflow: a lead intake form where Claude auto-fills the structured project fields from pasted email or call notes, a live-editable estimate spreadsheet, and a reactive proposal preview. Any change to the estimate flows through to the proposal in real time. Generates .xlsx and .docx files for download. Built under NDA for a US commercial flooring client.",
+                    "card_description": "AI proposal tool that auto-fills project info from pasted lead notes, computes an audit-grade estimate, and auto-drafts the proposal. Now a full workspace: multiple floor systems per job, exact bid pricing, bulk-discount and county remodel tax, one consistent price across every screen and file, automatic Dropbox filing, and a customer-portal handoff. Built for a US commercial flooring client under NDA.",
+                    "modal_description": "A full-stack AI tool that replaces manual proposal creation: a lead intake form where Claude auto-fills project fields from pasted email or call notes, a live-editable estimate, and a reactive proposal preview — every screen and generated file showing one consistent price. It handles multiple floor systems per job, exact bid pricing from the estimator's own numbers, bulk discounts and Kansas county remodel tax, and user-added extra materials. Finished files auto-file to the team Dropbox, and a proposal can be sent to the customer portal for online approval. The estimate screen was optimized from ~15s to ~2s. Now sits in a workspace with Projects, Pipeline, History, and Admin. Built under NDA for a US commercial flooring client.",
                     "tags": ["Next.js", "FastAPI", "Claude AI", "Python", "Docker", "Tailwind CSS", "React"],
                     "image": "images/AI-Proposal-Tool/01-intake.png",
                     "has_modal": True,
@@ -109,12 +109,13 @@ def get_projects():
                         {"title": "AI Autofill from Lead Notes", "text": "Paste a raw email or call notes and Claude infers and fills the structured project fields — scope, square footage, work type, and contact — eliminating manual intake entry."},
                         {"title": "Live Estimate Computation", "text": "Inline-editable spreadsheet with totals that recompute in real time, mirroring the Excel formula chain in Python."},
                         {"title": "Reactive Proposal Drafting", "text": "Proposal document updates live as estimate values change — no copy-paste or manual re-entry required."},
-                        {"title": ".xlsx and .docx Export", "text": "Generates a filled estimate template (.xlsx) and a formatted proposal document (.docx) for download."},
-                        {"title": "Human-in-the-Loop by Design", "text": "Final pricing, scope narrative, and exclusion review stay with the human. The tool handles generation; the user handles sign-off."}
+                        {"title": "Multiple Floor Systems + Exact Pricing", "text": "Prices several floor systems in one job from the estimator's own numbers, with bulk discounts, county remodel tax, and user-added extra materials — one consistent price across every screen and file."},
+                        {"title": "Auto Dropbox Filing + Portal Handoff", "text": "Finished .xlsx and .docx files auto-file to the team Dropbox, and a proposal can be sent to the customer portal for online approval."},
+                        {"title": "Human-in-the-Loop by Design", "text": "Final pricing, scope narrative, and exclusion review stay with the human. The estimate screen was optimized from ~15s to ~2s."}
                     ],
                     "impact": [
-                        {"value": "AI Autofill", "label": "From Lead Notes", "icon_type": "check"},
-                        {"value": "Auto-Generated", "label": "Estimates & Proposals", "icon_type": "trend"},
+                        {"value": "Exact Bid", "label": "Multi-System Pricing", "icon_type": "check"},
+                        {"value": "Auto-Filed", "label": "Dropbox + Portal", "icon_type": "trend"},
                         {"value": "NDA", "label": "Confidential Client", "icon_type": "time"}
                     ]
                 },
@@ -122,14 +123,13 @@ def get_projects():
                     "id": "ai-systems-roadmap-modal",
                     "category_id": "ai-systems-roadmap",
                     "title": "AI Systems Showcase & Roadmap — Confidential Client",
-                    "card_description": "Login-gated internal web app presenting AI system roadmaps, SOPs, and developer documentation for a commercial flooring client — roadmaps are themed as the flooring install process, revealing layer-by-layer as you scroll.",
-                    "modal_description": "A login-gated case study and knowledge base presenting the AI systems built for a commercial flooring client. Roadmaps are visualized as the flooring install process — each layer pours and cures as you scroll. Each system includes plain-language SOPs for staff and full developer documentation covering architecture, DevOps, and security. Built as a standalone Docker container behind Nginx on a VPS.",
-                    "tags": ["FastAPI", "React", "TypeScript", "PostgreSQL", "Docker", "Nginx", "Tailwind CSS", "Vite"],
-                    "image": "images/AI-Systems-Roadmap/roadmap-overview.png",
-                    "placeholder_icon": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>""",
+                    "card_description": "Login-gated internal command center presenting the whole AI system portfolio as a 'virtual office' of business divisions (Operations, Finance, Sales & Marketing, Admin & IT). Tracks five live systems plus a planned-work roadmap, with per-system SOPs and developer docs, roles, and notifications. Built for a US commercial flooring client under NDA.",
+                    "modal_description": "A login-gated systems command center and knowledge base for the AI systems built for a commercial flooring client. The home view is a 'virtual office' — business divisions (Operations, Finance, Sales & Marketing, Admin & IT) each holding their live systems and planned sub-processes with status (Live / In Progress / Planned). It tracks five shipped systems (Proposal Tool, News Feed, Assess, Customer Portal, and the showcase itself), carries per-system SOPs and developer documentation, and adds role-based access, notifications, project notes, and drag-to-move planning. Standalone Docker container behind Nginx on a VPS.",
+                    "tags": ["FastAPI", "React", "TypeScript", "PostgreSQL", "Docker", "Nginx", "Roles", "Notifications"],
+                    "image": "images/AI-Systems-Roadmap/roadmap-office.png",
                     "has_modal": True,
                     "gallery": [
-                        {"path": "images/AI-Systems-Roadmap/roadmap-overview.png", "alt": "Systems roadmap — the delivery roadmap for a system, themed as a flooring install process with per-stage cards"}
+                        {"path": "images/AI-Systems-Roadmap/roadmap-office.png", "alt": "The virtual office — business divisions each holding their live systems and planned work with status filters"}
                     ],
                     "problem": """<p>As multiple AI systems were built for the client, there was no centralized place for stakeholders, staff, and developers to understand how each system worked. Key needs:</p><ul><li>Non-technical staff needed plain-language SOPs for each tool</li><li>Developers needed architecture, DevOps, and security documentation per system</li><li>Stakeholders needed a visual overview of the AI roadmap and implementation progress</li><li>All content needed to be login-gated and not publicly accessible</li></ul>""",
                     "tools": ["FastAPI", "React", "TypeScript", "Vite", "Tailwind CSS", "PostgreSQL", "Docker", "Nginx", "Let's Encrypt"],
@@ -188,6 +188,106 @@ def get_projects():
                         {"value": "Daily", "label": "AI Pipeline", "icon_type": "time"},
                         {"value": "Automated", "label": "Lead Discovery", "icon_type": "check"},
                         {"value": "NDA", "label": "Confidential Client", "icon_type": "trend"}
+                    ]
+                },
+                {
+                    "id": "ai-assess-modal",
+                    "category_id": "ai-assess",
+                    "title": "AI Hiring Assessment Platform — Confidential Client",
+                    "card_description": "Behavioral + cognitive hiring assessment platform. Employers define a role's ideal behavioral range, send candidates one tokenized link, and review who actually fits — with per-candidate PDF reports. Built for a US commercial flooring client under NDA.",
+                    "modal_description": "A standalone hiring-assessment platform with 100% original content mapped to the public DISC model (17 in-house archetypes). Employers set a Job Target behavioral band and cognitive minimum, candidates take a no-login behavioral adjective assessment plus a timed cognitive test, and a Candidates dashboard ranks Behavioral Fit, reference archetype, and cognitive fit. Deterministic, calibratable scoring engine with downloadable/emailable PDF reports. Built under NDA.",
+                    "tags": ["FastAPI", "Next.js", "TypeScript", "PostgreSQL", "Docker", "DISC", "Scoring Engine"],
+                    "image": "images/AI-Assess/assess-reference.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/AI-Assess/assess-reference.png", "alt": "Archetype reference — 17 in-house archetypes mapped one-to-one to a public behavioral model"},
+                        {"path": "images/AI-Assess/assess-target.png", "alt": "Job Target — set the ideal behavioral band on each DISC drive and compare candidates against it"}
+                    ],
+                    "problem": """<p>Hiring by gut feel produced inconsistent offshore hires. The client needed an objective, repeatable way to screen candidates on behavior and cognition without buying per-seat licenses of a commercial tool. Key needs:</p><ul><li>Define the behavioral profile a role actually needs, not a generic one</li><li>Assess candidates with no login friction and no account creation</li><li>Score behavioral fit and cognitive ability deterministically and defensibly</li><li>Give hiring managers a readable per-candidate report, not raw numbers</li></ul>""",
+                    "tools": ["FastAPI", "Next.js 16", "TypeScript", "PostgreSQL", "Docker", "Supabase Auth", "Deterministic Scoring Engine"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Job Target:</strong> The employer sets an ideal behavioral band on each of four DISC drives plus a cognitive minimum for the role."},
+                        {"number": 2, "text": "<strong>Tokenized Assessment:</strong> Candidates open one no-login link and complete a behavioral adjective assessment and a timed, auto-submitting cognitive test."},
+                        {"number": 3, "text": "<strong>Deterministic Scoring:</strong> A calibratable engine maps responses to 17 in-house archetypes and computes Behavioral Fit and cognitive fit against the target."},
+                        {"number": 4, "text": "<strong>Candidates Dashboard + Reports:</strong> Hiring managers review ranked fit, reference archetype, and a per-candidate PDF report they can download or email."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Role-Specific Behavioral Target", "text": "Employers set the ideal range on each DISC drive so fit is measured against the role, not a generic ideal."},
+                        {"title": "No-Login Candidate Flow", "text": "Tokenized links let candidates assess with zero account creation; the timed cognitive test auto-submits."},
+                        {"title": "Deterministic Scoring Engine", "text": "Calibratable, repeatable scoring maps responses to 17 original archetypes and computes behavioral and cognitive fit."},
+                        {"title": "Per-Candidate PDF Reports", "text": "Readable reports (strengths, watch-outs, how to work with them) download or email straight from the dashboard."}
+                    ],
+                    "impact": [
+                        {"value": "DISC-Mapped", "label": "17 Archetypes", "icon_type": "check"},
+                        {"value": "No-Login", "label": "Candidate Flow", "icon_type": "trend"},
+                        {"value": "NDA", "label": "Confidential Client", "icon_type": "time"}
+                    ]
+                },
+                {
+                    "id": "ai-portal-modal",
+                    "category_id": "ai-portal",
+                    "title": "Customer Proposal Portal — Confidential Client",
+                    "card_description": "Customer-facing portal that pairs with the proposal tool: an estimator sends a proposal, the portal mints a secure link, emails the customer, and lets them view the branded proposal, ask questions, and approve online — while staff track the pipeline. Built for a US commercial flooring client under NDA.",
+                    "modal_description": "The customer-facing half of the proposal workflow plus a staff pipeline view. After the proposal tool generates a proposal, staff send it to the portal, which mints a secure link and emails the customer (Resend). Customers sign in with a 6-digit email code, view their branded proposal, ask questions, and approve online; staff track each deal from sent → deposit → scheduled. Runs as its own Docker service sharing a Supabase Postgres database with the proposal tool, linked server-to-server via a shared service token. Built under NDA.",
+                    "tags": ["FastAPI", "JavaScript", "Supabase", "PostgreSQL", "Docker", "Nginx", "Resend"],
+                    "image": "images/AI-Portal/portal-login.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/AI-Portal/portal-login.png", "alt": "Customer sign-in — passwordless 6-digit email code to view the proposal it was sent to"}
+                    ],
+                    "problem": """<p>Proposals were emailed as attachments, so the client had no visibility into whether a customer opened, understood, or accepted a bid, and follow-up was manual. Key gaps:</p><ul><li>No secure, branded place for customers to view and approve a proposal</li><li>No online approval or deposit step — everything happened over email and phone</li><li>No pipeline view of which proposals were sent, viewed, or accepted</li><li>The proposal tool and the customer experience were disconnected</li></ul>""",
+                    "tools": ["FastAPI", "JavaScript", "Supabase (Postgres)", "Docker", "Nginx", "Resend", "Email OTP"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Send to Portal:</strong> From the proposal tool, staff push a finished proposal to the portal, which mints a secure per-customer link and emails it via Resend."},
+                        {"number": 2, "text": "<strong>Passwordless Sign-In:</strong> The customer signs in with a 6-digit email code (or Google) — no account setup — and sees only their own branded proposal."},
+                        {"number": 3, "text": "<strong>Review + Approve:</strong> The customer reviews the proposal, asks questions, and approves online, moving the deal forward without back-and-forth email."},
+                        {"number": 4, "text": "<strong>Pipeline Tracking:</strong> Staff track each proposal through sent → deposit → scheduled, with the portal and proposal tool sharing one database via a server-to-server token."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Passwordless Customer Access", "text": "6-digit email-code sign-in (or Google) — customers view their proposal with no account creation."},
+                        {"title": "Online Review + Approval", "text": "Customers read the branded proposal, ask questions, and approve online instead of over email and phone."},
+                        {"title": "Staff Pipeline View", "text": "Each deal is tracked from sent → deposit → scheduled so the team always knows where a proposal stands."},
+                        {"title": "Paired with the Proposal Tool", "text": "A separate Docker service that shares one Supabase Postgres database with the proposal tool, linked by a shared service token."}
+                    ],
+                    "impact": [
+                        {"value": "Passwordless", "label": "Customer Login", "icon_type": "check"},
+                        {"value": "Online", "label": "Proposal Approval", "icon_type": "trend"},
+                        {"value": "NDA", "label": "Confidential Client", "icon_type": "time"}
+                    ]
+                },
+                {
+                    "id": "ai-profiles-modal",
+                    "category_id": "ai-profiles",
+                    "title": "Offshore Talent Portal — Confidential Client",
+                    "card_description": "A candidate portal for a staffing firm: clients sign in, browse pre-assessed offshore accounting candidates, read standardized profiles, build a shortlist, and book interviews. Staff manage candidates through an intake form with auto-generated résumés. Built under NDA.",
+                    "modal_description": "A two-sided talent portal. Clients sign in (approval-gated), browse pre-assessed accounting candidates, open standardized profiles, shortlist favorites, and book interviews via Calendly; each candidate links into the hiring-assessment platform. Staff manage the roster through an intake form and a standardized résumé generator. Role-based auth (admin/client) with new client sign-ups held pending until an admin approves. Built as a Dockerized Next.js + FastAPI app under NDA.",
+                    "tags": ["Next.js", "Tailwind CSS", "Clerk", "FastAPI", "SQLAlchemy", "PostgreSQL", "Docker"],
+                    "image": "images/AI-Profiles/profiles-grid.png",
+                    "has_modal": True,
+                    "gallery": [
+                        {"path": "images/AI-Profiles/profiles-grid.png", "alt": "Candidate browse — pre-assessed talent cards with role, experience, and rate (candidate identities anonymized)"}
+                    ],
+                    "problem": """<p>Placing offshore accounting talent meant emailing inconsistent résumés and coordinating interviews by hand. The firm needed a self-serve portal where vetted clients could browse pre-assessed candidates and book calls. Key needs:</p><ul><li>A branded, access-controlled place for clients to review candidates</li><li>Standardized candidate profiles and résumés instead of ad-hoc documents</li><li>Shortlisting and interview booking without manual scheduling</li><li>Role-based access so only approved clients see the roster</li></ul>""",
+                    "tools": ["Next.js 16", "Tailwind CSS 4", "Clerk", "FastAPI", "SQLAlchemy 2", "PostgreSQL", "Docker", "Calendly", "python-docx"],
+                    "workflow": [
+                        {"number": 1, "text": "<strong>Role-Based Access:</strong> Clerk auth with admin and client roles; new client sign-ups land pending until an admin approves access to the roster."},
+                        {"number": 2, "text": "<strong>Browse + Shortlist:</strong> Clients browse pre-assessed candidates, open standardized profiles, and build a shortlist of favorites."},
+                        {"number": 3, "text": "<strong>Book Interviews:</strong> Clients book calls through Calendly; each candidate can link into the hiring-assessment platform for behavioral fit."},
+                        {"number": 4, "text": "<strong>Staff Intake:</strong> Admins add candidates through an intake form and generate standardized résumé PDFs, keeping every profile consistent."}
+                    ],
+                    "features_title": "Key Features",
+                    "features": [
+                        {"title": "Approval-Gated Client Access", "text": "Clerk role-based auth — client sign-ups stay pending until an admin approves, so only vetted clients see candidates."},
+                        {"title": "Standardized Profiles + Résumés", "text": "A résumé generator produces consistent candidate PDFs instead of ad-hoc documents."},
+                        {"title": "Shortlist + Calendly Booking", "text": "Clients shortlist favorites and book interviews directly, with no manual scheduling."},
+                        {"title": "Linked to Assessment", "text": "Each candidate can link into the hiring-assessment platform so clients see behavioral fit alongside the profile."}
+                    ],
+                    "impact": [
+                        {"value": "Role-Based", "label": "Client Access", "icon_type": "check"},
+                        {"value": "Self-Serve", "label": "Browse + Book", "icon_type": "trend"},
+                        {"value": "NDA", "label": "Confidential Client", "icon_type": "time"}
                     ]
                 }
             ]

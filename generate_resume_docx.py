@@ -203,7 +203,7 @@ def build(cfg):
         "Replaced manual, fragmented school workflows with accounting-transparency and audit-trail processes across the system.",
     ])
 
-    role_header("AI Specialist — Confidential (US Commercial Flooring Company)",
+    role_header("Senior Developer / AI Specialist — Confidential (US Commercial Flooring Company)",
                 "May 2026 - Present",
                 "Lead-Response and Proposal Automations", "Remote")
     bullets([
