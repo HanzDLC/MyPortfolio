@@ -253,7 +253,7 @@ def build(cfg):
 
     section_title("Education")
     role_header("Bachelor of Science in Information Technology",
-                "August 2022 - Present",
+                "August 2022 - 2026",
                 "College of Computing and Informatics",
                 "Iloilo Science and Technology University")
 
